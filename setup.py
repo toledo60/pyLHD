@@ -9,7 +9,7 @@ with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pyLHD",
-    version="0.3.2",
+    version="0.3.3",
     author="Jose Toledo",
     author_email="toledo60@protonmail.com",
     description="Latin Hypercube Designs for Python",

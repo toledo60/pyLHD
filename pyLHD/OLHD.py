@@ -1,7 +1,7 @@
 import numpy as np
-from utils import comb
-from utils import is_prime
-from utils import williams_transform
+from pyLHD.utils import comb
+from pyLHD.utils import is_prime
+from pyLHD.utils import williams_transform
 
 # --- Orthogonal Latin Hypercube Designs --- #
 
