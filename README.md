@@ -2,6 +2,10 @@
 
 pyLHD is a python implementation of the R package [LHD](https://cran.r-project.org/web/packages/LHD/index.html) by Hongzhi Wang, Qian Xiao, Abhyuday Mandal.
 
+Check out the streamlit app for pyLHD, a point-click interface to generate Latin hypercube designs
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/toledo60/pylhd-streamlit/main/app.py)
+
 ## Overview
 
 With `pyLHD` you can generate the following designs:
@@ -31,6 +35,12 @@ Other functionality includes:
 For further details on any of the above function(s) check the corresponding reference(s) under [REFERENCES.md](https://github.com/toledo60/pyLHD/blob/main/REFERENCES.md). 
 
 ## Installation
+
+`pyLHD` can be installed from PyPI:
+
+```
+pip install pyLHD
+```
 
 The latest development version can be installed from the main branch using pip:
 
