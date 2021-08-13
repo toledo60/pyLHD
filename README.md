@@ -38,7 +38,7 @@ The latest development version can be installed from the main branch using pip:
 pip install git+https://github.com/toledo60/pyLHD.git
 ```
 
-The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tested on Python 3.6 and 3.7
+The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tested on Python 3.6+
 
 
 ## Future Work
