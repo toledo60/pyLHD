@@ -1,2 +1,11 @@
+*.*~
+*.pyc
+dist
+build
+MANIFEST
+*.egg-info
+.idea
+
+.vscode/
+
 venv
-practice.py
