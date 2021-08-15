@@ -1,15 +1,11 @@
 import setuptools
-import codecs
-import os
 
-here = os.path.abspath(os.path.dirname(__file__))
-
-with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
-    long_description = "\n" + fh.read()
+with open("README.md",'r') as f:
+    long_description = f.read()
 
 setuptools.setup(
     name="pyLHD",
-    version="0.3.4",
+    version="0.3.5",
     author="Jose Toledo",
     author_email="toledo60@protonmail.com",
     description="Latin Hypercube Designs for Python",
