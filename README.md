@@ -6,6 +6,11 @@ Check out the streamlit app for pyLHD, a point-click interface to generate Latin
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/toledo60/pylhd-streamlit/main/app.py)
 
+For a quick overview of pyLHD without having to install it, click on the link below and navigate to the notebooks folder to run an interactive Jupyter notebook showing the main functionalities of pyLHD
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/toledo60/pyLHD/main?filepath=examples%2Fnotebooks)
+
+
 ## Overview
 
 With `pyLHD` you can generate the following designs:
@@ -56,5 +61,3 @@ The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tes
 Search algorithms for efficient LHDs have not yet been implemented. These algorithms include: simulated annealing, particle swarm optimization, and genetic algorithms.
 
 Until these algorithms have been implemented, refer to the R package [LHD](https://cran.r-project.org/web/packages/LHD/index.html) to utilize the search algorithms described above. Lastly, for a good overview of the methods being implemented check out [Musings about Constructions of Efficient Latin Hypercube Designs with Flexible Run-sizes](https://arxiv.org/abs/2010.09154) (R version)
-
-Quick tutorials in Jupyter notebooks demonstrating the functionality of `pyLHD` in Python will be created in future updates
