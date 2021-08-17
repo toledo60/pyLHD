@@ -4,7 +4,7 @@ build
 MANIFEST
 *.egg-info
 .idea
-
+test.py
 .vscode/
 
 venv

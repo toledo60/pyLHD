@@ -60,4 +60,6 @@ The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tes
 
 Search algorithms for efficient LHDs have not yet been implemented. These algorithms include: simulated annealing, particle swarm optimization, and genetic algorithms.
 
-Until these algorithms have been implemented, refer to the R package [LHD](https://cran.r-project.org/web/packages/LHD/index.html) to utilize the search algorithms described above. Lastly, for a good overview of the methods being implemented check out [Musings about Constructions of Efficient Latin Hypercube Designs with Flexible Run-sizes](https://arxiv.org/abs/2010.09154) (R version)
+Until these algorithms have been implemented, refer to the R package [LHD](https://cran.r-project.org/web/packages/LHD/index.html) to utilize the search algorithms described above. 
+
+
