@@ -1,7 +1,7 @@
 import numpy as np
 from pyLHD.base_designs import rLHD
 from pyLHD.utils import exchange
-from pyLHD.criteria import phi_p
+from pyLHD.criteria import *
 from datetime import datetime
 
 
@@ -20,52 +20,92 @@ def SA(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
   
   rng = np.random.default_rng()
   
-  if criteria == 'phi_p':
-    while counter <= N:
-      time0 = datetime.now()
-      while Flag == 1 & TP>Tmin:
-        Flag = 0
-        I = 1
+  while counter <= N:
+    time0 = datetime.now()
+    while Flag == 1 & TP>Tmin:
+      Flag = 0
+      I = 1
+      
+      while I <= Imax:
+        rs = np.arange(start=1,stop=k+1)
+        rcol = rng.choice(rs, 1, replace=False) #step 3:Randomly choose a column
         
-        while I <= Imax:
-          rs = np.arange(start=1,stop=k+1)
-          rcol = rng.choice(rs, 1, replace=False) #step 3:Randomly choose a column
-          
-          Xnew = exchange(arr=X,idx=rcol) #step 4:Exchange two random elements from column 'rcol'
-          
-          a = phi_p(Xnew,p=p,q=q) #step 5 begins here
+        Xnew = exchange(arr=X,idx=rcol) #step 4:Exchange two random elements from column 'rcol'
+        
+        #step 5 begins here
+        if criteria == 'phi_p':
+          a = phi_p(Xnew,p=p,q=q) 
           b = phi_p(X,p=p,q=q)
+        elif criteria == 'MaxProCriterion':
+          a = MaxProCriterion(Xnew)
+          b = MaxProCriterion(X)
+        elif criteria == 'AvgAbsCor':
+          a = AvgAbsCor(Xnew)
+          b = AvgAbsCor(X)
+        elif criteria == 'MaxAbsCor':
+          a = MaxAbsCor(Xnew)
+          b = MaxAbsCor(X)
+        
+        if a < b:
+          X = Xnew
+          Flag = 1
+        else:
+          prob = np.exp((b-a)/TP)
+          draw = rng.choice(np.arange(0,2),1,p = [1-prob,prob],replace=False)
           
-          if a < b:
-            X = Xnew
-            Flag = 1
-          else:
-            prob = np.exp((b-a)/TP)
-            draw = rng.choice(np.arange(0,2),1,p = [1-prob,prob],replace=False)
-            
-            if draw == 1:
-              X=Xnew
-              Flag =1 #step 5 ends here
-          
+          if draw == 1:
+            X=Xnew
+            Flag =1 #step 5 ends here
+        
+        if criteria == 'phi_p':
           c = phi_p(Xbest,p=p,q=q)
-          
-          if a <c:
-            Xbest = Xnew
-            I=1
-          else:
-            I = I +1
-        TP = TP*(1-rate)
-      
-      time1 = datetime.now()
-      timeDiff = time1-time0
-      
-      timeALL = timeDiff.total_seconds()
-      
-      if timeALL <= maxtime:
-        counter = counter+1
-      else:
-        counter = N+1
-      TP=T0
-      Flag =1
-  
+        elif criteria == 'MaxProCriterion':
+          c = MaxProCriterion(Xbest)
+        elif criteria == 'AvgAbsCor':
+          c = AvgAbsCor(Xbest)
+        elif criteria == 'MaxAbsCor':
+          c = MaxAbsCor(Xbest)
+        
+        if a <c:
+          Xbest = Xnew
+          I=1
+        else:
+          I = I +1
+      TP = TP*(1-rate)
+    
+    time1 = datetime.now()
+    timeDiff = time1-time0
+    
+    timeALL = timeDiff.total_seconds()
+    
+    if timeALL <= maxtime:
+      counter = counter+1
+    else:
+      counter = N+1
+    TP=T0
+    Flag =1
+
   return Xbest
+
+
+random_LHD = rLHD(10,5)
+
+# Apply simulated annealing
+
+phi_LHD = SA(10,5)
+avgabscor_LHD = SA(10,5,criteria='AvgAbsCor')
+maxpro_LHD = SA(10,5,criteria='MaxProCriterion')
+maxbascor = SA(10,5,criteria='MaxAbsCor')
+
+
+print(f'phi_p_random: {phi_p(random_LHD)}')
+print(f'phi_p_SA: {phi_p(phi_LHD)}')
+
+print(f'avgabscor_random: {AvgAbsCor(random_LHD)}')
+print(f'avgabscor_random_SA: {AvgAbsCor(avgabscor_LHD)}')
+
+print(f'maxpro_random: {MaxProCriterion(random_LHD)}')
+print(f'maxpro_SA: {MaxProCriterion(maxpro_LHD)}')
+
+print(f'maxabscor_random: {MaxAbsCor(random_LHD)}')
+print(f'maxabscor_SA: {MaxAbsCor(maxbascor)}')
