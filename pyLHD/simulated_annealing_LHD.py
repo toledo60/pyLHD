@@ -86,26 +86,3 @@ def SA(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
     Flag =1
 
   return Xbest
-
-
-random_LHD = rLHD(10,5)
-
-# Apply simulated annealing
-
-phi_LHD = SA(10,5)
-avgabscor_LHD = SA(10,5,criteria='AvgAbsCor')
-maxpro_LHD = SA(10,5,criteria='MaxProCriterion')
-maxbascor = SA(10,5,criteria='MaxAbsCor')
-
-
-print(f'phi_p_random: {phi_p(random_LHD)}')
-print(f'phi_p_SA: {phi_p(phi_LHD)}')
-
-print(f'avgabscor_random: {AvgAbsCor(random_LHD)}')
-print(f'avgabscor_random_SA: {AvgAbsCor(avgabscor_LHD)}')
-
-print(f'maxpro_random: {MaxProCriterion(random_LHD)}')
-print(f'maxpro_SA: {MaxProCriterion(maxpro_LHD)}')
-
-print(f'maxabscor_random: {MaxAbsCor(random_LHD)}')
-print(f'maxabscor_SA: {MaxAbsCor(maxbascor)}')
