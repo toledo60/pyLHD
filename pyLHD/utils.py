@@ -1,27 +1,5 @@
 import numpy as np
-import math
-
-# Determine if a number is prime
-
-def is_prime(n):
-  """Determine if a number is prime
-
-  Args:
-      n (int): Any integer
-
-  Returns:
-      [logical]: True if n is prime, False if n is not prime 
-  """
-  if n % 2 == 0 and n > 2:
-    return False
-  return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
-
-# Compute n choose k 
-
-def comb(n,k):
-  f = math.factorial
-  return f(n) // f(k)// f(n-k)
-
+from pyLHD.criteria import *
 
 # Exchange two random elements in a matrix
 
@@ -39,11 +17,11 @@ def exchange(arr, idx, type='col'):
   
   Examples:
       # Choose the first column of example_LHD and exchange two randomly selected elements
-      example_LHD = rLHD(nrows=5,ncols=3)
-      exchange(example_LHD,idx=1,type='col')
+      >>> example_LHD = rLHD(nrows=5,ncols=3)
+      >>> exchange(example_LHD,idx=1,type='col')
 
       # Choose the first row of example_LHD and exchange two randomly selected elements.
-      exchange(example_LHD,idx=1,type='row')
+      >>> exchange(example_LHD,idx=1,type='row')
   """
   nrows = arr.shape[0]
   ncols = arr.shape[1]
@@ -72,11 +50,11 @@ def williams_transform(arr,baseline=1):
       numpy.ndarray: After applying Williams transformation, a matrix whose sizes are the same as input matrix
   
   Examples:
-      example_LHD = rLHD(nrows=5,ncols=3)
-      william_transformation(example_LHD)
+      >>> example_LHD = rLHD(nrows=5,ncols=3)
+      >>> william_transformation(example_LHD)
 
       #Change the baseline
-      william_transformation(example_LHD,baseline=5)
+      >>> william_transformation(example_LHD,baseline=5)
   """
   n = arr.shape[0]
   k = arr.shape[1]
@@ -114,12 +92,11 @@ def OA2LHD(orthogonal_array):
   
   Examples:
   # Create an OA(9,2,3,2) 
-  example_OA = numpy.array([[1,1],[1,2],[1,3],[2,1],
-                      [2,2],[2,3],[3,1],[3,2],[3,3] ])
+  >>> example_OA = numpy.array([[1,1],[1,2],[1,3],[2,1],
+                          [2,2],[2,3],[3,1],[3,2],[3,3] ])
   
   # Transfer the "OA" above into a LHD according to Tang (1993)
-
-  OA2LHD(example_OA)        
+  >>> OA2LHD(example_OA)        
   """
   n = orthogonal_array.shape[0]
   m = orthogonal_array.shape[1]
@@ -135,3 +112,33 @@ def OA2LHD(orthogonal_array):
       np.place(lhd[:, j], lhd[:, j]== (i+1), k[i].flatten().tolist())
   lhd = lhd/100
   return lhd.astype(int)
+
+# Evaluate design based on chosed criteria
+
+def eval_design(arr,criteria = 'phi_p',p=15,q=1):
+  """ Evaluate a design based on a chosen criteria
+
+  Args:
+      arr (numpy.ndarray): A design matrix
+      criteria (str, optional): Criteria to choose from. Defaults to 'phi_p'. 
+      Options include 'phi_p','MaxProCriterion','AvgAbsCor','AvgAbsCor'
+      p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15
+      q (int): If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.
+
+  Returns:
+      float: Calculation of chosen criteria for any LHD
+
+  Examples:
+    >>> example_LHD = rLHD(nrows=5,ncols=3)
+    >>> eval_design(example_LHD) # phi_p with default settings
+    >>> eval_design(example_LHD,criteria='MaxProCriterion') # evaluate design based on MaxProCriterion    
+  """
+  if criteria == 'phi_p':
+    result = phi_p(arr,p=p,q=q)
+  elif criteria == 'MaxProCriterion':
+    result =  MaxProCriterion(arr)
+  elif criteria == 'AvgAbsCor':
+    result=  AvgAbsCor(arr)
+  elif criteria == 'MaxAbsCor':
+    result =  MaxAbsCor(arr)
+  return result

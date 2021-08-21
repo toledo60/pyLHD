@@ -1,6 +1,6 @@
 import numpy as np
-from pyLHD.utils import comb
-from pyLHD.utils import is_prime
+from pyLHD.misc import comb
+from pyLHD.misc import is_prime
 from pyLHD.utils import williams_transform
 
 # --- Orthogonal Latin Hypercube Designs --- #
@@ -84,7 +84,6 @@ def OLHD_Butler01(nrows, ncols):
     X = np.column_stack((X0, X1))
 
   return X
-
 
 # --- Sun et al. (2010) Construction --- #
 

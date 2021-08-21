@@ -1,6 +1,6 @@
 import numpy as np
 from pyLHD.base_designs import rLHD
-from pyLHD.utils import exchange
+from pyLHD.utils import eval_design,exchange
 from pyLHD.criteria import *
 from datetime import datetime
 
@@ -33,18 +33,8 @@ def SA(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
         Xnew = exchange(arr=X,idx=rcol) #step 4:Exchange two random elements from column 'rcol'
         
         #step 5 begins here
-        if criteria == 'phi_p':
-          a = phi_p(Xnew,p=p,q=q) 
-          b = phi_p(X,p=p,q=q)
-        elif criteria == 'MaxProCriterion':
-          a = MaxProCriterion(Xnew)
-          b = MaxProCriterion(X)
-        elif criteria == 'AvgAbsCor':
-          a = AvgAbsCor(Xnew)
-          b = AvgAbsCor(X)
-        elif criteria == 'MaxAbsCor':
-          a = MaxAbsCor(Xnew)
-          b = MaxAbsCor(X)
+        a = eval_design(Xnew,criteria=criteria,p=p,q=q)
+        b = eval_design(X,criteria=criteria,p=p,q=q)
         
         if a < b:
           X = Xnew
@@ -55,16 +45,10 @@ def SA(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
           
           if draw == 1:
             X=Xnew
-            Flag =1 #step 5 ends here
+            Flag =1 
+        #step 5 ends here
         
-        if criteria == 'phi_p':
-          c = phi_p(Xbest,p=p,q=q)
-        elif criteria == 'MaxProCriterion':
-          c = MaxProCriterion(Xbest)
-        elif criteria == 'AvgAbsCor':
-          c = AvgAbsCor(Xbest)
-        elif criteria == 'MaxAbsCor':
-          c = MaxAbsCor(Xbest)
+        c = eval_design(Xbest,criteria=criteria,p=p,q=q)
         
         if a <c:
           Xbest = Xnew
@@ -86,3 +70,5 @@ def SA(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
     Flag =1
 
   return Xbest
+
+print(SA(6,6))
