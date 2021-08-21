@@ -70,5 +70,3 @@ def SA(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
     Flag =1
 
   return Xbest
-
-print(SA(6,6))
