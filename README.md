@@ -6,7 +6,7 @@ Check out the streamlit app for pyLHD, a point-click interface to generate Latin
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/toledo60/pylhd-streamlit/main/app.py)
 
-For a quick overview of pyLHD without having to install it, click on the link below and navigate to the notebooks folder to run an interactive Jupyter notebook showing the main functionalities of pyLHD
+For a quick overview of pyLHD main functionalities without having to install it, click on the link below and navigate to the notebooks folder to run an interactive Jupyter notebook
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/toledo60/pyLHD/main?filepath=examples%2Fnotebooks)
 
@@ -31,6 +31,11 @@ Calculate design properties such as:
 - `dij`: Calculate the Inter-site Distance (rectangular/Euclidean) between the *ith* and *jth* row
 - `phi_p`: Calculate the phi_p criterion
 
+Optimization algorithms to improve LHD's based on desired criteria:
+
+- `LA_LHD`: Lioness Algorithm for Latin hypercube design
+- `SA_LHD`: Simulated Annealing for Latin hypercube design
+
 Other functionality includes:
 
 - `exchange`: Exchange two random elements from a specified column or row in a matrix
@@ -54,12 +59,4 @@ pip install git+https://github.com/toledo60/pyLHD.git
 ```
 
 The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tested on Python 3.6+
-
-
-## Future Work
-
-Search algorithms for efficient LHDs have not yet been implemented. These algorithms include: simulated annealing, particle swarm optimization, and genetic algorithms.
-
-Until these algorithms have been implemented, refer to the R package [LHD](https://cran.r-project.org/web/packages/LHD/index.html) to utilize the search algorithms described above. 
-
 

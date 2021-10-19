@@ -22,33 +22,3 @@ def is_prime(n):
 def comb(n,k):
   f = math.factorial
   return f(n) // f(k)// f(n-k)
-
-# show progress bar for iterations
-
-class progress_bar:
-  
-  def __init__(self,i,total):
-    """Basic progress bar for iterations
-
-    Args:
-        i (int): current iteration
-        total (int): total number of iterations
-    Examples:
-        >>> it = 100
-        >>> for i in range(it)
-        >>>   progress_bar(i,it).show()
-        >>> progress_bar.end()
-    """
-    self.total = total
-    self.i = i
-  
-  def show(self):
-    percent = 100.0*(self.i+1)/(self.total)
-    sys.stdout.write('\r')
-    sys.stdout.write("Completed: [{:{}}] {:>3}%"
-                    .format('='*int(percent/(100.0/50)),
-                            50, int(percent)))
-    sys.stdout.flush()
-    
-  def end():
-    sys.stdout.write("\n")
