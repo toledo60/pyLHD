@@ -1,5 +1,4 @@
 import math
-import sys
 
 # Determine if a number is prime
 

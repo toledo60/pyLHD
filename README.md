@@ -10,6 +10,21 @@ For a quick overview of pyLHD main functionalities without having to install it,
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/toledo60/pyLHD/main?filepath=examples%2Fnotebooks)
 
+## Installation
+
+`pyLHD` can be installed from PyPI:
+
+```
+pip install pyLHD
+```
+
+The latest development version can be installed from the main branch using pip:
+
+```
+pip install git+https://github.com/toledo60/pyLHD.git
+```
+
+The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tested on Python 3.6+
 
 ## Overview
 
@@ -41,22 +56,8 @@ Other functionality includes:
 - `exchange`: Exchange two random elements from a specified column or row in a matrix
 - `OA2LHD`: Convert an orthogonal array (OA) into a Latin hypercube design (LHD)
 - `williams_transform`: Apply Williams transformation to a specified design
+- `adjust_range`: Adjust the range of a design to [min,max]
 
 For further details on any of the above function(s) check the corresponding reference(s) under [REFERENCES.md](https://github.com/toledo60/pyLHD/blob/main/REFERENCES.md). 
 
-## Installation
-
-`pyLHD` can be installed from PyPI:
-
-```
-pip install pyLHD
-```
-
-The latest development version can be installed from the main branch using pip:
-
-```
-pip install git+https://github.com/toledo60/pyLHD.git
-```
-
-The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tested on Python 3.6+
 

@@ -91,12 +91,12 @@ def OA2LHD(orthogonal_array):
       numpy.ndarray: LHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive
   
   Examples:
-  # Create an OA(9,2,3,2) 
-  >>> example_OA = numpy.array([[1,1],[1,2],[1,3],[2,1],
+      # Create an OA(9,2,3,2) 
+      >>> example_OA = numpy.array([[1,1],[1,2],[1,3],[2,1],
                           [2,2],[2,3],[3,1],[3,2],[3,3] ])
   
-  # Transfer the "OA" above into a LHD according to Tang (1993)
-  >>> OA2LHD(example_OA)        
+      # Transfer the "OA" above into a LHD according to Tang (1993)
+      >>> OA2LHD(example_OA)        
   """
   n = orthogonal_array.shape[0]
   m = orthogonal_array.shape[1]
@@ -129,16 +129,51 @@ def eval_design(arr,criteria = 'phi_p',p=15,q=1):
       float: Calculation of chosen criteria for any LHD
 
   Examples:
-    >>> example_LHD = rLHD(nrows=5,ncols=3)
-    >>> eval_design(example_LHD) # phi_p with default settings
-    >>> eval_design(example_LHD,criteria='MaxProCriterion') # evaluate design based on MaxProCriterion    
+      >>> example_LHD = rLHD(nrows=5,ncols=3)
+      >>> eval_design(example_LHD) # phi_p with default settings
+      >>> eval_design(example_LHD,criteria='MaxProCriterion') # evaluate design based on MaxProCriterion    
   """
   if criteria == 'phi_p':
     result = phi_p(arr,p=p,q=q)
   elif criteria == 'MaxProCriterion':
     result =  MaxProCriterion(arr)
   elif criteria == 'AvgAbsCor':
-    result=  AvgAbsCor(arr)
+    result =  AvgAbsCor(arr)
   elif criteria == 'MaxAbsCor':
     result =  MaxAbsCor(arr)
+  return result
+
+# Adjust the range of a design to [min,max]
+
+def adjust_range(arr,min,max,digits=None):
+  """ Adjust the range of a design to [min,max]
+
+  Args:
+      arr (numpy.ndarray): A design matrix
+      min (float): desired lower bound of design 
+      max (float): desired upper bound of design 
+      digits (int): number of digits to which the design is rounded
+  Returns:
+      float: Design with new range [min,max]
+
+  Examples:
+      >>> example_LHD = rLHD(nrows=5,ncols=3,scaled=True)
+      >>> adjust_range(example_LHD,-1, 1)
+      >>> adjust_range(example_LHD, 5, 12, digits = 3)
+  """  
+  if (min == max):
+    raise ValueError('min and max should be different values')
+  if (min > max):
+    raise ValueError('make sure min < max')
+  
+  arr_min = np.amin(arr)
+  arr_max = np.amax(arr)
+  
+  range_diff = arr_max - arr_min
+  result = (arr - arr_min)/range_diff * (max-min) + min
+  
+  if digits is None:
+    result = result
+  else:
+    result = np.around(result,digits)
   return result

@@ -2,25 +2,34 @@ import numpy as np
 
 # Generate a random Latin Hypercube Design (LHD)
 
-def rLHD(nrows,ncols):
+def rLHD(nrows,ncols,scaled=False):
   """ Generate a random Latin Hypercube Design (LHD)
 
   Args:
       nrows (int): A positive integer specifying the number of rows
       ncols (int): A postive integer specifying the number of columns
+      scaled (bool): If True, design will be scaled to [0,1].
 
   Returns:
       numpy.ndarray: return a random (nrows by ncols) LHD
   
   Examples:
-      rLHD(nrows=5,ncols = 4)
+      >>> rLHD(nrows=5,ncols = 4,scaled = False)
+      >>> rLHD(nrows=5,ncols = 4,scaled = True)
+      
   """
   rng = np.random.default_rng()
   rs = np.arange(start=1, stop=nrows+1)
   space = []
-  for i in range(ncols):
+  for _ in range(ncols):
     space.append(rng.choice(rs, nrows, replace=False))
-  return np.asarray(space).transpose()
+  D = np.asarray(space).transpose()
+  
+  if scaled:
+    return (D-0.5)/nrows
+  else:
+    return D
+
 
 
 # Good Lattice Point Design
@@ -38,8 +47,8 @@ def GLPdesign(nrows,ncols,h = None):
       numpy.ndarray: A (nrows by ncols) GLP design.
   
   Examples:
-      GLPdesign(nrows=5,ncols=3)
-      GLPdesign(nrows=8,ncols=4,h=[1,3,5,7])
+      >>> GLPdesign(nrows=5,ncols=3)
+      >>> GLPdesign(nrows=8,ncols=4,h=[1,3,5,7])
   """
   rng = np.random.default_rng()
   if h is None:
@@ -54,5 +63,3 @@ def GLPdesign(nrows,ncols,h = None):
     for j in range(ncols):
       mat[i,j] = ((i+1)*h_sample[j])% nrows
   return mat.astype(int)
-
-

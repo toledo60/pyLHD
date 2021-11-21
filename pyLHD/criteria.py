@@ -12,8 +12,8 @@ def MaxAbsCor(arr):
       [float]: Positive number indicating maximum absolute correlation. Rounded to 3 digits
   
   Examples:
-      example_LHD = rLHD(nrows=5,ncols=3)
-      MaxAbsCor(example_LHD)
+    >>> example_LHD = rLHD(nrows=5,ncols=3)
+    >>> MaxAbsCor(example_LHD)
   """
   p = arr.shape[1]  # number of columns
   corr = []
@@ -35,8 +35,8 @@ def MaxProCriterion(arr):
       [float]: Positive number indicating maximum projection criterion
   
   Examples:
-      example_LHD = rLHD(nrows=5,ncols=3)
-      MaxProCriterion(example_LHD)
+      >>> example_LHD = rLHD(nrows=5,ncols=3)
+      >>> MaxProCriterion(example_LHD)
   """
   n = arr.shape[0]
   p = arr.shape[1]
@@ -68,12 +68,12 @@ def dij(arr,i, j, q = 1):
   
   Examples:
       # Calculate the inter-site distance of the 2nd and the 4th row of example_LHD
-      example_LHD = rLHD(nrows=5,ncols=3)
-      dij(example_LHD,i=2,j=4)
+      >>> example_LHD = rLHD(nrows=5,ncols=3)
+      >>> dij(example_LHD,i=2,j=4)
 
       # Calculate the inter-site distance of the 2nd and the 4th row of example_LHD with q=2 (Euclidean)
-      example_LHD = rLHD(nrows=5,ncols=3)
-      dij(example_LHD,i=2,j=4,q=2)
+      >>> example_LHD = rLHD(nrows=5,ncols=3)
+      >>> dij(example_LHD,i=2,j=4,q=2)
   """
   p = arr.shape[1]
   distance = np.empty(p)
@@ -97,11 +97,11 @@ def phi_p(arr,p=15,q=1):
 
   Examples:
       # Calculate the phi_p criterion for example_LHD with default settings
-      example_LHD = rLHD(nrows=5,ncols=3)
-      phi_p(example_LHD)
+      >>> example_LHD = rLHD(nrows=5,ncols=3)
+      >>> phi_p(example_LHD)
 
       # Calculate the phi_p criterion of example_LHD with p=50 and q=2 (Euclidean)
-      phi_p(example_LHD,p=50,q=2)    
+      >>> phi_p(example_LHD,p=50,q=2)    
   """
   n = arr.shape[0]
   isd = 0 
@@ -124,8 +124,8 @@ def AvgAbsCor(arr):
 
   Examples:
       # Calculate the average absolute correlation of example_LHD
-      example_LHD = rLHD(nrows=5,ncols=3)
-      AvgAbsCor(example_LHD)
+      >>> example_LHD = rLHD(nrows=5,ncols=3)
+      >>> AvgAbsCor(example_LHD)
   """
   p = arr.shape[1]
   corr = []
