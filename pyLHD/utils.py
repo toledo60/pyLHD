@@ -157,7 +157,7 @@ def adjust_range(arr,min,max,digits=None):
       float: Design with new range [min,max]
 
   Examples:
-      >>> example_LHD = rLHD(nrows=5,ncols=3,scaled=True)
+      >>> example_LHD = rLHD(nrows=5,ncols=3,unit_cube=True)
       >>> adjust_range(example_LHD,-1, 1)
       >>> adjust_range(example_LHD, 5, 12, digits = 3)
   """  

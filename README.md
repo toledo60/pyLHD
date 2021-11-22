@@ -1,6 +1,6 @@
 # pyLHD: Latin Hypercube Designs for Python
 
-pyLHD is a python implementation of the R package [LHD](https://cran.r-project.org/web/packages/LHD/index.html) by Hongzhi Wang, Qian Xiao, Abhyuday Mandal.
+pyLHD is a python implementation of the R package [LHD](https://cran.r-project.org/web/packages/LHD/index.html) by Hongzhi Wang, Qian Xiao, Abhyuday Mandal with additional features.
 
 Check out the streamlit app for pyLHD, a point-click interface to generate Latin hypercube designs
 
@@ -40,10 +40,11 @@ With `pyLHD` you can generate the following designs:
 
 Calculate design properties such as:
 
-- `MaxAbsCor`: Calculate the maximum absolute correlation
 - `AvgAbsCor`: Calculate the average absolute correlation
-- `MaxProCriterion`: Calculate the maximum projection criterion
 - `dij`: Calculate the Inter-site Distance (rectangular/Euclidean) between the *ith* and *jth* row
+- `discrepancy`: Calculate the discrepancy of a given sample
+- `MaxAbsCor`: Calculate the maximum absolute correlation
+- `MaxProCriterion`: Calculate the maximum projection criterion
 - `phi_p`: Calculate the phi_p criterion
 
 Optimization algorithms to improve LHD's based on desired criteria:
@@ -53,10 +54,11 @@ Optimization algorithms to improve LHD's based on desired criteria:
 
 Other functionality includes:
 
+- `adjust_range`: Adjust the range of a design to [min,max]
 - `exchange`: Exchange two random elements from a specified column or row in a matrix
 - `OA2LHD`: Convert an orthogonal array (OA) into a Latin hypercube design (LHD)
 - `williams_transform`: Apply Williams transformation to a specified design
-- `adjust_range`: Adjust the range of a design to [min,max]
+
 
 For further details on any of the above function(s) check the corresponding reference(s) under [REFERENCES.md](https://github.com/toledo60/pyLHD/blob/main/REFERENCES.md). 
 

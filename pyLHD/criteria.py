@@ -1,4 +1,5 @@
 import numpy as np 
+from pyLHD.utils import adjust_range
 
 # Maximum Absolute Correlation
 
@@ -135,3 +136,109 @@ def AvgAbsCor(arr):
   abs_corr_array = np.absolute(np.asarray(corr))
   return np.around(np.mean(abs_corr_array),3)
 
+
+# Caluclate the Discrepancy of a given sample
+
+def discrepancy(arr, type='centered_L2'):
+  """ Discrepancy of a given sample
+
+  Args:
+      arr (numpy.ndarray): A design matrix
+      type (str, optional): Type of discrepancy. Defaults to 'centered_L2'. Options include:
+      'L2', 'L2_star','centered_L2', 'modified_L2', 'mixture_L2', 'symmetric_L2', 'wrap_around_L2'
+
+  Raises:
+      ValueError: Whenever number of rows is less than number of columns
+
+  Returns:
+      float: Desired discrepancy type
+  """
+  if (np.amin(arr) < 0 or np.amax(arr) > 1):
+    arr = adjust_range(arr,min=0,max=1)
+  
+  nrows = arr.shape[0]
+  ncols = arr.shape[1]
+  
+  if nrows < ncols:
+    raise ValueError('Make sure number of rows is greater than number of columns')
+
+  sum1 = 0
+  sum2 = 0
+  
+  if type == 'L2':
+
+    for i in range(nrows):
+      sum1 += np.prod(arr[i,:]*(1-arr[i,:]))
+      for k in range(nrows):
+        q =  1
+        for j in range(ncols):
+          q = q*(1-np.maximum(arr[i,j],arr[k,j]))*np.minimum(arr[i,j],arr[k,j])
+        sum2 += q
+    value = np.sqrt(12**(-ncols) - (((2**(1-ncols))/nrows)*sum1) + ((1/nrows**2)*sum2))  
+  
+  if type == 'L2_star':
+    dL2 = 0
+    for j in range(nrows):
+      for i in range(nrows):
+        if i!=j:
+          t = []
+          for l in range(ncols):
+            t.append(1-np.maximum(arr[i,l],arr[j,l]))
+          t = (np.prod(t))/(nrows**2)
+        else:
+          t1 = 1-arr[i,:]
+          t1 = np.prod(t1)
+          t2 = 1-np.square(arr[i,:])
+          t2 = np.prod(t2)
+          t = t1/(nrows**2)-((2**(1-ncols))/nrows)*t2
+    
+        dL2 += t
+  
+    value = np.sqrt(3**(-ncols)+dL2)
+      
+  if type == 'centered_L2':
+
+    for i in range(nrows):
+      sum1 += np.prod((1+0.5*np.abs(arr[i,:]-0.5)-0.5*((abs(arr[i,:]-0.5))**2)))
+      for k in range(nrows):
+        sum2 +=  np.prod((1+0.5*np.abs(arr[i,:]-0.5)+0.5*np.abs(arr[k,:]-0.5)-0.5*np.abs(arr[i,:]-arr[k,:])))
+    value =  np.sqrt( ( (13/12)**ncols)-((2/nrows)*sum1) + ((1/(nrows**2))*sum2)  )
+  
+  if type == 'modified_L2':
+    
+    for i in range(nrows):
+      p = 1
+      p = np.prod((3-(arr[i,:]*arr[i,:])))
+      sum1 += p
+      
+      for k in range(nrows):
+        q = 1
+        for j in range(ncols):
+          q = q*(2-np.maximum(arr[i,j],arr[k,j]))
+        sum2 += q
+    value =  np.sqrt(((4/3)**ncols) - (((2**(1-ncols))/nrows)*sum1) + ((1/nrows**2)*sum2))
+  
+  if type == 'mixture_L2':
+    for i in range(nrows):
+      sum1 += np.prod((5/3-0.25*np.abs(arr[i,:]-0.5)-0.25*((np.abs(arr[i,:]-0.5))**2)))
+      for k in range(nrows):
+        sum2 += np.prod((15/8-0.25*np.abs(arr[i,:]-0.5)-0.25*np.abs(arr[k,:]-0.5)-
+                         0.75*np.abs(arr[i,:]-arr[k,:])+0.5*((np.abs(arr[i,:]-arr[k,:]))**2)))
+    value = np.sqrt(((19/12)**ncols)-((2/nrows)*sum1) + ((1/nrows**2)*sum2))
+     
+  if type == 'symmetric_L2':
+
+    for i in range(nrows):
+      sum1 += np.prod( (1+2*arr[i,:]) - (2*arr[i,:]*arr[i,:]))
+      for k in range(nrows):
+        sum2 += np.prod( (1-np.abs(arr[i,:]-arr[k,:])) )
+    value = np.sqrt(((4/3)**ncols) - ((2/nrows)*sum1) + ((2**ncols/nrows**2)*sum2))
+  
+  if type == 'wrap_around_L2':
+    for i in range(nrows):
+      for k in range(nrows):
+        sum1 += np.prod((1.5-((np.abs(arr[i,:]-arr[k,:]))*(1-np.abs(arr[i,:]-arr[k,:])))))
+  
+    value =  np.sqrt((-((4/3)**ncols) + ((1/nrows**2)*sum1)))
+  
+  return value

@@ -2,20 +2,20 @@ import numpy as np
 
 # Generate a random Latin Hypercube Design (LHD)
 
-def rLHD(nrows,ncols,scaled=False):
+def rLHD(nrows,ncols,unit_cube=False):
   """ Generate a random Latin Hypercube Design (LHD)
 
   Args:
       nrows (int): A positive integer specifying the number of rows
       ncols (int): A postive integer specifying the number of columns
-      scaled (bool): If True, design will be scaled to [0,1].
+      unit_cube (bool): If True, design will be in the unit cube [0,1]^ncols.
 
   Returns:
       numpy.ndarray: return a random (nrows by ncols) LHD
   
   Examples:
-      >>> rLHD(nrows=5,ncols = 4,scaled = False)
-      >>> rLHD(nrows=5,ncols = 4,scaled = True)
+      >>> rLHD(nrows=5,ncols = 4,unit_cube = False)
+      >>> rLHD(nrows=5,ncols = 4,unit_cube = True)
       
   """
   rng = np.random.default_rng()
@@ -25,7 +25,7 @@ def rLHD(nrows,ncols,scaled=False):
     space.append(rng.choice(rs, nrows, replace=False))
   D = np.asarray(space).transpose()
   
-  if scaled:
+  if unit_cube:
     return (D-0.5)/nrows
   else:
     return D
