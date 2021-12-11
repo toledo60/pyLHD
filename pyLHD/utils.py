@@ -1,5 +1,8 @@
 import numpy as np
-from pyLHD.criteria import *
+from pyLHD.criteria import AvgAbsCor
+from pyLHD.criteria import phi_p
+from pyLHD.criteria import MaxAbsCor
+from pyLHD.criteria import MaxProCriterion
 
 # Exchange two random elements in a matrix
 
