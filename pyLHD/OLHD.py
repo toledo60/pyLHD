@@ -1,7 +1,5 @@
 import numpy as np
-from pyLHD.misc import comb
-from pyLHD.misc import is_prime
-from pyLHD.utils import williams_transform
+import pyLHD
 
 # --- Orthogonal Latin Hypercube Designs --- #
 
@@ -34,7 +32,7 @@ def OLHD_Butler01(nrows, ncols):
     raise ValueError("ncols must be less than or equal to nrows")
   if nrows < 3:
     raise ValueError("nrows must be greater than or equal to 3")
-  if (not is_prime(nrows) or nrows % 2 != 1):
+  if (not pyLHD.is_prime(nrows) or nrows % 2 != 1):
     raise ValueError("nrows must be an odd prime number")
 
   n0 = int((nrows-1)/2)
@@ -53,7 +51,7 @@ def OLHD_Butler01(nrows, ncols):
         if(nrows % 4 == 3):
           W[i, j] = ((i+1) * g[j] + (3*nrows - 1)/4) % nrows
 
-    X = williams_transform(W)
+    X = pyLHD.williams_transform(W)
 
   else:
     g0 = np.arange(start=1, stop=n0+1)
@@ -67,7 +65,7 @@ def OLHD_Butler01(nrows, ncols):
         if (nrows % 4 == 3):
           W0[i, j] = ((i+1)*g0[j] + (3*nrows-1)/4) % nrows
 
-    X0 = williams_transform(W0)
+    X0 = pyLHD.williams_transform(W0)
 
     r = ncols - n0
     seq = np.arange(start=1, stop=n0+1)
@@ -79,7 +77,7 @@ def OLHD_Butler01(nrows, ncols):
       for j in range(r):
         W1[i, j] = ((i+1)*g1[j]) % nrows
 
-    X1 = williams_transform(W1)
+    X1 = pyLHD.williams_transform(W1)
 
     X = np.column_stack((X0, X1))
 
@@ -265,14 +263,14 @@ def OLHD_Cioppa07(m):
     CP = np.zeros((1,2))
   
   if m>2:
-    T0 = np.zeros((q,m+comb(m-1,2)))
+    T0 = np.zeros((q,m+pyLHD.comb(m-1,2)))
 
     for i in range(q):
-      for k in range(m+comb(m-1,2)):
+      for k in range(m+pyLHD.comb(m-1,2)):
         T0[i,k] = M[i,k]*S[i,k]
     # Construction of T ends
 
-    CP = np.zeros((1,m+comb(m-1,2)))
+    CP = np.zeros((1,m+pyLHD.comb(m-1,2)))
 
   X = np.vstack((T0,CP,-T0))
     

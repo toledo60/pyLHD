@@ -1,5 +1,5 @@
 import numpy as np 
-from pyLHD.utils import adjust_range
+import pyLHD
 
 # Maximum Absolute Correlation
 
@@ -154,7 +154,7 @@ def discrepancy(arr, type='centered_L2'):
       float: Desired discrepancy type
   """
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
-    arr = adjust_range(arr,min=0,max=1)
+    arr = pyLHD.adjust_range(arr,min=0,max=1)
   
   nrows = arr.shape[0]
   ncols = arr.shape[1]

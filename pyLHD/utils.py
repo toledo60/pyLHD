@@ -1,8 +1,5 @@
 import numpy as np
-from pyLHD.criteria import AvgAbsCor
-from pyLHD.criteria import phi_p
-from pyLHD.criteria import MaxAbsCor
-from pyLHD.criteria import MaxProCriterion
+import pyLHD
 
 # Exchange two random elements in a matrix
 
@@ -137,13 +134,13 @@ def eval_design(arr,criteria = 'phi_p',p=15,q=1):
       >>> eval_design(example_LHD,criteria='MaxProCriterion') # evaluate design based on MaxProCriterion    
   """
   if criteria == 'phi_p':
-    result = phi_p(arr,p=p,q=q)
+    result = pyLHD.phi_p(arr,p=p,q=q)
   elif criteria == 'MaxProCriterion':
-    result =  MaxProCriterion(arr)
+    result =  pyLHD.MaxProCriterion(arr)
   elif criteria == 'AvgAbsCor':
-    result =  AvgAbsCor(arr)
+    result =  pyLHD.AvgAbsCor(arr)
   elif criteria == 'MaxAbsCor':
-    result =  MaxAbsCor(arr)
+    result =  pyLHD.MaxAbsCor(arr)
   return result
 
 # Adjust the range of a design to [min,max]
