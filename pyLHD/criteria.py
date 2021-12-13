@@ -13,8 +13,8 @@ def MaxAbsCor(arr):
       [float]: Positive number indicating maximum absolute correlation. Rounded to 3 digits
   
   Examples:
-    >>> example_LHD = rLHD(nrows=5,ncols=3)
-    >>> MaxAbsCor(example_LHD)
+    >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
+    >>> pyLHD.MaxAbsCor(example_LHD)
   """
   p = arr.shape[1]  # number of columns
   corr = []
@@ -36,8 +36,8 @@ def MaxProCriterion(arr):
       [float]: Positive number indicating maximum projection criterion
   
   Examples:
-      >>> example_LHD = rLHD(nrows=5,ncols=3)
-      >>> MaxProCriterion(example_LHD)
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
+      >>> pyLHD.MaxProCriterion(example_LHD)
   """
   n = arr.shape[0]
   p = arr.shape[1]
@@ -69,12 +69,12 @@ def dij(arr,i, j, q = 1):
   
   Examples:
       # Calculate the inter-site distance of the 2nd and the 4th row of example_LHD
-      >>> example_LHD = rLHD(nrows=5,ncols=3)
-      >>> dij(example_LHD,i=2,j=4)
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
+      >>> pyLHD.dij(example_LHD,i=2,j=4)
 
       # Calculate the inter-site distance of the 2nd and the 4th row of example_LHD with q=2 (Euclidean)
-      >>> example_LHD = rLHD(nrows=5,ncols=3)
-      >>> dij(example_LHD,i=2,j=4,q=2)
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
+      >>> pyLHD.dij(example_LHD,i=2,j=4,q=2)
   """
   p = arr.shape[1]
   distance = np.empty(p)
@@ -98,11 +98,11 @@ def phi_p(arr,p=15,q=1):
 
   Examples:
       # Calculate the phi_p criterion for example_LHD with default settings
-      >>> example_LHD = rLHD(nrows=5,ncols=3)
-      >>> phi_p(example_LHD)
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
+      >>> pyLHD.phi_p(example_LHD)
 
       # Calculate the phi_p criterion of example_LHD with p=50 and q=2 (Euclidean)
-      >>> phi_p(example_LHD,p=50,q=2)    
+      >>> pyLHD.phi_p(example_LHD,p=50,q=2)    
   """
   n = arr.shape[0]
   isd = 0 
@@ -125,8 +125,8 @@ def AvgAbsCor(arr):
 
   Examples:
       # Calculate the average absolute correlation of example_LHD
-      >>> example_LHD = rLHD(nrows=5,ncols=3)
-      >>> AvgAbsCor(example_LHD)
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
+      >>> pyLHD.AvgAbsCor(example_LHD)
   """
   p = arr.shape[1]
   corr = []
@@ -152,9 +152,17 @@ def discrepancy(arr, type='centered_L2'):
 
   Returns:
       float: Desired discrepancy type
+      
+  Examples:
+      # Calculate the centered_L2 discrepancy of example_LHD
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
+      >>> pyLHD.discrepancy(example_LHD)
+      # Calculate the L2 star discrepancy of example_LHD
+      >>> pyLHD.discrepancy(example_LHD,type='L2_star)     
   """
+  
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
-    arr = pyLHD.adjust_range(arr,min=0,max=1)
+    arr = pyLHD.scale(arr)
   
   nrows = arr.shape[0]
   ncols = arr.shape[1]
@@ -242,3 +250,46 @@ def discrepancy(arr, type='centered_L2'):
     value =  np.sqrt((-((4/3)**ncols) + ((1/nrows**2)*sum1)))
   
   return value
+
+# Compute the coverage measure
+
+def coverage(arr):
+  """ Compute the coverage measure for a design
+
+  Args:
+      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the 
+      origianl design will be scaled to [0,1]
+  Raises:
+      ValueError: Whenever number of rows is less than number of columns
+
+  Returns:
+      float: Coverage measure
+      
+  Examples:
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=5)
+      >>> pyLHD.coverage(example_LHD)
+  """
+  nrows = arr.shape[0]
+  ncols = arr.shape[1]
+  
+  if nrows < ncols:
+    raise ValueError('Make sure number of rows is greater than number of columns')
+  
+  if (np.amin(arr) < 0 or np.amax(arr) > 1):
+    x = pyLHD.scale(arr)
+  else:
+    x = arr
+    
+  dist = lambda p1, p2: np.sqrt(((p1-p2)**2).sum())
+  dist_mat = np.asarray([[dist(p1, p2) for p2 in x] for p1 in x])
+  np.fill_diagonal(dist_mat,10e3)
+
+  Dmin = np.amin(dist_mat,axis=0)
+  gammabar = (1/nrows)*np.sum(Dmin)
+  sum = 0
+
+  for i in range(nrows):
+    sum +=  (Dmin[i]-gammabar)*(Dmin[i]-gammabar)
+
+  cov = (1/gammabar)*((1/nrows)*sum)**(1/2)
+  return cov

@@ -1,4 +1,6 @@
 import math
+import numpy as np
+from collections import OrderedDict
 
 # Determine if a number is prime
 
@@ -15,9 +17,16 @@ def is_prime(n):
     return False
   return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
 
-
 # Compute n choose k 
 
 def comb(n,k):
   f = math.factorial
   return f(n) // f(k)// f(n-k)
+
+# compute ecdf
+
+def ecdf(x):
+  ys = np.arange(1, len(x)+1)/float(len(x))
+  d = dict(zip(np.argsort(x), ys.tolist()))
+  l = OrderedDict(sorted(d.items(), key=lambda t: t[0])).values()
+  return list(l)

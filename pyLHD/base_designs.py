@@ -14,8 +14,8 @@ def rLHD(nrows,ncols,unit_cube=False):
       numpy.ndarray: return a random (nrows by ncols) LHD
   
   Examples:
-      >>> rLHD(nrows=5,ncols = 4,unit_cube = False)
-      >>> rLHD(nrows=5,ncols = 4,unit_cube = True)
+      >>> pyLHD.rLHD(nrows=5,ncols = 4,unit_cube = False)
+      >>> pyLHD.rLHD(nrows=5,ncols = 4,unit_cube = True)
       
   """
   rng = np.random.default_rng()
@@ -47,8 +47,8 @@ def GLPdesign(nrows,ncols,h = None):
       numpy.ndarray: A (nrows by ncols) GLP design.
   
   Examples:
-      >>> GLPdesign(nrows=5,ncols=3)
-      >>> GLPdesign(nrows=8,ncols=4,h=[1,3,5,7])
+      >>> pyLHD.GLPdesign(nrows=5,ncols=3)
+      >>> pyLHD.GLPdesign(nrows=8,ncols=4,h=[1,3,5,7])
   """
   rng = np.random.default_rng()
   if h is None:

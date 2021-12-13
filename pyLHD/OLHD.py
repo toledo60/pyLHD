@@ -23,10 +23,10 @@ def OLHD_Butler01(nrows, ncols):
   
   Examples:
       Create an orthogonal LHD with nrows =11 and ncols =5
-      >>> OLHD_Butler01(nrows=11,ncols=5)
+      >>> pyLHD.OLHD_Butler01(nrows=11,ncols=5)
       
       Create an orthogonal LHD with nrows =11 and ncols =5
-      >>> OLHD_Butler01(nrows=7,ncols=6)
+      >>> pyLHD.OLHD_Butler01(nrows=7,ncols=6)
   """
   if ncols >= nrows:
     raise ValueError("ncols must be less than or equal to nrows")
@@ -102,11 +102,11 @@ def OLHD_Sun10(C, r, type='odd'):
   Examples:
       Create an orthogonal LHD with C=3, r=3, type = 'odd'
       So n = (3*2^(3+1) )+1 = 49 (rows) and k=2^(3)=8 (columns)
-      >>> OLHD_Sun10(C=3,r=3,type='odd')
+      >>> pyLHD.OLHD_Sun10(C=3,r=3,type='odd')
 
       Create an orthogonal LHD with C=3, r=3, type = 'even'
       So n = 3*2^(3+1) = 48 (rows) and k=2^(3)=8 (columns)
-      >>> OLHD_Sun10(C=3,r=3,type='even')  
+      >>> pyLHD.OLHD_Sun10(C=3,r=3,type='even')  
   """
 
   Sc = np.array([[1, 1], [1, -1]])
@@ -165,10 +165,10 @@ def OLHD_Cioppa07(m):
   
   Examples:
       # Create an orthogonal LHD with m=4. So n=2^m+1=17 runs and k=4+3=7 factors
-      >>> OLHD_Cioppa07(m=4)
+      >>> pyLHD.OLHD_Cioppa07(m=4)
 
       # Create an orthogonal LHD with m=5. So n=2^m+1=33 runs and k=5+7=11 factors
-      >>> OLHD_Cioppa07(m=5)
+      >>> pyLHD.OLHD_Cioppa07(m=5)
   """
   if m < 2:
      raise ValueError('m must be greater than or equal to 2')
@@ -294,10 +294,10 @@ def OLHD_Ye98(m):
 
   Examples:
       # Create an orthogonal LHD with m=4. So n=2^m+1=9 runs and k=2*m-2=4 factors
-      >>> OLHD_Ye98(m=3)
+      >>> pyLHD.OLHD_Ye98(m=3)
 
       # Create an orthogonal LHD with m=5. So n=2^m+1=17 runs and k=2*m-2=6 factors
-      >>> OLHD_Ye98(m=4)      
+      >>> pyLHD.OLHD_Ye98(m=4)      
   """
   if m < 2:
     raise ValueError('m must be greater than or equal to 2')
@@ -412,7 +412,7 @@ def OLHD_Lin09(OLHD,OA):
   
   Examples:
   # Create a 5 by 2 OLHD
-  >>> OLHD_example = OLHD_Cioppa07(m=2)
+  >>> pyLHD.OLHD_example = OLHD_Cioppa07(m=2)
   # Create an OA(25,6,5,2)
   >>> OA_example = np.array([ [2,2,2,2,2,1],[2,1,5,4,3,5],
                               [3,2,1,5,4,5],[1,5,4,3,2,5],
@@ -428,7 +428,7 @@ def OLHD_Lin09(OLHD,OA):
                               [5,2,4,1,3,3],[5,1,2,3,4,2],
                               [4,5,1,2,3,2]   ])
   # Construct a 25 by 12 OLHD
-  >>> OLHD_Lin09(OLHD = OLHD_example,OA = OA_example)
+  >>> pyLHD.OLHD_Lin09(OLHD = OLHD_example,OA = OA_example)
   """
   n1 = OLHD.shape[0]
   k = OLHD.shape[1]

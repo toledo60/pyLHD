@@ -17,11 +17,11 @@ def exchange(arr, idx, type='col'):
   
   Examples:
       # Choose the first column of example_LHD and exchange two randomly selected elements
-      >>> example_LHD = rLHD(nrows=5,ncols=3)
-      >>> exchange(example_LHD,idx=1,type='col')
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
+      >>> pyLHD.exchange(example_LHD,idx=1,type='col')
 
       # Choose the first row of example_LHD and exchange two randomly selected elements.
-      >>> exchange(example_LHD,idx=1,type='row')
+      >>> pyLHD.exchange(example_LHD,idx=1,type='row')
   """
   nrows = arr.shape[0]
   ncols = arr.shape[1]
@@ -50,11 +50,11 @@ def williams_transform(arr,baseline=1):
       numpy.ndarray: After applying Williams transformation, a matrix whose sizes are the same as input matrix
   
   Examples:
-      >>> example_LHD = rLHD(nrows=5,ncols=3)
-      >>> william_transformation(example_LHD)
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
+      >>> pyLHD.william_transformation(example_LHD)
 
       #Change the baseline
-      >>> william_transformation(example_LHD,baseline=5)
+      >>> pyLHD.william_transformation(example_LHD,baseline=5)
   """
   n = arr.shape[0]
   k = arr.shape[1]
@@ -96,7 +96,7 @@ def OA2LHD(orthogonal_array):
                           [2,2],[2,3],[3,1],[3,2],[3,3] ])
   
       # Transfer the "OA" above into a LHD according to Tang (1993)
-      >>> OA2LHD(example_OA)        
+      >>> pyLHD.OA2LHD(example_OA)        
   """
   n = orthogonal_array.shape[0]
   m = orthogonal_array.shape[1]
@@ -129,9 +129,10 @@ def eval_design(arr,criteria = 'phi_p',p=15,q=1):
       float: Calculation of chosen criteria for any LHD
 
   Examples:
-      >>> example_LHD = rLHD(nrows=5,ncols=3)
-      >>> eval_design(example_LHD) # phi_p with default settings
-      >>> eval_design(example_LHD,criteria='MaxProCriterion') # evaluate design based on MaxProCriterion    
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
+      >>> pyLHD.eval_design(example_LHD) # phi_p with default settings
+      # evaluate design based on MaxProCriterion 
+      >>> pyLHD.eval_design(example_LHD,criteria='MaxProCriterion')    
   """
   if criteria == 'phi_p':
     result = pyLHD.phi_p(arr,p=p,q=q)
@@ -157,9 +158,9 @@ def adjust_range(arr,min,max,digits=None):
       float: Design with new range [min,max]
 
   Examples:
-      >>> example_LHD = rLHD(nrows=5,ncols=3,unit_cube=True)
-      >>> adjust_range(example_LHD,-1, 1)
-      >>> adjust_range(example_LHD, 5, 12, digits = 3)
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)
+      >>> pyLHD.adjust_range(example_LHD,-1, 1)
+      >>> pyLHD.adjust_range(example_LHD, 5, 12, digits = 3)
   """  
   if (min == max):
     raise ValueError('min and max should be different values')
@@ -177,3 +178,29 @@ def adjust_range(arr,min,max,digits=None):
   else:
     result = np.around(result,digits)
   return result
+
+
+def scale(arr,uniformize=False):
+  """ Scales design to be within [0,1]
+  
+  Args:
+      arr (numpy.ndarray): A design matrix
+      uniformize (bool): If True, Rosenblatt transformation is applied 
+      (uniformize by applying the empirical cumulative distribution). 
+      If False (default), scaling is done by using the minimum and maximum value
+  Returns:
+      float: The scaled design
+
+  Examples:
+      >>> example_LHD = rLHD(nrows=5,ncols=3,unit_cube=True)
+      >>> scale(example_LHD)
+      >>> scale(example_LHD,uniformize=True)
+  """  
+  min = np.amin(arr,axis=0)
+  range = np.ptp(arr, axis=0)
+  
+  if uniformize:
+    design = np.apply_along_axis(pyLHD.ecdf, 0, arr)
+  else:
+    design = (arr - min)/range
+  return design

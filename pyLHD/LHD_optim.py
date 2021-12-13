@@ -6,6 +6,34 @@ from datetime import datetime
 
 def LA_LHD(n,k,prun=None,m=10,N=10,criteria='phi_p',
            p=15,q=1,maxtime=5):
+  """ Lioness Algorithm for Latin Hypercube Desings
+
+  Args:
+      n (int): number of rows for design
+      k (int): number of columns for design
+      prun (float, optional): A probability, which stands for the probability of "prey runs away". 
+      The default is set to 1/(k+1). Should be a value within (0,1)
+      m (int, optional): m A positive integer, which stands for the number of starting lionesses agents. 
+      The default is set to be 10, and it is recommended to be no greater than 100.
+      N (int, optional): A positive integer, number of iterations to compute. Defaults to 10. 
+      A larger value of N will result in higher CPU time
+      criteria (str, optional): An optimality criterion: "phi_p", "AvgAbsCor", "MaxAbsCor", "MaxProCriterion". Defaults to 'phi_p'.
+      p (int, optional): A positve integer only applied for phi_p criteria. Defaults to 15.
+      q (int, optional): A positve integer only applied for phi_p criteria. Defaults to 1.
+      Could be either 1 or 2. If q=1, the Manhattan (rectangular) distance will be used. 
+      If q = 2, the Euclidean distance will be used.
+      maxtime (int, optional): A positive integer, which indicated the maximum time (measured in minutes) 
+      to run the algorithm. Defaults to 5 (minutes).
+
+  Returns:
+      float: An LHD with n runs and k columns optimized using Lioness algorithm.
+  
+  Examples:
+  # run Lioness algorithm to generate a 10 x 10 LHD with optimized 'phi_p' criteria
+      >>> pyLHD.LA_LHD(n=10,k=10)
+  # run Lioness algorithm to generate a 10 x 10 LHD with optimized 'AvgAvsCor' criteria
+      >>> pyLHD.LA_LHD(n=10,k=10,criteria='AvgAbsCor')      
+  """
   if prun is None:
     prun = 1/(k-1)
   

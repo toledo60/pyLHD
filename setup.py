@@ -5,7 +5,7 @@ with open("README.md",'r') as f:
 
 setuptools.setup(
     name="pyLHD",
-    version="0.4.6",
+    version="0.4.7",
     author="Jose Toledo",
     author_email="toledo60@protonmail.com",
     description="Latin Hypercube Designs for Python",
