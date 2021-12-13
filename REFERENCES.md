@@ -13,6 +13,8 @@ https://people.sc.fsu.edu/~jburkardt/.
 
 - `MaxProCriterion`: Joseph, V. Roshan, Evren Gul, and Shan Ba. "Maximum projection designs for computer experiments." Biometrika 102.2 (2015): 371-380
 
+- `minimax`: Jonshon M.E., Moore L.M. and Ylvisaker D. (1990), Minmax and maximin distance designs, J. of Statis. Planning and Inference, 26, 131-148
+
 - `OA2LHD`: Tang, Boxin. "Orthogonal array-based Latin hypercubes." Journal of the American statistical association 88.424 (1993): 1392-1397
 
 - `OLHD_Butler01`: Butler, Neil A. "Optimal and orthogonal Latin hypercube designs for computer experiments." Biometrika 88.3 (2001): 847-857

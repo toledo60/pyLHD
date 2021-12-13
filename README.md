@@ -46,6 +46,8 @@ Calculate design properties such as:
 - `discrepancy`: Calculate the discrepancy of a given sample
 - `MaxAbsCor`: Calculate the maximum absolute correlation
 - `MaxProCriterion`: Calculate the maximum projection criterion
+- `mesh_ratio`: Calculate the meshratio criterion
+- `minimax`: Calculate the minimax criterion
 - `phi_p`: Calculate the phi_p criterion
 
 Optimization algorithms to improve LHD's based on desired criteria:
@@ -58,7 +60,7 @@ Other functionality includes:
 - `adjust_range`: Adjust the range of a design to [min,max]
 - `exchange`: Exchange two random elements from a specified column or row in a matrix
 - `OA2LHD`: Convert an orthogonal array (OA) into a Latin hypercube design (LHD)
-- `scale': scales the values of the points to values within [0,1]. Includes ability to apply Rosenblatt transformation as well.
+- `scale`: scales the values of the points to values within [0,1]. Includes ability to apply Rosenblatt transformation as well.
 - `williams_transform`: Apply Williams transformation to a specified design
 
 

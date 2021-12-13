@@ -293,3 +293,86 @@ def coverage(arr):
 
   cov = (1/gammabar)*((1/nrows)*sum)**(1/2)
   return cov
+
+# Compute the meshratio criterion
+
+def mesh_ratio(arr):
+  """ Compute the meshratio criterion for a given design
+
+  Args:
+      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the 
+      origianl design will be scaled to [0,1]
+      
+  Raises:
+      ValueError: Whenever number of rows is less than number of columns
+  
+  Returns:
+      float: Calculated meshratio
+
+  Examples:
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=5)
+      >>> pyLHD.mesh_ratio(example_LHD)
+  """
+  
+  nrows = arr.shape[0]
+  ncols = arr.shape[1]
+
+  if nrows < ncols:
+    raise ValueError('Make sure number of rows is greater than number of columns')
+  
+  if (np.amin(arr) < 0 or np.amax(arr) > 1):
+    x = pyLHD.scale(arr)
+  else:
+    x = arr
+
+  max_dist = -1.0e30
+  min_dist = 1.0e30
+
+  for i in range(nrows-1):
+    a = 1.0e30
+    b = -1.0e30
+    for k in range(nrows):
+      if i != k:
+        Dist = 0 
+        for j in range(ncols):
+          Dist += (x[i,j] - x[k,j])*(x[i,j]-x[k,j])
+        if Dist > b:
+          b = Dist
+        if Dist < a:
+          a = Dist
+    if max_dist < a:
+      max_dist = a
+    if min_dist > a:
+      min_dist = a
+  ratio = np.sqrt(max_dist/min_dist)
+  return ratio
+
+
+# Calculate maximin criterion 
+
+def maximin(arr):
+  """ Compute the maximin criterion for a given design. A higher value corresponds
+  to a more regular scattering of design points.
+
+  Args:
+      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the 
+      origianl design will be scaled to [0,1]
+        
+  Returns:
+      float: Calculated maximin criterion
+
+  Examples:
+      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=5)
+      >>> pyLHD.maximin(example_LHD)
+  """  
+
+  if (np.amin(arr) < 0 or np.amax(arr) > 1):
+    x = pyLHD.scale(arr)
+  else:
+    x = arr
+    
+  dist = lambda p1, p2: np.sqrt(((p1-p2)**2).sum())
+  dist_mat = np.asarray([[dist(p1, p2) for p2 in x] for p1 in x])
+  np.fill_diagonal(dist_mat,1e30)
+  min = np.amin(dist_mat,axis=0)
+  return np.amin(min)
