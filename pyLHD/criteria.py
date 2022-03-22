@@ -370,7 +370,7 @@ def maximin(arr):
     x = pyLHD.scale(arr)
   else:
     x = arr
-    
+  
   dist = lambda p1, p2: np.sqrt(((p1-p2)**2).sum())
   dist_mat = np.asarray([[dist(p1, p2) for p2 in x] for p1 in x])
   np.fill_diagonal(dist_mat,1e30)

@@ -31,7 +31,6 @@ def rLHD(nrows,ncols,unit_cube=False):
     return D
 
 
-
 # Good Lattice Point Design
 
 def GLPdesign(nrows,ncols,h = None):

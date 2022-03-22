@@ -204,3 +204,21 @@ def scale(arr,uniformize=False):
   else:
     design = (arr - min)/range
   return design
+
+
+# Distance Matrix Computation
+
+def distance_matrix(arr, metric = 'euclidean', p=2):
+  
+  if metric == 'euclidean' and p ==2:
+    dist = lambda p1, p2: np.sqrt(((p1-p2)**2).sum())
+  elif metric == 'manhattan':
+    dist = lambda p1,p2: np.abs(p1-p2).sum()
+  elif metric == 'minkowski':
+    dist = lambda p1, p2: ((np.abs(p1-p2)**(p)).sum())**(1/p)
+  elif metric == 'maximum':
+    dist = lambda p1,p2: np.max(np.abs(p1-p2)).sum()
+  
+  dist_mat = np.asarray([[dist(p1, p2) for p2 in arr] for p1 in arr])
+  
+  return dist_mat
