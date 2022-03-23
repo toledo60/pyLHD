@@ -15,8 +15,7 @@ def rLHD(nrows,ncols,unit_cube=False):
   
   Examples:
       >>> pyLHD.rLHD(nrows=5,ncols = 4,unit_cube = False)
-      >>> pyLHD.rLHD(nrows=5,ncols = 4,unit_cube = True)
-      
+      >>> pyLHD.rLHD(nrows=5,ncols = 4,unit_cube = True) 
   """
   rng = np.random.default_rng()
   rs = np.arange(start=1, stop=nrows+1)

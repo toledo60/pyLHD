@@ -209,6 +209,27 @@ def scale(arr,uniformize=False):
 # Distance Matrix Computation
 
 def distance_matrix(arr, metric = 'euclidean', p=2):
+  """ Distance matrix based on specified distance measure
+
+  Args:
+      arr (numpy.ndarray): A design matrix
+      metric (str, optional): Specifiy the following distance measure: 
+      'euclidean': Usual distance between the two vectors (L_2 norm)
+      'maximum': Maximum distance between two components of x and y (supremum norm)
+      'manhattan': Absolute distance between the two vectors (L_1 norm)
+      'minkowski': The p norm, the pth root of the sum of the pth powers of the differences of the components
+      
+      p (int, optional): The power of the Minkowski distance. Defaults to 2.
+
+  Returns:
+      float: The calculated distance matrix baed on specified distance measure
+  
+  Examples:
+      >>> example_LHD = rLHD(nrows=5,ncols=3,unit_cube=True)
+      >>> distance_matrix(example_LHD)
+      >>> distance_matrix(example_LHD, metric = 'manhattan')
+      >>> distance_matrix(example_LHD, metric = 'minkowski', p=5)  
+  """
   
   if metric == 'euclidean' and p ==2:
     dist = lambda p1, p2: np.sqrt(((p1-p2)**2).sum())
