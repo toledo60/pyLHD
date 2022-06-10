@@ -5,7 +5,8 @@ and [DiceDesign](https://cran.r-project.org/web/packages/DiceDesign/index.html).
 
 Check out the streamlit app for pyLHD, a point-click interface to generate Latin hypercube designs
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/toledo60/pylhd-streamlit/main/app.py)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/toledo60/pylhd-streamlit/main/pyLHD_streamlit.py)
+
 
 For a quick overview of pyLHD main functionalities without having to install it, click on the link below and navigate to the notebooks folder to run an interactive Jupyter notebook
 
