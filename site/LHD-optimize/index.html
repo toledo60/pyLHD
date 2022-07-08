@@ -1,0 +1,871 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>LHD optimize - pyLHD Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pyLHD.LHD_optim" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="pyLHD Documentation" class="md-header__button md-logo" aria-label="pyLHD Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pyLHD Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LHD optimize
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pyLHD Documentation" class="md-nav__button md-logo" aria-label="pyLHD Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    pyLHD Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        pyLHD Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base-designs/" class="md-nav__link">
+        Base designs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../criteria/" class="md-nav__link">
+        Criteria
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          LHD optimize
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        LHD optimize
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pyLHD.LHD_optim" class="md-nav__link">
+    pyLHD.LHD_optim
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyLHD.LHD_optim.LA_LHD" class="md-nav__link">
+    LA_LHD()
+  </a>
+  
+    <nav class="md-nav" aria-label="LA_LHD()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyLHD.LHD_optim.LA_LHD--run-lioness-algorithm-to-generate-a-10-x-10-lhd-with-optimized-phi_p-criteria" class="md-nav__link">
+    run Lioness algorithm to generate a 10 x 10 LHD with optimized 'phi_p' criteria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyLHD.LHD_optim.LA_LHD--run-lioness-algorithm-to-generate-a-10-x-10-lhd-with-optimized-avgavscor-criteria" class="md-nav__link">
+    run Lioness algorithm to generate a 10 x 10 LHD with optimized 'AvgAvsCor' criteria
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OLHD/" class="md-nav__link">
+        OLHD
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        Utils
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pyLHD.LHD_optim" class="md-nav__link">
+    pyLHD.LHD_optim
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyLHD.LHD_optim.LA_LHD" class="md-nav__link">
+    LA_LHD()
+  </a>
+  
+    <nav class="md-nav" aria-label="LA_LHD()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyLHD.LHD_optim.LA_LHD--run-lioness-algorithm-to-generate-a-10-x-10-lhd-with-optimized-phi_p-criteria" class="md-nav__link">
+    run Lioness algorithm to generate a 10 x 10 LHD with optimized 'phi_p' criteria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyLHD.LHD_optim.LA_LHD--run-lioness-algorithm-to-generate-a-10-x-10-lhd-with-optimized-avgavscor-criteria" class="md-nav__link">
+    run Lioness algorithm to generate a 10 x 10 LHD with optimized 'AvgAvsCor' criteria
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>LHD optimize</h1>
+
+<div class="doc doc-object doc-module">
+
+
+<a id="pyLHD.LHD_optim"></a>
+  <div class="doc doc-contents first">
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="pyLHD.LHD_optim.LA_LHD" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">LA_LHD</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">prun</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">criteria</span><span class="o">=</span><span class="s1">&#39;phi_p&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxtime</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Lioness Algorithm for Latin Hypercube Desings</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>n</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>number of rows for design</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>k</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>number of columns for design</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>prun</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>A probability, which stands for the probability of "prey runs away". </p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>m</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>m A positive integer, which stands for the number of starting lionesses agents. </p></td>
+          <td>
+                <code>10</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>N</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>A positive integer, number of iterations to compute. Defaults to 10. </p></td>
+          <td>
+                <code>10</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>criteria</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>An optimality criterion: "phi_p", "AvgAbsCor", "MaxAbsCor", "MaxProCriterion". Defaults to 'phi_p'.</p></td>
+          <td>
+                <code>&#39;phi_p&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>p</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>A positve integer only applied for phi_p criteria. Defaults to 15.</p></td>
+          <td>
+                <code>15</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>q</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>A positve integer only applied for phi_p criteria. Defaults to 1.</p></td>
+          <td>
+                <code>1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>maxtime</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>A positive integer, which indicated the maximum time (measured in minutes) </p></td>
+          <td>
+                <code>5</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+          </td>
+          <td><p>An LHD with n runs and k columns optimized using Lioness algorithm.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    
+      <h3 id="pyLHD.LHD_optim.LA_LHD--run-lioness-algorithm-to-generate-a-10-x-10-lhd-with-optimized-phi_p-criteria">run Lioness algorithm to generate a 10 x 10 LHD with optimized 'phi_p' criteria</h3>
+<pre><code>&gt;&gt;&gt; pyLHD.LA_LHD(n=10,k=10)
+</code></pre>
+<h3 id="pyLHD.LHD_optim.LA_LHD--run-lioness-algorithm-to-generate-a-10-x-10-lhd-with-optimized-avgavscor-criteria">run Lioness algorithm to generate a 10 x 10 LHD with optimized 'AvgAvsCor' criteria</h3>
+<pre><code>&gt;&gt;&gt; pyLHD.LA_LHD(n=10,k=10,criteria='AvgAbsCor')
+</code></pre>
+
+      <details class="quote">
+        <summary>Source code in <code>pyLHD/LHD_optim.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">LA_LHD</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">prun</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">criteria</span><span class="o">=</span><span class="s1">&#39;phi_p&#39;</span><span class="p">,</span>
+           <span class="n">p</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">maxtime</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Lioness Algorithm for Latin Hypercube Desings</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      n (int): number of rows for design</span>
+<span class="sd">      k (int): number of columns for design</span>
+<span class="sd">      prun (float, optional): A probability, which stands for the probability of &quot;prey runs away&quot;. </span>
+<span class="sd">      The default is set to 1/(k+1). Should be a value within (0,1)</span>
+<span class="sd">      m (int, optional): m A positive integer, which stands for the number of starting lionesses agents. </span>
+<span class="sd">      The default is set to be 10, and it is recommended to be no greater than 100.</span>
+<span class="sd">      N (int, optional): A positive integer, number of iterations to compute. Defaults to 10. </span>
+<span class="sd">      A larger value of N will result in higher CPU time</span>
+<span class="sd">      criteria (str, optional): An optimality criterion: &quot;phi_p&quot;, &quot;AvgAbsCor&quot;, &quot;MaxAbsCor&quot;, &quot;MaxProCriterion&quot;. Defaults to &#39;phi_p&#39;.</span>
+<span class="sd">      p (int, optional): A positve integer only applied for phi_p criteria. Defaults to 15.</span>
+<span class="sd">      q (int, optional): A positve integer only applied for phi_p criteria. Defaults to 1.</span>
+<span class="sd">      Could be either 1 or 2. If q=1, the Manhattan (rectangular) distance will be used. </span>
+<span class="sd">      If q = 2, the Euclidean distance will be used.</span>
+<span class="sd">      maxtime (int, optional): A positive integer, which indicated the maximum time (measured in minutes) </span>
+<span class="sd">      to run the algorithm. Defaults to 5 (minutes).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">      float: An LHD with n runs and k columns optimized using Lioness algorithm.</span>
+
+<span class="sd">  Examples:</span>
+<span class="sd">  # run Lioness algorithm to generate a 10 x 10 LHD with optimized &#39;phi_p&#39; criteria</span>
+<span class="sd">      &gt;&gt;&gt; pyLHD.LA_LHD(n=10,k=10)</span>
+<span class="sd">  # run Lioness algorithm to generate a 10 x 10 LHD with optimized &#39;AvgAvsCor&#39; criteria</span>
+<span class="sd">      &gt;&gt;&gt; pyLHD.LA_LHD(n=10,k=10,criteria=&#39;AvgAbsCor&#39;)      </span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">prun</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">prun</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="n">maxtime</span> <span class="o">=</span> <span class="n">maxtime</span> <span class="o">*</span> <span class="mi">60</span>
+
+  <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># initialize counter</span>
+  <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">))</span>  <span class="c1"># solution matrix</span>
+
+  <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pyLHD</span><span class="o">.</span><span class="n">rLHD</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">unit_cube</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pyLHD</span><span class="o">.</span><span class="n">eval_design</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span><span class="n">criteria</span><span class="o">=</span><span class="n">criteria</span><span class="p">))</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">while</span> <span class="n">counter</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">:</span> <span class="c1"># step 3</span>
+    <span class="n">time0</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">onetoM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">result</span><span class="p">,</span><span class="n">onetoM</span><span class="p">))</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">temp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])]</span>
+
+    <span class="c1"># step 4: determine the top 3 agents</span>
+    <span class="n">centre</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">LW</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">RW</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># step 4 ends</span>
+    <span class="n">m</span><span class="o">=</span><span class="mi">6</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="mi">3</span>
+    <span class="n">Xnew</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">))</span> <span class="c1"># new position matrix</span>
+    <span class="n">Xnew</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">centre</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">Xnew</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">LW</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">Xnew</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">RW</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># step 5 starts\centre troop</span>
+    <span class="n">index</span> <span class="o">=</span><span class="mi">3</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">centre</span>
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">,:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">LW</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span>
+      <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span>
+
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">centre</span>
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">,:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">RW</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span>
+      <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span>
+
+    <span class="c1">#LW troop</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">LW</span>
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">,:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">centre</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span>
+      <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span>
+
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">LW</span>
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">,:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">RW</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span>
+      <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span><span class="mi">1</span>
+
+    <span class="c1"># RW troop</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">RW</span>
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">,:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">centre</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span>
+      <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span>
+
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">RW</span>
+      <span class="n">Xnew</span><span class="p">[</span><span class="n">index</span><span class="p">,:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">LW</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span>
+      <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span>
+
+    <span class="c1"># step 5 ends here</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">Xnew</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="p">):</span> <span class="c1"># step 6</span>
+      <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span> <span class="c1"># step 7</span>
+        <span class="n">z</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># step 8</span>
+        <span class="k">if</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">prun</span><span class="p">:</span>
+          <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pyLHD</span><span class="o">.</span><span class="n">exchange</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">idx</span><span class="o">=</span><span class="n">j</span><span class="p">)</span> <span class="c1"># step 9</span>
+
+    <span class="c1"># update criteria for all agents</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+      <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pyLHD</span><span class="o">.</span><span class="n">eval_design</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span><span class="n">criteria</span><span class="o">=</span><span class="n">criteria</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">time1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">timeDiff</span> <span class="o">=</span> <span class="n">time1</span><span class="o">-</span><span class="n">time0</span>
+    <span class="n">timeALL</span> <span class="o">=</span> <span class="n">timeDiff</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">timeALL</span> <span class="o">&lt;=</span> <span class="n">maxtime</span><span class="p">:</span>
+      <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">counter</span> <span class="o">=</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">onetoM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">result</span><span class="p">,</span><span class="n">onetoM</span><span class="p">))</span>
+
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">temp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])]</span>
+    <span class="n">centre</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="n">centre</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../criteria/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Criteria" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Criteria
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../OLHD/" class="md-footer__link md-footer__link--next" aria-label="Next: OLHD" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              OLHD
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>
