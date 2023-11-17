@@ -1,0 +1,29 @@
+# criteria.AvgAbsCor { #pyLHD.criteria.AvgAbsCor }
+
+`criteria.AvgAbsCor(arr)`
+
+Calculate the Average Absolute Correlation
+
+## Parameters
+
+| Name   | Type          | Description     | Default    |
+|--------|---------------|-----------------|------------|
+| `arr`  | numpy.ndarray | A design matrix | _required_ |
+
+## Returns
+
+| Type   | Description                                                   |
+|--------|---------------------------------------------------------------|
+| float  | A positive number indicating the average absolute correlation |
+| float  | of input matrix                                               |
+
+## Examples
+
+
+
+Calculate the average absolute correlation of `random_lhd`
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+pyLHD.AvgAbsCor(random_lhd)
+```

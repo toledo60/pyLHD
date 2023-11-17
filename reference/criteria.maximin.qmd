@@ -1,0 +1,27 @@
+# criteria.maximin { #pyLHD.criteria.maximin }
+
+`criteria.maximin(arr)`
+
+Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.
+
+## Parameters
+
+| Name   | Type          | Description                                                                                        | Default    |
+|--------|---------------|----------------------------------------------------------------------------------------------------|------------|
+| `arr`  | numpy.ndarray | A design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1] | _required_ |
+
+## Returns
+
+| Type   | Description                  |
+|--------|------------------------------|
+| float  | Calculated maximin criterion |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows=5,ncols=5)
+pyLHD.maximin(random_lhd)
+```

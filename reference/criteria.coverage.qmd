@@ -1,0 +1,33 @@
+# criteria.coverage { #pyLHD.criteria.coverage }
+
+`criteria.coverage(arr)`
+
+Compute the coverage measure for a design
+
+## Parameters
+
+| Name   | Type          | Description                                                                                        | Default    |
+|--------|---------------|----------------------------------------------------------------------------------------------------|------------|
+| `arr`  | numpy.ndarray | A design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1] | _required_ |
+
+## Raises
+
+| Type       | Description                                            |
+|------------|--------------------------------------------------------|
+| ValueError | Whenever number of rows is less than number of columns |
+
+## Returns
+
+| Type   | Description      |
+|--------|------------------|
+| float  | Coverage measure |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows=5,ncols=5)
+pyLHD.coverage(random_lhd)
+```

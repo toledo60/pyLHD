@@ -1,0 +1,25 @@
+# criteria.MaxAbsCor { #pyLHD.criteria.MaxAbsCor }
+
+`criteria.MaxAbsCor(arr)`
+
+Calculate the Maximum Absolute Correlation
+
+## Parameters
+
+| Name   | Type          | Description     | Default    |
+|--------|---------------|-----------------|------------|
+| `arr`  | numpy.ndarray | A design matrix | _required_ |
+
+## Returns
+
+| Type   | Description                                                                  |
+|--------|------------------------------------------------------------------------------|
+| float  | Positive number indicating maximum absolute correlation. Rounded to 3 digits |
+
+## Examples
+
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+pyLHD.MaxAbsCor(random_lhd)
+```

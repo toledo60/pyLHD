@@ -1,0 +1,27 @@
+# criteria.MaxProCriterion { #pyLHD.criteria.MaxProCriterion }
+
+`criteria.MaxProCriterion(arr)`
+
+Calculate the Maximum Projection Criterion
+
+## Parameters
+
+| Name   | Type          | Description     | Default    |
+|--------|---------------|-----------------|------------|
+| `arr`  | numpy.ndarray | A design matrix | _required_ |
+
+## Returns
+
+| Type   | Description                                             |
+|--------|---------------------------------------------------------|
+| float  | Positive number indicating maximum projection criterion |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+pyLHD.MaxProCriterion(random_lhd)
+```

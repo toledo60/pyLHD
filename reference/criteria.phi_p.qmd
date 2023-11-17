@@ -1,0 +1,33 @@
+# criteria.phi_p { #pyLHD.criteria.phi_p }
+
+`criteria.phi_p(arr, p=15, q=1)`
+
+Calculate the phi_p Criterion
+
+## Parameters
+
+| Name   | Type          | Description                                                                                                                                                                                             | Default    |
+|--------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | numpy.ndarray | A design matrix                                                                                                                                                                                         | _required_ |
+| `p`    | int           | A positive integer, which is the parameter in the phi_p formula. The default is set to be 15. If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance. | `15`       |
+
+## Returns
+
+| Type   | Description                        |
+|--------|------------------------------------|
+| float  | A positive number indicating phi_p |
+
+## Examples
+
+
+
+Calculate the phi_p criterion for random_lhd with default settings
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+pyLHD.phi_p(random_lhd)  
+```
+Calculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)
+```{python}
+pyLHD.phi_p(random_lhd,p=50,q=2) 
+```

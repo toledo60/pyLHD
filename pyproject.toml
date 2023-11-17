@@ -23,8 +23,15 @@ classifiers=[
 
 
 [project.optional-dependencies]
-test = ["scipy"]
+test = [
+  "scipy",
+  "pytest"
+]
 
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/toledo60/pyLHD"

@@ -1,0 +1,35 @@
+# criteria.dij { #pyLHD.criteria.dij }
+
+`criteria.dij(arr, i, j, q=1)`
+
+Calculate the Inter-site Distance
+
+## Parameters
+
+| Name   | Type          | Description                                                                                                                                                          | Default    |
+|--------|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | numpy.ndarray | A design matrix                                                                                                                                                      | _required_ |
+| `i`    | int           | A positive integer, which stands for the ith row of (arr)                                                                                                            | _required_ |
+| `j`    | int           | A positive integer, which stands for the jth row of (arr)                                                                                                            | _required_ |
+| `q`    | int           | The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance. | `1`        |
+
+## Returns
+
+| Type   | Description                                                                                           |
+|--------|-------------------------------------------------------------------------------------------------------|
+| float  | positive number indicating the distance (rectangular or Euclidean) between the ith and jth row of arr |
+
+## Examples
+
+
+
+Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd`
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+pyLHD.dij(random_lhd,i=2,j=4)
+```
+Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd` with q=2 (Euclidean)
+```{python}
+pyLHD.dij(random_lhd,i=2,j=4,q=2)
+```
