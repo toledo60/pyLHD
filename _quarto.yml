@@ -5,6 +5,15 @@ project:
 metadata-files:
   - _sidebar.yml
 
+website: 
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Reference"
+        file: reference/index.qmd
+
+
 
 quartodoc:
   # the name used to import the package you want to create reference docs for

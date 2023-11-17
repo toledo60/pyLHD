@@ -32,7 +32,7 @@
     "href": "reference/criteria.mesh_ratio.html#examples",
     "title": "criteria.mesh_ratio",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.mesh_ratio(random_lhd)\n\n1.3142574813455419"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.mesh_ratio(random_lhd)\n\n1.4142135623730951"
   },
   {
     "objectID": "reference/criteria.discrepancy.html",
@@ -67,7 +67,7 @@
     "href": "reference/criteria.discrepancy.html#examples",
     "title": "criteria.discrepancy",
     "section": "Examples",
-    "text": "Examples\nCalculate the centered_L2 discrepancy of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.discrepancy(random_lhd)\n\n0.13993740762425236\n\n\nCalculate the L2 star discrepancy of random_lhd\n\npyLHD.discrepancy(random_lhd,method='L2_star')\n\n0.07629531717886909"
+    "text": "Examples\nCalculate the centered_L2 discrepancy of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.discrepancy(random_lhd)\n\n0.13550029230874222\n\n\nCalculate the L2 star discrepancy of random_lhd\n\npyLHD.discrepancy(random_lhd,method='L2_star')\n\n0.04869568576065686"
   },
   {
     "objectID": "reference/criteria.maximin.html",
@@ -95,7 +95,7 @@
     "href": "reference/criteria.maximin.html#examples",
     "title": "criteria.maximin",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.maximin(random_lhd)\n\n0.5590169943749475"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.maximin(random_lhd)\n\n0.7071067811865476"
   },
   {
     "objectID": "reference/index.html",
@@ -137,7 +137,7 @@
     "href": "reference/criteria.phi_p.html#examples",
     "title": "criteria.phi_p",
     "section": "Examples",
-    "text": "Examples\nCalculate the phi_p criterion for random_lhd with default settings\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.phi_p(random_lhd)  \n\n0.25172150971292884\n\n\nCalculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)\n\npyLHD.phi_p(random_lhd,p=50,q=2) \n\n0.4082489392863294"
+    "text": "Examples\nCalculate the phi_p criterion for random_lhd with default settings\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.phi_p(random_lhd)  \n\n0.21564285210354162\n\n\nCalculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)\n\npyLHD.phi_p(random_lhd,p=50,q=2) \n\n0.3407385076360379"
   },
   {
     "objectID": "examples/notebooks/intro_pyLHD.html",
@@ -179,7 +179,7 @@
     "href": "reference/criteria.MaxProCriterion.html#examples",
     "title": "criteria.MaxProCriterion",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.MaxProCriterion(random_lhd)\n\n0.1870920952614807"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.MaxProCriterion(random_lhd)\n\n0.264261458589515"
   },
   {
     "objectID": "reference/criteria.MaxAbsCor.html",
@@ -207,7 +207,7 @@
     "href": "reference/criteria.MaxAbsCor.html#examples",
     "title": "criteria.MaxAbsCor",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.MaxAbsCor(random_lhd)\n\n0.6606060606060605"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.MaxAbsCor(random_lhd)\n\n0.41818181818181815"
   },
   {
     "objectID": "reference/criteria.coverage.html",
@@ -242,7 +242,7 @@
     "href": "reference/criteria.coverage.html#examples",
     "title": "criteria.coverage",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.coverage(random_lhd)\n\n0.12953053215443577"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.coverage(random_lhd)\n\n0.2682246688060127"
   },
   {
     "objectID": "reference/criteria.AvgAbsCor.html",
@@ -270,7 +270,7 @@
     "href": "reference/criteria.AvgAbsCor.html#examples",
     "title": "criteria.AvgAbsCor",
     "section": "Examples",
-    "text": "Examples\nCalculate the average absolute correlation of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.AvgAbsCor(random_lhd)\n\n0.426"
+    "text": "Examples\nCalculate the average absolute correlation of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.AvgAbsCor(random_lhd)\n\n0.297"
   },
   {
     "objectID": "reference/criteria.dij.html",
@@ -298,6 +298,6 @@
     "href": "reference/criteria.dij.html#examples",
     "title": "criteria.dij",
     "section": "Examples",
-    "text": "Examples\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.dij(random_lhd,i=2,j=4)\n\n16.0\n\n\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd with q=2 (Euclidean)\n\npyLHD.dij(random_lhd,i=2,j=4,q=2)\n\n9.486832980505138"
+    "text": "Examples\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.dij(random_lhd,i=2,j=4)\n\n6.0\n\n\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd with q=2 (Euclidean)\n\npyLHD.dij(random_lhd,i=2,j=4,q=2)\n\n3.7416573867739413"
   }
 ]
