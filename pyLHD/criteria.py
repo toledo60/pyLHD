@@ -1,6 +1,7 @@
 import numpy as np 
 import pyLHD
 import numpy.typing as npt
+from typing import Literal
 
 # Maximum Absolute Correlation
 
@@ -11,11 +12,14 @@ def MaxAbsCor(arr: npt.ArrayLike) -> float:
       arr (numpy.ndarray): A design matrix
 
   Returns:
-      [float]: Positive number indicating maximum absolute correlation. Rounded to 3 digits
+      Positive number indicating maximum absolute correlation. Rounded to 3 digits
   
   Examples:
-    >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
-    >>> pyLHD.MaxAbsCor(example_LHD)
+    ```{python}
+    import pyLHD
+    random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+    pyLHD.MaxAbsCor(random_lhd)
+    ```
   """
   p = arr.shape[1]  # number of columns
   corr = []
@@ -27,18 +31,21 @@ def MaxAbsCor(arr: npt.ArrayLike) -> float:
 
 # Calculate the Maximum Projection Criterion
 
-def MaxProCriterion(arr):
+def MaxProCriterion(arr: npt.ArrayLike) -> float:
   """ Calculate the Maximum Projection Criterion
 
   Args:
       arr (numpy.ndarray): A design matrix
 
   Returns:
-      [float]: Positive number indicating maximum projection criterion
+      Positive number indicating maximum projection criterion
   
   Examples:
-      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
-      >>> pyLHD.MaxProCriterion(example_LHD)
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+  pyLHD.MaxProCriterion(random_lhd)
+  ```
   """
   n = arr.shape[0]
   p = arr.shape[1]
@@ -55,27 +62,29 @@ def MaxProCriterion(arr):
 
 # Calculate the Inter-site Distance
 
-def dij(arr,i, j, q = 1):
+def dij(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   """ Calculate the Inter-site Distance
 
   Args:
       arr (numpy.ndarray): A design matrix
       i (int): A positive integer, which stands for the ith row of (arr)
       j (int): A positive integer, which stands for the jth row of (arr)
-      q (int, optional): The default is set to be 1, and it could be either 1 or 2. 
-      If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.
+      q (int, optional): The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.
 
   Returns:
-      [float]: positive number indicating the distance (rectangular or Euclidean) between the ith and jth row of arr
+      positive number indicating the distance (rectangular or Euclidean) between the ith and jth row of arr
   
   Examples:
-      # Calculate the inter-site distance of the 2nd and the 4th row of example_LHD
-      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
-      >>> pyLHD.dij(example_LHD,i=2,j=4)
-
-      # Calculate the inter-site distance of the 2nd and the 4th row of example_LHD with q=2 (Euclidean)
-      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
-      >>> pyLHD.dij(example_LHD,i=2,j=4,q=2)
+  Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd`
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+  pyLHD.dij(random_lhd,i=2,j=4)
+  ```
+  Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd` with q=2 (Euclidean)
+  ```{python}
+  pyLHD.dij(random_lhd,i=2,j=4,q=2)
+  ```
   """
   p = arr.shape[1]
   distance = np.empty(p)
@@ -86,24 +95,28 @@ def dij(arr,i, j, q = 1):
 
 # Calculate the phi_p Criterion
 
-def phi_p(arr,p=15,q=1):
+def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   """ Calculate the phi_p Criterion
 
   Args:
       arr (numpy.ndarray): A design matrix
-      p (int, optional): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15
-      If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.
+      p (int, optional): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15. If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.
 
   Returns:
-      [float]: a positive number indicating phi_p
+      A positive number indicating phi_p
 
   Examples:
-      # Calculate the phi_p criterion for example_LHD with default settings
-      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
-      >>> pyLHD.phi_p(example_LHD)
+  Calculate the phi_p criterion for random_lhd with default settings
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+  pyLHD.phi_p(random_lhd)  
+  ```
+  Calculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)
+  ```{python}
+  pyLHD.phi_p(random_lhd,p=50,q=2) 
+  ```
 
-      # Calculate the phi_p criterion of example_LHD with p=50 and q=2 (Euclidean)
-      >>> pyLHD.phi_p(example_LHD,p=50,q=2)    
   """
   n = arr.shape[0]
   isd = 0 
@@ -114,20 +127,23 @@ def phi_p(arr,p=15,q=1):
 
 # Calculate the Average Absolute Correlation
 
-def AvgAbsCor(arr):
+def AvgAbsCor(arr: npt.ArrayLike) -> float:
   """ Calculate the Average Absolute Correlation
 
   Args:
       arr (numpy.ndarray): A design matrix
 
   Returns:
-      [float]: A positive number indicating the average absolute correlation 
+      A positive number indicating the average absolute correlation 
       of input matrix
 
   Examples:
-      # Calculate the average absolute correlation of example_LHD
-      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
-      >>> pyLHD.AvgAbsCor(example_LHD)
+  Calculate the average absolute correlation of `random_lhd`
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+  pyLHD.AvgAbsCor(random_lhd)
+  ```
   """
   p = arr.shape[1]
   corr = []
@@ -140,26 +156,30 @@ def AvgAbsCor(arr):
 
 # Caluclate the Discrepancy of a given sample
 
-def discrepancy(arr, method ='centered_L2'):
+def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2", "modified_L2", "mixture_L2", "symmetric_L2", "wrap_around_L2"] = "centered_L2") -> float:
   """ Discrepancy of a given sample
 
   Args:
       arr (numpy.ndarray): A design matrix
-      method (str, optional): Type of discrepancy. Defaults to 'centered_L2'. Options include:
-      'L2', 'L2_star','centered_L2', 'modified_L2', 'mixture_L2', 'symmetric_L2', 'wrap_around_L2'
+      method (str, optional): Type of discrepancy. Defaults to 'centered_L2'. Options include: 'L2', 'L2_star','centered_L2', 'modified_L2', 'mixture_L2', 'symmetric_L2', 'wrap_around_L2'
 
   Raises:
       ValueError: Whenever number of rows is less than number of columns
 
   Returns:
-      float: Desired discrepancy type
+      Desired discrepancy type
       
   Examples:
-      # Calculate the centered_L2 discrepancy of example_LHD
-      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
-      >>> pyLHD.discrepancy(example_LHD)
-      # Calculate the L2 star discrepancy of example_LHD
-      >>> pyLHD.discrepancy(example_LHD,method='L2_star)     
+  Calculate the centered_L2 discrepancy of `random_lhd`
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+  pyLHD.discrepancy(random_lhd)
+  ```
+  Calculate the L2 star discrepancy of `random_lhd`
+  ```{python}
+  pyLHD.discrepancy(random_lhd,method='L2_star')
+  ``` 
   """
   
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
@@ -254,21 +274,24 @@ def discrepancy(arr, method ='centered_L2'):
 
 # Compute the coverage measure
 
-def coverage(arr):
+def coverage(arr: npt.ArrayLike) -> float:
   """ Compute the coverage measure for a design
 
   Args:
-      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the 
-      origianl design will be scaled to [0,1]
+      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1]
   Raises:
       ValueError: Whenever number of rows is less than number of columns
 
   Returns:
-      float: Coverage measure
+      Coverage measure
       
   Examples:
-      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=5)
-      >>> pyLHD.coverage(example_LHD)
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.rLHD(nrows=5,ncols=5)
+  pyLHD.coverage(random_lhd)
+  ```
+
   """
   nrows = arr.shape[0]
   ncols = arr.shape[1]
@@ -297,22 +320,24 @@ def coverage(arr):
 
 # Compute the meshratio criterion
 
-def mesh_ratio(arr):
+def mesh_ratio(arr: npt.ArrayLike) -> float:
   """ Compute the meshratio criterion for a given design
 
   Args:
-      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the 
-      origianl design will be scaled to [0,1]
+      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1]
       
   Raises:
       ValueError: Whenever number of rows is less than number of columns
   
   Returns:
-      float: Calculated meshratio
+      Calculated meshratio
 
   Examples:
-      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=5)
-      >>> pyLHD.mesh_ratio(example_LHD)
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.rLHD(nrows=5,ncols=5)
+  pyLHD.mesh_ratio(random_lhd)
+  ```
   """
   
   nrows = arr.shape[0]
@@ -351,20 +376,21 @@ def mesh_ratio(arr):
 
 # Calculate maximin criterion 
 
-def maximin(arr):
-  """ Compute the maximin criterion for a given design. A higher value corresponds
-  to a more regular scattering of design points.
+def maximin(arr: npt.ArrayLike) -> float:
+  """ Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.
 
   Args:
-      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the 
-      origianl design will be scaled to [0,1]
-        
+      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1]      
+  
   Returns:
-      float: Calculated maximin criterion
+      Calculated maximin criterion
 
   Examples:
-      >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=5)
-      >>> pyLHD.maximin(example_LHD)
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.rLHD(nrows=5,ncols=5)
+  pyLHD.maximin(random_lhd)
+  ```
   """  
 
   if (np.amin(arr) < 0 or np.amax(arr) > 1):

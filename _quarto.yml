@@ -1,0 +1,30 @@
+project:
+  type: website
+
+# tell quarto to read the generated sidebar
+metadata-files:
+  - _sidebar.yml
+
+
+quartodoc:
+  # the name used to import the package you want to create reference docs for
+  package: pyLHD
+  parser: google
+
+  # write sidebar data to this file
+  sidebar: _sidebar.yml
+
+  sections:
+    - title: Criteria
+      desc: Space-filling Criterias for LHD
+      contents:
+        - criteria.MaxAbsCor
+        - criteria.MaxProCriterion
+        - criteria.phi_p
+        - criteria.dij
+        - criteria.AvgAbsCor
+        - criteria.discrepancy
+        - criteria.coverage
+        - criteria.maximin
+        - criteria.mesh_ratio
+        

@@ -1,0 +1,17 @@
+website:
+  sidebar:
+  - contents:
+    - reference/index.qmd
+    - contents:
+      - reference/criteria.MaxAbsCor.qmd
+      - reference/criteria.MaxProCriterion.qmd
+      - reference/criteria.phi_p.qmd
+      - reference/criteria.dij.qmd
+      - reference/criteria.AvgAbsCor.qmd
+      - reference/criteria.discrepancy.qmd
+      - reference/criteria.coverage.qmd
+      - reference/criteria.maximin.qmd
+      - reference/criteria.mesh_ratio.qmd
+      section: Criteria
+    id: reference
+  - id: dummy-sidebar

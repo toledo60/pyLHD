@@ -32,3 +32,10 @@ ENV/
 
 # vscode
 .vscode/
+/.quarto/
+
+# Quarto
+/.quarto/
+objects.json
+reference/
+src/

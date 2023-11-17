@@ -1,0 +1,331 @@
+[
+  {
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "Function reference",
+    "section": "",
+    "text": "Space-filling Criterias for LHD\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.dij\nCalculate the Inter-site Distance\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.mesh_ratio\nCompute the meshratio criterion for a given design"
+  },
+  {
+    "objectID": "reference/index.html#some-functions",
+    "href": "reference/index.html#some-functions",
+    "title": "Function reference",
+    "section": "",
+    "text": "Functions to inspect docstrings.\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation"
+  },
+  {
+    "objectID": "examples/notebooks/intro_pyLHD.html",
+    "href": "examples/notebooks/intro_pyLHD.html",
+    "title": "1. Introduction to pyLHD",
+    "section": "",
+    "text": "pyLHD is a python implementation of the R package LHD by Hongzhi Wang, Qian Xiao, Abhyuday Mandal. As of now, only the algebraic construction of Latin hypercube designs (LHD) are implemented in this package. For search algorithms to construct LHDs such as: Simulated annealing, particle swarm optimization, and genetic algorithms refer to the R package.\nIn section 2 algebraic construction methods for LHDs are discussed\nTo evalute the generated LHDs we consider the following criteria"
+  },
+  {
+    "objectID": "examples/notebooks/intro_pyLHD.html#algebraic-construction-functions",
+    "href": "examples/notebooks/intro_pyLHD.html#algebraic-construction-functions",
+    "title": "1. Introduction to pyLHD",
+    "section": "2. Algebraic Construction Functions",
+    "text": "2. Algebraic Construction Functions\nThe algebraic construction methods are demonstrated in the table below\n\n\n\n\n\n\n\n\n\n\n\n\n\nYe98\nCioppa07\nSun10\nTang93\nLin09\nButler01\n\n\n\n\nRun # \\(n\\)\n\\(2^m +1\\)\n\\(2^m +1\\)\n\\(r2^{m +1}\\) or \\(r2^{m +1} +1\\)\n\\(n\\)\n\\(n^2\\)\n\\(n\\)\n\n\nFactor # \\(k\\)\n\\(2m-2\\)\n\\(m + {m-1 \\choose 2}\\)\n\\(2^c\\)\n\\(m\\)\n\\(2fp\\)\n\\(k \\leq n-1\\)\n\n\nNote\n\\(m\\) is a positive integer \\(m\\geq 2\\)\n\\(m\\) is a positive integer \\(m\\geq 2\\)\n\\(r\\) and \\(c\\) are positive integers\n\\(n\\) and \\(m\\) are from \\(OA(n,m,s,r)\\)\n\\(n^2,2f\\) and \\(p\\) are from \\(OA(n^2,2f,n,2)\\) and \\(OLHD(n,p)\\)\n\\(n\\) is an odd prime number\n\n\n\nFor theoretical details on the construction methods, a good overview is Section 4.2: Algebraic Constuctions for Orthogonal LHDs from Musings about Constructions of Efficient Latin Hypercube Designs with Flexible Run-sizes\nWe start by implementing Ye 1998 construction, the resulting desig will have \\(2^m+1\\) runs and \\(2m-2\\) factors\n\nYe98 = pl.OLHD_Ye98(m=4)\nYe98\n\narray([[ 7., -1., -4., -2.,  3.,  8.],\n       [ 1.,  7., -5., -3., -2., -6.],\n       [ 5., -4.,  1., -6., -8.,  3.],\n       [ 4.,  5.,  7., -8.,  6., -2.],\n       [ 8., -6., -2.,  4.,  5., -7.],\n       [ 6.,  8., -3.,  5., -4.,  1.],\n       [ 3., -2.,  6.,  1., -7., -5.],\n       [ 2.,  3.,  8.,  7.,  1.,  4.],\n       [ 0.,  0.,  0.,  0.,  0.,  0.],\n       [-7.,  1.,  4.,  2., -3., -8.],\n       [-1., -7.,  5.,  3.,  2.,  6.],\n       [-5.,  4., -1.,  6.,  8., -3.],\n       [-4., -5., -7.,  8., -6.,  2.],\n       [-8.,  6.,  2., -4., -5.,  7.],\n       [-6., -8.,  3., -5.,  4., -1.],\n       [-3.,  2., -6., -1.,  7.,  5.],\n       [-2., -3., -8., -7., -1., -4.]])\n\n\n\npl.MaxAbsCor(Ye98) # column-wise correlation are 0\n\n0.0\n\n\nCioppa and Lucas 2007 construction, the resulting design will be a \\(2^m+1\\) by \\(m+ {m-1 \\choose 2}\\) orthogonal LHD. Note \\(m \\geq 2\\)\n\nCioppa07 = pl.OLHD_Cioppa07(m=3)\nCioppa07\n\narray([[ 1., -2., -4.,  3.],\n       [ 2.,  1., -3., -4.],\n       [ 3., -4.,  2., -1.],\n       [ 4.,  3.,  1.,  2.],\n       [ 0.,  0.,  0.,  0.],\n       [-1.,  2.,  4., -3.],\n       [-2., -1.,  3.,  4.],\n       [-3.,  4., -2.,  1.],\n       [-4., -3., -1., -2.]])\n\n\n\npl.MaxAbsCor(Cioppa07) # column-wise correlation are 0\n\n0.0\n\n\nSun et al. 2010 construction, the resulting design will be \\(r2^{c+1}\\) by \\(2^c\\) if type=‘even’. If type=‘odd’ the resulting design will be \\(r2^{c+1} + 1\\) by \\(2^c\\), where \\(r\\) and \\(c\\) are positive integers.\n\nSun10_odd = pl.OLHD_Sun10(C=2,r=2,type='odd')\nSun10_odd\n\narray([[ 1.,  2.,  3.,  4.],\n       [ 2., -1., -4.,  3.],\n       [ 3.,  4., -1., -2.],\n       [ 4., -3.,  2., -1.],\n       [ 5.,  6.,  7.,  8.],\n       [ 6., -5., -8.,  7.],\n       [ 7.,  8., -5., -6.],\n       [ 8., -7.,  6., -5.],\n       [ 0.,  0.,  0.,  0.],\n       [-1., -2., -3., -4.],\n       [-2.,  1.,  4., -3.],\n       [-3., -4.,  1.,  2.],\n       [-4.,  3., -2.,  1.],\n       [-5., -6., -7., -8.],\n       [-6.,  5.,  8., -7.],\n       [-7., -8.,  5.,  6.],\n       [-8.,  7., -6.,  5.]])\n\n\n\nSun10_even = pl.OLHD_Sun10(C=2,r=2,type='even')\nSun10_even\n\narray([[ 0.5,  1.5,  2.5,  3.5],\n       [ 1.5, -0.5, -3.5,  2.5],\n       [ 2.5,  3.5, -0.5, -1.5],\n       [ 3.5, -2.5,  1.5, -0.5],\n       [ 4.5,  5.5,  6.5,  7.5],\n       [ 5.5, -4.5, -7.5,  6.5],\n       [ 6.5,  7.5, -4.5, -5.5],\n       [ 7.5, -6.5,  5.5, -4.5],\n       [-0.5, -1.5, -2.5, -3.5],\n       [-1.5,  0.5,  3.5, -2.5],\n       [-2.5, -3.5,  0.5,  1.5],\n       [-3.5,  2.5, -1.5,  0.5],\n       [-4.5, -5.5, -6.5, -7.5],\n       [-5.5,  4.5,  7.5, -6.5],\n       [-6.5, -7.5,  4.5,  5.5],\n       [-7.5,  6.5, -5.5,  4.5]])\n\n\nLine et al. 2009 construction, the resulting design will be \\(n^2\\) by \\(2fp\\). This is obtained by using a \\(n\\) by \\(p\\) orthogonal LHD with a \\(n^2\\) by \\(2f\\) strength 2 and level \\(n\\) orthogonal array.\nStart by generating an orthogonal LHD\n\nOLHD_example = pl.OLHD_Cioppa07(m=2)\n\nNext, create an orthogonal array with 25 rows, 6 columns, 5 levels, and strength 2 OA(25,6,5,2)\n\nimport numpy as np\n\nOA_example = np.array([[2,2,2,2,2,1],[2,1,5,4,3,5],\n                      [3,2,1,5,4,5],[1,5,4,3,2,5],\n                      [4,1,3,5,2,3],[1,2,3,4,5,2],\n                      [1,3,5,2,4,3],[1,1,1,1,1,1],\n                      [4,3,2,1,5,5],[5,5,5,5,5,1],\n                      [4,4,4,4,4,1],[3,1,4,2,5,4],\n                      [3,3,3,3,3,1],[3,5,2,4,1,3],\n                      [3,4,5,1,2,2],[5,4,3,2,1,5],\n                      [2,3,4,5,1,2],[2,5,3,1,4,4],\n                      [1,4,2,5,3,4],[4,2,5,3,1,4],\n                      [2,4,1,3,5,3],[5,3,1,4,2,4],\n                      [5,2,4,1,3,3],[5,1,2,3,4,2],\n                      [4,5,1,2,3,2] ])\n\nNow using Lin at al. 2009 construction, we couple OLHD and OA to obtain\n\nLin09 = pl.OLHD_Lin09(OLHD=OLHD_example,OA=OA_example)\nLin09\n\narray([[ 12.,  -8.,  12.,  -8.,   7.,  -9.,   6.,  -4.,   6.,  -4.,  -9.,\n         -7.],\n       [  7.,  -9.,  -7.,   9., -10.,  -2.,  -9.,  -7.,   9.,   7.,  -5.,\n         -1.],\n       [ 10.,   2.,  -9.,  -7., -11.,   3.,   5.,   1.,  -7.,   9.,  -3.,\n        -11.],\n       [ -9.,  -7.,  -1.,   5.,  -8., -12.,  -7.,   9.,   2., -10.,  -4.,\n         -6.],\n       [  4.,   6., -10.,  -2.,   2., -10.,  -8., -12.,  -5.,  -1.,   1.,\n         -5.],\n       [ 11.,  -3.,  -5.,  -1.,   8.,  12.,   3.,  11.,  10.,   2.,   4.,\n          6.],\n       [  1.,  -5.,   8.,  12.,  -1.,   5.,  -2.,  10.,   4.,   6.,   2.,\n        -10.],\n       [  6.,  -4.,   6.,  -4.,   6.,  -4., -12.,   8., -12.,   8., -12.,\n          8.],\n       [ -1.,   5.,   7.,  -9., -12.,   8.,   2., -10.,  -9.,  -7.,  -6.,\n          4.],\n       [-12.,   8., -12.,   8.,   3.,  11.,  -6.,   4.,  -6.,   4., -11.,\n          3.],\n       [ -6.,   4.,  -6.,   4.,   4.,   6.,  12.,  -8.,  12.,  -8.,  -8.,\n        -12.],\n       [  5.,   1.,   9.,   7.,  -7.,   9., -10.,  -2.,   7.,  -9.,   9.,\n          7.],\n       [  0.,   0.,   0.,   0.,   5.,   1.,   0.,   0.,   0.,   0., -10.,\n         -2.],\n       [-10.,  -2.,  -3., -11.,   1.,  -5.,  -5.,  -1.,  11.,  -3.,  -2.,\n         10.],\n       [ -5.,  -1.,   3.,  11.,  12.,  -8.,  10.,   2., -11.,   3.,   6.,\n         -4.],\n       [ -7.,   9.,  10.,   2.,  -9.,  -7.,   9.,   7.,   5.,   1.,  -7.,\n          9.],\n       [  2., -10., -11.,   3.,  11.,  -3.,   1.,  -5.,  -3., -11.,   3.,\n         11.],\n       [ -8., -12.,   5.,   1.,  -6.,   4.,  -4.,  -6., -10.,  -2.,  12.,\n         -8.],\n       [ -4.,  -6.,  -8., -12.,  -5.,  -1.,   8.,  12.,  -4.,  -6.,  10.,\n          2.],\n       [  9.,   7.,  -2.,  10.,  -4.,  -6.,   7.,  -9.,  -1.,   5.,   8.,\n         12.],\n       [ -3., -11.,   1.,  -5.,  -2.,  10.,  11.,  -3.,  -2.,  10.,  -1.,\n          5.],\n       [ -2.,  10.,  -4.,  -6.,  -3., -11.,  -1.,   5.,   8.,  12.,  11.,\n         -3.],\n       [  8.,  12.,   4.,   6.,   0.,   0.,   4.,   6.,  -8., -12.,   0.,\n          0.],\n       [  3.,  11.,   2., -10.,   9.,   7., -11.,   3.,   1.,  -5.,   7.,\n         -9.],\n       [-11.,   3.,  11.,  -3.,  10.,   2.,  -3., -11.,   3.,  11.,   5.,\n          1.]])\n\n\nWe can convert an orthogonal array into a LHD using the function OA2LHD. Consider the earlier OA_example with 25 rows and 6 columns.\n\npl.OA2LHD(OA_example)\n\narray([[ 9,  7,  6,  9,  8,  5],\n       [ 6,  3, 23, 18, 12, 21],\n       [14,  9,  3, 23, 18, 25],\n       [ 4, 23, 19, 11, 10, 22],\n       [16,  2, 15, 24,  9, 13],\n       [ 1,  6, 14, 20, 22,  7],\n       [ 3, 14, 21,  6, 16, 15],\n       [ 5,  1,  5,  3,  2,  3],\n       [20, 13,  9,  1, 25, 23],\n       [23, 24, 22, 25, 23,  1],\n       [19, 18, 20, 17, 20,  2],\n       [12,  4, 18, 10, 24, 20],\n       [11, 15, 11, 13, 15,  4],\n       [13, 21,  8, 19,  5, 14],\n       [15, 19, 24,  2,  7,  8],\n       [25, 17, 12,  7,  4, 24],\n       [10, 11, 17, 21,  1, 10],\n       [ 8, 22, 13,  4, 17, 17],\n       [ 2, 20, 10, 22, 14, 19],\n       [17,  8, 25, 15,  3, 18],\n       [ 7, 16,  1, 14, 21, 11],\n       [22, 12,  2, 16,  6, 16],\n       [24, 10, 16,  5, 13, 12],\n       [21,  5,  7, 12, 19,  9],\n       [18, 25,  4,  8, 11,  6]])\n\n\nLastly, we consider Butler 2001 construction by generating a \\(n\\) by \\(k\\) OLHD\n\nButler01 = pl.OLHD_Butler01(nrows=11,ncols=5)\nButler01\n\narray([[ 1.,  5.,  4.,  2.,  3.],\n       [ 7.,  8.,  2.,  3., 11.],\n       [10.,  3.,  1.,  7.,  4.],\n       [ 4., 10.,  3., 11.,  5.],\n       [ 3.,  1.,  5.,  8., 10.],\n       [ 9., 11.,  7.,  4.,  2.],\n       [ 8.,  2.,  9.,  1.,  7.],\n       [ 2.,  9., 11.,  5.,  8.],\n       [ 5.,  4., 10.,  9.,  1.],\n       [11.,  7.,  8., 10.,  9.],\n       [ 6.,  6.,  6.,  6.,  6.]])"
+  },
+  {
+    "objectID": "REFERENCES.html",
+    "href": "REFERENCES.html",
+    "title": "References for Functions in pyLHD",
+    "section": "",
+    "text": "References for Functions in pyLHD\n\nAvgAbsCor: Georgiou, Stelios D. “Orthogonal Latin hypercube designs from generalized orthogonal designs.” Journal of Statistical Planning and Inference 139.4 (2009): 1530-1540\ncoverage: Gunzburer M., Burkdart J. (2004) Uniformity measures for point samples in hypercubes, https://people.sc.fsu.edu/~jburkardt/.\ndiscrepancy: Fang K.T, Li R. and Sudjianto A. (2006) Design and Modeling for Computer Experiments, Chapman & Hall\nGLPdesign: Korobov, A. N. “The approximate computation of multiple integrals.” Dokl. Akad. Nauk SSSR. Vol. 124. 1959\nMaxAbsCor: Georgiou, Stelios D. “Orthogonal Latin hypercube designs from generalized orthogonal designs.” Journal of Statistical Planning and Inference 139.4 (2009): 1530-1540\nMaxProCriterion: Joseph, V. Roshan, Evren Gul, and Shan Ba. “Maximum projection designs for computer experiments.” Biometrika 102.2 (2015): 371-380\nminimax: Jonshon M.E., Moore L.M. and Ylvisaker D. (1990), Minmax and maximin distance designs, J. of Statis. Planning and Inference, 26, 131-148\nOA2LHD: Tang, Boxin. “Orthogonal array-based Latin hypercubes.” Journal of the American statistical association 88.424 (1993): 1392-1397\nOLHD_Butler01: Butler, Neil A. “Optimal and orthogonal Latin hypercube designs for computer experiments.” Biometrika 88.3 (2001): 847-857\nOLHD_Cioppa07: Cioppa, Thomas M., and Thomas W. Lucas. “Efficient nearly orthogonal and space-filling Latin hypercubes.” Technometrics 49.1 (2007): 45-55\nOLHD_Lin09: Lin, C. Devon, Rahul Mukerjee, and Boxin Tang. “Construction of orthogonal and nearly orthogonal Latin hypercubes.” Biometrika 96.1 (2009): 243-247\nOLHD_Sun10: Sun, Fasheng, Min-Qian Liu, and Dennis KJ Lin. “Construction of orthogonal Latin hypercube designs with flexible run sizes.” Journal of Statistical Planning and Inference 140.11 (2010): 3236-3242\nOLHD_Ye98: Ye, Kenny Q. “Orthogonal column Latin hypercubes and their application in computer experiments.” Journal of the American Statistical Association 93.444 (1998): 1430-1439\nphi_p: Jin, Ruichen, Wei Chen, and Agus Sudjianto. “An efficient algorithm for constructing optimal design of computer experiments.” International Design Engineering Technical Conferences and Computers and Information in Engineering Conference. Vol. 37009. 2003\nwilliams_transform: Williams, Evan James. “Experimental designs balanced for the estimation of residual effects of treatments.” Australian Journal of Chemistry 2.2 (1949): 149-168"
+  },
+  {
+    "objectID": "reference/criteria.MaxAbsCor.html",
+    "href": "reference/criteria.MaxAbsCor.html",
+    "title": "criteria.MaxAbsCor",
+    "section": "",
+    "text": "criteria.MaxAbsCor(arr)\nCalculate the Maximum Absolute Correlation"
+  },
+  {
+    "objectID": "reference/criteria.MaxAbsCor.html#parameters",
+    "href": "reference/criteria.MaxAbsCor.html#parameters",
+    "title": "criteria.MaxAbsCor",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired"
+  },
+  {
+    "objectID": "reference/criteria.MaxAbsCor.html#returns",
+    "href": "reference/criteria.MaxAbsCor.html#returns",
+    "title": "criteria.MaxAbsCor",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nfloat\nPositive number indicating maximum absolute correlation. Rounded to 3 digits"
+  },
+  {
+    "objectID": "reference/criteria.MaxAbsCor.html#examples",
+    "href": "reference/criteria.MaxAbsCor.html#examples",
+    "title": "criteria.MaxAbsCor",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.MaxAbsCor(random_lhd)\n\n0.2121212121212121"
+  },
+  {
+    "objectID": "reference/index.html#criteria",
+    "href": "reference/index.html#criteria",
+    "title": "Function reference",
+    "section": "",
+    "text": "Space-filling Criterias for LHD\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.dij\nCalculate the Inter-site Distance\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.mesh_ratio\nCompute the meshratio criterion for a given design"
+  },
+  {
+    "objectID": "reference/criteria.MaxProCriterion.html",
+    "href": "reference/criteria.MaxProCriterion.html",
+    "title": "criteria.MaxProCriterion",
+    "section": "",
+    "text": "criteria.MaxProCriterion(arr)\nCalculate the Maximum Projection Criterion"
+  },
+  {
+    "objectID": "reference/criteria.MaxProCriterion.html#parameters",
+    "href": "reference/criteria.MaxProCriterion.html#parameters",
+    "title": "criteria.MaxProCriterion",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired"
+  },
+  {
+    "objectID": "reference/criteria.MaxProCriterion.html#returns",
+    "href": "reference/criteria.MaxProCriterion.html#returns",
+    "title": "criteria.MaxProCriterion",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nfloat\nPositive number indicating maximum projection criterion"
+  },
+  {
+    "objectID": "reference/criteria.MaxProCriterion.html#examples",
+    "href": "reference/criteria.MaxProCriterion.html#examples",
+    "title": "criteria.MaxProCriterion",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.MaxProCriterion(random_lhd)\n\n0.2313815554087313"
+  },
+  {
+    "objectID": "reference/criteria.html",
+    "href": "reference/criteria.html",
+    "title": "criteria",
+    "section": "",
+    "text": "criteria"
+  },
+  {
+    "objectID": "reference/criteria.html#functions",
+    "href": "reference/criteria.html#functions",
+    "title": "criteria",
+    "section": "Functions",
+    "text": "Functions\n\n\n\nName\nDescription\n\n\n\n\nAvgAbsCor\nCalculate the Average Absolute Correlation\n\n\nMaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\nMaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncoverage\nCompute the coverage measure for a design\n\n\ndij\nCalculate the Inter-site Distance\n\n\ndiscrepancy\nDiscrepancy of a given sample\n\n\nmaximin\nCompute the maximin criterion for a given design. A higher value corresponds\n\n\nmesh_ratio\nCompute the meshratio criterion for a given design\n\n\nphi_p\nCalculate the phi_p Criterion\n\n\n\n\nAvgAbsCor\ncriteria.AvgAbsCor(arr)\nCalculate the Average Absolute Correlation\n\nParameters\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired\n\n\n\n\n\nReturns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\n\n[float]: A positive number indicating the average absolute correlation\n\n\n\nof input matrix\n\n\n\n\n\nExamples"
+  },
+  {
+    "objectID": "reference/criteria.dij.html",
+    "href": "reference/criteria.dij.html",
+    "title": "criteria.dij",
+    "section": "",
+    "text": "criteria.dij(arr, i, j, q=1)\nCalculate the Inter-site Distance"
+  },
+  {
+    "objectID": "reference/criteria.dij.html#parameters",
+    "href": "reference/criteria.dij.html#parameters",
+    "title": "criteria.dij",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired\n\n\ni\nint\nA positive integer, which stands for the ith row of (arr)\nrequired\n\n\nj\nint\nA positive integer, which stands for the jth row of (arr)\nrequired\n\n\nq\nint\nThe default is set to be 1, and it could be either 1 or 2. If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.\n1"
+  },
+  {
+    "objectID": "reference/criteria.dij.html#returns",
+    "href": "reference/criteria.dij.html#returns",
+    "title": "criteria.dij",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nfloat\npositive number indicating the distance (rectangular or Euclidean) between the ith and jth row of arr"
+  },
+  {
+    "objectID": "reference/criteria.dij.html#examples",
+    "href": "reference/criteria.dij.html#examples",
+    "title": "criteria.dij",
+    "section": "Examples",
+    "text": "Examples\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.dij(random_lhd,i=2,j=4)\n\n13.0\n\n\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd with q=2 (Euclidean)\n\npyLHD.dij(random_lhd,i=2,j=4,q=2)\n\n8.18535277187245"
+  },
+  {
+    "objectID": "reference/criteria.phi_p.html",
+    "href": "reference/criteria.phi_p.html",
+    "title": "criteria.phi_p",
+    "section": "",
+    "text": "criteria.phi_p(arr, p=15, q=1)\nCalculate the phi_p Criterion"
+  },
+  {
+    "objectID": "reference/criteria.phi_p.html#parameters",
+    "href": "reference/criteria.phi_p.html#parameters",
+    "title": "criteria.phi_p",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired\n\n\np\nint\nA positive integer, which is the parameter in the phi_p formula. The default is set to be 15. If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.\n15"
+  },
+  {
+    "objectID": "reference/criteria.phi_p.html#returns",
+    "href": "reference/criteria.phi_p.html#returns",
+    "title": "criteria.phi_p",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nfloat\nA positive number indicating phi_p"
+  },
+  {
+    "objectID": "reference/criteria.phi_p.html#examples",
+    "href": "reference/criteria.phi_p.html#examples",
+    "title": "criteria.phi_p",
+    "section": "Examples",
+    "text": "Examples\nCalculate the phi_p criterion for random_lhd with default settings\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.phi_p(random_lhd)  \n\n0.21058843079284714\n\n\nCalculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)\n\npyLHD.phi_p(random_lhd,p=50,q=2) \n\n0.3333775746872473"
+  },
+  {
+    "objectID": "reference/criteria.discrepancy.html",
+    "href": "reference/criteria.discrepancy.html",
+    "title": "criteria.discrepancy",
+    "section": "",
+    "text": "criteria.discrepancy(arr, method='centered_L2')\nDiscrepancy of a given sample"
+  },
+  {
+    "objectID": "reference/criteria.discrepancy.html#parameters",
+    "href": "reference/criteria.discrepancy.html#parameters",
+    "title": "criteria.discrepancy",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired\n\n\nmethod\nstr\nType of discrepancy. Defaults to ‘centered_L2’. Options include: ‘L2’, ‘L2_star’,‘centered_L2’, ‘modified_L2’, ‘mixture_L2’, ‘symmetric_L2’, ‘wrap_around_L2’\n'centered_L2'"
+  },
+  {
+    "objectID": "reference/criteria.discrepancy.html#raises",
+    "href": "reference/criteria.discrepancy.html#raises",
+    "title": "criteria.discrepancy",
+    "section": "Raises",
+    "text": "Raises\n\n\n\nType\nDescription\n\n\n\n\nValueError\nWhenever number of rows is less than number of columns"
+  },
+  {
+    "objectID": "reference/criteria.discrepancy.html#returns",
+    "href": "reference/criteria.discrepancy.html#returns",
+    "title": "criteria.discrepancy",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nfloat\nDesired discrepancy type"
+  },
+  {
+    "objectID": "reference/criteria.discrepancy.html#examples",
+    "href": "reference/criteria.discrepancy.html#examples",
+    "title": "criteria.discrepancy",
+    "section": "Examples",
+    "text": "Examples\nCalculate the centered_L2 discrepancy of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.discrepancy(random_lhd)\n\n0.14271908262742392\n\n\nCalculate the L2 star discrepancy of random_lhd\n\npyLHD.discrepancy(random_lhd,method='L2_star')\n\n0.06412303839362246"
+  },
+  {
+    "objectID": "reference/criteria.AvgAbsCor.html",
+    "href": "reference/criteria.AvgAbsCor.html",
+    "title": "criteria.AvgAbsCor",
+    "section": "",
+    "text": "criteria.AvgAbsCor(arr)\nCalculate the Average Absolute Correlation"
+  },
+  {
+    "objectID": "reference/criteria.AvgAbsCor.html#parameters",
+    "href": "reference/criteria.AvgAbsCor.html#parameters",
+    "title": "criteria.AvgAbsCor",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired"
+  },
+  {
+    "objectID": "reference/criteria.AvgAbsCor.html#returns",
+    "href": "reference/criteria.AvgAbsCor.html#returns",
+    "title": "criteria.AvgAbsCor",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nfloat\nA positive number indicating the average absolute correlation\n\n\nfloat\nof input matrix"
+  },
+  {
+    "objectID": "reference/criteria.AvgAbsCor.html#examples",
+    "href": "reference/criteria.AvgAbsCor.html#examples",
+    "title": "criteria.AvgAbsCor",
+    "section": "Examples",
+    "text": "Examples\nCalculate the average absolute correlation of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.AvgAbsCor(random_lhd)\n\n0.483"
+  },
+  {
+    "objectID": "reference/criteria.mesh_ratio.html",
+    "href": "reference/criteria.mesh_ratio.html",
+    "title": "criteria.mesh_ratio",
+    "section": "",
+    "text": "criteria.mesh_ratio(arr)\nCompute the meshratio criterion for a given design"
+  },
+  {
+    "objectID": "reference/criteria.mesh_ratio.html#parameters",
+    "href": "reference/criteria.mesh_ratio.html#parameters",
+    "title": "criteria.mesh_ratio",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1]\nrequired"
+  },
+  {
+    "objectID": "reference/criteria.mesh_ratio.html#raises",
+    "href": "reference/criteria.mesh_ratio.html#raises",
+    "title": "criteria.mesh_ratio",
+    "section": "Raises",
+    "text": "Raises\n\n\n\nType\nDescription\n\n\n\n\nValueError\nWhenever number of rows is less than number of columns"
+  },
+  {
+    "objectID": "reference/criteria.mesh_ratio.html#returns",
+    "href": "reference/criteria.mesh_ratio.html#returns",
+    "title": "criteria.mesh_ratio",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nfloat\nCalculated meshratio"
+  },
+  {
+    "objectID": "reference/criteria.mesh_ratio.html#examples",
+    "href": "reference/criteria.mesh_ratio.html#examples",
+    "title": "criteria.mesh_ratio",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.mesh_ratio(random_lhd)\n\n1.2817398889233114"
+  },
+  {
+    "objectID": "reference/criteria.maximin.html",
+    "href": "reference/criteria.maximin.html",
+    "title": "criteria.maximin",
+    "section": "",
+    "text": "criteria.maximin(arr)\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points."
+  },
+  {
+    "objectID": "reference/criteria.maximin.html#parameters",
+    "href": "reference/criteria.maximin.html#parameters",
+    "title": "criteria.maximin",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1]\nrequired"
+  },
+  {
+    "objectID": "reference/criteria.maximin.html#returns",
+    "href": "reference/criteria.maximin.html#returns",
+    "title": "criteria.maximin",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nfloat\nCalculated maximin criterion"
+  },
+  {
+    "objectID": "reference/criteria.maximin.html#examples",
+    "href": "reference/criteria.maximin.html#examples",
+    "title": "criteria.maximin",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.maximin(random_lhd)\n\n0.9013878188659973"
+  },
+  {
+    "objectID": "reference/criteria.coverage.html",
+    "href": "reference/criteria.coverage.html",
+    "title": "criteria.coverage",
+    "section": "",
+    "text": "criteria.coverage(arr)\nCompute the coverage measure for a design"
+  },
+  {
+    "objectID": "reference/criteria.coverage.html#parameters",
+    "href": "reference/criteria.coverage.html#parameters",
+    "title": "criteria.coverage",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1]\nrequired"
+  },
+  {
+    "objectID": "reference/criteria.coverage.html#raises",
+    "href": "reference/criteria.coverage.html#raises",
+    "title": "criteria.coverage",
+    "section": "Raises",
+    "text": "Raises\n\n\n\nType\nDescription\n\n\n\n\nValueError\nWhenever number of rows is less than number of columns"
+  },
+  {
+    "objectID": "reference/criteria.coverage.html#returns",
+    "href": "reference/criteria.coverage.html#returns",
+    "title": "criteria.coverage",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nfloat\nCoverage measure"
+  },
+  {
+    "objectID": "reference/criteria.coverage.html#examples",
+    "href": "reference/criteria.coverage.html#examples",
+    "title": "criteria.coverage",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.coverage(random_lhd)\n\n0.14203355021061523"
+  }
+]
