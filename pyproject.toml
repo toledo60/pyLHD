@@ -21,6 +21,11 @@ classifiers=[
     "Operating System :: OS Independent"
 ]
 
+
+[project.optional-dependencies]
+test = ["scipy"]
+
+
 [project.urls]
 "Homepage" = "https://github.com/toledo60/pyLHD"
 "Documentation" = "https://github.com/toledo60/pyLHD"

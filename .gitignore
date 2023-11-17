@@ -37,5 +37,5 @@ ENV/
 # Quarto
 /.quarto/
 objects.json
-reference/
+/reference
 src/
