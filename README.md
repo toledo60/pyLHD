@@ -3,30 +3,19 @@
 pyLHD is a python implementation for something in between the R packages [LHD](https://cran.r-project.org/web/packages/LHD/index.html)
 and [DiceDesign](https://cran.r-project.org/web/packages/DiceDesign/index.html).
 
-Check out the streamlit app for pyLHD, a point-click interface to generate Latin hypercube designs
-
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/toledo60/pylhd-streamlit/main/pyLHD_streamlit.py)
-
-
 For a quick overview of pyLHD main functionalities without having to install it, click on the link below and navigate to the notebooks folder to run an interactive Jupyter notebook
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/toledo60/pyLHD/main?filepath=examples%2Fnotebooks)
 
 ## Installation
 
-`pyLHD` can be installed from PyPI:
-
-```
-pip install pyLHD
-```
-
-The latest development version can be installed from the main branch using pip:
+Currently `pyLHD` can be installed from Github
 
 ```
 pip install git+https://github.com/toledo60/pyLHD.git
 ```
 
-The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tested on Python 3.6+
+The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tested on Python 3.9+
 
 ## Overview
 

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyLHD"
+version = "0.5"
+description = "Latin Hypercubes in Python"
+authors = [
+    {name = "Jose Toledo", email = "toledo60@protonmail.com" }
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["latin-hypercube", "space-filling"]
+dependencies = [
+  "numpy>=1.22"
+]
+classifiers=[
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/toledo60/pyLHD"
+"Documentation" = "https://github.com/toledo60/pyLHD"
+"Source" = "https://github.com/toledo60/pyLHD"
+"Bug Tracker" = "https://github.com/toledo60/pyLHD/issues"

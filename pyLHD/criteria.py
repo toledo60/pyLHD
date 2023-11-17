@@ -1,9 +1,10 @@
 import numpy as np 
 import pyLHD
+import numpy.typing as npt
 
 # Maximum Absolute Correlation
 
-def MaxAbsCor(arr):
+def MaxAbsCor(arr: npt.ArrayLike) -> float:
   """ Calculate the Maximum Absolute Correlation
 
   Args:
@@ -22,7 +23,7 @@ def MaxAbsCor(arr):
     for j in range(i+1, p):
       corr.append(np.corrcoef(arr[:, i], arr[:, j])[0, 1])
   abs_corr_array = np.absolute(np.asarray(corr))
-  return np.around(np.amax(abs_corr_array), 3)
+  return np.amax(abs_corr_array)
 
 # Calculate the Maximum Projection Criterion
 
@@ -139,12 +140,12 @@ def AvgAbsCor(arr):
 
 # Caluclate the Discrepancy of a given sample
 
-def discrepancy(arr, type='centered_L2'):
+def discrepancy(arr, method ='centered_L2'):
   """ Discrepancy of a given sample
 
   Args:
       arr (numpy.ndarray): A design matrix
-      type (str, optional): Type of discrepancy. Defaults to 'centered_L2'. Options include:
+      method (str, optional): Type of discrepancy. Defaults to 'centered_L2'. Options include:
       'L2', 'L2_star','centered_L2', 'modified_L2', 'mixture_L2', 'symmetric_L2', 'wrap_around_L2'
 
   Raises:
@@ -158,7 +159,7 @@ def discrepancy(arr, type='centered_L2'):
       >>> example_LHD = pyLHD.rLHD(nrows=5,ncols=3)
       >>> pyLHD.discrepancy(example_LHD)
       # Calculate the L2 star discrepancy of example_LHD
-      >>> pyLHD.discrepancy(example_LHD,type='L2_star)     
+      >>> pyLHD.discrepancy(example_LHD,method='L2_star)     
   """
   
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
@@ -173,7 +174,7 @@ def discrepancy(arr, type='centered_L2'):
   sum1 = 0
   sum2 = 0
   
-  if type == 'L2':
+  if method == 'L2':
 
     for i in range(nrows):
       sum1 += np.prod(arr[i,:]*(1-arr[i,:]))
@@ -184,7 +185,7 @@ def discrepancy(arr, type='centered_L2'):
         sum2 += q
     value = np.sqrt(12**(-ncols) - (((2**(1-ncols))/nrows)*sum1) + ((1/nrows**2)*sum2))  
   
-  if type == 'L2_star':
+  if method == 'L2_star':
     dL2 = 0
     for j in range(nrows):
       for i in range(nrows):
@@ -204,7 +205,7 @@ def discrepancy(arr, type='centered_L2'):
   
     value = np.sqrt(3**(-ncols)+dL2)
       
-  if type == 'centered_L2':
+  if method == 'centered_L2':
 
     for i in range(nrows):
       sum1 += np.prod((1+0.5*np.abs(arr[i,:]-0.5)-0.5*((abs(arr[i,:]-0.5))**2)))
@@ -212,7 +213,7 @@ def discrepancy(arr, type='centered_L2'):
         sum2 +=  np.prod((1+0.5*np.abs(arr[i,:]-0.5)+0.5*np.abs(arr[k,:]-0.5)-0.5*np.abs(arr[i,:]-arr[k,:])))
     value =  np.sqrt( ( (13/12)**ncols)-((2/nrows)*sum1) + ((1/(nrows**2))*sum2)  )
   
-  if type == 'modified_L2':
+  if method == 'modified_L2':
     
     for i in range(nrows):
       p = 1
@@ -226,7 +227,7 @@ def discrepancy(arr, type='centered_L2'):
         sum2 += q
     value =  np.sqrt(((4/3)**ncols) - (((2**(1-ncols))/nrows)*sum1) + ((1/nrows**2)*sum2))
   
-  if type == 'mixture_L2':
+  if method == 'mixture_L2':
     for i in range(nrows):
       sum1 += np.prod((5/3-0.25*np.abs(arr[i,:]-0.5)-0.25*((np.abs(arr[i,:]-0.5))**2)))
       for k in range(nrows):
@@ -234,7 +235,7 @@ def discrepancy(arr, type='centered_L2'):
                          0.75*np.abs(arr[i,:]-arr[k,:])+0.5*((np.abs(arr[i,:]-arr[k,:]))**2)))
     value = np.sqrt(((19/12)**ncols)-((2/nrows)*sum1) + ((1/nrows**2)*sum2))
      
-  if type == 'symmetric_L2':
+  if method == 'symmetric_L2':
 
     for i in range(nrows):
       sum1 += np.prod( (1+2*arr[i,:]) - (2*arr[i,:]*arr[i,:]))
@@ -242,7 +243,7 @@ def discrepancy(arr, type='centered_L2'):
         sum2 += np.prod( (1-np.abs(arr[i,:]-arr[k,:])) )
     value = np.sqrt(((4/3)**ncols) - ((2/nrows)*sum1) + ((2**ncols/nrows**2)*sum2))
   
-  if type == 'wrap_around_L2':
+  if method == 'wrap_around_L2':
     for i in range(nrows):
       for k in range(nrows):
         sum1 += np.prod((1.5-((np.abs(arr[i,:]-arr[k,:]))*(1-np.abs(arr[i,:]-arr[k,:])))))
