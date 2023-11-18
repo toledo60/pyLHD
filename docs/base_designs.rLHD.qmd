@@ -1,0 +1,31 @@
+# base_designs.rLHD { #pyLHD.base_designs.rLHD }
+
+`base_designs.rLHD(nrows, ncols, unit_cube=False)`
+
+Generate a random Latin Hypercube Design (LHD)
+
+## Parameters
+
+| Name        | Type   | Description                                           | Default    |
+|-------------|--------|-------------------------------------------------------|------------|
+| `nrows`     | int    | A positive integer specifying the number of rows      | _required_ |
+| `ncols`     | int    | A postive integer specifying the number of columns    | _required_ |
+| `unit_cube` | bool   | If True, design will be in the unit cube [0,1]^ncols. | `False`    |
+
+## Returns
+
+| Type          | Description                          |
+|---------------|--------------------------------------|
+| npt.ArrayLike | return a random (nrows by ncols) LHD |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+pyLHD.rLHD(nrows=5,ncols = 4,unit_cube = False)
+```
+```{python}
+pyLHD.rLHD(nrows=5,ncols = 4, unit_cube = True)
+```

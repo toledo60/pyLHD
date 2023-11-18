@@ -3,7 +3,7 @@ project:
 
 # tell quarto to read the generated sidebar
 metadata-files:
-  - _sidebar.yml
+  - docs/_sidebar.yml
 
 website: 
   navbar:
@@ -11,19 +11,23 @@ website:
     search: true
     left:
       - text: "Reference"
-        file: reference/index.qmd
-
+        file: docs/index.qmd
 
 
 quartodoc:
   # the name used to import the package you want to create reference docs for
   package: pyLHD
   parser: google
+  dir: docs
 
   # write sidebar data to this file
-  sidebar: _sidebar.yml
+  sidebar: docs/_sidebar.yml
 
   sections:
+    - title: Base Designs
+      desc: Generate Random LHD
+      contents:
+        - base_designs.rLHD  
     - title: Criteria
       desc: Space-filling Criterias for LHD
       contents:

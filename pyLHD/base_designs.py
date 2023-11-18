@@ -1,8 +1,9 @@
 import numpy as np
+import numpy.typing as npt
 
 # Generate a random Latin Hypercube Design (LHD)
 
-def rLHD(nrows,ncols,unit_cube=False):
+def rLHD(nrows: int, ncols: int, unit_cube: bool = False) -> npt.ArrayLike:
   """ Generate a random Latin Hypercube Design (LHD)
 
   Args:
@@ -11,11 +12,16 @@ def rLHD(nrows,ncols,unit_cube=False):
       unit_cube (bool): If True, design will be in the unit cube [0,1]^ncols.
 
   Returns:
-      numpy.ndarray: return a random (nrows by ncols) LHD
+      return a random (nrows by ncols) LHD
   
   Examples:
-      >>> pyLHD.rLHD(nrows=5,ncols = 4,unit_cube = False)
-      >>> pyLHD.rLHD(nrows=5,ncols = 4,unit_cube = True) 
+  ```{python}
+  import pyLHD
+  pyLHD.rLHD(nrows=5,ncols = 4,unit_cube = False)
+  ```
+  ```{python}
+  pyLHD.rLHD(nrows=5,ncols = 4, unit_cube = True)
+  ```
   """
   rng = np.random.default_rng()
   rs = np.arange(start=1, stop=nrows+1)

@@ -1,0 +1,20 @@
+website:
+  sidebar:
+  - contents:
+    - docs/index.qmd
+    - contents:
+      - docs/base_designs.rLHD.qmd
+      section: Base Designs
+    - contents:
+      - docs/criteria.MaxAbsCor.qmd
+      - docs/criteria.MaxProCriterion.qmd
+      - docs/criteria.phi_p.qmd
+      - docs/criteria.dij.qmd
+      - docs/criteria.AvgAbsCor.qmd
+      - docs/criteria.discrepancy.qmd
+      - docs/criteria.coverage.qmd
+      - docs/criteria.maximin.qmd
+      - docs/criteria.mesh_ratio.qmd
+      section: Criteria
+    id: docs
+  - id: dummy-sidebar

@@ -1,5 +1,13 @@
 # Function reference
 
+## Base Designs
+
+Generate Random LHD
+
+| | |
+| --- | --- |
+| [base_designs.rLHD](base_designs.rLHD.qmd#pyLHD.base_designs.rLHD) | Generate a random Latin Hypercube Design (LHD) |
+
 ## Criteria
 
 Space-filling Criterias for LHD
