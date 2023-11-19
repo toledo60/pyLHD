@@ -389,21 +389,21 @@
     "href": "docs/criteria.phi_p.html#examples",
     "title": "criteria.phi_p",
     "section": "Examples",
-    "text": "Examples\nCalculate the phi_p criterion for random_lhd with default settings\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.phi_p(random_lhd)  \n\n0.25171614561886757\n\n\nCalculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)\n\npyLHD.phi_p(random_lhd,p=50,q=2) \n\n0.40824861809757823"
+    "text": "Examples\nCalculate the phi_p criterion for random_lhd with default settings\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.phi_p(random_lhd)  \n\n0.25066981405000127\n\n\nCalculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)\n\npyLHD.phi_p(random_lhd,p=50,q=2)"
   },
   {
     "objectID": "docs/index.html",
     "href": "docs/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase_designs.rLHD\nGenerate a random Latin Hypercube Design (LHD)\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.dij\nCalculate the Inter-site Distance\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.mesh_ratio\nCompute the meshratio criterion for a given design"
+    "text": "Generate Random LHD\n\n\n\nbase_designs.rLHD\nGenerate a random Latin Hypercube Design (LHD)\n\n\nbase_designs.GLPdesign\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.dij\nCalculate the Inter-site Distance\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.mesh_ratio\nCompute the meshratio criterion for a given design\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nutils.exchange\nExchange two random elements in a matrix\n\n\nutils.williams_transform\nWilliams Transformation\n\n\nutils.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nutils.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\nutils.adjust_range\nAdjust the range of a design to [min,max]\n\n\nutils.scale\nScales design to be within [0,1]\n\n\nutils.distance_matrix\nDistance matrix based on specified distance measure"
   },
   {
     "objectID": "docs/index.html#base-designs",
     "href": "docs/index.html#base-designs",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase_designs.rLHD\nGenerate a random Latin Hypercube Design (LHD)"
+    "text": "Generate Random LHD\n\n\n\nbase_designs.rLHD\nGenerate a random Latin Hypercube Design (LHD)\n\n\nbase_designs.GLPdesign\nGood Lattice Point (GLP) Design"
   },
   {
     "objectID": "docs/index.html#criteria",
@@ -670,5 +670,236 @@
     "title": "1. Introduction to pyLHD",
     "section": "2. Algebraic Construction Functions",
     "text": "2. Algebraic Construction Functions\nThe algebraic construction methods are demonstrated in the table below\n\n\n\n\n\n\n\n\n\n\n\n\n\nYe98\nCioppa07\nSun10\nTang93\nLin09\nButler01\n\n\n\n\nRun # \\(n\\)\n\\(2^m +1\\)\n\\(2^m +1\\)\n\\(r2^{m +1}\\) or \\(r2^{m +1} +1\\)\n\\(n\\)\n\\(n^2\\)\n\\(n\\)\n\n\nFactor # \\(k\\)\n\\(2m-2\\)\n\\(m + {m-1 \\choose 2}\\)\n\\(2^c\\)\n\\(m\\)\n\\(2fp\\)\n\\(k \\leq n-1\\)\n\n\nNote\n\\(m\\) is a positive integer \\(m\\geq 2\\)\n\\(m\\) is a positive integer \\(m\\geq 2\\)\n\\(r\\) and \\(c\\) are positive integers\n\\(n\\) and \\(m\\) are from \\(OA(n,m,s,r)\\)\n\\(n^2,2f\\) and \\(p\\) are from \\(OA(n^2,2f,n,2)\\) and \\(OLHD(n,p)\\)\n\\(n\\) is an odd prime number\n\n\n\nFor theoretical details on the construction methods, a good overview is Section 4.2: Algebraic Constuctions for Orthogonal LHDs from Musings about Constructions of Efficient Latin Hypercube Designs with Flexible Run-sizes\nWe start by implementing Ye 1998 construction, the resulting desig will have \\(2^m+1\\) runs and \\(2m-2\\) factors\n\nYe98 = pl.OLHD_Ye98(m=4)\nYe98\n\narray([[ 7., -1., -4., -2.,  3.,  8.],\n       [ 1.,  7., -5., -3., -2., -6.],\n       [ 5., -4.,  1., -6., -8.,  3.],\n       [ 4.,  5.,  7., -8.,  6., -2.],\n       [ 8., -6., -2.,  4.,  5., -7.],\n       [ 6.,  8., -3.,  5., -4.,  1.],\n       [ 3., -2.,  6.,  1., -7., -5.],\n       [ 2.,  3.,  8.,  7.,  1.,  4.],\n       [ 0.,  0.,  0.,  0.,  0.,  0.],\n       [-7.,  1.,  4.,  2., -3., -8.],\n       [-1., -7.,  5.,  3.,  2.,  6.],\n       [-5.,  4., -1.,  6.,  8., -3.],\n       [-4., -5., -7.,  8., -6.,  2.],\n       [-8.,  6.,  2., -4., -5.,  7.],\n       [-6., -8.,  3., -5.,  4., -1.],\n       [-3.,  2., -6., -1.,  7.,  5.],\n       [-2., -3., -8., -7., -1., -4.]])\n\n\n\npl.MaxAbsCor(Ye98) # column-wise correlation are 0\n\n0.0\n\n\nCioppa and Lucas 2007 construction, the resulting design will be a \\(2^m+1\\) by \\(m+ {m-1 \\choose 2}\\) orthogonal LHD. Note \\(m \\geq 2\\)\n\nCioppa07 = pl.OLHD_Cioppa07(m=3)\nCioppa07\n\narray([[ 1., -2., -4.,  3.],\n       [ 2.,  1., -3., -4.],\n       [ 3., -4.,  2., -1.],\n       [ 4.,  3.,  1.,  2.],\n       [ 0.,  0.,  0.,  0.],\n       [-1.,  2.,  4., -3.],\n       [-2., -1.,  3.,  4.],\n       [-3.,  4., -2.,  1.],\n       [-4., -3., -1., -2.]])\n\n\n\npl.MaxAbsCor(Cioppa07) # column-wise correlation are 0\n\n0.0\n\n\nSun et al. 2010 construction, the resulting design will be \\(r2^{c+1}\\) by \\(2^c\\) if type=‘even’. If type=‘odd’ the resulting design will be \\(r2^{c+1} + 1\\) by \\(2^c\\), where \\(r\\) and \\(c\\) are positive integers.\n\nSun10_odd = pl.OLHD_Sun10(C=2,r=2,type='odd')\nSun10_odd\n\narray([[ 1.,  2.,  3.,  4.],\n       [ 2., -1., -4.,  3.],\n       [ 3.,  4., -1., -2.],\n       [ 4., -3.,  2., -1.],\n       [ 5.,  6.,  7.,  8.],\n       [ 6., -5., -8.,  7.],\n       [ 7.,  8., -5., -6.],\n       [ 8., -7.,  6., -5.],\n       [ 0.,  0.,  0.,  0.],\n       [-1., -2., -3., -4.],\n       [-2.,  1.,  4., -3.],\n       [-3., -4.,  1.,  2.],\n       [-4.,  3., -2.,  1.],\n       [-5., -6., -7., -8.],\n       [-6.,  5.,  8., -7.],\n       [-7., -8.,  5.,  6.],\n       [-8.,  7., -6.,  5.]])\n\n\n\nSun10_even = pl.OLHD_Sun10(C=2,r=2,type='even')\nSun10_even\n\narray([[ 0.5,  1.5,  2.5,  3.5],\n       [ 1.5, -0.5, -3.5,  2.5],\n       [ 2.5,  3.5, -0.5, -1.5],\n       [ 3.5, -2.5,  1.5, -0.5],\n       [ 4.5,  5.5,  6.5,  7.5],\n       [ 5.5, -4.5, -7.5,  6.5],\n       [ 6.5,  7.5, -4.5, -5.5],\n       [ 7.5, -6.5,  5.5, -4.5],\n       [-0.5, -1.5, -2.5, -3.5],\n       [-1.5,  0.5,  3.5, -2.5],\n       [-2.5, -3.5,  0.5,  1.5],\n       [-3.5,  2.5, -1.5,  0.5],\n       [-4.5, -5.5, -6.5, -7.5],\n       [-5.5,  4.5,  7.5, -6.5],\n       [-6.5, -7.5,  4.5,  5.5],\n       [-7.5,  6.5, -5.5,  4.5]])\n\n\nLine et al. 2009 construction, the resulting design will be \\(n^2\\) by \\(2fp\\). This is obtained by using a \\(n\\) by \\(p\\) orthogonal LHD with a \\(n^2\\) by \\(2f\\) strength 2 and level \\(n\\) orthogonal array.\nStart by generating an orthogonal LHD\n\nOLHD_example = pl.OLHD_Cioppa07(m=2)\n\nNext, create an orthogonal array with 25 rows, 6 columns, 5 levels, and strength 2 OA(25,6,5,2)\n\nimport numpy as np\n\nOA_example = np.array([[2,2,2,2,2,1],[2,1,5,4,3,5],\n                      [3,2,1,5,4,5],[1,5,4,3,2,5],\n                      [4,1,3,5,2,3],[1,2,3,4,5,2],\n                      [1,3,5,2,4,3],[1,1,1,1,1,1],\n                      [4,3,2,1,5,5],[5,5,5,5,5,1],\n                      [4,4,4,4,4,1],[3,1,4,2,5,4],\n                      [3,3,3,3,3,1],[3,5,2,4,1,3],\n                      [3,4,5,1,2,2],[5,4,3,2,1,5],\n                      [2,3,4,5,1,2],[2,5,3,1,4,4],\n                      [1,4,2,5,3,4],[4,2,5,3,1,4],\n                      [2,4,1,3,5,3],[5,3,1,4,2,4],\n                      [5,2,4,1,3,3],[5,1,2,3,4,2],\n                      [4,5,1,2,3,2] ])\n\nNow using Lin at al. 2009 construction, we couple OLHD and OA to obtain\n\nLin09 = pl.OLHD_Lin09(OLHD=OLHD_example,OA=OA_example)\nLin09\n\narray([[ 12.,  -8.,  12.,  -8.,   7.,  -9.,   6.,  -4.,   6.,  -4.,  -9.,\n         -7.],\n       [  7.,  -9.,  -7.,   9., -10.,  -2.,  -9.,  -7.,   9.,   7.,  -5.,\n         -1.],\n       [ 10.,   2.,  -9.,  -7., -11.,   3.,   5.,   1.,  -7.,   9.,  -3.,\n        -11.],\n       [ -9.,  -7.,  -1.,   5.,  -8., -12.,  -7.,   9.,   2., -10.,  -4.,\n         -6.],\n       [  4.,   6., -10.,  -2.,   2., -10.,  -8., -12.,  -5.,  -1.,   1.,\n         -5.],\n       [ 11.,  -3.,  -5.,  -1.,   8.,  12.,   3.,  11.,  10.,   2.,   4.,\n          6.],\n       [  1.,  -5.,   8.,  12.,  -1.,   5.,  -2.,  10.,   4.,   6.,   2.,\n        -10.],\n       [  6.,  -4.,   6.,  -4.,   6.,  -4., -12.,   8., -12.,   8., -12.,\n          8.],\n       [ -1.,   5.,   7.,  -9., -12.,   8.,   2., -10.,  -9.,  -7.,  -6.,\n          4.],\n       [-12.,   8., -12.,   8.,   3.,  11.,  -6.,   4.,  -6.,   4., -11.,\n          3.],\n       [ -6.,   4.,  -6.,   4.,   4.,   6.,  12.,  -8.,  12.,  -8.,  -8.,\n        -12.],\n       [  5.,   1.,   9.,   7.,  -7.,   9., -10.,  -2.,   7.,  -9.,   9.,\n          7.],\n       [  0.,   0.,   0.,   0.,   5.,   1.,   0.,   0.,   0.,   0., -10.,\n         -2.],\n       [-10.,  -2.,  -3., -11.,   1.,  -5.,  -5.,  -1.,  11.,  -3.,  -2.,\n         10.],\n       [ -5.,  -1.,   3.,  11.,  12.,  -8.,  10.,   2., -11.,   3.,   6.,\n         -4.],\n       [ -7.,   9.,  10.,   2.,  -9.,  -7.,   9.,   7.,   5.,   1.,  -7.,\n          9.],\n       [  2., -10., -11.,   3.,  11.,  -3.,   1.,  -5.,  -3., -11.,   3.,\n         11.],\n       [ -8., -12.,   5.,   1.,  -6.,   4.,  -4.,  -6., -10.,  -2.,  12.,\n         -8.],\n       [ -4.,  -6.,  -8., -12.,  -5.,  -1.,   8.,  12.,  -4.,  -6.,  10.,\n          2.],\n       [  9.,   7.,  -2.,  10.,  -4.,  -6.,   7.,  -9.,  -1.,   5.,   8.,\n         12.],\n       [ -3., -11.,   1.,  -5.,  -2.,  10.,  11.,  -3.,  -2.,  10.,  -1.,\n          5.],\n       [ -2.,  10.,  -4.,  -6.,  -3., -11.,  -1.,   5.,   8.,  12.,  11.,\n         -3.],\n       [  8.,  12.,   4.,   6.,   0.,   0.,   4.,   6.,  -8., -12.,   0.,\n          0.],\n       [  3.,  11.,   2., -10.,   9.,   7., -11.,   3.,   1.,  -5.,   7.,\n         -9.],\n       [-11.,   3.,  11.,  -3.,  10.,   2.,  -3., -11.,   3.,  11.,   5.,\n          1.]])\n\n\nWe can convert an orthogonal array into a LHD using the function OA2LHD. Consider the earlier OA_example with 25 rows and 6 columns.\n\npl.OA2LHD(OA_example)\n\narray([[ 9,  7,  6,  9,  8,  5],\n       [ 6,  3, 23, 18, 12, 21],\n       [14,  9,  3, 23, 18, 25],\n       [ 4, 23, 19, 11, 10, 22],\n       [16,  2, 15, 24,  9, 13],\n       [ 1,  6, 14, 20, 22,  7],\n       [ 3, 14, 21,  6, 16, 15],\n       [ 5,  1,  5,  3,  2,  3],\n       [20, 13,  9,  1, 25, 23],\n       [23, 24, 22, 25, 23,  1],\n       [19, 18, 20, 17, 20,  2],\n       [12,  4, 18, 10, 24, 20],\n       [11, 15, 11, 13, 15,  4],\n       [13, 21,  8, 19,  5, 14],\n       [15, 19, 24,  2,  7,  8],\n       [25, 17, 12,  7,  4, 24],\n       [10, 11, 17, 21,  1, 10],\n       [ 8, 22, 13,  4, 17, 17],\n       [ 2, 20, 10, 22, 14, 19],\n       [17,  8, 25, 15,  3, 18],\n       [ 7, 16,  1, 14, 21, 11],\n       [22, 12,  2, 16,  6, 16],\n       [24, 10, 16,  5, 13, 12],\n       [21,  5,  7, 12, 19,  9],\n       [18, 25,  4,  8, 11,  6]])\n\n\nLastly, we consider Butler 2001 construction by generating a \\(n\\) by \\(k\\) OLHD\n\nButler01 = pl.OLHD_Butler01(nrows=11,ncols=5)\nButler01\n\narray([[ 1.,  5.,  4.,  2.,  3.],\n       [ 7.,  8.,  2.,  3., 11.],\n       [10.,  3.,  1.,  7.,  4.],\n       [ 4., 10.,  3., 11.,  5.],\n       [ 3.,  1.,  5.,  8., 10.],\n       [ 9., 11.,  7.,  4.,  2.],\n       [ 8.,  2.,  9.,  1.,  7.],\n       [ 2.,  9., 11.,  5.,  8.],\n       [ 5.,  4., 10.,  9.,  1.],\n       [11.,  7.,  8., 10.,  9.],\n       [ 6.,  6.,  6.,  6.,  6.]])"
+  },
+  {
+    "objectID": "docs/utils.exchange.html",
+    "href": "docs/utils.exchange.html",
+    "title": "utils.exchange",
+    "section": "",
+    "text": "utils.exchange(arr, idx, type='col')\nExchange two random elements in a matrix"
+  },
+  {
+    "objectID": "docs/utils.exchange.html#parameters",
+    "href": "docs/utils.exchange.html#parameters",
+    "title": "utils.exchange",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired\n\n\nidx\nint\nA positive integer, which stands for the (idx) column or row of (arr) type (str, optional): If type is ‘col’, two random elements will be exchanged within column (idx). If type is ‘row’, two random elements will be exchanged within row (idx). Defaults to ‘col’.\nrequired"
+  },
+  {
+    "objectID": "docs/utils.exchange.html#returns",
+    "href": "docs/utils.exchange.html#returns",
+    "title": "utils.exchange",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nA new design matrix after the exchange"
+  },
+  {
+    "objectID": "docs/utils.exchange.html#examples",
+    "href": "docs/utils.exchange.html#examples",
+    "title": "utils.exchange",
+    "section": "Examples",
+    "text": "Examples\nChoose the first columns of random_lhd and exchange two randomly selected elements\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows = 5, ncols = 3)\nrandom_lhd\n\narray([[5, 3, 4],\n       [3, 2, 5],\n       [2, 4, 3],\n       [4, 5, 2],\n       [1, 1, 1]])\n\n\nChoose column 1 of random_lhd and exchange two randomly selected elements\n\npyLHD.exchange(random_lhd,idx=1,type='col')\n\narray([[5, 3, 4],\n       [3, 2, 5],\n       [2, 1, 3],\n       [4, 5, 2],\n       [1, 4, 1]])\n\n\nChoose the first row of random_lhd and exchange two randomly selected elements\n\npyLHD.exchange(random_lhd,idx=1,type='row')\n\narray([[5, 3, 4],\n       [5, 2, 3],\n       [2, 1, 3],\n       [4, 5, 2],\n       [1, 4, 1]])"
+  },
+  {
+    "objectID": "docs/index.html#utilities",
+    "href": "docs/index.html#utilities",
+    "title": "Function reference",
+    "section": "",
+    "text": "miscellaneous utilities for working with LHDs\n\n\n\nutils.exchange\nExchange two random elements in a matrix\n\n\nutils.williams_transform\nWilliams Transformation\n\n\nutils.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nutils.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\nutils.adjust_range\nAdjust the range of a design to [min,max]\n\n\nutils.scale\nScales design to be within [0,1]\n\n\nutils.distance_matrix\nDistance matrix based on specified distance measure"
+  },
+  {
+    "objectID": "docs/utils.williams_transform.html",
+    "href": "docs/utils.williams_transform.html",
+    "title": "utils.williams_transform",
+    "section": "",
+    "text": "utils.williams_transform(arr, baseline=1)\nWilliams Transformation"
+  },
+  {
+    "objectID": "docs/utils.williams_transform.html#parameters",
+    "href": "docs/utils.williams_transform.html#parameters",
+    "title": "utils.williams_transform",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired\n\n\nbaseline\nint\nA integer, which defines the minimum value for each column of the matrix. Defaults to 1.\n1"
+  },
+  {
+    "objectID": "docs/utils.williams_transform.html#returns",
+    "href": "docs/utils.williams_transform.html#returns",
+    "title": "utils.williams_transform",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nAfter applying Williams transformation, a matrix whose sizes are the same as input matrix"
+  },
+  {
+    "objectID": "docs/utils.williams_transform.html#examples",
+    "href": "docs/utils.williams_transform.html#examples",
+    "title": "utils.williams_transform",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=3)\nrandom_lhd\n\narray([[2, 1, 2],\n       [1, 5, 1],\n       [5, 4, 4],\n       [4, 2, 5],\n       [3, 3, 3]])\n\n\nChange the baseline\n\npyLHD.williams_transform(random_lhd,baseline=3)\n\narray([[5, 3, 5],\n       [3, 4, 3],\n       [4, 6, 6],\n       [6, 5, 4],\n       [7, 7, 7]])"
+  },
+  {
+    "objectID": "docs/utils.distance_matrix.html",
+    "href": "docs/utils.distance_matrix.html",
+    "title": "utils.distance_matrix",
+    "section": "",
+    "text": "utils.distance_matrix(arr, metric='euclidean', p=2)\nDistance matrix based on specified distance measure"
+  },
+  {
+    "objectID": "docs/utils.distance_matrix.html#parameters",
+    "href": "docs/utils.distance_matrix.html#parameters",
+    "title": "utils.distance_matrix",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired\n\n\nmetric\nstr\nSpecifiy the following distance measure: ‘euclidean’: Usual distance between the two vectors (L_2 norm) ‘maximum’: Maximum distance between two components of x and y (supremum norm) ‘manhattan’: Absolute distance between the two vectors (L_1 norm) ‘minkowski’: The p norm, the pth root of the sum of the pth powers of the differences of the components\n'euclidean'\n\n\np\nint\nThe power of the Minkowski distance. Defaults to 2.\n2"
+  },
+  {
+    "objectID": "docs/utils.distance_matrix.html#returns",
+    "href": "docs/utils.distance_matrix.html#returns",
+    "title": "utils.distance_matrix",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nThe calculated distance matrix baed on specified distance measure"
+  },
+  {
+    "objectID": "docs/utils.distance_matrix.html#examples",
+    "href": "docs/utils.distance_matrix.html#examples",
+    "title": "utils.distance_matrix",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)\npyLHD.distance_matrix(random_lhd)\n\narray([[0.        , 0.6       , 0.48989795, 0.48989795, 0.6       ],\n       [0.6       , 0.        , 0.87177979, 0.66332496, 1.2       ],\n       [0.48989795, 0.87177979, 0.        , 0.9797959 , 0.66332496],\n       [0.48989795, 0.66332496, 0.9797959 , 0.        , 0.87177979],\n       [0.6       , 1.2       , 0.66332496, 0.87177979, 0.        ]])\n\n\n\npyLHD.distance_matrix(random_lhd, metric = 'manhattan')\n\narray([[0. , 1. , 0.8, 0.8, 1. ],\n       [1. , 0. , 1.4, 1. , 2. ],\n       [0.8, 1.4, 0. , 1.6, 1. ],\n       [0.8, 1. , 1.6, 0. , 1.4],\n       [1. , 2. , 1. , 1.4, 0. ]])\n\n\n\npyLHD.distance_matrix(random_lhd, metric = 'minkowski', p=5)\n\narray([[0.        , 0.46090632, 0.40487949, 0.40487949, 0.46090632],\n       [0.46090632, 0.        , 0.68950241, 0.60098442, 0.92181265],\n       [0.40487949, 0.68950241, 0.        , 0.80975898, 0.60098442],\n       [0.40487949, 0.60098442, 0.80975898, 0.        , 0.68950241],\n       [0.46090632, 0.92181265, 0.60098442, 0.68950241, 0.        ]])"
+  },
+  {
+    "objectID": "docs/utils.scale.html",
+    "href": "docs/utils.scale.html",
+    "title": "utils.scale",
+    "section": "",
+    "text": "utils.scale(arr, uniformize=False)\nScales design to be within [0,1]"
+  },
+  {
+    "objectID": "docs/utils.scale.html#parameters",
+    "href": "docs/utils.scale.html#parameters",
+    "title": "utils.scale",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired\n\n\nuniformize\nbool\nIf True, Rosenblatt transformation is applied (uniformize by applying the empirical cumulative distribution). If False (default), scaling is done by using the minimum and maximum value\nFalse"
+  },
+  {
+    "objectID": "docs/utils.scale.html#returns",
+    "href": "docs/utils.scale.html#returns",
+    "title": "utils.scale",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nThe scaled design"
+  },
+  {
+    "objectID": "docs/utils.scale.html#examples",
+    "href": "docs/utils.scale.html#examples",
+    "title": "utils.scale",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)\npyLHD.scale(random_lhd)\n\narray([[0.5 , 0.  , 1.  ],\n       [0.  , 0.25, 0.25],\n       [0.75, 0.5 , 0.75],\n       [0.25, 0.75, 0.  ],\n       [1.  , 1.  , 0.5 ]])"
+  },
+  {
+    "objectID": "docs/utils.adjust_range.html",
+    "href": "docs/utils.adjust_range.html",
+    "title": "utils.adjust_range",
+    "section": "",
+    "text": "utils.adjust_range(arr, min, max, digits=None)\nAdjust the range of a design to [min,max]"
+  },
+  {
+    "objectID": "docs/utils.adjust_range.html#parameters",
+    "href": "docs/utils.adjust_range.html#parameters",
+    "title": "utils.adjust_range",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired\n\n\nmin\nfloat\ndesired lower bound of design\nrequired\n\n\nmax\nfloat\ndesired upper bound of design\nrequired\n\n\ndigits\nint\nnumber of digits to which the design is rounded\nNone"
+  },
+  {
+    "objectID": "docs/utils.adjust_range.html#returns",
+    "href": "docs/utils.adjust_range.html#returns",
+    "title": "utils.adjust_range",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nDesign with new range [min,max]"
+  },
+  {
+    "objectID": "docs/utils.adjust_range.html#examples",
+    "href": "docs/utils.adjust_range.html#examples",
+    "title": "utils.adjust_range",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)\n\n\npyLHD.adjust_range(random_lhd,-1, 1)\n\narray([[ 0. , -0.5, -0.5],\n       [-1. ,  1. ,  0. ],\n       [ 1. ,  0.5, -1. ],\n       [ 0.5,  0. ,  0.5],\n       [-0.5, -1. ,  1. ]])\n\n\n\npyLHD.adjust_range(random_lhd, 5, 12, digits = 3)\n\narray([[ 8.5 ,  6.75,  6.75],\n       [ 5.  , 12.  ,  8.5 ],\n       [12.  , 10.25,  5.  ],\n       [10.25,  8.5 , 10.25],\n       [ 6.75,  5.  , 12.  ]])"
+  },
+  {
+    "objectID": "docs/base_designs.GLPdesign.html",
+    "href": "docs/base_designs.GLPdesign.html",
+    "title": "base_designs.GLPdesign",
+    "section": "",
+    "text": "base_designs.GLPdesign(nrows, ncols, h=None)\nGood Lattice Point (GLP) Design"
+  },
+  {
+    "objectID": "docs/base_designs.GLPdesign.html#parameters",
+    "href": "docs/base_designs.GLPdesign.html#parameters",
+    "title": "base_designs.GLPdesign",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nnrows\nint\nA positive integer specifying the number of rows\nrequired\n\n\nncols\nint\nA postive integer specifying the number of columns h (list, optional): A list whose length is same as (ncols), with its elements that are smaller than and coprime to (nrows). Defaults to None. If None, a random sample of (ncols) elements between 1 and (nrows-1).\nrequired"
+  },
+  {
+    "objectID": "docs/base_designs.GLPdesign.html#returns",
+    "href": "docs/base_designs.GLPdesign.html#returns",
+    "title": "base_designs.GLPdesign",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nA (nrows by ncols) GLP design."
+  },
+  {
+    "objectID": "docs/base_designs.GLPdesign.html#examples",
+    "href": "docs/base_designs.GLPdesign.html#examples",
+    "title": "base_designs.GLPdesign",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\npyLHD.GLPdesign(nrows=5,ncols=3)\n\narray([[2, 1, 4],\n       [4, 2, 3],\n       [1, 3, 2],\n       [3, 4, 1],\n       [0, 0, 0]])\n\n\n\npyLHD.GLPdesign(nrows=8,ncols=4,h=[1,3,5,7])\n\narray([[3, 7, 5, 1],\n       [6, 6, 2, 2],\n       [1, 5, 7, 3],\n       [4, 4, 4, 4],\n       [7, 3, 1, 5],\n       [2, 2, 6, 6],\n       [5, 1, 3, 7],\n       [0, 0, 0, 0]])"
+  },
+  {
+    "objectID": "docs/utils.OA2LHD.html",
+    "href": "docs/utils.OA2LHD.html",
+    "title": "utils.OA2LHD",
+    "section": "",
+    "text": "utils.OA2LHD(arr)\nTransform an Orthogonal Array (OA) into an LHD"
+  },
+  {
+    "objectID": "docs/utils.OA2LHD.html#parameters",
+    "href": "docs/utils.OA2LHD.html#parameters",
+    "title": "utils.OA2LHD",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nAn orthogonal array matrix\nrequired"
+  },
+  {
+    "objectID": "docs/utils.OA2LHD.html#returns",
+    "href": "docs/utils.OA2LHD.html#returns",
+    "title": "utils.OA2LHD",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nLHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive"
+  },
+  {
+    "objectID": "docs/utils.OA2LHD.html#examples",
+    "href": "docs/utils.OA2LHD.html#examples",
+    "title": "utils.OA2LHD",
+    "section": "Examples",
+    "text": "Examples\nFirst create an OA(9,2,3,2)\n\nimport numpy as np\nexample_OA = np.array([[1,1],[1,2],[1,3],[2,1],\n                       [2,2],[2,3],[3,1],[3,2],[3,3] ])\n\nTransform the “OA” above into a LHD according to Tang (1993)\n\nimport pyLHD\npyLHD.OA2LHD(example_OA)      \n\narray([[1, 2],\n       [2, 5],\n       [3, 9],\n       [4, 3],\n       [5, 6],\n       [6, 7],\n       [8, 1],\n       [9, 4],\n       [7, 8]])"
+  },
+  {
+    "objectID": "docs/utils.eval_design.html",
+    "href": "docs/utils.eval_design.html",
+    "title": "utils.eval_design",
+    "section": "",
+    "text": "utils.eval_design(arr, criteria='phi_p', p=15, q=1)\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD"
+  },
+  {
+    "objectID": "docs/utils.eval_design.html#parameters",
+    "href": "docs/utils.eval_design.html#parameters",
+    "title": "utils.eval_design",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nA design matrix\nrequired\n\n\ncriteria\nstr\nCriteria to choose from. Defaults to ‘phi_p’. Options include ‘phi_p’,‘MaxProCriterion’,‘AvgAbsCor’,‘AvgAbsCor’ p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15 q (int): If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.\n'phi_p'"
+  },
+  {
+    "objectID": "docs/utils.eval_design.html#returns",
+    "href": "docs/utils.eval_design.html#returns",
+    "title": "utils.eval_design",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nfloat\nCalculation of chosen criteria for any LHD"
+  },
+  {
+    "objectID": "docs/utils.eval_design.html#examples",
+    "href": "docs/utils.eval_design.html#examples",
+    "title": "utils.eval_design",
+    "section": "Examples",
+    "text": "Examples\nBy default phi_p with p=15 and q=1\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=3)\npyLHD.eval_design(random_lhd)\n\n0.3336499797729222\n\n\nEvaluate design based on MaxProCriterion\n\npyLHD.eval_design(random_lhd,criteria='MaxProCriterion')\n\n0.5352688013799887"
   }
 ]

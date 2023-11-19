@@ -123,6 +123,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">base_designs.rLHD</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/base_designs.GLPdesign.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base_designs.GLPdesign</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -190,6 +196,59 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Utilities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.exchange.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.exchange</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.williams_transform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.williams_transform</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.OA2LHD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.OA2LHD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.eval_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.eval_design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.adjust_range.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.adjust_range</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.scale.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.scale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.distance_matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.distance_matrix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -211,6 +270,10 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><a href="../docs/base_designs.rLHD.html#pyLHD.base_designs.rLHD">base_designs.rLHD</a></td>
 <td>Generate a random Latin Hypercube Design (LHD)</td>
+</tr>
+<tr class="even">
+<td><a href="../docs/base_designs.GLPdesign.html#pyLHD.base_designs.GLPdesign">base_designs.GLPdesign</a></td>
+<td>Good Lattice Point (GLP) Design</td>
 </tr>
 </tbody>
 </table>
@@ -255,6 +318,42 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><a href="../docs/criteria.mesh_ratio.html#pyLHD.criteria.mesh_ratio">criteria.mesh_ratio</a></td>
 <td>Compute the meshratio criterion for a given design</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="utilities" class="level2">
+<h2 class="anchored" data-anchor-id="utilities">Utilities</h2>
+<p>miscellaneous utilities for working with LHDs</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><a href="../docs/utils.exchange.html#pyLHD.utils.exchange">utils.exchange</a></td>
+<td>Exchange two random elements in a matrix</td>
+</tr>
+<tr class="even">
+<td><a href="../docs/utils.williams_transform.html#pyLHD.utils.williams_transform">utils.williams_transform</a></td>
+<td>Williams Transformation</td>
+</tr>
+<tr class="odd">
+<td><a href="../docs/utils.OA2LHD.html#pyLHD.utils.OA2LHD">utils.OA2LHD</a></td>
+<td>Transform an Orthogonal Array (OA) into an LHD</td>
+</tr>
+<tr class="even">
+<td><a href="../docs/utils.eval_design.html#pyLHD.utils.eval_design">utils.eval_design</a></td>
+<td>Evaluate a design based on a chosen criteria, a simple wrapper for all <code>criteria</code> in <code>pyLHD</code></td>
+</tr>
+<tr class="odd">
+<td><a href="../docs/utils.adjust_range.html#pyLHD.utils.adjust_range">utils.adjust_range</a></td>
+<td>Adjust the range of a design to [min,max]</td>
+</tr>
+<tr class="even">
+<td><a href="../docs/utils.scale.html#pyLHD.utils.scale">utils.scale</a></td>
+<td>Scales design to be within [0,1]</td>
+</tr>
+<tr class="odd">
+<td><a href="../docs/utils.distance_matrix.html#pyLHD.utils.distance_matrix">utils.distance_matrix</a></td>
+<td>Distance matrix based on specified distance measure</td>
 </tr>
 </tbody>
 </table>

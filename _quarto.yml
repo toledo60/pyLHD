@@ -27,7 +27,8 @@ quartodoc:
     - title: Base Designs
       desc: Generate Random LHD
       contents:
-        - base_designs.rLHD  
+        - base_designs.rLHD
+        - base_designs.GLPdesign
     - title: Criteria
       desc: Space-filling Criterias for LHD
       contents:
@@ -40,4 +41,13 @@ quartodoc:
         - criteria.coverage
         - criteria.maximin
         - criteria.mesh_ratio
-        
+    - title: Utilities
+      desc: miscellaneous utilities for working with LHDs
+      contents:
+        - utils.exchange
+        - utils.williams_transform
+        - utils.OA2LHD
+        - utils.eval_design
+        - utils.adjust_range
+        - utils.scale
+        - utils.distance_matrix

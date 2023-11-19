@@ -1,0 +1,35 @@
+# utils.adjust_range { #pyLHD.utils.adjust_range }
+
+`utils.adjust_range(arr, min, max, digits=None)`
+
+Adjust the range of a design to [min,max]
+
+## Parameters
+
+| Name     | Type          | Description                                     | Default    |
+|----------|---------------|-------------------------------------------------|------------|
+| `arr`    | numpy.ndarray | A design matrix                                 | _required_ |
+| `min`    | float         | desired lower bound of design                   | _required_ |
+| `max`    | float         | desired upper bound of design                   | _required_ |
+| `digits` | int           | number of digits to which the design is rounded | `None`     |
+
+## Returns
+
+| Type          | Description                     |
+|---------------|---------------------------------|
+| npt.ArrayLike | Design with new range [min,max] |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)
+```
+```{python}
+pyLHD.adjust_range(random_lhd,-1, 1)
+```
+```{python}
+pyLHD.adjust_range(random_lhd, 5, 12, digits = 3)
+```

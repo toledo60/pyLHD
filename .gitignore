@@ -19,6 +19,8 @@ share/python-wheels/
 MANIFEST
 .DS_Store
 .pytest_cache
+__pycache__/
+
 
 # Jupyter Notebook
 .ipynb_checkpoints

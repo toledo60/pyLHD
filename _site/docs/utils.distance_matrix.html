@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>criteria.phi_p</title>
+<title>utils.distance_matrix</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/criteria.MaxAbsCor.html">Criteria</a></li><li class="breadcrumb-item"><a href="../docs/criteria.phi_p.html">criteria.phi_p</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/utils.exchange.html">Utilities</a></li><li class="breadcrumb-item"><a href="../docs/utils.distance_matrix.html">utils.distance_matrix</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/criteria.phi_p.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/criteria.phi_p.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">criteria.phi_p</span></a>
   </div>
 </li>
@@ -239,6 +239,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">utils.exchange</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.williams_transform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.williams_transform</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.OA2LHD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.OA2LHD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.eval_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.eval_design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.adjust_range.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.adjust_range</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.scale.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.scale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.distance_matrix.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">utils.distance_matrix</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -252,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">criteria.phi_p</h1>
+<h1 class="title">utils.distance_matrix</h1>
 </div>
 
 
@@ -267,16 +303,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>criteria.phi_p(arr, p=15, q=1)</code></p>
-<p>Calculate the phi_p Criterion</p>
+<p><code>utils.distance_matrix(arr, metric='euclidean', p=2)</code></p>
+<p>Distance matrix based on specified distance measure</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
+<col style="width: 2%">
 <col style="width: 3%">
-<col style="width: 6%">
-<col style="width: 85%">
-<col style="width: 5%">
+<col style="width: 89%">
+<col style="width: 3%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -294,10 +330,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><em>required</em></td>
 </tr>
 <tr class="even">
+<td><code>metric</code></td>
+<td>str</td>
+<td>Specifiy the following distance measure: ‘euclidean’: Usual distance between the two vectors (L_2 norm) ‘maximum’: Maximum distance between two components of x and y (supremum norm) ‘manhattan’: Absolute distance between the two vectors (L_1 norm) ‘minkowski’: The p norm, the pth root of the sum of the pth powers of the differences of the components</td>
+<td><code>'euclidean'</code></td>
+</tr>
+<tr class="odd">
 <td><code>p</code></td>
 <td>int</td>
-<td>A positive integer, which is the parameter in the phi_p formula. The default is set to be 15. If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.</td>
-<td><code>15</code></td>
+<td>The power of the Minkowski distance. Defaults to 2.</td>
+<td><code>2</code></td>
 </tr>
 </tbody>
 </table>
@@ -305,6 +347,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns" class="level2">
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 81%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Type</th>
@@ -313,28 +359,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>float</td>
-<td>A positive number indicating phi_p</td>
+<td>npt.ArrayLike</td>
+<td>The calculated distance matrix baed on specified distance measure</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>Calculate the phi_p criterion for random_lhd with default settings</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.rLHD(nrows<span class="op">=</span><span class="dv">10</span>,ncols<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.phi_p(random_lhd)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.rLHD(nrows<span class="op">=</span><span class="dv">5</span>,ncols<span class="op">=</span><span class="dv">3</span>,unit_cube<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.distance_matrix(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>0.25125557693812905</code></pre>
+<pre><code>array([[0.        , 0.6       , 0.48989795, 0.48989795, 0.6       ],
+       [0.6       , 0.        , 0.87177979, 0.66332496, 1.2       ],
+       [0.48989795, 0.87177979, 0.        , 0.9797959 , 0.66332496],
+       [0.48989795, 0.66332496, 0.9797959 , 0.        , 0.87177979],
+       [0.6       , 1.2       , 0.66332496, 0.87177979, 0.        ]])</code></pre>
 </div>
 </div>
-<p>Calculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.phi_p(random_lhd,p<span class="op">=</span><span class="dv">50</span>,q<span class="op">=</span><span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.distance_matrix(random_lhd, metric <span class="op">=</span> <span class="st">'manhattan'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>0.40824829475405966</code></pre>
+<pre><code>array([[0. , 1. , 0.8, 0.8, 1. ],
+       [1. , 0. , 1.4, 1. , 2. ],
+       [0.8, 1.4, 0. , 1.6, 1. ],
+       [0.8, 1. , 1.6, 0. , 1.4],
+       [1. , 2. , 1. , 1.4, 0. ]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pyLHD.distance_matrix(random_lhd, metric <span class="op">=</span> <span class="st">'minkowski'</span>, p<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>array([[0.        , 0.46090632, 0.40487949, 0.40487949, 0.46090632],
+       [0.46090632, 0.        , 0.68950241, 0.60098442, 0.92181265],
+       [0.40487949, 0.68950241, 0.        , 0.80975898, 0.60098442],
+       [0.40487949, 0.60098442, 0.80975898, 0.        , 0.68950241],
+       [0.46090632, 0.92181265, 0.60098442, 0.68950241, 0.        ]])</code></pre>
 </div>
 </div>
 

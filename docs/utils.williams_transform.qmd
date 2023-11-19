@@ -1,0 +1,32 @@
+# utils.williams_transform { #pyLHD.utils.williams_transform }
+
+`utils.williams_transform(arr, baseline=1)`
+
+Williams Transformation
+
+## Parameters
+
+| Name       | Type          | Description                                                                              | Default    |
+|------------|---------------|------------------------------------------------------------------------------------------|------------|
+| `arr`      | numpy.ndarray | A design matrix                                                                          | _required_ |
+| `baseline` | int           | A integer, which defines the minimum value for each column of the matrix. Defaults to 1. | `1`        |
+
+## Returns
+
+| Type          | Description                                                                               |
+|---------------|-------------------------------------------------------------------------------------------|
+| npt.ArrayLike | After applying Williams transformation, a matrix whose sizes are the same as input matrix |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows=5,ncols=3)
+random_lhd
+```
+Change the baseline
+```{python}
+pyLHD.williams_transform(random_lhd,baseline=3)
+```

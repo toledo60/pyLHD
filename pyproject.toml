@@ -35,6 +35,6 @@ testpaths = [
 
 [project.urls]
 "Homepage" = "https://github.com/toledo60/pyLHD"
-"Documentation" = "https://github.com/toledo60/pyLHD"
+"Documentation" = "https://pylhd.netlify.app/"
 "Source" = "https://github.com/toledo60/pyLHD"
 "Bug Tracker" = "https://github.com/toledo60/pyLHD/issues"

@@ -7,6 +7,7 @@ Generate Random LHD
 | | |
 | --- | --- |
 | [base_designs.rLHD](base_designs.rLHD.qmd#pyLHD.base_designs.rLHD) | Generate a random Latin Hypercube Design (LHD) |
+| [base_designs.GLPdesign](base_designs.GLPdesign.qmd#pyLHD.base_designs.GLPdesign) | Good Lattice Point (GLP) Design  |
 
 ## Criteria
 
@@ -23,3 +24,17 @@ Space-filling Criterias for LHD
 | [criteria.coverage](criteria.coverage.qmd#pyLHD.criteria.coverage) | Compute the coverage measure for a design |
 | [criteria.maximin](criteria.maximin.qmd#pyLHD.criteria.maximin) | Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points. |
 | [criteria.mesh_ratio](criteria.mesh_ratio.qmd#pyLHD.criteria.mesh_ratio) | Compute the meshratio criterion for a given design |
+
+## Utilities
+
+miscellaneous utilities for working with LHDs
+
+| | |
+| --- | --- |
+| [utils.exchange](utils.exchange.qmd#pyLHD.utils.exchange) | Exchange two random elements in a matrix |
+| [utils.williams_transform](utils.williams_transform.qmd#pyLHD.utils.williams_transform) | Williams Transformation |
+| [utils.OA2LHD](utils.OA2LHD.qmd#pyLHD.utils.OA2LHD) | Transform an Orthogonal Array (OA) into an LHD |
+| [utils.eval_design](utils.eval_design.qmd#pyLHD.utils.eval_design) | Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD` |
+| [utils.adjust_range](utils.adjust_range.qmd#pyLHD.utils.adjust_range) | Adjust the range of a design to [min,max] |
+| [utils.scale](utils.scale.qmd#pyLHD.utils.scale) | Scales design to be within [0,1] |
+| [utils.distance_matrix](utils.distance_matrix.qmd#pyLHD.utils.distance_matrix) | Distance matrix based on specified distance measure |

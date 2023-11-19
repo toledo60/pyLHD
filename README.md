@@ -3,10 +3,6 @@
 pyLHD is a python implementation for something in between the R packages [LHD](https://cran.r-project.org/web/packages/LHD/index.html)
 and [DiceDesign](https://cran.r-project.org/web/packages/DiceDesign/index.html).
 
-For a quick overview of pyLHD main functionalities without having to install it, click on the link below and navigate to the notebooks folder to run an interactive Jupyter notebook
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/toledo60/pyLHD/main?filepath=examples%2Fnotebooks)
-
 ## Installation
 
 Currently `pyLHD` can be installed from Github

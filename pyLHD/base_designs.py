@@ -38,21 +38,26 @@ def rLHD(nrows: int, ncols: int, unit_cube: bool = False) -> npt.ArrayLike:
 
 # Good Lattice Point Design
 
-def GLPdesign(nrows,ncols,h = None):
+def GLPdesign(nrows: int,ncols: int, h: list = None) -> npt.ArrayLike:
   """ Good Lattice Point (GLP) Design 
 
   Args:
       nrows (int): A positive integer specifying the number of rows
       ncols (int): A postive integer specifying the number of columns
-      h (list, optional): A list whose length is same as (ncols), with its elements that are smaller than and coprime to (nrows). 
-      Defaults to None. If None, a random sample of (ncols) elements between 1 and (nrows-1).
+          h (list, optional): A list whose length is same as (ncols), with its elements that are smaller than and coprime to (nrows). 
+          Defaults to None. If None, a random sample of (ncols) elements between 1 and (nrows-1).
 
   Returns:
-      numpy.ndarray: A (nrows by ncols) GLP design.
+      A (nrows by ncols) GLP design.
   
   Examples:
-      >>> pyLHD.GLPdesign(nrows=5,ncols=3)
-      >>> pyLHD.GLPdesign(nrows=8,ncols=4,h=[1,3,5,7])
+  ```{python}
+  import pyLHD
+  pyLHD.GLPdesign(nrows=5,ncols=3)
+  ```
+  ```{python}
+  pyLHD.GLPdesign(nrows=8,ncols=4,h=[1,3,5,7])
+  ```
   """
   rng = np.random.default_rng()
   if h is None:

@@ -1,0 +1,33 @@
+# utils.OA2LHD { #pyLHD.utils.OA2LHD }
+
+`utils.OA2LHD(arr)`
+
+Transform an Orthogonal Array (OA) into an LHD
+
+## Parameters
+
+| Name   | Type          | Description                | Default    |
+|--------|---------------|----------------------------|------------|
+| `arr`  | numpy.ndarray | An orthogonal array matrix | _required_ |
+
+## Returns
+
+| Type          | Description                                                                                           |
+|---------------|-------------------------------------------------------------------------------------------------------|
+| npt.ArrayLike | LHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive |
+
+## Examples
+
+
+
+First create an OA(9,2,3,2)
+```{python}
+import numpy as np
+example_OA = np.array([[1,1],[1,2],[1,3],[2,1],
+                       [2,2],[2,3],[3,1],[3,2],[3,3] ])
+```
+Transform the "OA" above into a LHD according to Tang (1993)
+```{python}
+import pyLHD
+pyLHD.OA2LHD(example_OA)      
+```

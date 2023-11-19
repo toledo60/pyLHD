@@ -1,0 +1,28 @@
+# utils.scale { #pyLHD.utils.scale }
+
+`utils.scale(arr, uniformize=False)`
+
+Scales design to be within [0,1]
+
+## Parameters
+
+| Name         | Type          | Description                                                                                                                                                                                | Default    |
+|--------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`        | numpy.ndarray | A design matrix                                                                                                                                                                            | _required_ |
+| `uniformize` | bool          | If True, Rosenblatt transformation is applied  (uniformize by applying the empirical cumulative distribution).  If False (default), scaling is done by using the minimum and maximum value | `False`    |
+
+## Returns
+
+| Type          | Description       |
+|---------------|-------------------|
+| npt.ArrayLike | The scaled design |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)
+pyLHD.scale(random_lhd)
+```

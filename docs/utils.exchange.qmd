@@ -1,0 +1,37 @@
+# utils.exchange { #pyLHD.utils.exchange }
+
+`utils.exchange(arr, idx, type='col')`
+
+Exchange two random elements in a matrix
+
+## Parameters
+
+| Name   | Type          | Description                                                                                                                                                                                                                                                            | Default    |
+|--------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | numpy.ndarray | A design matrix                                                                                                                                                                                                                                                        | _required_ |
+| `idx`  | int           | A positive integer, which stands for the (idx) column or row of (arr) type (str, optional):  If type is 'col', two random elements will be exchanged within column (idx). If type is 'row', two random elements will be exchanged within row (idx). Defaults to 'col'. | _required_ |
+
+## Returns
+
+| Type          | Description                            |
+|---------------|----------------------------------------|
+| npt.ArrayLike | A new design matrix after the exchange |
+
+## Examples
+
+
+
+Choose the first columns of `random_lhd` and exchange two randomly selected elements
+```{python}
+import pyLHD
+random_lhd = pyLHD.rLHD(nrows = 5, ncols = 3)
+random_lhd
+```
+Choose column 1 of random_lhd and exchange two randomly selected elements
+```{python}
+pyLHD.exchange(random_lhd,idx=1,type='col')
+```
+Choose the first row of random_lhd and exchange two randomly selected elements
+```{python}
+pyLHD.exchange(random_lhd,idx=1,type='row')
+```
