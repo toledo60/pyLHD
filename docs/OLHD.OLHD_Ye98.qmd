@@ -1,0 +1,37 @@
+# OLHD.OLHD_Ye98 { #pyLHD.OLHD.OLHD_Ye98 }
+
+`OLHD.OLHD_Ye98(m)`
+
+Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)
+
+## Parameters
+
+| Name   | Type   | Description                                                   | Default    |
+|--------|--------|---------------------------------------------------------------|------------|
+| `m`    | int    | A positive integer, and it must be greater than or equal to 2 | _required_ |
+
+## Raises
+
+| Type       | Description                            |
+|------------|----------------------------------------|
+| ValueError | If m is not greater than or equal to 2 |
+
+## Returns
+
+| Type          | Description                                                                          |
+|---------------|--------------------------------------------------------------------------------------|
+| npt.ArrayLike | An orthogonal LHD with the following run size: (n=2^m + 1) and factor size: (k=2m-2) |
+
+## Examples
+
+
+
+Create an orthogonal LHD with m=4. So n=2^m+1=9 runs and k=2*m-2=4 factors
+```{python}
+import pyLHD
+pyLHD.OLHD_Ye98(m=3)
+```
+Create an orthogonal LHD with m=5. So n=2^m+1=17 runs and k=2*m-2=6 factors
+```{python}
+pyLHD.OLHD_Ye98(m=4)
+```

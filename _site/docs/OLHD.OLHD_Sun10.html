@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index</title>
+<title>olhd.olhd_sun10</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -90,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/index.html">Function reference</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/OLHD.OLHD_Butler01.html">Orthogonal LHD</a></li><li class="breadcrumb-item"><a href="../docs/OLHD.OLHD_Sun10.html">OLHD.OLHD_Sun10</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -104,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Function reference</span></a>
   </div>
 </li>
@@ -148,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/OLHD.OLHD_Sun10.html" class="sidebar-item-text sidebar-link">
+  <a href="../docs/OLHD.OLHD_Sun10.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">OLHD.OLHD_Sun10</span></a>
   </div>
 </li>
@@ -299,136 +333,200 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">OLHD.OLHD_Sun10</h1>
+</div>
 
 
-<section id="function-reference" class="level1">
-<h1>Function reference</h1>
-<section id="base-designs" class="level2">
-<h2 class="anchored" data-anchor-id="base-designs">Base Designs</h2>
-<p>Generate Random LHD</p>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><code>OLHD.OLHD_Sun10(C, r, type='odd')</code></p>
+<p>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al.&nbsp;(2010)</p>
+<section id="parameters" class="level2">
+<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 87%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../docs/base_designs.rLHD.html#pyLHD.base_designs.rLHD">base_designs.rLHD</a></td>
-<td>Generate a random Latin Hypercube Design (LHD)</td>
+<td><code>C</code></td>
+<td>int</td>
+<td>A positve integer.</td>
+<td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><a href="../docs/base_designs.GLPdesign.html#pyLHD.base_designs.GLPdesign">base_designs.GLPdesign</a></td>
-<td>Good Lattice Point (GLP) Design</td>
+<td><code>r</code></td>
+<td>int</td>
+<td>A positve integer.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td><code>type</code></td>
+<td>str</td>
+<td>Run size of design, this can be either odd or even. Defaults to ‘odd’. If (type) is ‘odd’ the run size of the OLHD will be (r<em>2^(C+1)+1). If (type) is ‘even’ the run size of the OLHD will be (r</em>2^(C+1))</td>
+<td><code>'odd'</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="orthogonal-lhd" class="level2">
-<h2 class="anchored" data-anchor-id="orthogonal-lhd">Orthogonal LHD</h2>
-<p>Various constructions of orthogonal latin hypercube designs</p>
+<section id="returns" class="level2">
+<h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../docs/OLHD.OLHD_Butler01.html#pyLHD.OLHD.OLHD_Butler01">OLHD.OLHD_Butler01</a></td>
-<td>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/OLHD.OLHD_Sun10.html#pyLHD.OLHD.OLHD_Sun10">OLHD.OLHD_Sun10</a></td>
-<td>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al.&nbsp;(2010)</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/OLHD.OLHD_Cioppa07.html#pyLHD.OLHD.OLHD_Cioppa07">OLHD.OLHD_Cioppa07</a></td>
-<td>Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/OLHD.OLHD_Ye98.html#pyLHD.OLHD.OLHD_Ye98">OLHD.OLHD_Ye98</a></td>
-<td>Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/OLHD.OLHD_Lin09.html#pyLHD.OLHD.OLHD_Lin09">OLHD.OLHD_Lin09</a></td>
-<td>Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al.&nbsp;(2009)</td>
+<td>npt.ArrayLike</td>
+<td>An orthogonal LHD with the following run size: (r<em>2^(C+1)+1) if type =‘odd’, or (r</em>2^(C+1)) if type =‘even’. The resulting columns will be (2^(C))</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="criteria" class="level2">
-<h2 class="anchored" data-anchor-id="criteria">Criteria</h2>
-<p>Space-filling Criterias for LHD</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../docs/criteria.MaxAbsCor.html#pyLHD.criteria.MaxAbsCor">criteria.MaxAbsCor</a></td>
-<td>Calculate the Maximum Absolute Correlation</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.MaxProCriterion.html#pyLHD.criteria.MaxProCriterion">criteria.MaxProCriterion</a></td>
-<td>Calculate the Maximum Projection Criterion</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.phi_p.html#pyLHD.criteria.phi_p">criteria.phi_p</a></td>
-<td>Calculate the phi_p Criterion</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.dij.html#pyLHD.criteria.dij">criteria.dij</a></td>
-<td>Calculate the Inter-site Distance</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.AvgAbsCor.html#pyLHD.criteria.AvgAbsCor">criteria.AvgAbsCor</a></td>
-<td>Calculate the Average Absolute Correlation</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.discrepancy.html#pyLHD.criteria.discrepancy">criteria.discrepancy</a></td>
-<td>Discrepancy of a given sample</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.coverage.html#pyLHD.criteria.coverage">criteria.coverage</a></td>
-<td>Compute the coverage measure for a design</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.maximin.html#pyLHD.criteria.maximin">criteria.maximin</a></td>
-<td>Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.mesh_ratio.html#pyLHD.criteria.mesh_ratio">criteria.mesh_ratio</a></td>
-<td>Compute the meshratio criterion for a given design</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="utilities" class="level2">
-<h2 class="anchored" data-anchor-id="utilities">Utilities</h2>
-<p>miscellaneous utilities for working with LHDs</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../docs/utils.exchange.html#pyLHD.utils.exchange">utils.exchange</a></td>
-<td>Exchange two random elements in a matrix</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/utils.williams_transform.html#pyLHD.utils.williams_transform">utils.williams_transform</a></td>
-<td>Williams Transformation</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/utils.OA2LHD.html#pyLHD.utils.OA2LHD">utils.OA2LHD</a></td>
-<td>Transform an Orthogonal Array (OA) into an LHD</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/utils.eval_design.html#pyLHD.utils.eval_design">utils.eval_design</a></td>
-<td>Evaluate a design based on a chosen criteria, a simple wrapper for all <code>criteria</code> in <code>pyLHD</code></td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/utils.adjust_range.html#pyLHD.utils.adjust_range">utils.adjust_range</a></td>
-<td>Adjust the range of a design to [min,max]</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/utils.scale.html#pyLHD.utils.scale">utils.scale</a></td>
-<td>Scales design to be within [0,1]</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/utils.distance_matrix.html#pyLHD.utils.distance_matrix">utils.distance_matrix</a></td>
-<td>Distance matrix based on specified distance measure</td>
-</tr>
-</tbody>
-</table>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>Create an orthogonal LHD with C=3, r=3, type = ‘odd’, so n = (3*2^(3+1) )+1 = 49 (rows) and k=2^(3)=8 (columns)</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OLHD_Sun10(C<span class="op">=</span><span class="dv">3</span>,r<span class="op">=</span><span class="dv">3</span>,<span class="bu">type</span><span class="op">=</span><span class="st">'odd'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>array([[  1.,   2.,   3.,   4.,   5.,   6.,   7.,   8.],
+       [  2.,  -1.,  -4.,   3.,   6.,  -5.,  -8.,   7.],
+       [  3.,   4.,  -1.,  -2.,  -7.,  -8.,   5.,   6.],
+       [  4.,  -3.,   2.,  -1.,  -8.,   7.,  -6.,   5.],
+       [  5.,   6.,   7.,   8.,  -1.,  -2.,  -3.,  -4.],
+       [  6.,  -5.,  -8.,   7.,  -2.,   1.,   4.,  -3.],
+       [  7.,   8.,  -5.,  -6.,   3.,   4.,  -1.,  -2.],
+       [  8.,  -7.,   6.,  -5.,   4.,  -3.,   2.,  -1.],
+       [  9.,  10.,  11.,  12.,  13.,  14.,  15.,  16.],
+       [ 10.,  -9., -12.,  11.,  14., -13., -16.,  15.],
+       [ 11.,  12.,  -9., -10., -15., -16.,  13.,  14.],
+       [ 12., -11.,  10.,  -9., -16.,  15., -14.,  13.],
+       [ 13.,  14.,  15.,  16.,  -9., -10., -11., -12.],
+       [ 14., -13., -16.,  15., -10.,   9.,  12., -11.],
+       [ 15.,  16., -13., -14.,  11.,  12.,  -9., -10.],
+       [ 16., -15.,  14., -13.,  12., -11.,  10.,  -9.],
+       [ 17.,  18.,  19.,  20.,  21.,  22.,  23.,  24.],
+       [ 18., -17., -20.,  19.,  22., -21., -24.,  23.],
+       [ 19.,  20., -17., -18., -23., -24.,  21.,  22.],
+       [ 20., -19.,  18., -17., -24.,  23., -22.,  21.],
+       [ 21.,  22.,  23.,  24., -17., -18., -19., -20.],
+       [ 22., -21., -24.,  23., -18.,  17.,  20., -19.],
+       [ 23.,  24., -21., -22.,  19.,  20., -17., -18.],
+       [ 24., -23.,  22., -21.,  20., -19.,  18., -17.],
+       [  0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       [ -1.,  -2.,  -3.,  -4.,  -5.,  -6.,  -7.,  -8.],
+       [ -2.,   1.,   4.,  -3.,  -6.,   5.,   8.,  -7.],
+       [ -3.,  -4.,   1.,   2.,   7.,   8.,  -5.,  -6.],
+       [ -4.,   3.,  -2.,   1.,   8.,  -7.,   6.,  -5.],
+       [ -5.,  -6.,  -7.,  -8.,   1.,   2.,   3.,   4.],
+       [ -6.,   5.,   8.,  -7.,   2.,  -1.,  -4.,   3.],
+       [ -7.,  -8.,   5.,   6.,  -3.,  -4.,   1.,   2.],
+       [ -8.,   7.,  -6.,   5.,  -4.,   3.,  -2.,   1.],
+       [ -9., -10., -11., -12., -13., -14., -15., -16.],
+       [-10.,   9.,  12., -11., -14.,  13.,  16., -15.],
+       [-11., -12.,   9.,  10.,  15.,  16., -13., -14.],
+       [-12.,  11., -10.,   9.,  16., -15.,  14., -13.],
+       [-13., -14., -15., -16.,   9.,  10.,  11.,  12.],
+       [-14.,  13.,  16., -15.,  10.,  -9., -12.,  11.],
+       [-15., -16.,  13.,  14., -11., -12.,   9.,  10.],
+       [-16.,  15., -14.,  13., -12.,  11., -10.,   9.],
+       [-17., -18., -19., -20., -21., -22., -23., -24.],
+       [-18.,  17.,  20., -19., -22.,  21.,  24., -23.],
+       [-19., -20.,  17.,  18.,  23.,  24., -21., -22.],
+       [-20.,  19., -18.,  17.,  24., -23.,  22., -21.],
+       [-21., -22., -23., -24.,  17.,  18.,  19.,  20.],
+       [-22.,  21.,  24., -23.,  18., -17., -20.,  19.],
+       [-23., -24.,  21.,  22., -19., -20.,  17.,  18.],
+       [-24.,  23., -22.,  21., -20.,  19., -18.,  17.]])</code></pre>
+</div>
+</div>
+<p>Create an orthogonal LHD with C=3, r=3, type = ‘even’, So n = 3*2^(3+1) = 48 (rows) and k=2^(3)=8 (columns)</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OLHD_Sun10(C<span class="op">=</span><span class="dv">3</span>,r<span class="op">=</span><span class="dv">3</span>,<span class="bu">type</span><span class="op">=</span><span class="st">'even'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>array([[  0.5,   1.5,   2.5,   3.5,   4.5,   5.5,   6.5,   7.5],
+       [  1.5,  -0.5,  -3.5,   2.5,   5.5,  -4.5,  -7.5,   6.5],
+       [  2.5,   3.5,  -0.5,  -1.5,  -6.5,  -7.5,   4.5,   5.5],
+       [  3.5,  -2.5,   1.5,  -0.5,  -7.5,   6.5,  -5.5,   4.5],
+       [  4.5,   5.5,   6.5,   7.5,  -0.5,  -1.5,  -2.5,  -3.5],
+       [  5.5,  -4.5,  -7.5,   6.5,  -1.5,   0.5,   3.5,  -2.5],
+       [  6.5,   7.5,  -4.5,  -5.5,   2.5,   3.5,  -0.5,  -1.5],
+       [  7.5,  -6.5,   5.5,  -4.5,   3.5,  -2.5,   1.5,  -0.5],
+       [  8.5,   9.5,  10.5,  11.5,  12.5,  13.5,  14.5,  15.5],
+       [  9.5,  -8.5, -11.5,  10.5,  13.5, -12.5, -15.5,  14.5],
+       [ 10.5,  11.5,  -8.5,  -9.5, -14.5, -15.5,  12.5,  13.5],
+       [ 11.5, -10.5,   9.5,  -8.5, -15.5,  14.5, -13.5,  12.5],
+       [ 12.5,  13.5,  14.5,  15.5,  -8.5,  -9.5, -10.5, -11.5],
+       [ 13.5, -12.5, -15.5,  14.5,  -9.5,   8.5,  11.5, -10.5],
+       [ 14.5,  15.5, -12.5, -13.5,  10.5,  11.5,  -8.5,  -9.5],
+       [ 15.5, -14.5,  13.5, -12.5,  11.5, -10.5,   9.5,  -8.5],
+       [ 16.5,  17.5,  18.5,  19.5,  20.5,  21.5,  22.5,  23.5],
+       [ 17.5, -16.5, -19.5,  18.5,  21.5, -20.5, -23.5,  22.5],
+       [ 18.5,  19.5, -16.5, -17.5, -22.5, -23.5,  20.5,  21.5],
+       [ 19.5, -18.5,  17.5, -16.5, -23.5,  22.5, -21.5,  20.5],
+       [ 20.5,  21.5,  22.5,  23.5, -16.5, -17.5, -18.5, -19.5],
+       [ 21.5, -20.5, -23.5,  22.5, -17.5,  16.5,  19.5, -18.5],
+       [ 22.5,  23.5, -20.5, -21.5,  18.5,  19.5, -16.5, -17.5],
+       [ 23.5, -22.5,  21.5, -20.5,  19.5, -18.5,  17.5, -16.5],
+       [ -0.5,  -1.5,  -2.5,  -3.5,  -4.5,  -5.5,  -6.5,  -7.5],
+       [ -1.5,   0.5,   3.5,  -2.5,  -5.5,   4.5,   7.5,  -6.5],
+       [ -2.5,  -3.5,   0.5,   1.5,   6.5,   7.5,  -4.5,  -5.5],
+       [ -3.5,   2.5,  -1.5,   0.5,   7.5,  -6.5,   5.5,  -4.5],
+       [ -4.5,  -5.5,  -6.5,  -7.5,   0.5,   1.5,   2.5,   3.5],
+       [ -5.5,   4.5,   7.5,  -6.5,   1.5,  -0.5,  -3.5,   2.5],
+       [ -6.5,  -7.5,   4.5,   5.5,  -2.5,  -3.5,   0.5,   1.5],
+       [ -7.5,   6.5,  -5.5,   4.5,  -3.5,   2.5,  -1.5,   0.5],
+       [ -8.5,  -9.5, -10.5, -11.5, -12.5, -13.5, -14.5, -15.5],
+       [ -9.5,   8.5,  11.5, -10.5, -13.5,  12.5,  15.5, -14.5],
+       [-10.5, -11.5,   8.5,   9.5,  14.5,  15.5, -12.5, -13.5],
+       [-11.5,  10.5,  -9.5,   8.5,  15.5, -14.5,  13.5, -12.5],
+       [-12.5, -13.5, -14.5, -15.5,   8.5,   9.5,  10.5,  11.5],
+       [-13.5,  12.5,  15.5, -14.5,   9.5,  -8.5, -11.5,  10.5],
+       [-14.5, -15.5,  12.5,  13.5, -10.5, -11.5,   8.5,   9.5],
+       [-15.5,  14.5, -13.5,  12.5, -11.5,  10.5,  -9.5,   8.5],
+       [-16.5, -17.5, -18.5, -19.5, -20.5, -21.5, -22.5, -23.5],
+       [-17.5,  16.5,  19.5, -18.5, -21.5,  20.5,  23.5, -22.5],
+       [-18.5, -19.5,  16.5,  17.5,  22.5,  23.5, -20.5, -21.5],
+       [-19.5,  18.5, -17.5,  16.5,  23.5, -22.5,  21.5, -20.5],
+       [-20.5, -21.5, -22.5, -23.5,  16.5,  17.5,  18.5,  19.5],
+       [-21.5,  20.5,  23.5, -22.5,  17.5, -16.5, -19.5,  18.5],
+       [-22.5, -23.5,  20.5,  21.5, -18.5, -19.5,  16.5,  17.5],
+       [-23.5,  22.5, -21.5,  20.5, -19.5,  18.5, -17.5,  16.5]])</code></pre>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

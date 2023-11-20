@@ -11,7 +11,7 @@ authors = [
 ]
 readme = "README.md"
 license = {file = "LICENSE"}
-keywords = ["latin-hypercube", "space-filling"]
+keywords = ["latin-hypercube", "space-filling", "computer-experiments"]
 dependencies = [
   "numpy>=1.22"
 ]

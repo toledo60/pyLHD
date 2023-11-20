@@ -29,6 +29,14 @@ quartodoc:
       contents:
         - base_designs.rLHD
         - base_designs.GLPdesign
+    - title: Orthogonal LHD
+      desc: Various constructions of orthogonal latin hypercube designs
+      contents:
+        - OLHD.OLHD_Butler01
+        - OLHD.OLHD_Sun10
+        - OLHD.OLHD_Cioppa07
+        - OLHD.OLHD_Ye98
+        - OLHD.OLHD_Lin09
     - title: Criteria
       desc: Space-filling Criterias for LHD
       contents:

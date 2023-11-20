@@ -1,4 +1,5 @@
 import numpy as np
+import numpy.typing as npt
 import pyLHD
 
 # --- Orthogonal Latin Hypercube Designs --- #
@@ -6,7 +7,7 @@ import pyLHD
 
 # --- Butler, N.A. (2001) Construction --- #
 
-def OLHD_Butler01(nrows, ncols):
+def OLHD_Butler01(nrows: int, ncols: int) -> npt.ArrayLike:
   """ Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)
 
   Args:
@@ -19,14 +20,18 @@ def OLHD_Butler01(nrows, ncols):
       ValueError: If nrows is not an odd prime number
 
   Returns:
-      numpy.ndarray: A (nrows by ncols) orthogonal LHD
+      A (nrows by ncols) orthogonal LHD
   
   Examples:
-      Create an orthogonal LHD with nrows =11 and ncols =5
-      >>> pyLHD.OLHD_Butler01(nrows=11,ncols=5)
-      
-      Create an orthogonal LHD with nrows =11 and ncols =5
-      >>> pyLHD.OLHD_Butler01(nrows=7,ncols=6)
+  Create an orthogonal LHD with nrows =11 and ncols =5
+  ```{python}
+  import pyLHD
+  pyLHD.OLHD_Butler01(nrows=11,ncols=5)
+  ```
+  Create an orthogonal LHD with nrows =11 and ncols =5
+  ```{python}
+   pyLHD.OLHD_Butler01(nrows=7,ncols=6)
+  ```
   """
   if ncols >= nrows:
     raise ValueError("ncols must be less than or equal to nrows")
@@ -85,28 +90,31 @@ def OLHD_Butler01(nrows, ncols):
 
 # --- Sun et al. (2010) Construction --- #
 
-def OLHD_Sun10(C, r, type='odd'):
+def OLHD_Sun10(C: int, r: int, type: str = 'odd') -> npt.ArrayLike:
   """Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)
 
   Args:
       C (int): A positve integer.
       r (int): A positve integer.
       type (str, optional): Run size of design, this can be either odd or even. Defaults to 'odd'.
-      If (type) is 'odd' the run size of the OLHD will be (r*2^(C+1)+1). If (type) is 'even' the run size of
-      the OLHD will be (r*2^(C+1))
+          If (type) is 'odd' the run size of the OLHD will be (r*2^(C+1)+1). If (type) is 'even' the run size of
+          the OLHD will be (r*2^(C+1))
 
   Returns:
-      numpy.ndarray: An orthogonal LHD with the following run size: (r*2^(C+1)+1) if type ='odd', or (r*2^(C+1)) if type ='even'.
-      The resulting columns will be (2^(C))
+      An orthogonal LHD with the following run size: (r*2^(C+1)+1) if type ='odd', or (r*2^(C+1)) if type ='even'.
+          The resulting columns will be (2^(C))
   
   Examples:
-      Create an orthogonal LHD with C=3, r=3, type = 'odd'
-      So n = (3*2^(3+1) )+1 = 49 (rows) and k=2^(3)=8 (columns)
-      >>> pyLHD.OLHD_Sun10(C=3,r=3,type='odd')
-
-      Create an orthogonal LHD with C=3, r=3, type = 'even'
-      So n = 3*2^(3+1) = 48 (rows) and k=2^(3)=8 (columns)
-      >>> pyLHD.OLHD_Sun10(C=3,r=3,type='even')  
+  Create an orthogonal LHD with C=3, r=3, type = 'odd', so n = (3*2^(3+1) )+1 = 49 (rows) and k=2^(3)=8 (columns)
+  ```{python}
+  import pyLHD
+  pyLHD.OLHD_Sun10(C=3,r=3,type='odd')
+  ```
+  Create an orthogonal LHD with C=3, r=3, type = 'even', So n = 3*2^(3+1) = 48 (rows) and k=2^(3)=8 (columns)
+  ```{python}
+  import pyLHD
+  pyLHD.OLHD_Sun10(C=3,r=3,type='even')
+  ``` 
   """
 
   Sc = np.array([[1, 1], [1, -1]])
@@ -150,7 +158,7 @@ def OLHD_Sun10(C, r, type='odd'):
 
 # --- Cioppa and Lucas (2007) Constuction --- #
 
-def OLHD_Cioppa07(m):
+def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
   """Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)
 
   Args:
@@ -160,15 +168,20 @@ def OLHD_Cioppa07(m):
       ValueError: If m is not greater than or equal to 2
 
   Returns:
-      numpy.ndarray: An orthogonal LHD with the following run size: (n=2^m + 1) and 
-      factor size: (k= m+ (m-1 choose 2))
+      An orthogonal LHD with the following run size: (n=2^m + 1) and 
+          factor size: (k= m+ (m-1 choose 2))
   
   Examples:
-      # Create an orthogonal LHD with m=4. So n=2^m+1=17 runs and k=4+3=7 factors
-      >>> pyLHD.OLHD_Cioppa07(m=4)
-
-      # Create an orthogonal LHD with m=5. So n=2^m+1=33 runs and k=5+7=11 factors
-      >>> pyLHD.OLHD_Cioppa07(m=5)
+  Create an orthogonal LHD with m=4. So n=2^m+1=17 runs and k=4+3=7 factors
+  ```{python}
+  import pyLHD
+  pyLHD.OLHD_Cioppa07(m=4)
+  ```
+  Create an orthogonal LHD with m=5. So n=2^m+1=33 runs and k=5+7=11 factors
+  ```{python}
+  import pyLHD
+  pyLHD.OLHD_Cioppa07(m=5)
+  ```
   """
   if m < 2:
      raise ValueError('m must be greater than or equal to 2')
@@ -279,7 +292,7 @@ def OLHD_Cioppa07(m):
 
 # --- Ye (1998) Constuction --- #
 
-def OLHD_Ye98(m):
+def OLHD_Ye98(m:int) -> npt.ArrayLike:
   """Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)
 
   Args:
@@ -289,15 +302,18 @@ def OLHD_Ye98(m):
       ValueError: If m is not greater than or equal to 2
 
   Returns:
-      numpy.ndarray: An orthogonal LHD with the following run size: (n=2^m + 1) and 
-      factor size: (k=2m-2)
+      An orthogonal LHD with the following run size: (n=2^m + 1) and factor size: (k=2m-2)
 
   Examples:
-      # Create an orthogonal LHD with m=4. So n=2^m+1=9 runs and k=2*m-2=4 factors
-      >>> pyLHD.OLHD_Ye98(m=3)
-
-      # Create an orthogonal LHD with m=5. So n=2^m+1=17 runs and k=2*m-2=6 factors
-      >>> pyLHD.OLHD_Ye98(m=4)      
+  Create an orthogonal LHD with m=4. So n=2^m+1=9 runs and k=2*m-2=4 factors
+  ```{python}
+  import pyLHD
+  pyLHD.OLHD_Ye98(m=3)
+  ```
+  Create an orthogonal LHD with m=5. So n=2^m+1=17 runs and k=2*m-2=6 factors
+  ```{python}
+  pyLHD.OLHD_Ye98(m=4)
+  ```    
   """
   if m < 2:
     raise ValueError('m must be greater than or equal to 2')
@@ -397,38 +413,45 @@ def OLHD_Ye98(m):
 
 # --- Lin et al. (2009) Constuction --- #
 
-def OLHD_Lin09(OLHD,OA):
+def OLHD_Lin09(OLHD: npt.ArrayLike,OA: npt.ArrayLike ) -> npt.ArrayLike:
   """Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)
 
   Args:
       OLHD ([type]): An orthogonal Latin hypercube design with run size (n) and factor size (p), 
-      and it will be coupled with the input orthogonal array
+          and it will be coupled with the input orthogonal array
       OA ([type]): An orthogonal array, with (n^2) rows, (2f) columns, (n) symbols, 
-      strength two and index unity is available, which can be denoted as OA(n^2,2f,n,2)
+          strength two and index unity is available, which can be denoted as OA(n^2,2f,n,2)
 
   Returns:
-      numpy.ndarray: orthogonal Latin hypercube design with the following run size: (n^2) 
-      and the following factor size: (2fp)
+      Orthogonal Latin hypercube design with the following run size: (n^2) and the following factor size: (2fp)
   
   Examples:
-  # Create a 5 by 2 OLHD
-  >>> pyLHD.OLHD_example = OLHD_Cioppa07(m=2)
-  # Create an OA(25,6,5,2)
-  >>> OA_example = np.array([ [2,2,2,2,2,1],[2,1,5,4,3,5],
-                              [3,2,1,5,4,5],[1,5,4,3,2,5],
-                              [4,1,3,5,2,3],[1,2,3,4,5,2],
-                              [1,3,5,2,4,3],[1,1,1,1,1,1],
-                              [4,3,2,1,5,5],[5,5,5,5,5,1],
-                              [4,4,4,4,4,1],[3,1,4,2,5,4],
-                              [3,3,3,3,3,1],[3,5,2,4,1,3],
-                              [3,4,5,1,2,2],[5,4,3,2,1,5],
-                              [2,3,4,5,1,2],[2,5,3,1,4,4],
-                              [1,4,2,5,3,4],[4,2,5,3,1,4],
-                              [2,4,1,3,5,3],[5,3,1,4,2,4],
-                              [5,2,4,1,3,3],[5,1,2,3,4,2],
-                              [4,5,1,2,3,2]   ])
-  # Construct a 25 by 12 OLHD
-  >>> pyLHD.OLHD_Lin09(OLHD = OLHD_example,OA = OA_example)
+  Create a 5 by 2 OLHD
+  ```{python}
+  import pyLHD
+  OLHD_example = pyLHD.OLHD_Cioppa07(m=2)
+  ```
+  Create an OA(25,6,5,2)
+  ```{python}
+  import numpy as np
+  OA_example = np.array([ [2,2,2,2,2,1],[2,1,5,4,3,5],
+                          [3,2,1,5,4,5],[1,5,4,3,2,5],
+                          [4,1,3,5,2,3],[1,2,3,4,5,2],
+                          [1,3,5,2,4,3],[1,1,1,1,1,1],
+                          [4,3,2,1,5,5],[5,5,5,5,5,1],
+                          [4,4,4,4,4,1],[3,1,4,2,5,4],
+                          [3,3,3,3,3,1],[3,5,2,4,1,3],
+                          [3,4,5,1,2,2],[5,4,3,2,1,5],
+                          [2,3,4,5,1,2],[2,5,3,1,4,4],
+                          [1,4,2,5,3,4],[4,2,5,3,1,4],
+                          [2,4,1,3,5,3],[5,3,1,4,2,4],
+                          [5,2,4,1,3,3],[5,1,2,3,4,2],
+                          [4,5,1,2,3,2]   ])
+  ```                        
+  Construct a 25 by 12 OLHD
+  ```{python}
+  pyLHD.OLHD_Lin09(OLHD = OLHD_example,OA = OA_example)
+  ```
   """
   n1 = OLHD.shape[0]
   k = OLHD.shape[1]

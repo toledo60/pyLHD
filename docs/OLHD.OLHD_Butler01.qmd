@@ -1,0 +1,40 @@
+# OLHD.OLHD_Butler01 { #pyLHD.OLHD.OLHD_Butler01 }
+
+`OLHD.OLHD_Butler01(nrows, ncols)`
+
+Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)
+
+## Parameters
+
+| Name    | Type   | Description                                        | Default    |
+|---------|--------|----------------------------------------------------|------------|
+| `nrows` | int    | A positive integer specifying the number of rows   | _required_ |
+| `ncols` | int    | A postive integer specifying the number of columns | _required_ |
+
+## Raises
+
+| Type       | Description                                 |
+|------------|---------------------------------------------|
+| ValueError | If ncols is not less than or equal to nrows |
+| ValueError | If nrows is not greater than or equal to 3  |
+| ValueError | If nrows is not an odd prime number         |
+
+## Returns
+
+| Type          | Description                       |
+|---------------|-----------------------------------|
+| npt.ArrayLike | A (nrows by ncols) orthogonal LHD |
+
+## Examples
+
+
+
+Create an orthogonal LHD with nrows =11 and ncols =5
+```{python}
+import pyLHD
+pyLHD.OLHD_Butler01(nrows=11,ncols=5)
+```
+Create an orthogonal LHD with nrows =11 and ncols =5
+```{python}
+ pyLHD.OLHD_Butler01(nrows=7,ncols=6)
+```

@@ -7,6 +7,13 @@ website:
       - docs/base_designs.GLPdesign.qmd
       section: Base Designs
     - contents:
+      - docs/OLHD.OLHD_Butler01.qmd
+      - docs/OLHD.OLHD_Sun10.qmd
+      - docs/OLHD.OLHD_Cioppa07.qmd
+      - docs/OLHD.OLHD_Ye98.qmd
+      - docs/OLHD.OLHD_Lin09.qmd
+      section: Orthogonal LHD
+    - contents:
       - docs/criteria.MaxAbsCor.qmd
       - docs/criteria.MaxProCriterion.qmd
       - docs/criteria.phi_p.qmd
