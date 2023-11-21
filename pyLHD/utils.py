@@ -3,7 +3,50 @@ import math
 import numpy as np
 from collections import OrderedDict
 import numpy.typing as npt
+from typing import Optional, List
 
+
+def permute_columns(arr: npt.ArrayLike, columns: Optional[List[int]] = None,
+                    seed: Optional[int] = None) -> npt.ArrayLike:
+  """Random permute columns in a numpy ndarray
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      columns (Optional[List[int]], optional): If columns is None all columns will be randomly permuted, otherwise provide a list of columns to permute. Defaults to None.
+      seed (Optional[int], optional): If seed is an int or None, a new numpy.random.Generator is created using np.random.default_rng(seed). Defaults to None.
+
+  Returns:
+      numpy ndarray with columns of choice randomly permuted 
+  
+  Examples:
+  ```{python}
+  import pyLHD
+  x = pyLHD.random_lhd(n_rows = 5, n_columns = 3, seed = 1)
+  x
+  ```
+  Permute all columns
+  ```{python}
+  pyLHD.permute_columns(x)
+  ```
+  Permute columns [0,1] with `seed=1`
+  ```{python}
+  pyLHD.permute_columns(x, columns = [0,1], seed = 1)
+  ```
+
+  """
+
+  rng = np.random.default_rng(seed)
+
+  if columns is not None:
+    for i in columns:
+      rng.shuffle(arr[:, i])
+  else:
+    n_rows, n_columns = arr.shape
+    ix_i = rng.random((n_rows, n_columns)).argsort(axis=0)
+    ix_j = np.tile(np.arange(n_columns), (n_rows, 1))
+    arr = arr[ix_i, ix_j]
+
+  return arr
 
 # Exchange two random elements in a matrix
 
@@ -23,7 +66,7 @@ def exchange(arr: npt.ArrayLike, idx: int, type: str='col') -> npt.ArrayLike:
   Choose the first columns of `random_lhd` and exchange two randomly selected elements
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows = 5, ncols = 3)
+  random_lhd = pyLHD.rLHD(n_rows = 5, n_columns = 3)
   random_lhd
   ```
   Choose column 1 of random_lhd and exchange two randomly selected elements
@@ -35,16 +78,16 @@ def exchange(arr: npt.ArrayLike, idx: int, type: str='col') -> npt.ArrayLike:
   pyLHD.exchange(random_lhd,idx=1,type='row')
   ```
   """
-  nrows = arr.shape[0]
-  ncols = arr.shape[1]
+  n_rows = arr.shape[0]
+  n_columns = arr.shape[1]
   rng = np.random.default_rng()
 
   if type == 'col':
-    location = rng.choice(nrows, 2, replace=False)
+    location = rng.choice(n_rows, 2, replace=False)
 
     arr[location[0], idx], arr[location[1],idx] = arr[location[1], idx], arr[location[0], idx]
   else:
-    location = rng.choice(ncols, 2, replace=False)
+    location = rng.choice(n_columns, 2, replace=False)
     arr[idx, location[0]], arr[idx, location[1]] = arr[idx, location[1]], arr[idx, location[0]]
 
   return arr
@@ -65,7 +108,7 @@ def williams_transform(arr: npt.ArrayLike,baseline: int =1) -> npt.ArrayLike:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=5,ncols=3)
+  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3)
   random_lhd
   ```
   Change the baseline
@@ -154,7 +197,7 @@ def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int =
   By default `phi_p` with `p=15` and `q=1`
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=5,ncols=3)
+  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3)
   pyLHD.eval_design(random_lhd)
   ```
   Evaluate design based on MaxProCriterion 
@@ -189,7 +232,7 @@ def adjust_range(arr: npt.ArrayLike, min: float, max: float, digits: int=None) -
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)
+  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)
   ```
   ```{python}
   pyLHD.adjust_range(random_lhd,-1, 1)
@@ -229,7 +272,7 @@ def scale(arr: npt.ArrayLike,uniformize: bool =False) -> npt.ArrayLike:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)
+  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)
   pyLHD.scale(random_lhd)
   ```
   """  
@@ -263,7 +306,7 @@ def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)
+  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)
   pyLHD.distance_matrix(random_lhd)
   ```
   ```{python}

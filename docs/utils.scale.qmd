@@ -23,6 +23,6 @@ Scales design to be within [0,1]
 
 ```{python}
 import pyLHD
-random_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)
+random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)
 pyLHD.scale(random_lhd)
 ```

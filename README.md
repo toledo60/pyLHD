@@ -3,6 +3,9 @@
 pyLHD is a python implementation for something in between the R packages [LHD](https://cran.r-project.org/web/packages/LHD/index.html)
 and [DiceDesign](https://cran.r-project.org/web/packages/DiceDesign/index.html).
 
+This package is primarily designed for educational purposes and may not be highly optimized. For more efficient and thoroughly tested functions, I recommend utilizing the `scipy.qmc` module 
+
+
 ## Installation
 
 Currently `pyLHD` can be installed from Github

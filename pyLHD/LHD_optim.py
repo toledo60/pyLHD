@@ -141,7 +141,7 @@ def SA_LHD(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
   
   counter = 1 # step 1: counter index
   
-  X = pyLHD.rLHD(nrows=n,ncols=k,unit_cube=False) # step 2
+  X = pyLHD.rLHD(n_rows=n,n_columns=k,unit_cube=False) # step 2
   
   Xbest = X.copy()
   TP = T0

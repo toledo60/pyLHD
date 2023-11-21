@@ -5,6 +5,7 @@ website:
     - contents:
       - docs/base_designs.rLHD.qmd
       - docs/base_designs.GLPdesign.qmd
+      - docs/base_designs.random_lhd.qmd
       section: Base Designs
     - contents:
       - docs/OLHD.OLHD_Butler01.qmd
@@ -25,6 +26,7 @@ website:
       - docs/criteria.mesh_ratio.qmd
       section: Criteria
     - contents:
+      - docs/utils.permute_columns.qmd
       - docs/utils.exchange.qmd
       - docs/utils.williams_transform.qmd
       - docs/utils.OA2LHD.qmd

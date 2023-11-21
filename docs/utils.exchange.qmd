@@ -24,7 +24,7 @@ Exchange two random elements in a matrix
 Choose the first columns of `random_lhd` and exchange two randomly selected elements
 ```{python}
 import pyLHD
-random_lhd = pyLHD.rLHD(nrows = 5, ncols = 3)
+random_lhd = pyLHD.rLHD(n_rows = 5, n_columns = 3)
 random_lhd
 ```
 Choose column 1 of random_lhd and exchange two randomly selected elements

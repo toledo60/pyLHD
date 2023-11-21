@@ -8,6 +8,7 @@ Generate Random LHD
 | --- | --- |
 | [base_designs.rLHD](base_designs.rLHD.qmd#pyLHD.base_designs.rLHD) | Generate a random Latin Hypercube Design (LHD) |
 | [base_designs.GLPdesign](base_designs.GLPdesign.qmd#pyLHD.base_designs.GLPdesign) | Good Lattice Point (GLP) Design  |
+| [base_designs.random_lhd](base_designs.random_lhd.qmd#pyLHD.base_designs.random_lhd) | Generate a random Latin Hypercube Design |
 
 ## Orthogonal LHD
 
@@ -43,6 +44,7 @@ miscellaneous utilities for working with LHDs
 
 | | |
 | --- | --- |
+| [utils.permute_columns](utils.permute_columns.qmd#pyLHD.utils.permute_columns) | Random permute columns in a numpy ndarray |
 | [utils.exchange](utils.exchange.qmd#pyLHD.utils.exchange) | Exchange two random elements in a matrix |
 | [utils.williams_transform](utils.williams_transform.qmd#pyLHD.utils.williams_transform) | Williams Transformation |
 | [utils.OA2LHD](utils.OA2LHD.qmd#pyLHD.utils.OA2LHD) | Transform an Orthogonal Array (OA) into an LHD |

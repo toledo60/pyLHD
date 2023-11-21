@@ -29,6 +29,7 @@ quartodoc:
       contents:
         - base_designs.rLHD
         - base_designs.GLPdesign
+        - base_designs.random_lhd
     - title: Orthogonal LHD
       desc: Various constructions of orthogonal latin hypercube designs
       contents:
@@ -52,6 +53,7 @@ quartodoc:
     - title: Utilities
       desc: miscellaneous utilities for working with LHDs
       contents:
+        - utils.permute_columns
         - utils.exchange
         - utils.williams_transform
         - utils.OA2LHD

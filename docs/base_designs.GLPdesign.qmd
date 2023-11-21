@@ -1,21 +1,21 @@
 # base_designs.GLPdesign { #pyLHD.base_designs.GLPdesign }
 
-`base_designs.GLPdesign(nrows, ncols, h=None)`
+`base_designs.GLPdesign(n_rows, n_columns, h=None)`
 
 Good Lattice Point (GLP) Design 
 
 ## Parameters
 
-| Name    | Type   | Description                                                                                                                                                                                                                                                             | Default    |
-|---------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `nrows` | int    | A positive integer specifying the number of rows                                                                                                                                                                                                                        | _required_ |
-| `ncols` | int    | A postive integer specifying the number of columns h (list, optional): A list whose length is same as (ncols), with its elements that are smaller than and coprime to (nrows).  Defaults to None. If None, a random sample of (ncols) elements between 1 and (nrows-1). | _required_ |
+| Name        | Type   | Description                                                                                                                                                                                                                                                                       | Default    |
+|-------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `n_rows`    | int    | A positive integer specifying the number of rows                                                                                                                                                                                                                                  | _required_ |
+| `n_columns` | int    | A postive integer specifying the number of columns h (list, optional): A list whose length is same as (n_columns), with its elements that are smaller than and coprime to (n_rows).  Defaults to None. If None, a random sample of (n_columns) elements between 1 and (n_rows-1). | _required_ |
 
 ## Returns
 
-| Type          | Description                    |
-|---------------|--------------------------------|
-| npt.ArrayLike | A (nrows by ncols) GLP design. |
+| Type          | Description                         |
+|---------------|-------------------------------------|
+| npt.ArrayLike | A (n_rows by n_columns) GLP design. |
 
 ## Examples
 
@@ -23,8 +23,8 @@ Good Lattice Point (GLP) Design
 
 ```{python}
 import pyLHD
-pyLHD.GLPdesign(nrows=5,ncols=3)
+pyLHD.GLPdesign(n_rows=5,n_columns=3)
 ```
 ```{python}
-pyLHD.GLPdesign(nrows=8,ncols=4,h=[1,3,5,7])
+pyLHD.GLPdesign(n_rows=8,n_columns=4,h=[1,3,5,7])
 ```

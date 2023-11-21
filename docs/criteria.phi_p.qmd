@@ -24,7 +24,7 @@ Calculate the phi_p Criterion
 Calculate the phi_p criterion for random_lhd with default settings
 ```{python}
 import pyLHD
-random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+random_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)
 pyLHD.phi_p(random_lhd)  
 ```
 Calculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)

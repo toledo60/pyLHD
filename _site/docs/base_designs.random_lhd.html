@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>utils.adjust_range</title>
+<title>base_designs.random_lhd</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,6 +94,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -124,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/utils.permute_columns.html">Utilities</a></li><li class="breadcrumb-item"><a href="../docs/utils.adjust_range.html">utils.adjust_range</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/base_designs.rLHD.html">Base Designs</a></li><li class="breadcrumb-item"><a href="../docs/base_designs.random_lhd.html">base_designs.random_lhd</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -165,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/base_designs.random_lhd.html" class="sidebar-item-text sidebar-link">
+  <a href="../docs/base_designs.random_lhd.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">base_designs.random_lhd</span></a>
   </div>
 </li>
@@ -318,7 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/utils.adjust_range.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/utils.adjust_range.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">utils.adjust_range</span></a>
   </div>
 </li>
@@ -347,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">utils.adjust_range</h1>
+<h1 class="title">base_designs.random_lhd</h1>
 </div>
 
 
@@ -362,16 +364,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>utils.adjust_range(arr, min, max, digits=None)</code></p>
-<p>Adjust the range of a design to [min,max]</p>
+<p><code>base_designs.random_lhd(n_rows, n_columns, scramble=True, seed=None)</code></p>
+<p>Generate a random Latin Hypercube Design</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 11%">
-<col style="width: 17%">
-<col style="width: 56%">
-<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 78%">
+<col style="width: 6%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -383,27 +385,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>arr</code></td>
-<td>numpy.ndarray</td>
-<td>A design matrix</td>
+<td><code>n_rows</code></td>
+<td>int</td>
+<td>number of rows (number of samples)</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>min</code></td>
-<td>float</td>
-<td>desired lower bound of design</td>
+<td><code>n_columns</code></td>
+<td>int</td>
+<td>number of columns (dimnesion of parameter space)</td>
 <td><em>required</em></td>
 </tr>
 <tr class="odd">
-<td><code>max</code></td>
-<td>float</td>
-<td>desired upper bound of design</td>
-<td><em>required</em></td>
+<td><code>scramble</code></td>
+<td>Optional[bool]</td>
+<td>When False, center samples within cells of a multi-dimensional grid. Otherwise, samples are randomly placed within cells of the grid. Defaults to True.</td>
+<td><code>True</code></td>
 </tr>
 <tr class="even">
-<td><code>digits</code></td>
-<td>int</td>
-<td>number of digits to which the design is rounded</td>
+<td><code>seed</code></td>
+<td>Optional[int]</td>
+<td>If seed is an int or None, a new numpy.random.Generator is created using np.random.default_rng(seed). Defaults to None.</td>
 <td><code>None</code></td>
 </tr>
 </tbody>
@@ -412,6 +414,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns" class="level2">
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 93%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Type</th>
@@ -421,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>npt.ArrayLike</td>
-<td>Design with new range [min,max]</td>
+<td>A Latin hypercube sample of <span class="math inline">\(n =\)</span> <code>n_rows</code> points generated in <span class="math inline">\([0,1)^d\)</span>, where <span class="math inline">\(d\)</span>=<code>n_columns</code>. Each univariate marginal distribution is stratisfied, placing exactly one point in <span class="math inline">\([j/n,(j+1)/n)\)</span> for <span class="math inline">\(j=0,1,\dots,n-1\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -430,26 +436,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.rLHD(n_rows<span class="op">=</span><span class="dv">5</span>,n_columns<span class="op">=</span><span class="dv">3</span>,unit_cube<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.random_lhd(n_rows <span class="op">=</span> <span class="dv">5</span>, n_columns <span class="op">=</span> <span class="dv">3</span>, seed <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>array([[0.69763568, 0.29763568, 0.09763568],
+       [0.89763568, 0.49763568, 0.89763568],
+       [0.09763568, 0.69763568, 0.29763568],
+       [0.49763568, 0.89763568, 0.69763568],
+       [0.29763568, 0.09763568, 0.49763568]])</code></pre>
+</div>
 </div>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pyLHD.adjust_range(random_lhd,<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.random_lhd(n_rows <span class="op">=</span> <span class="dv">5</span>, n_columns <span class="op">=</span> <span class="dv">3</span>, seed <span class="op">=</span> <span class="dv">1</span>, scramble <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[-0.5, -1. ,  0.5],
-       [ 1. ,  0.5,  0. ],
-       [-1. , -0.5, -0.5],
-       [ 0. ,  1. , -1. ],
-       [ 0.5,  0. ,  1. ]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pyLHD.adjust_range(random_lhd, <span class="dv">5</span>, <span class="dv">12</span>, digits <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>array([[ 6.75,  5.  , 10.25],
-       [12.  , 10.25,  8.5 ],
-       [ 5.  ,  6.75,  6.75],
-       [ 8.5 , 12.  ,  5.  ],
-       [10.25,  8.5 , 12.  ]])</code></pre>
+<pre><code>array([[0.7, 0.3, 0.1],
+       [0.9, 0.5, 0.9],
+       [0.1, 0.7, 0.3],
+       [0.5, 0.9, 0.7],
+       [0.3, 0.1, 0.5]])</code></pre>
 </div>
 </div>
 

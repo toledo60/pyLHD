@@ -163,17 +163,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">base_designs.GLPdesign</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/base_designs.random_lhd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base_designs.random_lhd</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Criteria</span></a>
+ <span class="menu-text">Orthogonal LHD</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/OLHD.OLHD_Butler01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OLHD.OLHD_Butler01</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/OLHD.OLHD_Sun10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OLHD.OLHD_Sun10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/OLHD.OLHD_Cioppa07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OLHD.OLHD_Cioppa07</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/OLHD.OLHD_Ye98.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OLHD.OLHD_Ye98</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/OLHD.OLHD_Lin09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OLHD.OLHD_Lin09</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Criteria</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../docs/criteria.MaxAbsCor.html" class="sidebar-item-text sidebar-link">
@@ -232,13 +279,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Utilities</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/utils.permute_columns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.permute_columns</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../docs/utils.exchange.html" class="sidebar-item-text sidebar-link">
@@ -309,16 +362,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>base_designs.GLPdesign(nrows, ncols, h=None)</code></p>
+<p><code>base_designs.GLPdesign(n_rows, n_columns, h=None)</code></p>
 <p>Good Lattice Point (GLP) Design</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 3%">
-<col style="width: 2%">
-<col style="width: 90%">
 <col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 89%">
+<col style="width: 3%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -330,15 +383,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>nrows</code></td>
+<td><code>n_rows</code></td>
 <td>int</td>
 <td>A positive integer specifying the number of rows</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>ncols</code></td>
+<td><code>n_columns</code></td>
 <td>int</td>
-<td>A postive integer specifying the number of columns h (list, optional): A list whose length is same as (ncols), with its elements that are smaller than and coprime to (nrows). Defaults to None. If None, a random sample of (ncols) elements between 1 and (nrows-1).</td>
+<td>A postive integer specifying the number of columns h (list, optional): A list whose length is same as (n_columns), with its elements that are smaller than and coprime to (n_rows). Defaults to None. If None, a random sample of (n_columns) elements between 1 and (n_rows-1).</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
@@ -356,7 +409,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>npt.ArrayLike</td>
-<td>A (nrows by ncols) GLP design.</td>
+<td>A (n_rows by n_columns) GLP design.</td>
 </tr>
 </tbody>
 </table>
@@ -365,25 +418,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.GLPdesign(nrows<span class="op">=</span><span class="dv">5</span>,ncols<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.GLPdesign(n_rows<span class="op">=</span><span class="dv">5</span>,n_columns<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[2, 1, 4],
-       [4, 2, 3],
-       [1, 3, 2],
-       [3, 4, 1],
+<pre><code>array([[4, 3, 1],
+       [3, 1, 2],
+       [2, 4, 3],
+       [1, 2, 4],
        [0, 0, 0]])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.GLPdesign(nrows<span class="op">=</span><span class="dv">8</span>,ncols<span class="op">=</span><span class="dv">4</span>,h<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.GLPdesign(n_rows<span class="op">=</span><span class="dv">8</span>,n_columns<span class="op">=</span><span class="dv">4</span>,h<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[3, 7, 5, 1],
+<pre><code>array([[3, 7, 1, 5],
        [6, 6, 2, 2],
-       [1, 5, 7, 3],
+       [1, 5, 3, 7],
        [4, 4, 4, 4],
-       [7, 3, 1, 5],
+       [7, 3, 5, 1],
        [2, 2, 6, 6],
-       [5, 1, 3, 7],
+       [5, 1, 7, 3],
        [0, 0, 0, 0]])</code></pre>
 </div>
 </div>

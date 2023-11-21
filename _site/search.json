@@ -214,7 +214,7 @@
     "href": "docs/criteria.mesh_ratio.html#examples",
     "title": "criteria.mesh_ratio",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.mesh_ratio(random_lhd)\n\n1.541103500742244"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=5,n_columns=5)\npyLHD.mesh_ratio(random_lhd)\n\n1.3142574813455419"
   },
   {
     "objectID": "docs/criteria.discrepancy.html",
@@ -249,7 +249,7 @@
     "href": "docs/criteria.discrepancy.html#examples",
     "title": "criteria.discrepancy",
     "section": "Examples",
-    "text": "Examples\nCalculate the centered_L2 discrepancy of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.discrepancy(random_lhd)\n\n0.1445159479781581\n\n\nCalculate the L2 star discrepancy of random_lhd\n\npyLHD.discrepancy(random_lhd,method='L2_star')\n\n0.05434410490352947"
+    "text": "Examples\nCalculate the centered_L2 discrepancy of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)\npyLHD.discrepancy(random_lhd)\n\n0.1362174743941735\n\n\nCalculate the L2 star discrepancy of random_lhd\n\npyLHD.discrepancy(random_lhd,method='L2_star')\n\n0.06278122127608055"
   },
   {
     "objectID": "docs/criteria.maximin.html",
@@ -277,35 +277,35 @@
     "href": "docs/criteria.maximin.html#examples",
     "title": "criteria.maximin",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.maximin(random_lhd)\n\n0.7071067811865476"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=5,n_columns=5)\npyLHD.maximin(random_lhd)\n\n0.7071067811865476"
   },
   {
     "objectID": "docs/base_designs.rLHD.html",
     "href": "docs/base_designs.rLHD.html",
     "title": "base_designs.rLHD",
     "section": "",
-    "text": "base_designs.rLHD(nrows, ncols, unit_cube=False)\nGenerate a random Latin Hypercube Design (LHD)"
+    "text": "base_designs.rLHD(n_rows, n_columns, unit_cube=False)\nGenerate a random Latin Hypercube Design (LHD)"
   },
   {
     "objectID": "docs/base_designs.rLHD.html#parameters",
     "href": "docs/base_designs.rLHD.html#parameters",
     "title": "base_designs.rLHD",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nnrows\nint\nA positive integer specifying the number of rows\nrequired\n\n\nncols\nint\nA postive integer specifying the number of columns\nrequired\n\n\nunit_cube\nbool\nIf True, design will be in the unit cube [0,1]^ncols.\nFalse"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nn_rows\nint\nA positive integer specifying the number of rows\nrequired\n\n\nn_columns\nint\nA postive integer specifying the number of columns\nrequired\n\n\nunit_cube\nbool\nIf True, design will be in the unit cube [0,1]^n_columns.\nFalse"
   },
   {
     "objectID": "docs/base_designs.rLHD.html#returns",
     "href": "docs/base_designs.rLHD.html#returns",
     "title": "base_designs.rLHD",
     "section": "Returns",
-    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nreturn a random (nrows by ncols) LHD"
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nreturn a random (n_rows by n_columns) LHD"
   },
   {
     "objectID": "docs/base_designs.rLHD.html#examples",
     "href": "docs/base_designs.rLHD.html#examples",
     "title": "base_designs.rLHD",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\npyLHD.rLHD(nrows=5,ncols = 4,unit_cube = False)\n\narray([[2, 1, 5, 3],\n       [3, 2, 1, 1],\n       [1, 5, 2, 4],\n       [5, 3, 4, 5],\n       [4, 4, 3, 2]])\n\n\n\npyLHD.rLHD(nrows=5,ncols = 4, unit_cube = True)\n\narray([[0.1, 0.3, 0.5, 0.1],\n       [0.9, 0.5, 0.3, 0.9],\n       [0.7, 0.9, 0.9, 0.3],\n       [0.3, 0.7, 0.7, 0.5],\n       [0.5, 0.1, 0.1, 0.7]])"
+    "text": "Examples\n\nimport pyLHD\npyLHD.rLHD(n_rows=5,n_columns = 4,unit_cube = False)\n\narray([[1, 3, 2, 1],\n       [3, 4, 3, 5],\n       [2, 5, 5, 4],\n       [4, 2, 1, 2],\n       [5, 1, 4, 3]])\n\n\n\npyLHD.rLHD(n_rows=5,n_columns = 4, unit_cube = True)\n\narray([[0.9, 0.7, 0.3, 0.5],\n       [0.7, 0.5, 0.5, 0.9],\n       [0.1, 0.1, 0.7, 0.7],\n       [0.3, 0.9, 0.1, 0.3],\n       [0.5, 0.3, 0.9, 0.1]])"
   },
   {
     "objectID": "docs/criteria.MaxAbsCor.html",
@@ -333,7 +333,7 @@
     "href": "docs/criteria.MaxAbsCor.html#examples",
     "title": "criteria.MaxAbsCor",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.MaxAbsCor(random_lhd)\n\n0.5515151515151515"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)\npyLHD.MaxAbsCor(random_lhd)\n\n0.19999999999999998"
   },
   {
     "objectID": "docs/criteria.MaxProCriterion.html",
@@ -361,7 +361,7 @@
     "href": "docs/criteria.MaxProCriterion.html#examples",
     "title": "criteria.MaxProCriterion",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.MaxProCriterion(random_lhd)\n\n0.2600808850385328"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)\npyLHD.MaxProCriterion(random_lhd)\n\n0.33227106666414213"
   },
   {
     "objectID": "docs/criteria.phi_p.html",
@@ -389,21 +389,21 @@
     "href": "docs/criteria.phi_p.html#examples",
     "title": "criteria.phi_p",
     "section": "Examples",
-    "text": "Examples\nCalculate the phi_p criterion for random_lhd with default settings\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.phi_p(random_lhd)  \n\n0.25066981405000127\n\n\nCalculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)\n\npyLHD.phi_p(random_lhd,p=50,q=2)"
+    "text": "Examples\nCalculate the phi_p criterion for random_lhd with default settings\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)\npyLHD.phi_p(random_lhd)  \n\n0.33335523121910815\n\n\nCalculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)\n\npyLHD.phi_p(random_lhd,p=50,q=2) \n\n0.5773502691896395"
   },
   {
     "objectID": "docs/index.html",
     "href": "docs/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase_designs.rLHD\nGenerate a random Latin Hypercube Design (LHD)\n\n\nbase_designs.GLPdesign\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\nOLHD.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\nOLHD.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\nOLHD.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\nOLHD.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\nOLHD.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.dij\nCalculate the Inter-site Distance\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.mesh_ratio\nCompute the meshratio criterion for a given design\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nutils.exchange\nExchange two random elements in a matrix\n\n\nutils.williams_transform\nWilliams Transformation\n\n\nutils.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nutils.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\nutils.adjust_range\nAdjust the range of a design to [min,max]\n\n\nutils.scale\nScales design to be within [0,1]\n\n\nutils.distance_matrix\nDistance matrix based on specified distance measure"
+    "text": "Generate Random LHD\n\n\n\nbase_designs.rLHD\nGenerate a random Latin Hypercube Design (LHD)\n\n\nbase_designs.GLPdesign\nGood Lattice Point (GLP) Design\n\n\nbase_designs.random_lhd\nGenerate a random Latin Hypercube Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\nOLHD.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\nOLHD.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\nOLHD.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\nOLHD.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\nOLHD.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.dij\nCalculate the Inter-site Distance\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.mesh_ratio\nCompute the meshratio criterion for a given design\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nutils.permute_columns\nRandom permute columns in a numpy ndarray\n\n\nutils.exchange\nExchange two random elements in a matrix\n\n\nutils.williams_transform\nWilliams Transformation\n\n\nutils.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nutils.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\nutils.adjust_range\nAdjust the range of a design to [min,max]\n\n\nutils.scale\nScales design to be within [0,1]\n\n\nutils.distance_matrix\nDistance matrix based on specified distance measure"
   },
   {
     "objectID": "docs/index.html#base-designs",
     "href": "docs/index.html#base-designs",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase_designs.rLHD\nGenerate a random Latin Hypercube Design (LHD)\n\n\nbase_designs.GLPdesign\nGood Lattice Point (GLP) Design"
+    "text": "Generate Random LHD\n\n\n\nbase_designs.rLHD\nGenerate a random Latin Hypercube Design (LHD)\n\n\nbase_designs.GLPdesign\nGood Lattice Point (GLP) Design\n\n\nbase_designs.random_lhd\nGenerate a random Latin Hypercube Design"
   },
   {
     "objectID": "docs/index.html#criteria",
@@ -445,7 +445,7 @@
     "href": "docs/criteria.coverage.html#examples",
     "title": "criteria.coverage",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=5)\npyLHD.coverage(random_lhd)\n\n0.13547938492178385"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=5,n_columns=5)\npyLHD.coverage(random_lhd)\n\n0.1678637564921917"
   },
   {
     "objectID": "docs/criteria.AvgAbsCor.html",
@@ -473,7 +473,7 @@
     "href": "docs/criteria.AvgAbsCor.html#examples",
     "title": "criteria.AvgAbsCor",
     "section": "Examples",
-    "text": "Examples\nCalculate the average absolute correlation of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.AvgAbsCor(random_lhd)\n\n0.362"
+    "text": "Examples\nCalculate the average absolute correlation of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)\npyLHD.AvgAbsCor(random_lhd)\n\n0.244"
   },
   {
     "objectID": "docs/criteria.dij.html",
@@ -501,7 +501,7 @@
     "href": "docs/criteria.dij.html#examples",
     "title": "criteria.dij",
     "section": "Examples",
-    "text": "Examples\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=10,ncols=3)\npyLHD.dij(random_lhd,i=2,j=4)\n\n7.0\n\n\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd with q=2 (Euclidean)\n\npyLHD.dij(random_lhd,i=2,j=4,q=2)\n\n4.58257569495584"
+    "text": "Examples\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)\npyLHD.dij(random_lhd,i=2,j=4)\n\n10.0\n\n\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd with q=2 (Euclidean)\n\npyLHD.dij(random_lhd,i=2,j=4,q=2)\n\n6.0"
   },
   {
     "objectID": "examples/notebooks/intro_pyLHD.html",
@@ -697,14 +697,14 @@
     "href": "docs/utils.exchange.html#examples",
     "title": "utils.exchange",
     "section": "Examples",
-    "text": "Examples\nChoose the first columns of random_lhd and exchange two randomly selected elements\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows = 5, ncols = 3)\nrandom_lhd\n\narray([[5, 3, 4],\n       [3, 2, 5],\n       [2, 4, 3],\n       [4, 5, 2],\n       [1, 1, 1]])\n\n\nChoose column 1 of random_lhd and exchange two randomly selected elements\n\npyLHD.exchange(random_lhd,idx=1,type='col')\n\narray([[5, 3, 4],\n       [3, 2, 5],\n       [2, 1, 3],\n       [4, 5, 2],\n       [1, 4, 1]])\n\n\nChoose the first row of random_lhd and exchange two randomly selected elements\n\npyLHD.exchange(random_lhd,idx=1,type='row')\n\narray([[5, 3, 4],\n       [5, 2, 3],\n       [2, 1, 3],\n       [4, 5, 2],\n       [1, 4, 1]])"
+    "text": "Examples\nChoose the first columns of random_lhd and exchange two randomly selected elements\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows = 5, n_columns = 3)\nrandom_lhd\n\narray([[3, 3, 5],\n       [1, 2, 2],\n       [2, 1, 3],\n       [5, 4, 1],\n       [4, 5, 4]])\n\n\nChoose column 1 of random_lhd and exchange two randomly selected elements\n\npyLHD.exchange(random_lhd,idx=1,type='col')\n\narray([[3, 5, 5],\n       [1, 2, 2],\n       [2, 1, 3],\n       [5, 4, 1],\n       [4, 3, 4]])\n\n\nChoose the first row of random_lhd and exchange two randomly selected elements\n\npyLHD.exchange(random_lhd,idx=1,type='row')\n\narray([[3, 5, 5],\n       [2, 2, 1],\n       [2, 1, 3],\n       [5, 4, 1],\n       [4, 3, 4]])"
   },
   {
     "objectID": "docs/index.html#utilities",
     "href": "docs/index.html#utilities",
     "title": "Function reference",
     "section": "",
-    "text": "miscellaneous utilities for working with LHDs\n\n\n\nutils.exchange\nExchange two random elements in a matrix\n\n\nutils.williams_transform\nWilliams Transformation\n\n\nutils.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nutils.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\nutils.adjust_range\nAdjust the range of a design to [min,max]\n\n\nutils.scale\nScales design to be within [0,1]\n\n\nutils.distance_matrix\nDistance matrix based on specified distance measure"
+    "text": "miscellaneous utilities for working with LHDs\n\n\n\nutils.permute_columns\nRandom permute columns in a numpy ndarray\n\n\nutils.exchange\nExchange two random elements in a matrix\n\n\nutils.williams_transform\nWilliams Transformation\n\n\nutils.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nutils.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\nutils.adjust_range\nAdjust the range of a design to [min,max]\n\n\nutils.scale\nScales design to be within [0,1]\n\n\nutils.distance_matrix\nDistance matrix based on specified distance measure"
   },
   {
     "objectID": "docs/utils.williams_transform.html",
@@ -732,7 +732,7 @@
     "href": "docs/utils.williams_transform.html#examples",
     "title": "utils.williams_transform",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=3)\nrandom_lhd\n\narray([[2, 1, 2],\n       [1, 5, 1],\n       [5, 4, 4],\n       [4, 2, 5],\n       [3, 3, 3]])\n\n\nChange the baseline\n\npyLHD.williams_transform(random_lhd,baseline=3)\n\narray([[5, 3, 5],\n       [3, 4, 3],\n       [4, 6, 6],\n       [6, 5, 4],\n       [7, 7, 7]])"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=5,n_columns=3)\nrandom_lhd\n\narray([[5, 4, 4],\n       [2, 5, 2],\n       [3, 2, 5],\n       [4, 1, 1],\n       [1, 3, 3]])\n\n\nChange the baseline\n\npyLHD.williams_transform(random_lhd,baseline=3)\n\narray([[4, 6, 6],\n       [5, 4, 5],\n       [7, 5, 4],\n       [6, 3, 3],\n       [3, 7, 7]])"
   },
   {
     "objectID": "docs/utils.distance_matrix.html",
@@ -760,7 +760,7 @@
     "href": "docs/utils.distance_matrix.html#examples",
     "title": "utils.distance_matrix",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)\npyLHD.distance_matrix(random_lhd)\n\narray([[0.        , 0.6       , 0.48989795, 0.48989795, 0.6       ],\n       [0.6       , 0.        , 0.87177979, 0.66332496, 1.2       ],\n       [0.48989795, 0.87177979, 0.        , 0.9797959 , 0.66332496],\n       [0.48989795, 0.66332496, 0.9797959 , 0.        , 0.87177979],\n       [0.6       , 1.2       , 0.66332496, 0.87177979, 0.        ]])\n\n\n\npyLHD.distance_matrix(random_lhd, metric = 'manhattan')\n\narray([[0. , 1. , 0.8, 0.8, 1. ],\n       [1. , 0. , 1.4, 1. , 2. ],\n       [0.8, 1.4, 0. , 1.6, 1. ],\n       [0.8, 1. , 1.6, 0. , 1.4],\n       [1. , 2. , 1. , 1.4, 0. ]])\n\n\n\npyLHD.distance_matrix(random_lhd, metric = 'minkowski', p=5)\n\narray([[0.        , 0.46090632, 0.40487949, 0.40487949, 0.46090632],\n       [0.46090632, 0.        , 0.68950241, 0.60098442, 0.92181265],\n       [0.40487949, 0.68950241, 0.        , 0.80975898, 0.60098442],\n       [0.40487949, 0.60098442, 0.80975898, 0.        , 0.68950241],\n       [0.46090632, 0.92181265, 0.60098442, 0.68950241, 0.        ]])"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)\npyLHD.distance_matrix(random_lhd)\n\narray([[0.        , 0.87177979, 0.74833148, 0.6       , 0.34641016],\n       [0.87177979, 0.        , 0.91651514, 1.0198039 , 0.9797959 ],\n       [0.74833148, 0.91651514, 0.        , 0.66332496, 0.6       ],\n       [0.6       , 1.0198039 , 0.66332496, 0.        , 0.74833148],\n       [0.34641016, 0.9797959 , 0.6       , 0.74833148, 0.        ]])\n\n\n\npyLHD.distance_matrix(random_lhd, metric = 'manhattan')\n\narray([[0. , 1.4, 1.2, 1. , 0.6],\n       [1.4, 0. , 1.4, 1.6, 1.6],\n       [1.2, 1.4, 0. , 1. , 1. ],\n       [1. , 1.6, 1. , 0. , 1.2],\n       [0.6, 1.6, 1. , 1.2, 0. ]])\n\n\n\npyLHD.distance_matrix(random_lhd, metric = 'minkowski', p=5)\n\narray([[0.        , 0.68950241, 0.61547698, 0.46090632, 0.24914619],\n       [0.68950241, 0.        , 0.80509104, 0.83493727, 0.80975898],\n       [0.61547698, 0.80509104, 0.        , 0.60098442, 0.46090632],\n       [0.46090632, 0.83493727, 0.60098442, 0.        , 0.61547698],\n       [0.24914619, 0.80975898, 0.46090632, 0.61547698, 0.        ]])"
   },
   {
     "objectID": "docs/utils.scale.html",
@@ -788,7 +788,7 @@
     "href": "docs/utils.scale.html#examples",
     "title": "utils.scale",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)\npyLHD.scale(random_lhd)\n\narray([[0.5 , 0.  , 1.  ],\n       [0.  , 0.25, 0.25],\n       [0.75, 0.5 , 0.75],\n       [0.25, 0.75, 0.  ],\n       [1.  , 1.  , 0.5 ]])"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)\npyLHD.scale(random_lhd)\n\narray([[0.75, 0.  , 0.5 ],\n       [0.5 , 0.25, 0.75],\n       [0.25, 0.75, 0.  ],\n       [1.  , 1.  , 1.  ],\n       [0.  , 0.5 , 0.25]])"
   },
   {
     "objectID": "docs/utils.adjust_range.html",
@@ -816,35 +816,35 @@
     "href": "docs/utils.adjust_range.html#examples",
     "title": "utils.adjust_range",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)\n\n\npyLHD.adjust_range(random_lhd,-1, 1)\n\narray([[ 0. , -0.5, -0.5],\n       [-1. ,  1. ,  0. ],\n       [ 1. ,  0.5, -1. ],\n       [ 0.5,  0. ,  0.5],\n       [-0.5, -1. ,  1. ]])\n\n\n\npyLHD.adjust_range(random_lhd, 5, 12, digits = 3)\n\narray([[ 8.5 ,  6.75,  6.75],\n       [ 5.  , 12.  ,  8.5 ],\n       [12.  , 10.25,  5.  ],\n       [10.25,  8.5 , 10.25],\n       [ 6.75,  5.  , 12.  ]])"
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)\n\n\npyLHD.adjust_range(random_lhd,-1, 1)\n\narray([[-0.5, -1. ,  0.5],\n       [ 1. ,  0.5,  0. ],\n       [-1. , -0.5, -0.5],\n       [ 0. ,  1. , -1. ],\n       [ 0.5,  0. ,  1. ]])\n\n\n\npyLHD.adjust_range(random_lhd, 5, 12, digits = 3)\n\narray([[ 6.75,  5.  , 10.25],\n       [12.  , 10.25,  8.5 ],\n       [ 5.  ,  6.75,  6.75],\n       [ 8.5 , 12.  ,  5.  ],\n       [10.25,  8.5 , 12.  ]])"
   },
   {
     "objectID": "docs/base_designs.GLPdesign.html",
     "href": "docs/base_designs.GLPdesign.html",
     "title": "base_designs.GLPdesign",
     "section": "",
-    "text": "base_designs.GLPdesign(nrows, ncols, h=None)\nGood Lattice Point (GLP) Design"
+    "text": "base_designs.GLPdesign(n_rows, n_columns, h=None)\nGood Lattice Point (GLP) Design"
   },
   {
     "objectID": "docs/base_designs.GLPdesign.html#parameters",
     "href": "docs/base_designs.GLPdesign.html#parameters",
     "title": "base_designs.GLPdesign",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nnrows\nint\nA positive integer specifying the number of rows\nrequired\n\n\nncols\nint\nA postive integer specifying the number of columns h (list, optional): A list whose length is same as (ncols), with its elements that are smaller than and coprime to (nrows). Defaults to None. If None, a random sample of (ncols) elements between 1 and (nrows-1).\nrequired"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nn_rows\nint\nA positive integer specifying the number of rows\nrequired\n\n\nn_columns\nint\nA postive integer specifying the number of columns h (list, optional): A list whose length is same as (n_columns), with its elements that are smaller than and coprime to (n_rows). Defaults to None. If None, a random sample of (n_columns) elements between 1 and (n_rows-1).\nrequired"
   },
   {
     "objectID": "docs/base_designs.GLPdesign.html#returns",
     "href": "docs/base_designs.GLPdesign.html#returns",
     "title": "base_designs.GLPdesign",
     "section": "Returns",
-    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nA (nrows by ncols) GLP design."
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nA (n_rows by n_columns) GLP design."
   },
   {
     "objectID": "docs/base_designs.GLPdesign.html#examples",
     "href": "docs/base_designs.GLPdesign.html#examples",
     "title": "base_designs.GLPdesign",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\npyLHD.GLPdesign(nrows=5,ncols=3)\n\narray([[2, 1, 4],\n       [4, 2, 3],\n       [1, 3, 2],\n       [3, 4, 1],\n       [0, 0, 0]])\n\n\n\npyLHD.GLPdesign(nrows=8,ncols=4,h=[1,3,5,7])\n\narray([[3, 7, 5, 1],\n       [6, 6, 2, 2],\n       [1, 5, 7, 3],\n       [4, 4, 4, 4],\n       [7, 3, 1, 5],\n       [2, 2, 6, 6],\n       [5, 1, 3, 7],\n       [0, 0, 0, 0]])"
+    "text": "Examples\n\nimport pyLHD\npyLHD.GLPdesign(n_rows=5,n_columns=3)\n\narray([[4, 3, 1],\n       [3, 1, 2],\n       [2, 4, 3],\n       [1, 2, 4],\n       [0, 0, 0]])\n\n\n\npyLHD.GLPdesign(n_rows=8,n_columns=4,h=[1,3,5,7])\n\narray([[3, 7, 1, 5],\n       [6, 6, 2, 2],\n       [1, 5, 3, 7],\n       [4, 4, 4, 4],\n       [7, 3, 5, 1],\n       [2, 2, 6, 6],\n       [5, 1, 7, 3],\n       [0, 0, 0, 0]])"
   },
   {
     "objectID": "docs/utils.OA2LHD.html",
@@ -900,7 +900,7 @@
     "href": "docs/utils.eval_design.html#examples",
     "title": "utils.eval_design",
     "section": "Examples",
-    "text": "Examples\nBy default phi_p with p=15 and q=1\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(nrows=5,ncols=3)\npyLHD.eval_design(random_lhd)\n\n0.3336499797729222\n\n\nEvaluate design based on MaxProCriterion\n\npyLHD.eval_design(random_lhd,criteria='MaxProCriterion')\n\n0.5352688013799887"
+    "text": "Examples\nBy default phi_p with p=15 and q=1\n\nimport pyLHD\nrandom_lhd = pyLHD.rLHD(n_rows=5,n_columns=3)\npyLHD.eval_design(random_lhd)\n\n0.34925893322527773\n\n\nEvaluate design based on MaxProCriterion\n\npyLHD.eval_design(random_lhd,criteria='MaxProCriterion')\n\n0.6191008742849474"
   },
   {
     "objectID": "docs/OLHD.OLHD_Ye98.html",
@@ -942,35 +942,35 @@
     "href": "docs/OLHD.OLHD_Butler01.html",
     "title": "OLHD.OLHD_Butler01",
     "section": "",
-    "text": "OLHD.OLHD_Butler01(nrows, ncols)\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)"
+    "text": "OLHD.OLHD_Butler01(n_rows, n_columns)\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)"
   },
   {
     "objectID": "docs/OLHD.OLHD_Butler01.html#parameters",
     "href": "docs/OLHD.OLHD_Butler01.html#parameters",
     "title": "OLHD.OLHD_Butler01",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nnrows\nint\nA positive integer specifying the number of rows\nrequired\n\n\nncols\nint\nA postive integer specifying the number of columns\nrequired"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nn_rows\nint\nA positive integer specifying the number of rows\nrequired\n\n\nn_columns\nint\nA postive integer specifying the number of columns\nrequired"
   },
   {
     "objectID": "docs/OLHD.OLHD_Butler01.html#raises",
     "href": "docs/OLHD.OLHD_Butler01.html#raises",
     "title": "OLHD.OLHD_Butler01",
     "section": "Raises",
-    "text": "Raises\n\n\n\nType\nDescription\n\n\n\n\nValueError\nIf ncols is not less than or equal to nrows\n\n\nValueError\nIf nrows is not greater than or equal to 3\n\n\nValueError\nIf nrows is not an odd prime number"
+    "text": "Raises\n\n\n\nType\nDescription\n\n\n\n\nValueError\nIf n_columns is not less than or equal to n_rows\n\n\nValueError\nIf n_rows is not greater than or equal to 3\n\n\nValueError\nIf n_rows is not an odd prime number"
   },
   {
     "objectID": "docs/OLHD.OLHD_Butler01.html#returns",
     "href": "docs/OLHD.OLHD_Butler01.html#returns",
     "title": "OLHD.OLHD_Butler01",
     "section": "Returns",
-    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nA (nrows by ncols) orthogonal LHD"
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nA (n_rows by n_columns) orthogonal LHD"
   },
   {
     "objectID": "docs/OLHD.OLHD_Butler01.html#examples",
     "href": "docs/OLHD.OLHD_Butler01.html#examples",
     "title": "OLHD.OLHD_Butler01",
     "section": "Examples",
-    "text": "Examples\nCreate an orthogonal LHD with nrows =11 and ncols =5\n\nimport pyLHD\npyLHD.OLHD_Butler01(nrows=11,ncols=5)\n\narray([[ 4.,  5.,  1.,  2.,  3.],\n       [ 2.,  8.,  7.,  3., 11.],\n       [ 1.,  3., 10.,  7.,  4.],\n       [ 3., 10.,  4., 11.,  5.],\n       [ 5.,  1.,  3.,  8., 10.],\n       [ 7., 11.,  9.,  4.,  2.],\n       [ 9.,  2.,  8.,  1.,  7.],\n       [11.,  9.,  2.,  5.,  8.],\n       [10.,  4.,  5.,  9.,  1.],\n       [ 8.,  7., 11., 10.,  9.],\n       [ 6.,  6.,  6.,  6.,  6.]])\n\n\nCreate an orthogonal LHD with nrows =11 and ncols =5\n\n pyLHD.OLHD_Butler01(nrows=7,ncols=6)\n\narray([[2., 1., 3., 7., 5., 3.],\n       [1., 5., 6., 2., 6., 5.],\n       [3., 6., 1., 5., 2., 7.],\n       [5., 2., 7., 4., 3., 6.],\n       [7., 3., 2., 3., 7., 4.],\n       [6., 7., 5., 6., 4., 2.],\n       [4., 4., 4., 1., 1., 1.]])"
+    "text": "Examples\nCreate an orthogonal LHD with n_rows =11 and n_columns =5\n\nimport pyLHD\npyLHD.OLHD_Butler01(n_rows=11,n_columns=5)\n\narray([[ 1.,  2.,  4.,  5.,  3.],\n       [ 7.,  3.,  2.,  8., 11.],\n       [10.,  7.,  1.,  3.,  4.],\n       [ 4., 11.,  3., 10.,  5.],\n       [ 3.,  8.,  5.,  1., 10.],\n       [ 9.,  4.,  7., 11.,  2.],\n       [ 8.,  1.,  9.,  2.,  7.],\n       [ 2.,  5., 11.,  9.,  8.],\n       [ 5.,  9., 10.,  4.,  1.],\n       [11., 10.,  8.,  7.,  9.],\n       [ 6.,  6.,  6.,  6.,  6.]])\n\n\nCreate an orthogonal LHD with n_rows =11 and n_columns =5\n\n pyLHD.OLHD_Butler01(n_rows=7,n_columns=6)\n\narray([[2., 1., 3., 3., 7., 5.],\n       [1., 5., 6., 5., 2., 6.],\n       [3., 6., 1., 7., 5., 2.],\n       [5., 2., 7., 6., 4., 3.],\n       [7., 3., 2., 4., 3., 7.],\n       [6., 7., 5., 2., 6., 4.],\n       [4., 4., 4., 1., 1., 1.]])"
   },
   {
     "objectID": "docs/OLHD.OLHD_Lin09.html",
@@ -1069,5 +1069,75 @@
     "title": "OLHD.OLHD_Sun10",
     "section": "Examples",
     "text": "Examples\nCreate an orthogonal LHD with C=3, r=3, type = ‘odd’, so n = (3*2^(3+1) )+1 = 49 (rows) and k=2^(3)=8 (columns)\n\nimport pyLHD\npyLHD.OLHD_Sun10(C=3,r=3,type='odd')\n\narray([[  1.,   2.,   3.,   4.,   5.,   6.,   7.,   8.],\n       [  2.,  -1.,  -4.,   3.,   6.,  -5.,  -8.,   7.],\n       [  3.,   4.,  -1.,  -2.,  -7.,  -8.,   5.,   6.],\n       [  4.,  -3.,   2.,  -1.,  -8.,   7.,  -6.,   5.],\n       [  5.,   6.,   7.,   8.,  -1.,  -2.,  -3.,  -4.],\n       [  6.,  -5.,  -8.,   7.,  -2.,   1.,   4.,  -3.],\n       [  7.,   8.,  -5.,  -6.,   3.,   4.,  -1.,  -2.],\n       [  8.,  -7.,   6.,  -5.,   4.,  -3.,   2.,  -1.],\n       [  9.,  10.,  11.,  12.,  13.,  14.,  15.,  16.],\n       [ 10.,  -9., -12.,  11.,  14., -13., -16.,  15.],\n       [ 11.,  12.,  -9., -10., -15., -16.,  13.,  14.],\n       [ 12., -11.,  10.,  -9., -16.,  15., -14.,  13.],\n       [ 13.,  14.,  15.,  16.,  -9., -10., -11., -12.],\n       [ 14., -13., -16.,  15., -10.,   9.,  12., -11.],\n       [ 15.,  16., -13., -14.,  11.,  12.,  -9., -10.],\n       [ 16., -15.,  14., -13.,  12., -11.,  10.,  -9.],\n       [ 17.,  18.,  19.,  20.,  21.,  22.,  23.,  24.],\n       [ 18., -17., -20.,  19.,  22., -21., -24.,  23.],\n       [ 19.,  20., -17., -18., -23., -24.,  21.,  22.],\n       [ 20., -19.,  18., -17., -24.,  23., -22.,  21.],\n       [ 21.,  22.,  23.,  24., -17., -18., -19., -20.],\n       [ 22., -21., -24.,  23., -18.,  17.,  20., -19.],\n       [ 23.,  24., -21., -22.,  19.,  20., -17., -18.],\n       [ 24., -23.,  22., -21.,  20., -19.,  18., -17.],\n       [  0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],\n       [ -1.,  -2.,  -3.,  -4.,  -5.,  -6.,  -7.,  -8.],\n       [ -2.,   1.,   4.,  -3.,  -6.,   5.,   8.,  -7.],\n       [ -3.,  -4.,   1.,   2.,   7.,   8.,  -5.,  -6.],\n       [ -4.,   3.,  -2.,   1.,   8.,  -7.,   6.,  -5.],\n       [ -5.,  -6.,  -7.,  -8.,   1.,   2.,   3.,   4.],\n       [ -6.,   5.,   8.,  -7.,   2.,  -1.,  -4.,   3.],\n       [ -7.,  -8.,   5.,   6.,  -3.,  -4.,   1.,   2.],\n       [ -8.,   7.,  -6.,   5.,  -4.,   3.,  -2.,   1.],\n       [ -9., -10., -11., -12., -13., -14., -15., -16.],\n       [-10.,   9.,  12., -11., -14.,  13.,  16., -15.],\n       [-11., -12.,   9.,  10.,  15.,  16., -13., -14.],\n       [-12.,  11., -10.,   9.,  16., -15.,  14., -13.],\n       [-13., -14., -15., -16.,   9.,  10.,  11.,  12.],\n       [-14.,  13.,  16., -15.,  10.,  -9., -12.,  11.],\n       [-15., -16.,  13.,  14., -11., -12.,   9.,  10.],\n       [-16.,  15., -14.,  13., -12.,  11., -10.,   9.],\n       [-17., -18., -19., -20., -21., -22., -23., -24.],\n       [-18.,  17.,  20., -19., -22.,  21.,  24., -23.],\n       [-19., -20.,  17.,  18.,  23.,  24., -21., -22.],\n       [-20.,  19., -18.,  17.,  24., -23.,  22., -21.],\n       [-21., -22., -23., -24.,  17.,  18.,  19.,  20.],\n       [-22.,  21.,  24., -23.,  18., -17., -20.,  19.],\n       [-23., -24.,  21.,  22., -19., -20.,  17.,  18.],\n       [-24.,  23., -22.,  21., -20.,  19., -18.,  17.]])\n\n\nCreate an orthogonal LHD with C=3, r=3, type = ‘even’, So n = 3*2^(3+1) = 48 (rows) and k=2^(3)=8 (columns)\n\nimport pyLHD\npyLHD.OLHD_Sun10(C=3,r=3,type='even')\n\narray([[  0.5,   1.5,   2.5,   3.5,   4.5,   5.5,   6.5,   7.5],\n       [  1.5,  -0.5,  -3.5,   2.5,   5.5,  -4.5,  -7.5,   6.5],\n       [  2.5,   3.5,  -0.5,  -1.5,  -6.5,  -7.5,   4.5,   5.5],\n       [  3.5,  -2.5,   1.5,  -0.5,  -7.5,   6.5,  -5.5,   4.5],\n       [  4.5,   5.5,   6.5,   7.5,  -0.5,  -1.5,  -2.5,  -3.5],\n       [  5.5,  -4.5,  -7.5,   6.5,  -1.5,   0.5,   3.5,  -2.5],\n       [  6.5,   7.5,  -4.5,  -5.5,   2.5,   3.5,  -0.5,  -1.5],\n       [  7.5,  -6.5,   5.5,  -4.5,   3.5,  -2.5,   1.5,  -0.5],\n       [  8.5,   9.5,  10.5,  11.5,  12.5,  13.5,  14.5,  15.5],\n       [  9.5,  -8.5, -11.5,  10.5,  13.5, -12.5, -15.5,  14.5],\n       [ 10.5,  11.5,  -8.5,  -9.5, -14.5, -15.5,  12.5,  13.5],\n       [ 11.5, -10.5,   9.5,  -8.5, -15.5,  14.5, -13.5,  12.5],\n       [ 12.5,  13.5,  14.5,  15.5,  -8.5,  -9.5, -10.5, -11.5],\n       [ 13.5, -12.5, -15.5,  14.5,  -9.5,   8.5,  11.5, -10.5],\n       [ 14.5,  15.5, -12.5, -13.5,  10.5,  11.5,  -8.5,  -9.5],\n       [ 15.5, -14.5,  13.5, -12.5,  11.5, -10.5,   9.5,  -8.5],\n       [ 16.5,  17.5,  18.5,  19.5,  20.5,  21.5,  22.5,  23.5],\n       [ 17.5, -16.5, -19.5,  18.5,  21.5, -20.5, -23.5,  22.5],\n       [ 18.5,  19.5, -16.5, -17.5, -22.5, -23.5,  20.5,  21.5],\n       [ 19.5, -18.5,  17.5, -16.5, -23.5,  22.5, -21.5,  20.5],\n       [ 20.5,  21.5,  22.5,  23.5, -16.5, -17.5, -18.5, -19.5],\n       [ 21.5, -20.5, -23.5,  22.5, -17.5,  16.5,  19.5, -18.5],\n       [ 22.5,  23.5, -20.5, -21.5,  18.5,  19.5, -16.5, -17.5],\n       [ 23.5, -22.5,  21.5, -20.5,  19.5, -18.5,  17.5, -16.5],\n       [ -0.5,  -1.5,  -2.5,  -3.5,  -4.5,  -5.5,  -6.5,  -7.5],\n       [ -1.5,   0.5,   3.5,  -2.5,  -5.5,   4.5,   7.5,  -6.5],\n       [ -2.5,  -3.5,   0.5,   1.5,   6.5,   7.5,  -4.5,  -5.5],\n       [ -3.5,   2.5,  -1.5,   0.5,   7.5,  -6.5,   5.5,  -4.5],\n       [ -4.5,  -5.5,  -6.5,  -7.5,   0.5,   1.5,   2.5,   3.5],\n       [ -5.5,   4.5,   7.5,  -6.5,   1.5,  -0.5,  -3.5,   2.5],\n       [ -6.5,  -7.5,   4.5,   5.5,  -2.5,  -3.5,   0.5,   1.5],\n       [ -7.5,   6.5,  -5.5,   4.5,  -3.5,   2.5,  -1.5,   0.5],\n       [ -8.5,  -9.5, -10.5, -11.5, -12.5, -13.5, -14.5, -15.5],\n       [ -9.5,   8.5,  11.5, -10.5, -13.5,  12.5,  15.5, -14.5],\n       [-10.5, -11.5,   8.5,   9.5,  14.5,  15.5, -12.5, -13.5],\n       [-11.5,  10.5,  -9.5,   8.5,  15.5, -14.5,  13.5, -12.5],\n       [-12.5, -13.5, -14.5, -15.5,   8.5,   9.5,  10.5,  11.5],\n       [-13.5,  12.5,  15.5, -14.5,   9.5,  -8.5, -11.5,  10.5],\n       [-14.5, -15.5,  12.5,  13.5, -10.5, -11.5,   8.5,   9.5],\n       [-15.5,  14.5, -13.5,  12.5, -11.5,  10.5,  -9.5,   8.5],\n       [-16.5, -17.5, -18.5, -19.5, -20.5, -21.5, -22.5, -23.5],\n       [-17.5,  16.5,  19.5, -18.5, -21.5,  20.5,  23.5, -22.5],\n       [-18.5, -19.5,  16.5,  17.5,  22.5,  23.5, -20.5, -21.5],\n       [-19.5,  18.5, -17.5,  16.5,  23.5, -22.5,  21.5, -20.5],\n       [-20.5, -21.5, -22.5, -23.5,  16.5,  17.5,  18.5,  19.5],\n       [-21.5,  20.5,  23.5, -22.5,  17.5, -16.5, -19.5,  18.5],\n       [-22.5, -23.5,  20.5,  21.5, -18.5, -19.5,  16.5,  17.5],\n       [-23.5,  22.5, -21.5,  20.5, -19.5,  18.5, -17.5,  16.5]])"
+  },
+  {
+    "objectID": "REFERENCES.html",
+    "href": "REFERENCES.html",
+    "title": "",
+    "section": "",
+    "text": "AvgAbsCor: Georgiou, Stelios D. “Orthogonal Latin hypercube designs from generalized orthogonal designs.” Journal of Statistical Planning and Inference 139.4 (2009): 1530-1540\ncoverage: Gunzburer M., Burkdart J. (2004) Uniformity measures for point samples in hypercubes, https://people.sc.fsu.edu/~jburkardt/.\ndiscrepancy: Fang K.T, Li R. and Sudjianto A. (2006) Design and Modeling for Computer Experiments, Chapman & Hall\nGLPdesign: Korobov, A. N. “The approximate computation of multiple integrals.” Dokl. Akad. Nauk SSSR. Vol. 124. 1959\nMaxAbsCor: Georgiou, Stelios D. “Orthogonal Latin hypercube designs from generalized orthogonal designs.” Journal of Statistical Planning and Inference 139.4 (2009): 1530-1540\nMaxProCriterion: Joseph, V. Roshan, Evren Gul, and Shan Ba. “Maximum projection designs for computer experiments.” Biometrika 102.2 (2015): 371-380\nminimax: Jonshon M.E., Moore L.M. and Ylvisaker D. (1990), Minmax and maximin distance designs, J. of Statis. Planning and Inference, 26, 131-148\nOA2LHD: Tang, Boxin. “Orthogonal array-based Latin hypercubes.” Journal of the American statistical association 88.424 (1993): 1392-1397\nOLHD_Butler01: Butler, Neil A. “Optimal and orthogonal Latin hypercube designs for computer experiments.” Biometrika 88.3 (2001): 847-857\nOLHD_Cioppa07: Cioppa, Thomas M., and Thomas W. Lucas. “Efficient nearly orthogonal and space-filling Latin hypercubes.” Technometrics 49.1 (2007): 45-55\nOLHD_Lin09: Lin, C. Devon, Rahul Mukerjee, and Boxin Tang. “Construction of orthogonal and nearly orthogonal Latin hypercubes.” Biometrika 96.1 (2009): 243-247\nOLHD_Sun10: Sun, Fasheng, Min-Qian Liu, and Dennis KJ Lin. “Construction of orthogonal Latin hypercube designs with flexible run sizes.” Journal of Statistical Planning and Inference 140.11 (2010): 3236-3242\nOLHD_Ye98: Ye, Kenny Q. “Orthogonal column Latin hypercubes and their application in computer experiments.” Journal of the American Statistical Association 93.444 (1998): 1430-1439\nphi_p: Jin, Ruichen, Wei Chen, and Agus Sudjianto. “An efficient algorithm for constructing optimal design of computer experiments.” International Design Engineering Technical Conferences and Computers and Information in Engineering Conference. Vol. 37009. 2003\nwilliams_transform: Williams, Evan James. “Experimental designs balanced for the estimation of residual effects of treatments.” Australian Journal of Chemistry 2.2 (1949): 149-168"
+  },
+  {
+    "objectID": "REFERENCES.html#references-for-functions-in-pylhd",
+    "href": "REFERENCES.html#references-for-functions-in-pylhd",
+    "title": "",
+    "section": "",
+    "text": "AvgAbsCor: Georgiou, Stelios D. “Orthogonal Latin hypercube designs from generalized orthogonal designs.” Journal of Statistical Planning and Inference 139.4 (2009): 1530-1540\ncoverage: Gunzburer M., Burkdart J. (2004) Uniformity measures for point samples in hypercubes, https://people.sc.fsu.edu/~jburkardt/.\ndiscrepancy: Fang K.T, Li R. and Sudjianto A. (2006) Design and Modeling for Computer Experiments, Chapman & Hall\nGLPdesign: Korobov, A. N. “The approximate computation of multiple integrals.” Dokl. Akad. Nauk SSSR. Vol. 124. 1959\nMaxAbsCor: Georgiou, Stelios D. “Orthogonal Latin hypercube designs from generalized orthogonal designs.” Journal of Statistical Planning and Inference 139.4 (2009): 1530-1540\nMaxProCriterion: Joseph, V. Roshan, Evren Gul, and Shan Ba. “Maximum projection designs for computer experiments.” Biometrika 102.2 (2015): 371-380\nminimax: Jonshon M.E., Moore L.M. and Ylvisaker D. (1990), Minmax and maximin distance designs, J. of Statis. Planning and Inference, 26, 131-148\nOA2LHD: Tang, Boxin. “Orthogonal array-based Latin hypercubes.” Journal of the American statistical association 88.424 (1993): 1392-1397\nOLHD_Butler01: Butler, Neil A. “Optimal and orthogonal Latin hypercube designs for computer experiments.” Biometrika 88.3 (2001): 847-857\nOLHD_Cioppa07: Cioppa, Thomas M., and Thomas W. Lucas. “Efficient nearly orthogonal and space-filling Latin hypercubes.” Technometrics 49.1 (2007): 45-55\nOLHD_Lin09: Lin, C. Devon, Rahul Mukerjee, and Boxin Tang. “Construction of orthogonal and nearly orthogonal Latin hypercubes.” Biometrika 96.1 (2009): 243-247\nOLHD_Sun10: Sun, Fasheng, Min-Qian Liu, and Dennis KJ Lin. “Construction of orthogonal Latin hypercube designs with flexible run sizes.” Journal of Statistical Planning and Inference 140.11 (2010): 3236-3242\nOLHD_Ye98: Ye, Kenny Q. “Orthogonal column Latin hypercubes and their application in computer experiments.” Journal of the American Statistical Association 93.444 (1998): 1430-1439\nphi_p: Jin, Ruichen, Wei Chen, and Agus Sudjianto. “An efficient algorithm for constructing optimal design of computer experiments.” International Design Engineering Technical Conferences and Computers and Information in Engineering Conference. Vol. 37009. 2003\nwilliams_transform: Williams, Evan James. “Experimental designs balanced for the estimation of residual effects of treatments.” Australian Journal of Chemistry 2.2 (1949): 149-168"
+  },
+  {
+    "objectID": "docs/base_designs.random_lhd.html",
+    "href": "docs/base_designs.random_lhd.html",
+    "title": "base_designs.random_lhd",
+    "section": "",
+    "text": "base_designs.random_lhd(n_rows, n_columns, scramble=True, seed=None)\nGenerate a random Latin Hypercube Design"
+  },
+  {
+    "objectID": "docs/base_designs.random_lhd.html#parameters",
+    "href": "docs/base_designs.random_lhd.html#parameters",
+    "title": "base_designs.random_lhd",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nn_rows\nint\nnumber of rows (number of samples)\nrequired\n\n\nn_columns\nint\nnumber of columns (dimnesion of parameter space)\nrequired\n\n\nscramble\nOptional[bool]\nWhen False, center samples within cells of a multi-dimensional grid. Otherwise, samples are randomly placed within cells of the grid. Defaults to True.\nTrue\n\n\nseed\nOptional[int]\nIf seed is an int or None, a new numpy.random.Generator is created using np.random.default_rng(seed). Defaults to None.\nNone"
+  },
+  {
+    "objectID": "docs/base_designs.random_lhd.html#returns",
+    "href": "docs/base_designs.random_lhd.html#returns",
+    "title": "base_designs.random_lhd",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nA Latin hypercube sample of \\(n =\\) n_rows points generated in \\([0,1)^d\\), where \\(d\\)=n_columns. Each univariate marginal distribution is stratisfied, placing exactly one point in \\([j/n,(j+1)/n)\\) for \\(j=0,1,\\dots,n-1\\)"
+  },
+  {
+    "objectID": "docs/base_designs.random_lhd.html#examples",
+    "href": "docs/base_designs.random_lhd.html#examples",
+    "title": "base_designs.random_lhd",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\npyLHD.random_lhd(n_rows = 5, n_columns = 3, seed = 1)\n\narray([[0.69763568, 0.29763568, 0.09763568],\n       [0.89763568, 0.49763568, 0.89763568],\n       [0.09763568, 0.69763568, 0.29763568],\n       [0.49763568, 0.89763568, 0.69763568],\n       [0.29763568, 0.09763568, 0.49763568]])\n\n\n\npyLHD.random_lhd(n_rows = 5, n_columns = 3, seed = 1, scramble = False)\n\narray([[0.7, 0.3, 0.1],\n       [0.9, 0.5, 0.9],\n       [0.1, 0.7, 0.3],\n       [0.5, 0.9, 0.7],\n       [0.3, 0.1, 0.5]])"
+  },
+  {
+    "objectID": "docs/utils.permute_columns.html",
+    "href": "docs/utils.permute_columns.html",
+    "title": "utils.permute_columns",
+    "section": "",
+    "text": "utils.permute_columns(arr, columns=None, seed=None)\nRandom permute columns in a numpy ndarray"
+  },
+  {
+    "objectID": "docs/utils.permute_columns.html#parameters",
+    "href": "docs/utils.permute_columns.html#parameters",
+    "title": "utils.permute_columns",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\ncolumns\nOptional[List[int]]\nIf columns is None all columns will be randomly permuted, otherwise provide a list of columns to permute. Defaults to None.\nNone\n\n\nseed\nOptional[int]\nIf seed is an int or None, a new numpy.random.Generator is created using np.random.default_rng(seed). Defaults to None.\nNone"
+  },
+  {
+    "objectID": "docs/utils.permute_columns.html#returns",
+    "href": "docs/utils.permute_columns.html#returns",
+    "title": "utils.permute_columns",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nnumpy ndarray with columns of choice randomly permuted"
+  },
+  {
+    "objectID": "docs/utils.permute_columns.html#examples",
+    "href": "docs/utils.permute_columns.html#examples",
+    "title": "utils.permute_columns",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nx = pyLHD.random_lhd(n_rows = 5, n_columns = 3, seed = 1)\nx\n\narray([[0.69763568, 0.29763568, 0.09763568],\n       [0.89763568, 0.49763568, 0.89763568],\n       [0.09763568, 0.69763568, 0.29763568],\n       [0.49763568, 0.89763568, 0.69763568],\n       [0.29763568, 0.09763568, 0.49763568]])\n\n\nPermute all columns\n\npyLHD.permute_columns(x)\n\narray([[0.49763568, 0.09763568, 0.09763568],\n       [0.09763568, 0.89763568, 0.69763568],\n       [0.69763568, 0.49763568, 0.89763568],\n       [0.89763568, 0.29763568, 0.29763568],\n       [0.29763568, 0.69763568, 0.49763568]])\n\n\nPermute columns [0,1] with seed=1\n\npyLHD.permute_columns(x, columns = [0,1], seed = 1)\n\narray([[0.29763568, 0.89763568, 0.09763568],\n       [0.69763568, 0.29763568, 0.89763568],\n       [0.89763568, 0.49763568, 0.29763568],\n       [0.09763568, 0.09763568, 0.69763568],\n       [0.49763568, 0.69763568, 0.49763568]])"
   }
 ]

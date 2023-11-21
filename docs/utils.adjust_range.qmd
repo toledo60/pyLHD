@@ -25,7 +25,7 @@ Adjust the range of a design to [min,max]
 
 ```{python}
 import pyLHD
-random_lhd = pyLHD.rLHD(nrows=5,ncols=3,unit_cube=True)
+random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)
 ```
 ```{python}
 pyLHD.adjust_range(random_lhd,-1, 1)

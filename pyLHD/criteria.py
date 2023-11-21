@@ -17,7 +17,7 @@ def MaxAbsCor(arr: npt.ArrayLike) -> float:
   Examples:
     ```{python}
     import pyLHD
-    random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+    random_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)
     pyLHD.MaxAbsCor(random_lhd)
     ```
   """
@@ -43,7 +43,7 @@ def MaxProCriterion(arr: npt.ArrayLike) -> float:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+  random_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)
   pyLHD.MaxProCriterion(random_lhd)
   ```
   """
@@ -78,7 +78,7 @@ def dij(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd`
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+  random_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)
   pyLHD.dij(random_lhd,i=2,j=4)
   ```
   Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd` with q=2 (Euclidean)
@@ -109,7 +109,7 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   Calculate the phi_p criterion for random_lhd with default settings
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+  random_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)
   pyLHD.phi_p(random_lhd)  
   ```
   Calculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)
@@ -141,7 +141,7 @@ def AvgAbsCor(arr: npt.ArrayLike) -> float:
   Calculate the average absolute correlation of `random_lhd`
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+  random_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)
   pyLHD.AvgAbsCor(random_lhd)
   ```
   """
@@ -173,7 +173,7 @@ def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2
   Calculate the centered_L2 discrepancy of `random_lhd`
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+  random_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)
   pyLHD.discrepancy(random_lhd)
   ```
   Calculate the L2 star discrepancy of `random_lhd`
@@ -185,10 +185,10 @@ def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
     arr = pyLHD.scale(arr)
   
-  nrows = arr.shape[0]
-  ncols = arr.shape[1]
+  n_rows = arr.shape[0]
+  n_columns = arr.shape[1]
   
-  if nrows < ncols:
+  if n_rows < n_columns:
     raise ValueError('Make sure number of rows is greater than number of columns')
 
   sum1 = 0
@@ -196,79 +196,79 @@ def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2
   
   if method == 'L2':
 
-    for i in range(nrows):
+    for i in range(n_rows):
       sum1 += np.prod(arr[i,:]*(1-arr[i,:]))
-      for k in range(nrows):
+      for k in range(n_rows):
         q =  1
-        for j in range(ncols):
+        for j in range(n_columns):
           q = q*(1-np.maximum(arr[i,j],arr[k,j]))*np.minimum(arr[i,j],arr[k,j])
         sum2 += q
-    value = np.sqrt(12**(-ncols) - (((2**(1-ncols))/nrows)*sum1) + ((1/nrows**2)*sum2))  
+    value = np.sqrt(12**(-n_columns) - (((2**(1-n_columns))/n_rows)*sum1) + ((1/n_rows**2)*sum2))  
   
   if method == 'L2_star':
     dL2 = 0
-    for j in range(nrows):
-      for i in range(nrows):
+    for j in range(n_rows):
+      for i in range(n_rows):
         if i!=j:
           t = []
-          for l in range(ncols):
+          for l in range(n_columns):
             t.append(1-np.maximum(arr[i,l],arr[j,l]))
-          t = (np.prod(t))/(nrows**2)
+          t = (np.prod(t))/(n_rows**2)
         else:
           t1 = 1-arr[i,:]
           t1 = np.prod(t1)
           t2 = 1-np.square(arr[i,:])
           t2 = np.prod(t2)
-          t = t1/(nrows**2)-((2**(1-ncols))/nrows)*t2
+          t = t1/(n_rows**2)-((2**(1-n_columns))/n_rows)*t2
     
         dL2 += t
   
-    value = np.sqrt(3**(-ncols)+dL2)
+    value = np.sqrt(3**(-n_columns)+dL2)
       
   if method == 'centered_L2':
 
-    for i in range(nrows):
+    for i in range(n_rows):
       sum1 += np.prod((1+0.5*np.abs(arr[i,:]-0.5)-0.5*((abs(arr[i,:]-0.5))**2)))
-      for k in range(nrows):
+      for k in range(n_rows):
         sum2 +=  np.prod((1+0.5*np.abs(arr[i,:]-0.5)+0.5*np.abs(arr[k,:]-0.5)-0.5*np.abs(arr[i,:]-arr[k,:])))
-    value =  np.sqrt( ( (13/12)**ncols)-((2/nrows)*sum1) + ((1/(nrows**2))*sum2)  )
+    value =  np.sqrt( ( (13/12)**n_columns)-((2/n_rows)*sum1) + ((1/(n_rows**2))*sum2)  )
   
   if method == 'modified_L2':
     
-    for i in range(nrows):
+    for i in range(n_rows):
       p = 1
       p = np.prod((3-(arr[i,:]*arr[i,:])))
       sum1 += p
       
-      for k in range(nrows):
+      for k in range(n_rows):
         q = 1
-        for j in range(ncols):
+        for j in range(n_columns):
           q = q*(2-np.maximum(arr[i,j],arr[k,j]))
         sum2 += q
-    value =  np.sqrt(((4/3)**ncols) - (((2**(1-ncols))/nrows)*sum1) + ((1/nrows**2)*sum2))
+    value =  np.sqrt(((4/3)**n_columns) - (((2**(1-n_columns))/n_rows)*sum1) + ((1/n_rows**2)*sum2))
   
   if method == 'mixture_L2':
-    for i in range(nrows):
+    for i in range(n_rows):
       sum1 += np.prod((5/3-0.25*np.abs(arr[i,:]-0.5)-0.25*((np.abs(arr[i,:]-0.5))**2)))
-      for k in range(nrows):
+      for k in range(n_rows):
         sum2 += np.prod((15/8-0.25*np.abs(arr[i,:]-0.5)-0.25*np.abs(arr[k,:]-0.5)-
                          0.75*np.abs(arr[i,:]-arr[k,:])+0.5*((np.abs(arr[i,:]-arr[k,:]))**2)))
-    value = np.sqrt(((19/12)**ncols)-((2/nrows)*sum1) + ((1/nrows**2)*sum2))
+    value = np.sqrt(((19/12)**n_columns)-((2/n_rows)*sum1) + ((1/n_rows**2)*sum2))
      
   if method == 'symmetric_L2':
 
-    for i in range(nrows):
+    for i in range(n_rows):
       sum1 += np.prod( (1+2*arr[i,:]) - (2*arr[i,:]*arr[i,:]))
-      for k in range(nrows):
+      for k in range(n_rows):
         sum2 += np.prod( (1-np.abs(arr[i,:]-arr[k,:])) )
-    value = np.sqrt(((4/3)**ncols) - ((2/nrows)*sum1) + ((2**ncols/nrows**2)*sum2))
+    value = np.sqrt(((4/3)**n_columns) - ((2/n_rows)*sum1) + ((2**n_columns/n_rows**2)*sum2))
   
   if method == 'wrap_around_L2':
-    for i in range(nrows):
-      for k in range(nrows):
+    for i in range(n_rows):
+      for k in range(n_rows):
         sum1 += np.prod((1.5-((np.abs(arr[i,:]-arr[k,:]))*(1-np.abs(arr[i,:]-arr[k,:])))))
   
-    value =  np.sqrt((-((4/3)**ncols) + ((1/nrows**2)*sum1)))
+    value =  np.sqrt((-((4/3)**n_columns) + ((1/n_rows**2)*sum1)))
   
   return value
 
@@ -288,15 +288,15 @@ def coverage(arr: npt.ArrayLike) -> float:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=5,ncols=5)
+  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=5)
   pyLHD.coverage(random_lhd)
   ```
 
   """
-  nrows = arr.shape[0]
-  ncols = arr.shape[1]
+  n_rows = arr.shape[0]
+  n_columns = arr.shape[1]
   
-  if nrows < ncols:
+  if n_rows < n_columns:
     raise ValueError('Make sure number of rows is greater than number of columns')
   
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
@@ -309,13 +309,13 @@ def coverage(arr: npt.ArrayLike) -> float:
   np.fill_diagonal(dist_mat,10e3)
 
   Dmin = np.amin(dist_mat,axis=0)
-  gammabar = (1/nrows)*np.sum(Dmin)
+  gammabar = (1/n_rows)*np.sum(Dmin)
   sum = 0
 
-  for i in range(nrows):
+  for i in range(n_rows):
     sum +=  (Dmin[i]-gammabar)*(Dmin[i]-gammabar)
 
-  cov = (1/gammabar)*((1/nrows)*sum)**(1/2)
+  cov = (1/gammabar)*((1/n_rows)*sum)**(1/2)
   return cov
 
 # Compute the meshratio criterion
@@ -335,15 +335,15 @@ def mesh_ratio(arr: npt.ArrayLike) -> float:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=5,ncols=5)
+  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=5)
   pyLHD.mesh_ratio(random_lhd)
   ```
   """
   
-  nrows = arr.shape[0]
-  ncols = arr.shape[1]
+  n_rows = arr.shape[0]
+  n_columns = arr.shape[1]
 
-  if nrows < ncols:
+  if n_rows < n_columns:
     raise ValueError('Make sure number of rows is greater than number of columns')
   
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
@@ -354,13 +354,13 @@ def mesh_ratio(arr: npt.ArrayLike) -> float:
   max_dist = -1.0e30
   min_dist = 1.0e30
 
-  for i in range(nrows-1):
+  for i in range(n_rows-1):
     a = 1.0e30
     b = -1.0e30
-    for k in range(nrows):
+    for k in range(n_rows):
       if i != k:
         Dist = 0 
-        for j in range(ncols):
+        for j in range(n_columns):
           Dist += (x[i,j] - x[k,j])*(x[i,j]-x[k,j])
         if Dist > b:
           b = Dist
@@ -388,7 +388,7 @@ def maximin(arr: npt.ArrayLike) -> float:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(nrows=5,ncols=5)
+  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=5)
   pyLHD.maximin(random_lhd)
   ```
   """  

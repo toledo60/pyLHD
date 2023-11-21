@@ -1,0 +1,37 @@
+# utils.permute_columns { #pyLHD.utils.permute_columns }
+
+`utils.permute_columns(arr, columns=None, seed=None)`
+
+Random permute columns in a numpy ndarray
+
+## Parameters
+
+| Name      | Type                    | Description                                                                                                                 | Default    |
+|-----------|-------------------------|-----------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`     | npt.ArrayLike           | A numpy ndarray                                                                                                             | _required_ |
+| `columns` | Optional\[List\[int\]\] | If columns is None all columns will be randomly permuted, otherwise provide a list of columns to permute. Defaults to None. | `None`     |
+| `seed`    | Optional\[int\]         | If seed is an int or None, a new numpy.random.Generator is created using np.random.default_rng(seed). Defaults to None.     | `None`     |
+
+## Returns
+
+| Type          | Description                                            |
+|---------------|--------------------------------------------------------|
+| npt.ArrayLike | numpy ndarray with columns of choice randomly permuted |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+x = pyLHD.random_lhd(n_rows = 5, n_columns = 3, seed = 1)
+x
+```
+Permute all columns
+```{python}
+pyLHD.permute_columns(x)
+```
+Permute columns [0,1] with `seed=1`
+```{python}
+pyLHD.permute_columns(x, columns = [0,1], seed = 1)
+```

@@ -7,80 +7,80 @@ import pyLHD
 
 # --- Butler, N.A. (2001) Construction --- #
 
-def OLHD_Butler01(nrows: int, ncols: int) -> npt.ArrayLike:
+def OLHD_Butler01(n_rows: int, n_columns: int) -> npt.ArrayLike:
   """ Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)
 
   Args:
-      nrows (int): A positive integer specifying the number of rows
-      ncols (int): A postive integer specifying the number of columns
+      n_rows (int): A positive integer specifying the number of rows
+      n_columns (int): A postive integer specifying the number of columns
 
   Raises:
-      ValueError: If ncols is not less than or equal to nrows
-      ValueError: If nrows is not greater than or equal to 3
-      ValueError: If nrows is not an odd prime number
+      ValueError: If n_columns is not less than or equal to n_rows
+      ValueError: If n_rows is not greater than or equal to 3
+      ValueError: If n_rows is not an odd prime number
 
   Returns:
-      A (nrows by ncols) orthogonal LHD
+      A (n_rows by n_columns) orthogonal LHD
   
   Examples:
-  Create an orthogonal LHD with nrows =11 and ncols =5
+  Create an orthogonal LHD with n_rows =11 and n_columns =5
   ```{python}
   import pyLHD
-  pyLHD.OLHD_Butler01(nrows=11,ncols=5)
+  pyLHD.OLHD_Butler01(n_rows=11,n_columns=5)
   ```
-  Create an orthogonal LHD with nrows =11 and ncols =5
+  Create an orthogonal LHD with n_rows =11 and n_columns =5
   ```{python}
-   pyLHD.OLHD_Butler01(nrows=7,ncols=6)
+   pyLHD.OLHD_Butler01(n_rows=7,n_columns=6)
   ```
   """
-  if ncols >= nrows:
-    raise ValueError("ncols must be less than or equal to nrows")
-  if nrows < 3:
-    raise ValueError("nrows must be greater than or equal to 3")
-  if (not pyLHD.is_prime(nrows) or nrows % 2 != 1):
-    raise ValueError("nrows must be an odd prime number")
+  if n_columns >= n_rows:
+    raise ValueError("n_columns must be less than or equal to n_rows")
+  if n_rows < 3:
+    raise ValueError("n_rows must be greater than or equal to 3")
+  if (not pyLHD.is_prime(n_rows) or n_rows % 2 != 1):
+    raise ValueError("n_rows must be an odd prime number")
 
-  n0 = int((nrows-1)/2)
+  n0 = int((n_rows-1)/2)
   rng = np.random.default_rng()
 
-  if ncols <= n0:
+  if n_columns <= n0:
     seq = np.arange(start=1, stop=n0+1)
-    g = rng.choice(seq, ncols, replace=False)
+    g = rng.choice(seq, n_columns, replace=False)
 
-    W = np.zeros((nrows, ncols))
+    W = np.zeros((n_rows, n_columns))
 
-    for i in range(nrows):
-      for j in range(ncols):
-        if (nrows % 4 == 1):
-          W[i, j] = ((i+1)*g[j] + (nrows-1)/4) % nrows
-        if(nrows % 4 == 3):
-          W[i, j] = ((i+1) * g[j] + (3*nrows - 1)/4) % nrows
+    for i in range(n_rows):
+      for j in range(n_columns):
+        if (n_rows % 4 == 1):
+          W[i, j] = ((i+1)*g[j] + (n_rows-1)/4) % n_rows
+        if(n_rows % 4 == 3):
+          W[i, j] = ((i+1) * g[j] + (3*n_rows - 1)/4) % n_rows
 
     X = pyLHD.williams_transform(W)
 
   else:
     g0 = np.arange(start=1, stop=n0+1)
-    W0 = np.zeros((nrows, n0))
+    W0 = np.zeros((n_rows, n0))
 
-    for i in range(nrows):
+    for i in range(n_rows):
       for j in range(n0):
 
-        if (nrows % 4 == 1):
-          W0[i, j] = ((i+1)*g0[j] + (nrows-1)/4) % nrows
-        if (nrows % 4 == 3):
-          W0[i, j] = ((i+1)*g0[j] + (3*nrows-1)/4) % nrows
+        if (n_rows % 4 == 1):
+          W0[i, j] = ((i+1)*g0[j] + (n_rows-1)/4) % n_rows
+        if (n_rows % 4 == 3):
+          W0[i, j] = ((i+1)*g0[j] + (3*n_rows-1)/4) % n_rows
 
     X0 = pyLHD.williams_transform(W0)
 
-    r = ncols - n0
+    r = n_columns - n0
     seq = np.arange(start=1, stop=n0+1)
     g1 = rng.choice(seq, r, replace=False)
 
-    W1 = np.zeros((nrows, r))
+    W1 = np.zeros((n_rows, r))
 
-    for i in range(nrows):
+    for i in range(n_rows):
       for j in range(r):
-        W1[i, j] = ((i+1)*g1[j]) % nrows
+        W1[i, j] = ((i+1)*g1[j]) % n_rows
 
     X1 = pyLHD.williams_transform(W1)
 

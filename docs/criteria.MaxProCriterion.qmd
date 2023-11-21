@@ -22,6 +22,6 @@ Calculate the Maximum Projection Criterion
 
 ```{python}
 import pyLHD
-random_lhd = pyLHD.rLHD(nrows=10,ncols=3)
+random_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)
 pyLHD.MaxProCriterion(random_lhd)
 ```
