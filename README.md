@@ -20,7 +20,7 @@ The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tes
 
 With `pyLHD` you can generate the following designs:
 
-- `rLHD`: Generate a random Latin hypercube design
+- `random_lhd`: Generate a random Latin hypercube design
 - `GLPdesign`: Generate a good lattice point design
 - `OLHD_Butler01`: Orthogonal Latin hypercube design. Based on the construction method of Butler (2001)
 - `OLHD_Cioppa07`: Orthogonal Latin hypercube design. Based on the construction method of Cioppa and Lucas (2007)

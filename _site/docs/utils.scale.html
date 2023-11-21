@@ -153,20 +153,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/base_designs.rLHD.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">base_designs.rLHD</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../docs/base_designs.GLPdesign.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">base_designs.GLPdesign</span></a>
+  <a href="../docs/base_designs.permutations_matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base_designs.permutations_matrix</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../docs/base_designs.random_lhd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">base_designs.random_lhd</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/base_designs.GLPdesign.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base_designs.GLPdesign</span></a>
   </div>
 </li>
       </ul>
@@ -418,14 +418,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.rLHD(n_rows<span class="op">=</span><span class="dv">5</span>,n_columns<span class="op">=</span><span class="dv">3</span>,unit_cube<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(n_rows<span class="op">=</span><span class="dv">5</span>,n_columns<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.scale(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[0.75, 0.  , 0.5 ],
-       [0.5 , 0.25, 0.75],
-       [0.25, 0.75, 0.  ],
-       [1.  , 1.  , 1.  ],
-       [0.  , 0.5 , 0.25]])</code></pre>
+<pre><code>array([[0.75, 0.25, 0.5 ],
+       [0.5 , 0.  , 0.  ],
+       [0.  , 0.5 , 0.75],
+       [1.  , 0.75, 0.25],
+       [0.25, 1.  , 1.  ]])</code></pre>
 </div>
 </div>
 

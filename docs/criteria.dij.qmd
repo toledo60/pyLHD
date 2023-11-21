@@ -26,7 +26,7 @@ Calculate the Inter-site Distance
 Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd`
 ```{python}
 import pyLHD
-random_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)
+random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
 pyLHD.dij(random_lhd,i=2,j=4)
 ```
 Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd` with q=2 (Euclidean)

@@ -3,39 +3,29 @@ import numpy.typing as npt
 from typing import Optional
 from pyLHD.utils import permute_columns
 
-# Generate a random Latin Hypercube Design (LHD)
 
-def rLHD(n_rows: int, n_columns: int, unit_cube: bool = False) -> npt.ArrayLike:
-  """ Generate a random Latin Hypercube Design (LHD)
+def permutations_matrix(n_rows: int, n_columns: int, seed: Optional[int] = None) -> npt.ArrayLike:
+  """ Generate (n_rows x n_columns) matrix, in which each column is a random permutation of {1,2,...,n_rows}
 
   Args:
-      n_rows (int): A positive integer specifying the number of rows
-      n_columns (int): A postive integer specifying the number of columns
-      unit_cube (bool): If True, design will be in the unit cube [0,1]^n_columns.
+      n_rows (int): number of rows
+      n_columns (int): number of columns
+      seed (Optional[int], optional): If seed is an int or None, a new numpy.random.Generator is created using np.random.default_rng(seed). Defaults to None.
 
   Returns:
-      return a random (n_rows by n_columns) LHD
+      Generate (n_rows x n_columns) matrix, in which each column is a random permutation of {1,2,...,n_rows}
   
   Examples:
   ```{python}
   import pyLHD
-  pyLHD.rLHD(n_rows=5,n_columns = 4,unit_cube = False)
-  ```
-  ```{python}
-  pyLHD.rLHD(n_rows=5,n_columns = 4, unit_cube = True)
+  pyLHD.permutations_matrix(n_rows = 6, n_columns = 3, seed = 1)
   ```
   """
-  rng = np.random.default_rng()
-  rs = np.arange(start=1, stop=n_rows+1)
-  space = []
-  for _ in range(n_columns):
-    space.append(rng.choice(rs, n_rows, replace=False))
-  D = np.asarray(space).transpose()
-  
-  if unit_cube:
-    return (D-0.5)/n_rows
-  else:
-    return D
+  perms = np.tile(np.arange(start=1, stop=n_rows+1), (n_columns, 1)).T
+  perms = permute_columns(perms, seed=seed)
+
+  return perms
+
 
 
 def random_lhd(n_rows: int, n_columns: int, scramble: Optional[bool] = True,
@@ -43,7 +33,7 @@ def random_lhd(n_rows: int, n_columns: int, scramble: Optional[bool] = True,
   """Generate a random Latin Hypercube Design
 
   Args:
-      n_rows (int): number of rows (number of samples)
+      n_rows (int): number of rows
       n_columns (int): number of columns (dimnesion of parameter space)
       scramble (Optional[bool], optional): When False, center samples within cells of a multi-dimensional grid. 
           Otherwise, samples are randomly placed within cells of the grid. Defaults to True.
@@ -64,10 +54,9 @@ def random_lhd(n_rows: int, n_columns: int, scramble: Optional[bool] = True,
   """
              
   rng = np.random.default_rng(seed)
-  perms = np.tile(np.arange(start=1, stop=n_rows+1), (n_columns, 1)).T
-  perms = permute_columns(perms, seed=seed)
-
+  perms = permutations_matrix(n_rows= n_rows, n_columns= n_columns, seed = seed)
   samples = 0.5 if not scramble else rng.uniform()
+
   return (perms-samples)/n_rows
 
 

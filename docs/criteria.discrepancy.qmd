@@ -30,7 +30,7 @@ Discrepancy of a given sample
 Calculate the centered_L2 discrepancy of `random_lhd`
 ```{python}
 import pyLHD
-random_lhd = pyLHD.rLHD(n_rows=10,n_columns=3)
+random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
 pyLHD.discrepancy(random_lhd)
 ```
 Calculate the L2 star discrepancy of `random_lhd`

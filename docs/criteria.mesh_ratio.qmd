@@ -28,6 +28,6 @@ Compute the meshratio criterion for a given design
 
 ```{python}
 import pyLHD
-random_lhd = pyLHD.rLHD(n_rows=5,n_columns=5)
+random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=5)
 pyLHD.mesh_ratio(random_lhd)
 ```

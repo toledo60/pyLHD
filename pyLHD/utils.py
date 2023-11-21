@@ -66,7 +66,7 @@ def exchange(arr: npt.ArrayLike, idx: int, type: str='col') -> npt.ArrayLike:
   Choose the first columns of `random_lhd` and exchange two randomly selected elements
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(n_rows = 5, n_columns = 3)
+  random_lhd = pyLHD.random_lhd(n_rows = 5, n_columns = 3)
   random_lhd
   ```
   Choose column 1 of random_lhd and exchange two randomly selected elements
@@ -108,7 +108,7 @@ def williams_transform(arr: npt.ArrayLike,baseline: int =1) -> npt.ArrayLike:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3)
+  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
   random_lhd
   ```
   Change the baseline
@@ -197,7 +197,7 @@ def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int =
   By default `phi_p` with `p=15` and `q=1`
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3)
+  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
   pyLHD.eval_design(random_lhd)
   ```
   Evaluate design based on MaxProCriterion 
@@ -232,7 +232,7 @@ def adjust_range(arr: npt.ArrayLike, min: float, max: float, digits: int=None) -
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)
+  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
   ```
   ```{python}
   pyLHD.adjust_range(random_lhd,-1, 1)
@@ -272,7 +272,7 @@ def scale(arr: npt.ArrayLike,uniformize: bool =False) -> npt.ArrayLike:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)
+  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
   pyLHD.scale(random_lhd)
   ```
   """  
@@ -306,7 +306,7 @@ def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.rLHD(n_rows=5,n_columns=3,unit_cube=True)
+  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
   pyLHD.distance_matrix(random_lhd)
   ```
   ```{python}

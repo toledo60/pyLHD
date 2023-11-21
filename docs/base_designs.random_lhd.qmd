@@ -8,7 +8,7 @@ Generate a random Latin Hypercube Design
 
 | Name        | Type             | Description                                                                                                                                              | Default    |
 |-------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `n_rows`    | int              | number of rows (number of samples)                                                                                                                       | _required_ |
+| `n_rows`    | int              | number of rows                                                                                                                                           | _required_ |
 | `n_columns` | int              | number of columns (dimnesion of parameter space)                                                                                                         | _required_ |
 | `scramble`  | Optional\[bool\] | When False, center samples within cells of a multi-dimensional grid.  Otherwise, samples are randomly placed within cells of the grid. Defaults to True. | `True`     |
 | `seed`      | Optional\[int\]  | If seed is an int or None, a new numpy.random.Generator is created using np.random.default_rng(seed). Defaults to None.                                  | `None`     |

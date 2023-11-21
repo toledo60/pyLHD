@@ -44,7 +44,7 @@ def LA_LHD(n,k,prun=None,m=10,N=10,criteria='phi_p',
   
   result = []
   for i in range(m):
-    X[i] = pyLHD.rLHD(n,k,unit_cube=False)
+    X[i] = pyLHD.random_lhd(n,k)
     result.append(pyLHD.eval_design(X[i],p=p,q=q,criteria=criteria))
   result = np.asarray(result).reshape(-1,1)
 
@@ -141,7 +141,7 @@ def SA_LHD(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
   
   counter = 1 # step 1: counter index
   
-  X = pyLHD.rLHD(n_rows=n,n_columns=k,unit_cube=False) # step 2
+  X = pyLHD.random_lhd(n_rows=n,n_columns=k) # step 2
   
   Xbest = X.copy()
   TP = T0
