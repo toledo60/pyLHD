@@ -4,22 +4,6 @@ from pytest import approx
 from pyLHD.criteria import AvgAbsCor, MaxAbsCor
 from pyLHD.OLHD import OLHD_Ye98
 
-
-#@pytest.mark.parametrize("m", [2,3])
-#def test_ye98(m):
-#  olhd = OLHD_Ye98(m=m)
-#  if m==2:
-#    design = np.array([[2,-1],[1,2],[0,0],[-2,1],[-1,-2]])
-#    np.testing.assert_allclose(design, olhd,rtol=1e-6)
-#  if m == 3:
-#    design = np.array([[3,-4,-2,1],[4,3,-1,-2],
-#                       [1,-2,4,-3],[2,1,3,4],
-#                       [0,0,0,0],[-3,4,2,-1],
-#                       [-4,-3,1,2],[-1, 2,-4,3],
-#                       [-2,-1,-3,-4]])
-#    np.testing.assert_allclose(design, olhd,rtol=1e-6)
-  
-
 @pytest.mark.benchmark
 @pytest.mark.parametrize("m", [4, 8, 10])
 def test_AvgAbsCor(benchmark, m):

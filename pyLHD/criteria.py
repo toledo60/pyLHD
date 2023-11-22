@@ -50,8 +50,6 @@ def AvgAbsCor(arr: npt.ArrayLike) -> float:
 
 
 
-
-
 # Calculate the Maximum Projection Criterion
 
 def MaxProCriterion(arr: npt.ArrayLike) -> float:
@@ -70,18 +68,17 @@ def MaxProCriterion(arr: npt.ArrayLike) -> float:
   pyLHD.MaxProCriterion(random_lhd)
   ```
   """
-  n = arr.shape[0]
-  p = arr.shape[1]
+  n, p = arr.shape
+  arr_reshaped = arr[:, np.newaxis, :]
+  
+  # Calculate differences between pairs of rows
+  diff = arr_reshaped - arr_reshaped.transpose(1, 0, 2)
+  squared_diff = diff**2
 
-  temp =0
+  denom = np.prod(squared_diff, axis=-1)
+  temp = np.sum(1 / denom[np.triu_indices(n, k=1)])
 
-  for i in range(0,n-1):
-    for j in range(i+1,n):
-      denom = 1
-      for k in range(0,p):
-        denom = denom*(arr[i,k]-arr[j,k])**2
-      temp = temp + 1/denom
-  return (2/(n*(n-1) ) *temp)**(1/p)
+  return (2 / (n * (n - 1)) * temp)**(1 / p)
 
 # Calculate the Inter-site Distance
 
