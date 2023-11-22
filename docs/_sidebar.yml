@@ -18,7 +18,7 @@ website:
       - docs/criteria.MaxAbsCor.qmd
       - docs/criteria.MaxProCriterion.qmd
       - docs/criteria.phi_p.qmd
-      - docs/criteria.dij.qmd
+      - docs/criteria.inter_site.qmd
       - docs/criteria.AvgAbsCor.qmd
       - docs/criteria.discrepancy.qmd
       - docs/criteria.coverage.qmd
@@ -26,14 +26,14 @@ website:
       - docs/criteria.mesh_ratio.qmd
       section: Criteria
     - contents:
-      - docs/utils.permute_columns.qmd
-      - docs/utils.exchange.qmd
-      - docs/utils.williams_transform.qmd
-      - docs/utils.OA2LHD.qmd
-      - docs/utils.eval_design.qmd
-      - docs/utils.adjust_range.qmd
-      - docs/utils.scale.qmd
-      - docs/utils.distance_matrix.qmd
-      section: Utilities
+      - docs/helpers.permute_columns.qmd
+      - docs/helpers.exchange.qmd
+      - docs/helpers.williams_transform.qmd
+      - docs/helpers.OA2LHD.qmd
+      - docs/helpers.eval_design.qmd
+      - docs/helpers.adjust_range.qmd
+      - docs/helpers.scale.qmd
+      - docs/helpers.distance_matrix.qmd
+      section: Helpers
     id: docs
   - id: dummy-sidebar

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>criteria.maxabscor</title>
+<title>helpers.permute_columns</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/criteria.MaxAbsCor.html">Criteria</a></li><li class="breadcrumb-item"><a href="../docs/criteria.MaxAbsCor.html">criteria.MaxAbsCor</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/helpers.permute_columns.html">Helpers</a></li><li class="breadcrumb-item"><a href="../docs/helpers.permute_columns.html">helpers.permute_columns</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/criteria.MaxAbsCor.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/criteria.MaxAbsCor.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">criteria.MaxAbsCor</span></a>
   </div>
 </li>
@@ -288,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.permute_columns.html" class="sidebar-item-text sidebar-link">
+  <a href="../docs/helpers.permute_columns.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">helpers.permute_columns</span></a>
   </div>
 </li>
@@ -347,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">criteria.MaxAbsCor</h1>
+<h1 class="title">helpers.permute_columns</h1>
 </div>
 
 
@@ -362,11 +362,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>criteria.MaxAbsCor(arr)</code></p>
-<p>Calculate the Maximum Absolute Correlation</p>
+<p><code>helpers.permute_columns(arr, columns=None, seed=None)</code></p>
+<p>Random permute columns in a numpy ndarray</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 14%">
+<col style="width: 72%">
+<col style="width: 6%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -378,9 +384,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code>arr</code></td>
-<td>numpy.ndarray</td>
-<td>A design matrix</td>
+<td>npt.ArrayLike</td>
+<td>A numpy ndarray</td>
 <td><em>required</em></td>
+</tr>
+<tr class="even">
+<td><code>columns</code></td>
+<td>Optional[List[int]]</td>
+<td>If columns is None all columns will be randomly permuted, otherwise provide a list of columns to permute. Defaults to None.</td>
+<td><code>None</code></td>
+</tr>
+<tr class="odd">
+<td><code>seed</code></td>
+<td>Optional[int]</td>
+<td>If seed is an int or None, a new numpy.random.Generator is created using np.random.default_rng(seed). Defaults to None.</td>
+<td><code>None</code></td>
 </tr>
 </tbody>
 </table>
@@ -389,8 +407,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 9%">
-<col style="width: 90%">
+<col style="width: 21%">
+<col style="width: 78%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -400,8 +418,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>float</td>
-<td>Positive number indicating maximum absolute correlation. Rounded to 3 digits</td>
+<td>npt.ArrayLike</td>
+<td>numpy ndarray with columns of choice randomly permuted</td>
 </tr>
 </tbody>
 </table>
@@ -410,10 +428,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(n_rows<span class="op">=</span><span class="dv">10</span>,n_columns<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.MaxAbsCor(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> pyLHD.random_lhd(n_rows <span class="op">=</span> <span class="dv">5</span>, n_columns <span class="op">=</span> <span class="dv">3</span>, seed <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>0.4666666666666666</code></pre>
+<pre><code>array([[0.69763568, 0.29763568, 0.09763568],
+       [0.89763568, 0.49763568, 0.89763568],
+       [0.09763568, 0.69763568, 0.29763568],
+       [0.49763568, 0.89763568, 0.69763568],
+       [0.29763568, 0.09763568, 0.49763568]])</code></pre>
+</div>
+</div>
+<p>Permute all columns</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.permute_columns(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>array([[0.89763568, 0.09763568, 0.69763568],
+       [0.69763568, 0.89763568, 0.49763568],
+       [0.09763568, 0.69763568, 0.29763568],
+       [0.29763568, 0.29763568, 0.89763568],
+       [0.49763568, 0.49763568, 0.09763568]])</code></pre>
+</div>
+</div>
+<p>Permute columns [0,1] with <code>seed=1</code></p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pyLHD.permute_columns(x, columns <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>], seed <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>array([[0.29763568, 0.89763568, 0.09763568],
+       [0.69763568, 0.29763568, 0.89763568],
+       [0.89763568, 0.49763568, 0.29763568],
+       [0.09763568, 0.09763568, 0.69763568],
+       [0.49763568, 0.69763568, 0.49763568]])</code></pre>
 </div>
 </div>
 

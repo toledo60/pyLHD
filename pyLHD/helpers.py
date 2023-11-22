@@ -32,7 +32,6 @@ def permute_columns(arr: npt.ArrayLike, columns: Optional[List[int]] = None,
   ```{python}
   pyLHD.permute_columns(x, columns = [0,1], seed = 1)
   ```
-
   """
 
   rng = np.random.default_rng(seed)
@@ -188,7 +187,7 @@ def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int =
       criteria (str, optional): Criteria to choose from. Defaults to 'phi_p'. 
           Options include 'phi_p','MaxProCriterion','AvgAbsCor','AvgAbsCor'
           p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15
-          q (int): If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.
+          q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
 
   Returns:
       Calculation of chosen criteria for any LHD
@@ -205,15 +204,18 @@ def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int =
   pyLHD.eval_design(random_lhd,criteria='MaxProCriterion')
   ``` 
   """
-  if criteria == 'phi_p':
-    result = pyLHD.phi_p(arr,p=p,q=q)
-  elif criteria == 'MaxProCriterion':
-    result =  pyLHD.MaxProCriterion(arr)
-  elif criteria == 'AvgAbsCor':
-    result =  pyLHD.AvgAbsCor(arr)
-  elif criteria == 'MaxAbsCor':
-    result =  pyLHD.MaxAbsCor(arr)
-  return result
+  criteria_functions = {
+    'MaxProCriterion': pyLHD.MaxProCriterion,
+    'AvgAbsCor': pyLHD.AvgAbsCor,
+    'MaxAbsCor': pyLHD.MaxAbsCor
+  }
+    
+  if criteria in criteria_functions:
+    return criteria_functions[criteria](arr)
+  elif criteria == 'phi_p':
+    return pyLHD.phi_p(arr, p=p, q=q)
+  else:
+    raise ValueError(f"Invalid criteria: {criteria}")
 
 
 # Adjust the range of a design to [min,max]

@@ -1,6 +1,6 @@
-# utils.exchange { #pyLHD.utils.exchange }
+# helpers.exchange { #pyLHD.helpers.exchange }
 
-`utils.exchange(arr, idx, type='col')`
+`helpers.exchange(arr, idx, type='col')`
 
 Exchange two random elements in a matrix
 

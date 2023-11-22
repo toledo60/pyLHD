@@ -21,9 +21,35 @@ def MaxAbsCor(arr: npt.ArrayLike) -> float:
     pyLHD.MaxAbsCor(random_lhd)
     ```
   """
-  corr_matrix = np.corrcoef(arr.T)
-  np.fill_diagonal(corr_matrix, 0.0)
-  return np.max(np.abs(corr_matrix))
+  lower_matrix_corr = np.corrcoef(arr.T)[np.tril_indices(arr.shape[1],-1)]
+  return np.max(np.abs(lower_matrix_corr))
+
+
+# Calculate the Average Absolute Correlation
+
+def AvgAbsCor(arr: npt.ArrayLike) -> float:
+  """ Calculate the Average Absolute Correlation
+
+  Args:
+      arr (numpy.ndarray): A design matrix
+
+  Returns:
+      A positive number indicating the average absolute correlation 
+      of input matrix
+
+  Examples:
+  Calculate the average absolute correlation of `random_lhd`
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
+  pyLHD.AvgAbsCor(random_lhd)
+  ```
+  """
+  lower_matrix_corr = np.corrcoef(arr.T)[np.tril_indices(arr.shape[1],-1)]
+  return np.mean(np.abs(lower_matrix_corr))
+
+
+
 
 
 # Calculate the Maximum Projection Criterion
@@ -59,14 +85,14 @@ def MaxProCriterion(arr: npt.ArrayLike) -> float:
 
 # Calculate the Inter-site Distance
 
-def dij(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
+def inter_site(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   """ Calculate the Inter-site Distance
 
   Args:
       arr (numpy.ndarray): A design matrix
       i (int): A positive integer, which stands for the ith row of (arr)
       j (int): A positive integer, which stands for the jth row of (arr)
-      q (int, optional): The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.
+      q (int, optional): The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
 
   Returns:
       positive number indicating the distance (rectangular or Euclidean) between the ith and jth row of arr
@@ -76,11 +102,11 @@ def dij(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   ```{python}
   import pyLHD
   random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
-  pyLHD.dij(random_lhd,i=2,j=4)
+  pyLHD.inter_site(random_lhd,i=2,j=4)
   ```
   Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd` with q=2 (Euclidean)
   ```{python}
-  pyLHD.dij(random_lhd,i=2,j=4,q=2)
+  pyLHD.inter_site(random_lhd,i=2,j=4,q=2)
   ```
   """
   p = arr.shape[1]
@@ -97,7 +123,7 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
 
   Args:
       arr (numpy.ndarray): A design matrix
-      p (int, optional): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15. If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.
+      p (int, optional): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
 
   Returns:
       A positive number indicating phi_p
@@ -119,31 +145,8 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   isd = 0 
   for i in range(0,n-1):
     for j in range(i+1,n):
-      isd = isd + dij(arr,i=i,j=j,q=q)**(-p)
+      isd = isd + inter_site(arr,i=i,j=j,q=q)**(-p)
   return np.sum(isd)**(1/p)
-
-# Calculate the Average Absolute Correlation
-
-def AvgAbsCor(arr: npt.ArrayLike) -> float:
-  """ Calculate the Average Absolute Correlation
-
-  Args:
-      arr (numpy.ndarray): A design matrix
-
-  Returns:
-      A positive number indicating the average absolute correlation 
-      of input matrix
-
-  Examples:
-  Calculate the average absolute correlation of `random_lhd`
-  ```{python}
-  import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
-  pyLHD.AvgAbsCor(random_lhd)
-  ```
-  """
-  lower_matrix_corr = np.corrcoef(arr.T)[np.tril_indices(arr.shape[1],-1)]
-  return np.mean(np.absolute(lower_matrix_corr))
 
 
 # Caluclate the Discrepancy of a given sample

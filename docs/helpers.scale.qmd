@@ -1,6 +1,6 @@
-# utils.scale { #pyLHD.utils.scale }
+# helpers.scale { #pyLHD.helpers.scale }
 
-`utils.scale(arr, uniformize=False)`
+`helpers.scale(arr, uniformize=False)`
 
 Scales design to be within [0,1]
 

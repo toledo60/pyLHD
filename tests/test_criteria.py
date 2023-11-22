@@ -36,4 +36,11 @@ def test_MaxProCriterion():
 class TestPhiP:
     def test_phi_p(self, p,q,expected):
         assert phi_p(sample,p=p,q=q) == approx(expected)
+        
+        
+@pytest.mark.parametrize("p,q,expected", 
+[(15,1,3.069592), (10,1,3.163822), (15,2,4.335965),(17,2,4.322557)])
+class TestDij:
+    def test_d_ij(self, p,q,expected):
+        assert phi_p(sample,p=p,q=q) == approx(expected)        
 

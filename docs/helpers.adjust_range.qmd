@@ -1,6 +1,6 @@
-# utils.adjust_range { #pyLHD.utils.adjust_range }
+# helpers.adjust_range { #pyLHD.helpers.adjust_range }
 
-`utils.adjust_range(arr, min, max, digits=None)`
+`helpers.adjust_range(arr, min, max, digits=None)`
 
 Adjust the range of a design to [min,max]
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>criteria.maxabscor</title>
+<title>helpers.oa2lhd</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/criteria.MaxAbsCor.html">Criteria</a></li><li class="breadcrumb-item"><a href="../docs/criteria.MaxAbsCor.html">criteria.MaxAbsCor</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/helpers.permute_columns.html">Helpers</a></li><li class="breadcrumb-item"><a href="../docs/helpers.OA2LHD.html">helpers.OA2LHD</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/criteria.MaxAbsCor.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/criteria.MaxAbsCor.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">criteria.MaxAbsCor</span></a>
   </div>
 </li>
@@ -306,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.OA2LHD.html" class="sidebar-item-text sidebar-link">
+  <a href="../docs/helpers.OA2LHD.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">helpers.OA2LHD</span></a>
   </div>
 </li>
@@ -347,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">criteria.MaxAbsCor</h1>
+<h1 class="title">helpers.OA2LHD</h1>
 </div>
 
 
@@ -362,8 +362,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>criteria.MaxAbsCor(arr)</code></p>
-<p>Calculate the Maximum Absolute Correlation</p>
+<p><code>helpers.OA2LHD(arr)</code></p>
+<p>Transform an Orthogonal Array (OA) into an LHD</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
@@ -379,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td><code>arr</code></td>
 <td>numpy.ndarray</td>
-<td>A design matrix</td>
+<td>An orthogonal array matrix</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
@@ -389,8 +389,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 9%">
-<col style="width: 90%">
+<col style="width: 12%">
+<col style="width: 87%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -400,20 +400,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>float</td>
-<td>Positive number indicating maximum absolute correlation. Rounded to 3 digits</td>
+<td>npt.ArrayLike</td>
+<td>LHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>First create an OA(9,2,3,2)</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(n_rows<span class="op">=</span><span class="dv">10</span>,n_columns<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.MaxAbsCor(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>0.4666666666666666</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>example_OA <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">2</span>,<span class="dv">1</span>],</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                       [<span class="dv">2</span>,<span class="dv">2</span>],[<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">3</span>,<span class="dv">1</span>],[<span class="dv">3</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">3</span>] ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Transform the “OA” above into a LHD according to Tang (1993)</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OA2LHD(example_OA)      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>array([[3, 1],
+       [1, 4],
+       [2, 7],
+       [4, 2],
+       [6, 6],
+       [5, 8],
+       [9, 3],
+       [8, 5],
+       [7, 9]])</code></pre>
 </div>
 </div>
 

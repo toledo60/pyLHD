@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>criteria.maxabscor</title>
+<title>helpers.adjust_range</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/criteria.MaxAbsCor.html">Criteria</a></li><li class="breadcrumb-item"><a href="../docs/criteria.MaxAbsCor.html">criteria.MaxAbsCor</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/helpers.permute_columns.html">Helpers</a></li><li class="breadcrumb-item"><a href="../docs/helpers.adjust_range.html">helpers.adjust_range</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/criteria.MaxAbsCor.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/criteria.MaxAbsCor.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">criteria.MaxAbsCor</span></a>
   </div>
 </li>
@@ -318,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.adjust_range.html" class="sidebar-item-text sidebar-link">
+  <a href="../docs/helpers.adjust_range.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">helpers.adjust_range</span></a>
   </div>
 </li>
@@ -347,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">criteria.MaxAbsCor</h1>
+<h1 class="title">helpers.adjust_range</h1>
 </div>
 
 
@@ -362,11 +362,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>criteria.MaxAbsCor(arr)</code></p>
-<p>Calculate the Maximum Absolute Correlation</p>
+<p><code>helpers.adjust_range(arr, min, max, digits=None)</code></p>
+<p>Adjust the range of a design to [min,max]</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 17%">
+<col style="width: 56%">
+<col style="width: 13%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -382,16 +388,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>A design matrix</td>
 <td><em>required</em></td>
 </tr>
+<tr class="even">
+<td><code>min</code></td>
+<td>float</td>
+<td>desired lower bound of design</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td><code>max</code></td>
+<td>float</td>
+<td>desired upper bound of design</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td><code>digits</code></td>
+<td>int</td>
+<td>number of digits to which the design is rounded</td>
+<td><code>None</code></td>
+</tr>
 </tbody>
 </table>
 </section>
 <section id="returns" class="level2">
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 90%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Type</th>
@@ -400,8 +420,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>float</td>
-<td>Positive number indicating maximum absolute correlation. Rounded to 3 digits</td>
+<td>npt.ArrayLike</td>
+<td>Design with new range [min,max]</td>
 </tr>
 </tbody>
 </table>
@@ -410,10 +430,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(n_rows<span class="op">=</span><span class="dv">10</span>,n_columns<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.MaxAbsCor(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>0.4666666666666666</code></pre>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(n_rows<span class="op">=</span><span class="dv">5</span>,n_columns<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pyLHD.adjust_range(random_lhd,<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>array([[-1.11022302e-16, -1.11022302e-16, -1.00000000e+00],
+       [-1.00000000e+00, -5.00000000e-01, -1.11022302e-16],
+       [-5.00000000e-01,  5.00000000e-01,  5.00000000e-01],
+       [ 5.00000000e-01,  1.00000000e+00,  1.00000000e+00],
+       [ 1.00000000e+00, -1.00000000e+00, -5.00000000e-01]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pyLHD.adjust_range(random_lhd, <span class="dv">5</span>, <span class="dv">12</span>, digits <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>array([[ 8.5 ,  8.5 ,  5.  ],
+       [ 5.  ,  6.75,  8.5 ],
+       [ 6.75, 10.25, 10.25],
+       [10.25, 12.  , 12.  ],
+       [12.  ,  5.  ,  6.75]])</code></pre>
 </div>
 </div>
 

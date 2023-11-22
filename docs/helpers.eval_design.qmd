@@ -1,0 +1,33 @@
+# helpers.eval_design { #pyLHD.helpers.eval_design }
+
+`helpers.eval_design(arr, criteria='phi_p', p=15, q=1)`
+
+Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD`
+
+## Parameters
+
+| Name       | Type          | Description                                                                                                                                                                                                                                                                                                                                             | Default    |
+|------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`      | numpy.ndarray | A design matrix                                                                                                                                                                                                                                                                                                                                         | _required_ |
+| `criteria` | str           | Criteria to choose from. Defaults to 'phi_p'.  Options include 'phi_p','MaxProCriterion','AvgAbsCor','AvgAbsCor' p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15 q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. | `'phi_p'`  |
+
+## Returns
+
+| Type   | Description                                |
+|--------|--------------------------------------------|
+| float  | Calculation of chosen criteria for any LHD |
+
+## Examples
+
+
+
+By default `phi_p` with `p=15` and `q=1`
+```{python}
+import pyLHD
+random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
+pyLHD.eval_design(random_lhd)
+```
+Evaluate design based on MaxProCriterion 
+```{python}
+pyLHD.eval_design(random_lhd,criteria='MaxProCriterion')
+```

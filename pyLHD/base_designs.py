@@ -1,8 +1,7 @@
-import numpy as np
 import numpy.typing as npt
 from typing import Optional
-from pyLHD.utils import permute_columns
-
+from pyLHD.helpers import permute_columns
+import numpy as np
 
 def permutations_matrix(n_rows: int, n_columns: int, seed: Optional[int] = None) -> npt.ArrayLike:
   """ Generate (n_rows x n_columns) matrix, in which each column is a random permutation of {1,2,...,n_rows}

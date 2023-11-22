@@ -1,6 +1,6 @@
-# utils.distance_matrix { #pyLHD.utils.distance_matrix }
+# helpers.distance_matrix { #pyLHD.helpers.distance_matrix }
 
-`utils.distance_matrix(arr, metric='euclidean', p=2)`
+`helpers.distance_matrix(arr, metric='euclidean', p=2)`
 
 Distance matrix based on specified distance measure
 

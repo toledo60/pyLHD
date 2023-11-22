@@ -1,6 +1,6 @@
-# utils.permute_columns { #pyLHD.utils.permute_columns }
+# helpers.permute_columns { #pyLHD.helpers.permute_columns }
 
-`utils.permute_columns(arr, columns=None, seed=None)`
+`helpers.permute_columns(arr, columns=None, seed=None)`
 
 Random permute columns in a numpy ndarray
 

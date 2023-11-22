@@ -241,8 +241,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/criteria.dij.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">criteria.dij</span></a>
+  <a href="../docs/criteria.inter_site.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">criteria.inter_site</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -369,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="table">
 <colgroup>
 <col style="width: 3%">
-<col style="width: 4%">
+<col style="width: 3%">
 <col style="width: 89%">
 <col style="width: 3%">
 </colgroup>
@@ -391,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td><code>criteria</code></td>
 <td>str</td>
-<td>Criteria to choose from. Defaults to ‘phi_p’. Options include ‘phi_p’,‘MaxProCriterion’,‘AvgAbsCor’,‘AvgAbsCor’ p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15 q (int): If (q) is 1, (dij) is the Manhattan (rectangular) distance. If (q) is 2, (dij) is the Euclidean distance.</td>
+<td>Criteria to choose from. Defaults to ‘phi_p’. Options include ‘phi_p’,‘MaxProCriterion’,‘AvgAbsCor’,‘AvgAbsCor’ p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15 q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.</td>
 <td><code>'phi_p'</code></td>
 </tr>
 </tbody>
@@ -422,14 +422,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(n_rows<span class="op">=</span><span class="dv">5</span>,n_columns<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.eval_design(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>1.6682049478145113</code></pre>
+<pre><code>1.6682498988646108</code></pre>
 </div>
 </div>
 <p>Evaluate design based on MaxProCriterion</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.eval_design(random_lhd,criteria<span class="op">=</span><span class="st">'MaxProCriterion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>13.087473174282277</code></pre>
+<pre><code>13.381720034499715</code></pre>
 </div>
 </div>
 
