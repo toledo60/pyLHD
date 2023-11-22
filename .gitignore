@@ -20,7 +20,13 @@ MANIFEST
 .DS_Store
 .pytest_cache
 __pycache__/
+debug/
+.benchmarks
 
+# R studio
+.Rhistory
+pyLHD.Rproj
+.Rproj.user
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -34,9 +40,9 @@ ENV/
 
 # vscode
 .vscode/
-/.quarto/
 
 # Quarto
 /.quarto/
 objects.json
 src/
+

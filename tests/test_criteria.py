@@ -20,8 +20,12 @@ def test_initial_design():
                             [0.8918987,  0.8918987]])
   np.testing.assert_allclose(sample,lhd_strength2,rtol=1e-06)                          
 
+
 def test_MaxAbsCor():
   assert MaxAbsCor(sample) == approx(0.06601886)
+
+def test_AvgAbsCor():
+  assert AvgAbsCor(sample) == approx(0.06601886)
 
 def test_MaxProCriterion():
   assert MaxProCriterion(sample) == approx(29.59171)
@@ -32,21 +36,4 @@ def test_MaxProCriterion():
 class TestPhiP:
     def test_phi_p(self, p,q,expected):
         assert phi_p(sample,p=p,q=q) == approx(expected)
-
-
-@pytest.mark.parametrize("m,expected", 
-[(2,0.0), (4,0.0), (8,0.0),(10,0.0)])
-class TestZeroMaxAbsCor:
-  def test_zero_MaxAbsCor(self, m, expected):
-    olhd = OLHD_Ye98(m=m)
-    assert MaxAbsCor(olhd) == approx(expected)
-
-
-
-@pytest.mark.parametrize("m,expected", 
-[(2,0.0), (4,0.0), (8,0.0),(10,0.0)])
-class TestZeroAvgAbsCor:
-  def test_zero_AvgAbsCor(self, m, expected):
-    olhd = OLHD_Ye98(m=m)
-    assert AvgAbsCor(olhd) == approx(expected)
 

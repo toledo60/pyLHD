@@ -21,13 +21,10 @@ def MaxAbsCor(arr: npt.ArrayLike) -> float:
     pyLHD.MaxAbsCor(random_lhd)
     ```
   """
-  p = arr.shape[1]  # number of columns
-  corr = []
-  for i in range(0, p-1):
-    for j in range(i+1, p):
-      corr.append(np.corrcoef(arr[:, i], arr[:, j])[0, 1])
-  abs_corr_array = np.absolute(np.asarray(corr))
-  return np.amax(abs_corr_array)
+  corr_matrix = np.corrcoef(arr.T)
+  np.fill_diagonal(corr_matrix, 0.0)
+  return np.max(np.abs(corr_matrix))
+
 
 # Calculate the Maximum Projection Criterion
 
@@ -145,13 +142,8 @@ def AvgAbsCor(arr: npt.ArrayLike) -> float:
   pyLHD.AvgAbsCor(random_lhd)
   ```
   """
-  p = arr.shape[1]
-  corr = []
-  for i in range(0,p-1):
-    for j in range(i+1,p):
-      corr.append(np.corrcoef(arr[:,i],arr[:,j])[0,1])
-  abs_corr_array = np.absolute(np.asarray(corr))
-  return np.around(np.mean(abs_corr_array),3)
+  lower_matrix_corr = np.corrcoef(arr.T)[np.tril_indices(arr.shape[1],-1)]
+  return np.mean(np.absolute(lower_matrix_corr))
 
 
 # Caluclate the Discrepancy of a given sample

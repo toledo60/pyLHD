@@ -33,6 +33,9 @@ testpaths = [
     "tests",
 ]
 
+[tool.setuptools]
+packages = ["pyLHD"]
+
 [project.urls]
 "Homepage" = "https://github.com/toledo60/pyLHD"
 "Documentation" = "https://pylhd.netlify.app/"
