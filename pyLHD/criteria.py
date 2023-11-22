@@ -106,11 +106,8 @@ def inter_site(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   pyLHD.inter_site(random_lhd,i=2,j=4,q=2)
   ```
   """
-  p = arr.shape[1]
-  distance = np.empty(p)
-  for l in range(0,p):
-    distance[l] = np.absolute(arr[i,l]-arr[j,l])**q
-  return np.sum(distance)**(1/q)
+  return np.sum(np.abs(arr[i, :] - arr[j, :])**q)**(1/q)
+
 
 
 # Calculate the phi_p Criterion
@@ -139,11 +136,12 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
 
   """
   n = arr.shape[0]
-  isd = 0 
-  for i in range(0,n-1):
-    for j in range(i+1,n):
-      isd = isd + inter_site(arr,i=i,j=j,q=q)**(-p)
-  return np.sum(isd)**(1/p)
+  distances = np.array([inter_site(arr, i=i, j=j, q=q) for i in range(n - 1) for j in range(i + 1, n)])
+  isd = np.sum(distances**(-p))
+  return np.sum(isd)**(1/p) 
+
+
+
 
 
 # Caluclate the Discrepancy of a given sample

@@ -431,31 +431,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(n_rows<span class="op">=</span><span class="dv">5</span>,n_columns<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.distance_matrix(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[0.        , 0.69282032, 0.34641016, 0.87177979, 0.91651514],
-       [0.69282032, 0.        , 0.34641016, 0.66332496, 1.07703296],
-       [0.34641016, 0.34641016, 0.        , 0.69282032, 0.93808315],
-       [0.87177979, 0.66332496, 0.69282032, 0.        , 0.84852814],
-       [0.91651514, 1.07703296, 0.93808315, 0.84852814, 0.        ]])</code></pre>
+<pre><code>array([[0.        , 0.48989795, 0.48989795, 0.74833148, 1.07703296],
+       [0.48989795, 0.        , 0.48989795, 0.74833148, 1.07703296],
+       [0.48989795, 0.48989795, 0.        , 0.74833148, 1.07703296],
+       [0.74833148, 0.74833148, 0.74833148, 0.        , 0.34641016],
+       [1.07703296, 1.07703296, 1.07703296, 0.34641016, 0.        ]])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.distance_matrix(random_lhd, metric <span class="op">=</span> <span class="st">'manhattan'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[0. , 1.2, 0.6, 1.4, 1.4],
-       [1.2, 0. , 0.6, 1. , 1.8],
-       [0.6, 0.6, 0. , 1.2, 1.6],
-       [1.4, 1. , 1.2, 0. , 1.2],
-       [1.4, 1.8, 1.6, 1.2, 0. ]])</code></pre>
+<pre><code>array([[0. , 0.8, 0.8, 1.2, 1.8],
+       [0.8, 0. , 0.8, 1.2, 1.8],
+       [0.8, 0.8, 0. , 1.2, 1.8],
+       [1.2, 1.2, 1.2, 0. , 0.6],
+       [1.8, 1.8, 1.8, 0.6, 0. ]])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pyLHD.distance_matrix(random_lhd, metric <span class="op">=</span> <span class="st">'minkowski'</span>, p<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>array([[0.        , 0.49829238, 0.24914619, 0.68950241, 0.80509104],
-       [0.49829238, 0.        , 0.24914619, 0.60098442, 0.83898042],
-       [0.24914619, 0.24914619, 0.        , 0.49829238, 0.69806513],
-       [0.68950241, 0.60098442, 0.49829238, 0.        , 0.80031226],
-       [0.80509104, 0.83898042, 0.69806513, 0.80031226, 0.        ]])</code></pre>
+<pre><code>array([[0.        , 0.40487949, 0.40487949, 0.61547698, 0.83898042],
+       [0.40487949, 0.        , 0.40487949, 0.61547698, 0.83898042],
+       [0.40487949, 0.40487949, 0.        , 0.61547698, 0.83898042],
+       [0.61547698, 0.61547698, 0.61547698, 0.        , 0.24914619],
+       [0.83898042, 0.83898042, 0.83898042, 0.24914619, 0.        ]])</code></pre>
 </div>
 </div>
 
