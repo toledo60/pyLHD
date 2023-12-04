@@ -294,8 +294,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.exchange.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.exchange</span></a>
+  <a href="../docs/helpers.swap_elements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.swap_elements</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -318,8 +318,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.adjust_range.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.adjust_range</span></a>
+  <a href="../docs/helpers.check_bounds.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.check_bounds</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -384,8 +384,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code>arr</code></td>
-<td>numpy.ndarray</td>
-<td>A design matrix</td>
+<td>npt.ArrayLike</td>
+<td>A numpy ndarray</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
@@ -422,14 +422,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(n_rows<span class="op">=</span><span class="dv">5</span>,n_columns<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.eval_design(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>1.3123534684657308</code></pre>
+<pre><code>1.3718897191660075</code></pre>
 </div>
 </div>
 <p>Evaluate design based on MaxProCriterion</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.eval_design(random_lhd,criteria<span class="op">=</span><span class="st">'MaxProCriterion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>10.822201542106333</code></pre>
+<pre><code>12.030115293962366</code></pre>
 </div>
 </div>
 

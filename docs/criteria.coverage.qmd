@@ -6,9 +6,9 @@ Compute the coverage measure for a design
 
 ## Parameters
 
-| Name   | Type          | Description                                                                                        | Default    |
-|--------|---------------|----------------------------------------------------------------------------------------------------|------------|
-| `arr`  | numpy.ndarray | A design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1] | _required_ |
+| Name   | Type          | Description     | Default    |
+|--------|---------------|-----------------|------------|
+| `arr`  | npt.ArrayLike | A numpy ndarray | _required_ |
 
 ## Raises
 

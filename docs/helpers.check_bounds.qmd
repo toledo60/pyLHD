@@ -1,0 +1,26 @@
+# helpers.check_bounds { #pyLHD.helpers.check_bounds }
+
+`helpers.check_bounds(arr, lower_bounds, upper_bounds)`
+
+Check conditions for bounds input
+
+## Parameters
+
+| Name           | Type          | Description          | Default    |
+|----------------|---------------|----------------------|------------|
+| `arr`          | npt.ArrayLike | A numpy ndarray      | _required_ |
+| `lower_bounds` | npt.ArrayLike | Lower bounds of data | _required_ |
+| `upper_bounds` | npt.ArrayLike | Upper bounds of data | _required_ |
+
+## Raises
+
+| Type       | Description                                                              |
+|------------|--------------------------------------------------------------------------|
+| ValueError | If lower, upper bounds are not same dimension of sample `arr`            |
+| ValueError | Whenver any of the lower bounds are greater than any of the upper bounds |
+
+## Returns
+
+| Type                        | Description                                          |
+|-----------------------------|------------------------------------------------------|
+| tuple\[npt.ArrayLike, ...\] | tuple[npt.ArrayLike, ...]: A tuple of numpy.ndarrays |

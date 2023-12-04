@@ -12,9 +12,7 @@ authors = [
 readme = "README.md"
 license = {file = "LICENSE"}
 keywords = ["latin-hypercube", "space-filling", "computer-experiments"]
-dependencies = [
-  "numpy>=1.22"
-]
+dependencies = ["numpy>=1.22"]
 classifiers=[
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -23,15 +21,10 @@ classifiers=[
 
 
 [project.optional-dependencies]
-test = [
-  "scipy",
-  "pytest"
-]
+test = [ "scipy","pytest"]
 
 [tool.pytest.ini_options]
-testpaths = [
-    "tests",
-]
+testpaths = ["tests"]
 
 [tool.setuptools]
 packages = ["pyLHD"]

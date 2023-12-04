@@ -54,10 +54,10 @@ quartodoc:
       desc: miscellaneous utilities for working with LHDs
       contents:
         - helpers.permute_columns
-        - helpers.exchange
+        - helpers.swap_elements
         - helpers.williams_transform
         - helpers.OA2LHD
         - helpers.eval_design
-        - helpers.adjust_range
+        - helpers.check_bounds
         - helpers.scale
         - helpers.distance_matrix

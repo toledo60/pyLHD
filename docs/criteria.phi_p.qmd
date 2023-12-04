@@ -8,7 +8,7 @@ Calculate the phi_p Criterion
 
 | Name   | Type          | Description                                                                                                                                                                                                           | Default    |
 |--------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`  | numpy.ndarray | A design matrix                                                                                                                                                                                                       | _required_ |
+| `arr`  | npt.ArrayLike | A numpy ndarray                                                                                                                                                                                                       | _required_ |
 | `p`    | int           | A positive integer, which is the parameter in the phi_p formula. The default is set to be 15. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. | `15`       |
 
 ## Returns

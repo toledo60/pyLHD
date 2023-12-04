@@ -8,7 +8,7 @@ Discrepancy of a given sample
 
 | Name     | Type          | Description                                                                                                                                                   | Default         |
 |----------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `arr`    | numpy.ndarray | A design matrix                                                                                                                                               | _required_      |
+| `arr`    | npt.ArrayLike | A numpy ndarray                                                                                                                                               | _required_      |
 | `method` | str           | Type of discrepancy. Defaults to 'centered_L2'. Options include: 'L2', 'L2_star','centered_L2', 'modified_L2', 'mixture_L2', 'symmetric_L2', 'wrap_around_L2' | `'centered_L2'` |
 
 ## Raises

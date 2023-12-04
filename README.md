@@ -45,13 +45,12 @@ Optimization algorithms to improve LHD's based on desired criteria:
 - `LA_LHD`: Lioness Algorithm for Latin hypercube design
 - `SA_LHD`: Simulated Annealing for Latin hypercube design
 
-Other functionality includes:
+Other helper functions include:
 
-- `adjust_range`: Adjust the range of a design to [min,max]
 - `distance_matrix`: Calculates the distance matrix  (row pairwise) from a specified distance measure
-- `exchange`: Exchange two random elements from a specified column or row in a matrix
+- `swap_elements`: Swap two random elements from a specified column or row in a matrix
 - `OA2LHD`: Convert an orthogonal array (OA) into a Latin hypercube design (LHD)
-- `scale`: scales the values of the points to values within [0,1]. Includes ability to apply Rosenblatt transformation as well.
+- `scale`: Scales a sample in the hypercube to be within `[lower_bounds, upper_bounds]`
 - `williams_transform`: Apply Williams transformation to a specified design
 
 

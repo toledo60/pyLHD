@@ -106,7 +106,7 @@ def LA_LHD(n,k,prun=None,m=10,N=10,criteria='phi_p',
       for j in range(k): # step 7
         z =  np.random.uniform(1,0,1) # step 8
         if z <= prun:
-          X[i] = pyLHD.exchange(X[i],idx=j) # step 9
+          X[i] = pyLHD.swap_elements(X[i],idx=j) # step 9
     
     # update criteria for all agents
     
@@ -159,7 +159,7 @@ def SA_LHD(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
         rs = np.arange(start=1,stop=k+1)
         rcol = rng.choice(rs, 1, replace=False) #step 3:Randomly choose a column
         
-        Xnew = pyLHD.exchange(arr=X,idx=rcol) #step 4:Exchange two random elements from column 'rcol'
+        Xnew = pyLHD.swap_elements(arr=X,idx=rcol) #step 4:swap two random elements from column 'rcol'
         
         #step 5 begins here
         a = pyLHD.eval_design(Xnew,criteria=criteria,p=p,q=q)

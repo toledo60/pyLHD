@@ -1,5 +1,4 @@
 import numpy as np 
-import pyLHD
 import numpy.typing as npt
 from typing import Literal
 
@@ -9,7 +8,8 @@ def MaxAbsCor(arr: npt.ArrayLike) -> float:
   """ Calculate the Maximum Absolute Correlation
 
   Args:
-      arr (numpy.ndarray): A design matrix
+      arr (npt.ArrayLike): A numpy ndarray
+
 
   Returns:
       Positive number indicating maximum absolute correlation. Rounded to 3 digits
@@ -31,7 +31,8 @@ def AvgAbsCor(arr: npt.ArrayLike) -> float:
   """ Calculate the Average Absolute Correlation
 
   Args:
-      arr (numpy.ndarray): A design matrix
+      arr (npt.ArrayLike): A numpy ndarray
+
 
   Returns:
       A positive number indicating the average absolute correlation 
@@ -56,7 +57,8 @@ def MaxProCriterion(arr: npt.ArrayLike) -> float:
   """ Calculate the Maximum Projection Criterion
 
   Args:
-      arr (numpy.ndarray): A design matrix
+      arr (npt.ArrayLike): A numpy ndarray
+
 
   Returns:
       Positive number indicating maximum projection criterion
@@ -86,7 +88,8 @@ def inter_site(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   """ Calculate the Inter-site Distance
 
   Args:
-      arr (numpy.ndarray): A design matrix
+      arr (npt.ArrayLike): A numpy ndarray
+
       i (int): A positive integer, which stands for the ith row of (arr)
       j (int): A positive integer, which stands for the jth row of (arr)
       q (int, optional): The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
@@ -116,7 +119,8 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   """ Calculate the phi_p Criterion
 
   Args:
-      arr (numpy.ndarray): A design matrix
+      arr (npt.ArrayLike): A numpy ndarray
+
       p (int, optional): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
 
   Returns:
@@ -141,16 +145,14 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   return np.sum(isd)**(1/p) 
 
 
-
-
-
 # Caluclate the Discrepancy of a given sample
 
 def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2", "modified_L2", "mixture_L2", "symmetric_L2", "wrap_around_L2"] = "centered_L2") -> float:
   """ Discrepancy of a given sample
 
   Args:
-      arr (numpy.ndarray): A design matrix
+      arr (npt.ArrayLike): A numpy ndarray
+
       method (str, optional): Type of discrepancy. Defaults to 'centered_L2'. Options include: 'L2', 'L2_star','centered_L2', 'modified_L2', 'mixture_L2', 'symmetric_L2', 'wrap_around_L2'
 
   Raises:
@@ -173,7 +175,7 @@ def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2
   """
   
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
-    arr = pyLHD.scale(arr)
+    raise ValueError('`arr` is not in unit hypercube')
   
   n_rows = arr.shape[0]
   n_columns = arr.shape[1]
@@ -268,7 +270,7 @@ def coverage(arr: npt.ArrayLike) -> float:
   """ Compute the coverage measure for a design
 
   Args:
-      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1]
+      arr (npt.ArrayLike): A numpy ndarray
   Raises:
       ValueError: Whenever number of rows is less than number of columns
 
@@ -290,12 +292,10 @@ def coverage(arr: npt.ArrayLike) -> float:
     raise ValueError('Make sure number of rows is greater than number of columns')
   
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
-    x = pyLHD.scale(arr)
-  else:
-    x = arr
+    raise ValueError('`arr` is not in unit hypercube')
     
   dist = lambda p1, p2: np.sqrt(((p1-p2)**2).sum())
-  dist_mat = np.asarray([[dist(p1, p2) for p2 in x] for p1 in x])
+  dist_mat = np.asarray([[dist(p1, p2) for p2 in arr] for p1 in arr])
   np.fill_diagonal(dist_mat,10e3)
 
   Dmin = np.amin(dist_mat,axis=0)
@@ -314,7 +314,7 @@ def mesh_ratio(arr: npt.ArrayLike) -> float:
   """ Compute the meshratio criterion for a given design
 
   Args:
-      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1]
+      arr (npt.ArrayLike): A numpy ndarray
       
   Raises:
       ValueError: Whenever number of rows is less than number of columns
@@ -337,9 +337,7 @@ def mesh_ratio(arr: npt.ArrayLike) -> float:
     raise ValueError('Make sure number of rows is greater than number of columns')
   
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
-    x = pyLHD.scale(arr)
-  else:
-    x = arr
+    raise ValueError('`arr` is not in unit hypercube')
 
   max_dist = -1.0e30
   min_dist = 1.0e30
@@ -351,7 +349,7 @@ def mesh_ratio(arr: npt.ArrayLike) -> float:
       if i != k:
         Dist = 0 
         for j in range(n_columns):
-          Dist += (x[i,j] - x[k,j])*(x[i,j]-x[k,j])
+          Dist += (arr[i,j] - arr[k,j])*(arr[i,j]-arr[k,j])
         if Dist > b:
           b = Dist
         if Dist < a:
@@ -370,7 +368,7 @@ def maximin(arr: npt.ArrayLike) -> float:
   """ Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.
 
   Args:
-      arr (numpy.ndarray): A design matrix. If design matrix is not within [0,1], the origianl design will be scaled to [0,1]      
+      arr (npt.ArrayLike): A numpy ndarray
   
   Returns:
       Calculated maximin criterion
@@ -384,12 +382,10 @@ def maximin(arr: npt.ArrayLike) -> float:
   """  
 
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
-    x = pyLHD.scale(arr)
-  else:
-    x = arr
+    raise ValueError('`arr` is not in unit hypercube')
   
   dist = lambda p1, p2: np.sqrt(((p1-p2)**2).sum())
-  dist_mat = np.asarray([[dist(p1, p2) for p2 in x] for p1 in x])
+  dist_mat = np.asarray([[dist(p1, p2) for p2 in arr] for p1 in arr])
   np.fill_diagonal(dist_mat,1e30)
   min = np.amin(dist_mat,axis=0)
   return np.amin(min)

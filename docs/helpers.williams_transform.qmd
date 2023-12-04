@@ -8,7 +8,7 @@ Williams Transformation
 
 | Name       | Type          | Description                                                                              | Default    |
 |------------|---------------|------------------------------------------------------------------------------------------|------------|
-| `arr`      | numpy.ndarray | A design matrix                                                                          | _required_ |
+| `arr`      | npt.ArrayLike | A numpy ndarray                                                                          | _required_ |
 | `baseline` | int           | A integer, which defines the minimum value for each column of the matrix. Defaults to 1. | `1`        |
 
 ## Returns

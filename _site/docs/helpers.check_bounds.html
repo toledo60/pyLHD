@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>base_designs.random_lhd</title>
+<title>helpers.check_bounds</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -94,8 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -126,7 +90,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/base_designs.permutations_matrix.html">Base Designs</a></li><li class="breadcrumb-item"><a href="../docs/base_designs.random_lhd.html">base_designs.random_lhd</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/helpers.permute_columns.html">Helpers</a></li><li class="breadcrumb-item"><a href="../docs/helpers.check_bounds.html">helpers.check_bounds</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -161,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/base_designs.random_lhd.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/base_designs.random_lhd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">base_designs.random_lhd</span></a>
   </div>
 </li>
@@ -320,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.check_bounds.html" class="sidebar-item-text sidebar-link">
+  <a href="../docs/helpers.check_bounds.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">helpers.check_bounds</span></a>
   </div>
 </li>
@@ -347,34 +311,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">base_designs.random_lhd</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p><code>base_designs.random_lhd(n_rows, n_columns, scramble=True, seed=None)</code></p>
-<p>Generate a random Latin Hypercube Design</p>
+<section id="pyLHD.helpers.check_bounds" class="level1">
+<h1>helpers.check_bounds</h1>
+<p><code>helpers.check_bounds(arr, lower_bounds, upper_bounds)</code></p>
+<p>Check conditions for bounds input</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
-<colgroup>
-<col style="width: 6%">
-<col style="width: 9%">
-<col style="width: 78%">
-<col style="width: 6%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -385,38 +330,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>n_rows</code></td>
-<td>int</td>
-<td>number of rows</td>
+<td><code>arr</code></td>
+<td>npt.ArrayLike</td>
+<td>A numpy ndarray</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>n_columns</code></td>
-<td>int</td>
-<td>number of columns (dimnesion of parameter space)</td>
+<td><code>lower_bounds</code></td>
+<td>npt.ArrayLike</td>
+<td>Lower bounds of data</td>
 <td><em>required</em></td>
 </tr>
 <tr class="odd">
-<td><code>scramble</code></td>
-<td>Optional[bool]</td>
-<td>When False, center samples within cells of a multi-dimensional grid. Otherwise, samples are randomly placed within cells of the grid. Defaults to True.</td>
-<td><code>True</code></td>
-</tr>
-<tr class="even">
-<td><code>seed</code></td>
-<td>Optional[int]</td>
-<td>If seed is an int or None, a new numpy.random.Generator is created using np.random.default_rng(seed). Defaults to None.</td>
-<td><code>None</code></td>
+<td><code>upper_bounds</code></td>
+<td>npt.ArrayLike</td>
+<td>Upper bounds of data</td>
+<td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="returns" class="level2">
-<h2 class="anchored" data-anchor-id="returns">Returns</h2>
+<section id="raises" class="level2">
+<h2 class="anchored" data-anchor-id="raises">Raises</h2>
 <table class="table">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 93%">
+<col style="width: 13%">
+<col style="width: 86%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -426,37 +365,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>npt.ArrayLike</td>
-<td>A Latin hypercube sample of <span class="math inline">\(n =\)</span> <code>n_rows</code> points generated in <span class="math inline">\([0,1)^d\)</span>, where <span class="math inline">\(d\)</span>=<code>n_columns</code>. Each univariate marginal distribution is stratisfied, placing exactly one point in <span class="math inline">\([j/n,(j+1)/n)\)</span> for <span class="math inline">\(j=0,1,\dots,n-1\)</span></td>
+<td>ValueError</td>
+<td>If lower, upper bounds are not same dimension of sample <code>arr</code></td>
+</tr>
+<tr class="even">
+<td>ValueError</td>
+<td>Whenver any of the lower bounds are greater than any of the upper bounds</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.random_lhd(n_rows <span class="op">=</span> <span class="dv">5</span>, n_columns <span class="op">=</span> <span class="dv">3</span>, seed <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[0.69763568, 0.29763568, 0.09763568],
-       [0.89763568, 0.49763568, 0.89763568],
-       [0.09763568, 0.69763568, 0.29763568],
-       [0.49763568, 0.89763568, 0.69763568],
-       [0.29763568, 0.09763568, 0.49763568]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.random_lhd(n_rows <span class="op">=</span> <span class="dv">5</span>, n_columns <span class="op">=</span> <span class="dv">3</span>, seed <span class="op">=</span> <span class="dv">1</span>, scramble <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[0.7, 0.3, 0.1],
-       [0.9, 0.5, 0.9],
-       [0.1, 0.7, 0.3],
-       [0.5, 0.9, 0.7],
-       [0.3, 0.1, 0.5]])</code></pre>
-</div>
-</div>
+<section id="returns" class="level2">
+<h2 class="anchored" data-anchor-id="returns">Returns</h2>
+<table class="table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tuple[npt.ArrayLike, …]</td>
+<td>tuple[npt.ArrayLike, …]: A tuple of numpy.ndarrays</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

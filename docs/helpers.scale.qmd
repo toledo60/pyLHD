@@ -1,21 +1,22 @@
 # helpers.scale { #pyLHD.helpers.scale }
 
-`helpers.scale(arr, uniformize=False)`
+`helpers.scale(arr, lower_bounds, upper_bounds)`
 
-Scales design to be within [0,1]
+Sample scaling from unit hypercube to different bounds
 
 ## Parameters
 
-| Name         | Type          | Description                                                                                                                                                                                | Default    |
-|--------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`        | numpy.ndarray | A design matrix                                                                                                                                                                            | _required_ |
-| `uniformize` | bool          | If True, Rosenblatt transformation is applied  (uniformize by applying the empirical cumulative distribution).  If False (default), scaling is done by using the minimum and maximum value | `False`    |
+| Name           | Type          | Description                      | Default    |
+|----------------|---------------|----------------------------------|------------|
+| `arr`          | npt.ArrayLike | A numpy ndarray                  | _required_ |
+| `lower_bounds` | list          | Lower bounds of transformed data | _required_ |
+| `upper_bounds` | list          | Upper bounds of transformed data | _required_ |
 
 ## Returns
 
-| Type          | Description       |
-|---------------|-------------------|
-| npt.ArrayLike | The scaled design |
+| Type          | Description                                                         |
+|---------------|---------------------------------------------------------------------|
+| npt.ArrayLike | npt.ArrayLike: Scaled numpy ndarray to [lower_bounds, upper_bounds] |
 
 ## Examples
 
@@ -23,6 +24,11 @@ Scales design to be within [0,1]
 
 ```{python}
 import pyLHD
-random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
-pyLHD.scale(random_lhd)
+random_lhd = pyLHD.random_lhd(10,2, seed = 1)
+random_lhd
+```
+```{python}
+lower_bounds = [-3,2]
+upper_bounds = [10,4]
+pyLHD.scale(random_lhd,lower_bounds, upper_bounds)
 ```

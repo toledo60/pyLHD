@@ -1,37 +1,37 @@
-# helpers.exchange { #pyLHD.helpers.exchange }
+# helpers.swap_elements { #pyLHD.helpers.swap_elements }
 
-`helpers.exchange(arr, idx, type='col')`
+`helpers.swap_elements(arr, idx, type='col')`
 
-Exchange two random elements in a matrix
+Swap two random elements in a matrix
 
 ## Parameters
 
 | Name   | Type          | Description                                                                                                                                                                                                                                                            | Default    |
 |--------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`  | numpy.ndarray | A design matrix                                                                                                                                                                                                                                                        | _required_ |
+| `arr`  | npt.ArrayLike | A numpy ndarray                                                                                                                                                                                                                                                        | _required_ |
 | `idx`  | int           | A positive integer, which stands for the (idx) column or row of (arr) type (str, optional):  If type is 'col', two random elements will be exchanged within column (idx). If type is 'row', two random elements will be exchanged within row (idx). Defaults to 'col'. | _required_ |
 
 ## Returns
 
-| Type          | Description                            |
-|---------------|----------------------------------------|
-| npt.ArrayLike | A new design matrix after the exchange |
+| Type          | Description                                    |
+|---------------|------------------------------------------------|
+| npt.ArrayLike | A new design matrix after the swap of elements |
 
 ## Examples
 
 
 
-Choose the first columns of `random_lhd` and exchange two randomly selected elements
+Choose the first columns of `random_lhd` and swap two randomly selected elements
 ```{python}
 import pyLHD
 random_lhd = pyLHD.random_lhd(n_rows = 5, n_columns = 3)
 random_lhd
 ```
-Choose column 1 of random_lhd and exchange two randomly selected elements
+Choose column 1 of random_lhd and swap two randomly selected elements
 ```{python}
-pyLHD.exchange(random_lhd,idx=1,type='col')
+pyLHD.swap_elements(random_lhd,idx=1,type='col')
 ```
-Choose the first row of random_lhd and exchange two randomly selected elements
+Choose the first row of random_lhd and swap two randomly selected elements
 ```{python}
-pyLHD.exchange(random_lhd,idx=1,type='row')
+pyLHD.swap_elements(random_lhd,idx=1,type='row')
 ```

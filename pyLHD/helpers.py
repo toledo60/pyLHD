@@ -47,34 +47,33 @@ def permute_columns(arr: npt.ArrayLike, columns: Optional[List[int]] = None,
 
   return arr
 
-# Exchange two random elements in a matrix
 
-def exchange(arr: npt.ArrayLike, idx: int, type: str='col') -> npt.ArrayLike:
-  """ Exchange two random elements in a matrix
+def swap_elements(arr: npt.ArrayLike, idx: int, type: str='col') -> npt.ArrayLike:
+  """ Swap two random elements in a matrix
 
   Args:
-      arr (numpy.ndarray): A design matrix
+      arr (npt.ArrayLike): A numpy ndarray
       idx (int): A positive integer, which stands for the (idx) column or row of (arr) type (str, optional): 
           If type is 'col', two random elements will be exchanged within column (idx).
           If type is 'row', two random elements will be exchanged within row (idx). Defaults to 'col'.
 
   Returns:
-      A new design matrix after the exchange
+      A new design matrix after the swap of elements
   
   Examples:
-  Choose the first columns of `random_lhd` and exchange two randomly selected elements
+  Choose the first columns of `random_lhd` and swap two randomly selected elements
   ```{python}
   import pyLHD
   random_lhd = pyLHD.random_lhd(n_rows = 5, n_columns = 3)
   random_lhd
   ```
-  Choose column 1 of random_lhd and exchange two randomly selected elements
+  Choose column 1 of random_lhd and swap two randomly selected elements
   ```{python}
-  pyLHD.exchange(random_lhd,idx=1,type='col')
+  pyLHD.swap_elements(random_lhd,idx=1,type='col')
   ```
-  Choose the first row of random_lhd and exchange two randomly selected elements
+  Choose the first row of random_lhd and swap two randomly selected elements
   ```{python}
-  pyLHD.exchange(random_lhd,idx=1,type='row')
+  pyLHD.swap_elements(random_lhd,idx=1,type='row')
   ```
   """
   n_rows = arr.shape[0]
@@ -98,7 +97,7 @@ def williams_transform(arr: npt.ArrayLike,baseline: int =1) -> npt.ArrayLike:
   """ Williams Transformation
 
   Args:
-      arr (numpy.ndarray): A design matrix
+      arr (npt.ArrayLike): A numpy ndarray
       baseline (int, optional): A integer, which defines the minimum value for each column of the matrix. Defaults to 1.
 
   Returns:
@@ -183,7 +182,7 @@ def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int =
   """ Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD`
 
   Args:
-      arr (numpy.ndarray): A design matrix
+      arr (npt.ArrayLike): A numpy ndarray
       criteria (str, optional): Criteria to choose from. Defaults to 'phi_p'. 
           Options include 'phi_p','MaxProCriterion','AvgAbsCor','AvgAbsCor'
           p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15
@@ -218,73 +217,64 @@ def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int =
     raise ValueError(f"Invalid criteria: {criteria}")
 
 
-# Adjust the range of a design to [min,max]
-
-def adjust_range(arr: npt.ArrayLike, min: float, max: float, digits: int=None) -> npt.ArrayLike:
-  """ Adjust the range of a design to [min,max]
+def check_bounds(arr: npt.ArrayLike,
+                 lower_bounds: npt.ArrayLike, 
+                 upper_bounds: npt.ArrayLike) -> tuple[npt.ArrayLike, ...]:
+  """ Check conditions for bounds input
 
   Args:
-      arr (numpy.ndarray): A design matrix
-      min (float): desired lower bound of design 
-      max (float): desired upper bound of design 
-      digits (int): number of digits to which the design is rounded
-  Returns:
-      Design with new range [min,max]
+      arr (npt.ArrayLike): A numpy ndarray
 
+      lower_bounds (npt.ArrayLike): Lower bounds of data
+      upper_bounds (npt.ArrayLike): Upper bounds of data
+
+  Raises:
+      ValueError: If lower, upper bounds are not same dimension of sample `arr`
+      ValueError: Whenver any of the lower bounds are greater than any of the upper bounds
+
+  Returns:
+      tuple[npt.ArrayLike, ...]: A tuple of numpy.ndarrays 
+  """
+  d = arr.shape[1]
+
+  try:
+    lower_bounds = np.broadcast_to(lower_bounds, d)
+    upper_bounds = np.broadcast_to(upper_bounds, d)
+  except ValueError as exc:
+    msg = ("'lower_bounds' and 'upper_bounds' must be broadcastable and respect"
+    " the sample dimension")
+    raise ValueError(msg) from exc
+  
+  if not np.all(lower_bounds < upper_bounds):
+    raise ValueError("Make sure all 'lower_bounds < upper_bounds'")
+  
+  return lower_bounds, upper_bounds
+
+
+def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list) -> npt.ArrayLike:
+  """Sample scaling from unit hypercube to different bounds
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      lower_bounds (list): Lower bounds of transformed data
+      upper_bounds (list): Upper bounds of transformed data
+
+  Returns:
+      npt.ArrayLike: Scaled numpy ndarray to [lower_bounds, upper_bounds]
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
+  random_lhd = pyLHD.random_lhd(10,2, seed = 1)
+  random_lhd
   ```
   ```{python}
-  pyLHD.adjust_range(random_lhd,-1, 1)
+  lower_bounds = [-3,2]
+  upper_bounds = [10,4]
+  pyLHD.scale(random_lhd,lower_bounds, upper_bounds)
   ```
-  ```{python}
-  pyLHD.adjust_range(random_lhd, 5, 12, digits = 3)
-  ```
-  """  
-  if (min == max):
-    raise ValueError('min and max should be different values')
-  if (min > max):
-    raise ValueError('make sure min < max')
-  
-  arr_min = np.amin(arr)
-  arr_max = np.amax(arr)
-  
-  range_diff = arr_max - arr_min
-  result = (arr - arr_min)/range_diff * (max-min) + min
-
-  if digits is not None:
-    return np.around(result,digits)
-  else:
-    return result
-
-
-def scale(arr: npt.ArrayLike,uniformize: bool =False) -> npt.ArrayLike:
-  """ Scales design to be within [0,1]
-  
-  Args:
-      arr (numpy.ndarray): A design matrix
-      uniformize (bool): If True, Rosenblatt transformation is applied 
-          (uniformize by applying the empirical cumulative distribution). 
-          If False (default), scaling is done by using the minimum and maximum value
-  Returns:
-      The scaled design
-
-  Examples:
-  ```{python}
-  import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
-  pyLHD.scale(random_lhd)
-  ```
-  """  
-  min = np.amin(arr,axis=0)
-  range = np.ptp(arr, axis=0)
-  
-  if not uniformize:
-    return (arr-min)/range
-  else:
-    return np.apply_along_axis(pyLHD.ecdf, 0, arr)
+  """
+  lb, ub = check_bounds(arr, lower_bounds, upper_bounds)
+  return lb + arr * (ub - lb)
 
 
 # Distance Matrix Computation

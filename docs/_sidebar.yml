@@ -27,11 +27,11 @@ website:
       section: Criteria
     - contents:
       - docs/helpers.permute_columns.qmd
-      - docs/helpers.exchange.qmd
+      - docs/helpers.swap_elements.qmd
       - docs/helpers.williams_transform.qmd
       - docs/helpers.OA2LHD.qmd
       - docs/helpers.eval_design.qmd
-      - docs/helpers.adjust_range.qmd
+      - docs/helpers.check_bounds.qmd
       - docs/helpers.scale.qmd
       - docs/helpers.distance_matrix.qmd
       section: Helpers

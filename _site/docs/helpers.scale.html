@@ -294,8 +294,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.exchange.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.exchange</span></a>
+  <a href="../docs/helpers.swap_elements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.swap_elements</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -318,8 +318,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.adjust_range.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.adjust_range</span></a>
+  <a href="../docs/helpers.check_bounds.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.check_bounds</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -362,16 +362,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>helpers.scale(arr, uniformize=False)</code></p>
-<p>Scales design to be within [0,1]</p>
+<p><code>helpers.scale(arr, lower_bounds, upper_bounds)</code></p>
+<p>Sample scaling from unit hypercube to different bounds</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 82%">
-<col style="width: 5%">
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 44%">
+<col style="width: 15%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -384,15 +384,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code>arr</code></td>
-<td>numpy.ndarray</td>
-<td>A design matrix</td>
+<td>npt.ArrayLike</td>
+<td>A numpy ndarray</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>uniformize</code></td>
-<td>bool</td>
-<td>If True, Rosenblatt transformation is applied (uniformize by applying the empirical cumulative distribution). If False (default), scaling is done by using the minimum and maximum value</td>
-<td><code>False</code></td>
+<td><code>lower_bounds</code></td>
+<td>list</td>
+<td>Lower bounds of transformed data</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td><code>upper_bounds</code></td>
+<td>list</td>
+<td>Upper bounds of transformed data</td>
+<td><em>required</em></td>
 </tr>
 </tbody>
 </table>
@@ -400,6 +406,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns" class="level2">
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 82%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Type</th>
@@ -409,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>npt.ArrayLike</td>
-<td>The scaled design</td>
+<td>npt.ArrayLike: Scaled numpy ndarray to [lower_bounds, upper_bounds]</td>
 </tr>
 </tbody>
 </table>
@@ -418,14 +428,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(n_rows<span class="op">=</span><span class="dv">5</span>,n_columns<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.scale(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(<span class="dv">10</span>,<span class="dv">2</span>, seed <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>random_lhd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[0.25, 0.25, 0.25],
-       [0.  , 0.75, 0.75],
-       [0.5 , 0.  , 0.5 ],
-       [1.  , 1.  , 0.  ],
-       [0.75, 0.5 , 1.  ]])</code></pre>
+<pre><code>array([[0.84881784, 0.44881784],
+       [0.14881784, 0.94881784],
+       [0.94881784, 0.84881784],
+       [0.74881784, 0.34881784],
+       [0.24881784, 0.24881784],
+       [0.64881784, 0.74881784],
+       [0.04881784, 0.54881784],
+       [0.44881784, 0.64881784],
+       [0.54881784, 0.14881784],
+       [0.34881784, 0.04881784]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>lower_bounds <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span>,<span class="dv">2</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>upper_bounds <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">4</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pyLHD.scale(random_lhd,lower_bounds, upper_bounds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>array([[ 8.03463189,  2.89763568],
+       [-1.06536811,  3.89763568],
+       [ 9.33463189,  3.69763568],
+       [ 6.73463189,  2.69763568],
+       [ 0.23463189,  2.49763568],
+       [ 5.43463189,  3.49763568],
+       [-2.36536811,  3.09763568],
+       [ 2.83463189,  3.29763568],
+       [ 4.13463189,  2.29763568],
+       [ 1.53463189,  2.09763568]])</code></pre>
 </div>
 </div>
 

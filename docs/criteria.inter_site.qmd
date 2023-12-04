@@ -8,7 +8,7 @@ Calculate the Inter-site Distance
 
 | Name   | Type          | Description                                                                                                                                                                        | Default    |
 |--------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`  | numpy.ndarray | A design matrix                                                                                                                                                                    | _required_ |
+| `arr`  | npt.ArrayLike | A numpy ndarray                                                                                                                                                                    | _required_ |
 | `i`    | int           | A positive integer, which stands for the ith row of (arr)                                                                                                                          | _required_ |
 | `j`    | int           | A positive integer, which stands for the jth row of (arr)                                                                                                                          | _required_ |
 | `q`    | int           | The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. | `1`        |
