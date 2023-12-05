@@ -9,31 +9,31 @@ website:
       section: Base Designs
     - contents:
       - docs/OLHD.OLHD_Butler01.qmd
-      - docs/OLHD.OLHD_Sun10.qmd
       - docs/OLHD.OLHD_Cioppa07.qmd
-      - docs/OLHD.OLHD_Ye98.qmd
       - docs/OLHD.OLHD_Lin09.qmd
+      - docs/OLHD.OLHD_Sun10.qmd
+      - docs/OLHD.OLHD_Ye98.qmd
       section: Orthogonal LHD
     - contents:
-      - docs/criteria.MaxAbsCor.qmd
-      - docs/criteria.MaxProCriterion.qmd
-      - docs/criteria.phi_p.qmd
-      - docs/criteria.inter_site.qmd
       - docs/criteria.AvgAbsCor.qmd
-      - docs/criteria.discrepancy.qmd
       - docs/criteria.coverage.qmd
+      - docs/criteria.discrepancy.qmd
+      - docs/criteria.inter_site.qmd
+      - docs/criteria.MaxAbsCor.qmd
       - docs/criteria.maximin.qmd
       - docs/criteria.mesh_ratio.qmd
+      - docs/criteria.MaxProCriterion.qmd
+      - docs/criteria.phi_p.qmd
       section: Criteria
     - contents:
+      - docs/helpers.check_bounds.qmd
+      - docs/helpers.distance_matrix.qmd
+      - docs/helpers.eval_design.qmd
+      - docs/helpers.OA2LHD.qmd
       - docs/helpers.permute_columns.qmd
+      - docs/helpers.scale.qmd
       - docs/helpers.swap_elements.qmd
       - docs/helpers.williams_transform.qmd
-      - docs/helpers.OA2LHD.qmd
-      - docs/helpers.eval_design.qmd
-      - docs/helpers.check_bounds.qmd
-      - docs/helpers.scale.qmd
-      - docs/helpers.distance_matrix.qmd
       section: Helpers
     id: docs
   - id: dummy-sidebar

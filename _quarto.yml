@@ -13,7 +13,6 @@ website:
       - text: "Function References"
         file: docs/index.qmd
 
-
 quartodoc:
   # the name used to import the package you want to create reference docs for
   package: pyLHD
@@ -34,30 +33,30 @@ quartodoc:
       desc: Various constructions of orthogonal latin hypercube designs
       contents:
         - OLHD.OLHD_Butler01
-        - OLHD.OLHD_Sun10
         - OLHD.OLHD_Cioppa07
-        - OLHD.OLHD_Ye98
         - OLHD.OLHD_Lin09
+        - OLHD.OLHD_Sun10
+        - OLHD.OLHD_Ye98
     - title: Criteria
       desc: Space-filling Criterias for LHD
       contents:
-        - criteria.MaxAbsCor
-        - criteria.MaxProCriterion
-        - criteria.phi_p
-        - criteria.inter_site
         - criteria.AvgAbsCor
-        - criteria.discrepancy
         - criteria.coverage
+        - criteria.discrepancy
+        - criteria.inter_site
+        - criteria.MaxAbsCor
         - criteria.maximin
         - criteria.mesh_ratio
+        - criteria.MaxProCriterion
+        - criteria.phi_p
     - title: Helpers
       desc: miscellaneous utilities for working with LHDs
       contents:
-        - helpers.permute_columns
-        - helpers.swap_elements
-        - helpers.williams_transform
-        - helpers.OA2LHD
-        - helpers.eval_design
-        - helpers.check_bounds
-        - helpers.scale
+        - helpers.check_bounds  
         - helpers.distance_matrix
+        - helpers.eval_design 
+        - helpers.OA2LHD               
+        - helpers.permute_columns
+        - helpers.scale
+        - helpers.swap_elements
+        - helpers.williams_transform        

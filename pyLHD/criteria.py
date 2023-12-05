@@ -2,7 +2,6 @@ import numpy as np
 import numpy.typing as npt
 from typing import Literal
 
-# Maximum Absolute Correlation
 
 def MaxAbsCor(arr: npt.ArrayLike) -> float:
   """ Calculate the Maximum Absolute Correlation
@@ -24,8 +23,6 @@ def MaxAbsCor(arr: npt.ArrayLike) -> float:
   lower_matrix_corr = np.corrcoef(arr.T)[np.tril_indices(arr.shape[1],-1)]
   return np.max(np.abs(lower_matrix_corr))
 
-
-# Calculate the Average Absolute Correlation
 
 def AvgAbsCor(arr: npt.ArrayLike) -> float:
   """ Calculate the Average Absolute Correlation
@@ -49,9 +46,6 @@ def AvgAbsCor(arr: npt.ArrayLike) -> float:
   lower_matrix_corr = np.corrcoef(arr.T)[np.tril_indices(arr.shape[1],-1)]
   return np.mean(np.abs(lower_matrix_corr))
 
-
-
-# Calculate the Maximum Projection Criterion
 
 def MaxProCriterion(arr: npt.ArrayLike) -> float:
   """ Calculate the Maximum Projection Criterion
@@ -82,7 +76,6 @@ def MaxProCriterion(arr: npt.ArrayLike) -> float:
 
   return (2 / (n * (n - 1)) * temp)**(1 / p)
 
-# Calculate the Inter-site Distance
 
 def inter_site(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   """ Calculate the Inter-site Distance
@@ -111,9 +104,6 @@ def inter_site(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   """
   return np.sum(np.abs(arr[i, :] - arr[j, :])**q)**(1/q)
 
-
-
-# Calculate the phi_p Criterion
 
 def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   """ Calculate the phi_p Criterion
@@ -145,7 +135,6 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   return np.sum(isd)**(1/p) 
 
 
-# Caluclate the Discrepancy of a given sample
 
 def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2", "modified_L2", "mixture_L2", "symmetric_L2", "wrap_around_L2"] = "centered_L2") -> float:
   """ Discrepancy of a given sample
@@ -264,7 +253,6 @@ def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2
   
   return value
 
-# Compute the coverage measure
 
 def coverage(arr: npt.ArrayLike) -> float:
   """ Compute the coverage measure for a design
@@ -308,7 +296,6 @@ def coverage(arr: npt.ArrayLike) -> float:
   cov = (1/gammabar)*((1/n_rows)*sum)**(1/2)
   return cov
 
-# Compute the meshratio criterion
 
 def mesh_ratio(arr: npt.ArrayLike) -> float:
   """ Compute the meshratio criterion for a given design
@@ -361,8 +348,6 @@ def mesh_ratio(arr: npt.ArrayLike) -> float:
   ratio = np.sqrt(max_dist/min_dist)
   return ratio
 
-
-# Calculate maximin criterion 
 
 def maximin(arr: npt.ArrayLike) -> float:
   """ Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.

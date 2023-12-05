@@ -17,10 +17,10 @@ Various constructions of orthogonal latin hypercube designs
 | | |
 | --- | --- |
 | [OLHD.OLHD_Butler01](OLHD.OLHD_Butler01.qmd#pyLHD.OLHD.OLHD_Butler01) | Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001) |
-| [OLHD.OLHD_Sun10](OLHD.OLHD_Sun10.qmd#pyLHD.OLHD.OLHD_Sun10) | Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010) |
 | [OLHD.OLHD_Cioppa07](OLHD.OLHD_Cioppa07.qmd#pyLHD.OLHD.OLHD_Cioppa07) | Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007) |
-| [OLHD.OLHD_Ye98](OLHD.OLHD_Ye98.qmd#pyLHD.OLHD.OLHD_Ye98) | Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998) |
 | [OLHD.OLHD_Lin09](OLHD.OLHD_Lin09.qmd#pyLHD.OLHD.OLHD_Lin09) | Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009) |
+| [OLHD.OLHD_Sun10](OLHD.OLHD_Sun10.qmd#pyLHD.OLHD.OLHD_Sun10) | Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010) |
+| [OLHD.OLHD_Ye98](OLHD.OLHD_Ye98.qmd#pyLHD.OLHD.OLHD_Ye98) | Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998) |
 
 ## Criteria
 
@@ -28,15 +28,15 @@ Space-filling Criterias for LHD
 
 | | |
 | --- | --- |
-| [criteria.MaxAbsCor](criteria.MaxAbsCor.qmd#pyLHD.criteria.MaxAbsCor) | Calculate the Maximum Absolute Correlation |
-| [criteria.MaxProCriterion](criteria.MaxProCriterion.qmd#pyLHD.criteria.MaxProCriterion) | Calculate the Maximum Projection Criterion |
-| [criteria.phi_p](criteria.phi_p.qmd#pyLHD.criteria.phi_p) | Calculate the phi_p Criterion |
-| [criteria.inter_site](criteria.inter_site.qmd#pyLHD.criteria.inter_site) | Calculate the Inter-site Distance |
 | [criteria.AvgAbsCor](criteria.AvgAbsCor.qmd#pyLHD.criteria.AvgAbsCor) | Calculate the Average Absolute Correlation |
-| [criteria.discrepancy](criteria.discrepancy.qmd#pyLHD.criteria.discrepancy) | Discrepancy of a given sample |
 | [criteria.coverage](criteria.coverage.qmd#pyLHD.criteria.coverage) | Compute the coverage measure for a design |
+| [criteria.discrepancy](criteria.discrepancy.qmd#pyLHD.criteria.discrepancy) | Discrepancy of a given sample |
+| [criteria.inter_site](criteria.inter_site.qmd#pyLHD.criteria.inter_site) | Calculate the Inter-site Distance |
+| [criteria.MaxAbsCor](criteria.MaxAbsCor.qmd#pyLHD.criteria.MaxAbsCor) | Calculate the Maximum Absolute Correlation |
 | [criteria.maximin](criteria.maximin.qmd#pyLHD.criteria.maximin) | Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points. |
 | [criteria.mesh_ratio](criteria.mesh_ratio.qmd#pyLHD.criteria.mesh_ratio) | Compute the meshratio criterion for a given design |
+| [criteria.MaxProCriterion](criteria.MaxProCriterion.qmd#pyLHD.criteria.MaxProCriterion) | Calculate the Maximum Projection Criterion |
+| [criteria.phi_p](criteria.phi_p.qmd#pyLHD.criteria.phi_p) | Calculate the phi_p Criterion |
 
 ## Helpers
 
@@ -44,11 +44,11 @@ miscellaneous utilities for working with LHDs
 
 | | |
 | --- | --- |
-| [helpers.permute_columns](helpers.permute_columns.qmd#pyLHD.helpers.permute_columns) | Random permute columns in a numpy ndarray |
+| [helpers.check_bounds](helpers.check_bounds.qmd#pyLHD.helpers.check_bounds) | Check conditions for bounds input |
+| [helpers.distance_matrix](helpers.distance_matrix.qmd#pyLHD.helpers.distance_matrix) | Distance matrix based on specified distance measure |
+| [helpers.eval_design](helpers.eval_design.qmd#pyLHD.helpers.eval_design) | Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD` |
+| [helpers.OA2LHD](helpers.OA2LHD.qmd#pyLHD.helpers.OA2LHD) | Transform an Orthogonal Array (OA) into an LHD |
+| [helpers.permute_columns](helpers.permute_columns.qmd#pyLHD.helpers.permute_columns) | Randomly permute columns in a numpy ndarray |
+| [helpers.scale](helpers.scale.qmd#pyLHD.helpers.scale) | Sample scaling from unit hypercube to different bounds |
 | [helpers.swap_elements](helpers.swap_elements.qmd#pyLHD.helpers.swap_elements) | Swap two random elements in a matrix |
 | [helpers.williams_transform](helpers.williams_transform.qmd#pyLHD.helpers.williams_transform) | Williams Transformation |
-| [helpers.OA2LHD](helpers.OA2LHD.qmd#pyLHD.helpers.OA2LHD) | Transform an Orthogonal Array (OA) into an LHD |
-| [helpers.eval_design](helpers.eval_design.qmd#pyLHD.helpers.eval_design) | Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD` |
-| [helpers.check_bounds](helpers.check_bounds.qmd#pyLHD.helpers.check_bounds) | Check conditions for bounds input |
-| [helpers.scale](helpers.scale.qmd#pyLHD.helpers.scale) | Sample scaling from unit hypercube to different bounds |
-| [helpers.distance_matrix](helpers.distance_matrix.qmd#pyLHD.helpers.distance_matrix) | Distance matrix based on specified distance measure |

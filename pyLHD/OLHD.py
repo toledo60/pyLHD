@@ -1,9 +1,7 @@
 import numpy as np
 import numpy.typing as npt
 import pyLHD
-
-# --- Orthogonal Latin Hypercube Designs --- #
-
+import math
 
 # --- Butler, N.A. (2001) Construction --- #
 
@@ -276,14 +274,14 @@ def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
     CP = np.zeros((1,2))
   
   if m>2:
-    T0 = np.zeros((q,m+pyLHD.comb(m-1,2)))
+    T0 = np.zeros((q,m+math.comb(m-1,2)))
 
     for i in range(q):
-      for k in range(m+pyLHD.comb(m-1,2)):
+      for k in range(m+math.comb(m-1,2)):
         T0[i,k] = M[i,k]*S[i,k]
     # Construction of T ends
 
-    CP = np.zeros((1,m+pyLHD.comb(m-1,2)))
+    CP = np.zeros((1,m+math.comb(m-1,2)))
 
   X = np.vstack((T0,CP,-T0))
     
