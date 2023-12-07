@@ -5,32 +5,33 @@ import math
 
 # --- Butler, N.A. (2001) Construction --- #
 
-def OLHD_Butler01(n_rows: int, n_columns: int) -> npt.ArrayLike:
+def OLHD_Butler01(size: tuple[int,int]) -> npt.ArrayLike:
   """ Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)
 
   Args:
-      n_rows (int): A positive integer specifying the number of rows
-      n_columns (int): A postive integer specifying the number of columns
+      size (tuple of ints): Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.
 
   Raises:
-      ValueError: If n_columns is not less than or equal to n_rows
-      ValueError: If n_rows is not greater than or equal to 3
-      ValueError: If n_rows is not an odd prime number
+      ValueError: If `d` is not less than or equal to `n`
+      ValueError: If `n` is not greater than or equal to 3
+      ValueError: If `n` is not an odd prime number
 
   Returns:
-      A (n_rows by n_columns) orthogonal LHD
+      A (n x d) orthogonal LHD
   
   Examples:
-  Create an orthogonal LHD with n_rows =11 and n_columns =5
+  Create an orthogonal LHD with 11 rows and 5 columns
   ```{python}
   import pyLHD
-  pyLHD.OLHD_Butler01(n_rows=11,n_columns=5)
+  pyLHD.OLHD_Butler01(size = (11,5))
   ```
-  Create an orthogonal LHD with n_rows =11 and n_columns =5
+  Create an orthogonal LHD with 7 rows and 6 columns
   ```{python}
-   pyLHD.OLHD_Butler01(n_rows=7,n_columns=6)
+   pyLHD.OLHD_Butler01(size = (7,6))
   ```
   """
+  n_rows, n_columns = size
+  
   if n_columns >= n_rows:
     raise ValueError("n_columns must be less than or equal to n_rows")
   if n_rows < 3:

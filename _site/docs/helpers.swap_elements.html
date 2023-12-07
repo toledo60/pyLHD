@@ -153,20 +153,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/base_designs.permutations_matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">base_designs.permutations_matrix</span></a>
+  <a href="../docs/base.LatinSquare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base.LatinSquare</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/base_designs.random_lhd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">base_designs.random_lhd</span></a>
+  <a href="../docs/base.LatinHypercube.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base.LatinHypercube</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/base_designs.GLPdesign.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">base_designs.GLPdesign</span></a>
+  <a href="../docs/base.GoodLatticePoint.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base.GoodLatticePoint</span></a>
   </div>
 </li>
       </ul>
@@ -182,32 +182,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/OLHD.OLHD_Butler01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OLHD.OLHD_Butler01</span></a>
+  <a href="../docs/orthogonal.OLHD_Butler01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">orthogonal.OLHD_Butler01</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/OLHD.OLHD_Cioppa07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OLHD.OLHD_Cioppa07</span></a>
+  <a href="../docs/orthogonal.OLHD_Cioppa07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">orthogonal.OLHD_Cioppa07</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/OLHD.OLHD_Lin09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OLHD.OLHD_Lin09</span></a>
+  <a href="../docs/orthogonal.OLHD_Lin09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">orthogonal.OLHD_Lin09</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/OLHD.OLHD_Sun10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OLHD.OLHD_Sun10</span></a>
+  <a href="../docs/orthogonal.OLHD_Sun10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">orthogonal.OLHD_Sun10</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/OLHD.OLHD_Ye98.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OLHD.OLHD_Ye98</span></a>
+  <a href="../docs/orthogonal.OLHD_Ye98.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">orthogonal.OLHD_Ye98</span></a>
   </div>
 </li>
       </ul>
@@ -425,36 +425,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Choose the first columns of <code>random_lhd</code> and swap two randomly selected elements</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.random_lhd(n_rows <span class="op">=</span> <span class="dv">5</span>, n_columns <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">3</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>random_lhd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[0.9463803, 0.7463803, 0.9463803],
-       [0.3463803, 0.1463803, 0.5463803],
-       [0.1463803, 0.3463803, 0.3463803],
-       [0.7463803, 0.9463803, 0.7463803],
-       [0.5463803, 0.5463803, 0.1463803]])</code></pre>
+<pre><code>array([[0.87932003, 0.87932003, 0.87932003],
+       [0.47932003, 0.07932003, 0.47932003],
+       [0.67932003, 0.47932003, 0.07932003],
+       [0.27932003, 0.27932003, 0.27932003],
+       [0.07932003, 0.67932003, 0.67932003]])</code></pre>
 </div>
 </div>
 <p>Choose column 1 of random_lhd and swap two randomly selected elements</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.swap_elements(random_lhd,idx<span class="op">=</span><span class="dv">1</span>,<span class="bu">type</span><span class="op">=</span><span class="st">'col'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[0.9463803, 0.7463803, 0.9463803],
-       [0.3463803, 0.1463803, 0.5463803],
-       [0.1463803, 0.5463803, 0.3463803],
-       [0.7463803, 0.9463803, 0.7463803],
-       [0.5463803, 0.3463803, 0.1463803]])</code></pre>
+<pre><code>array([[0.87932003, 0.87932003, 0.87932003],
+       [0.47932003, 0.67932003, 0.47932003],
+       [0.67932003, 0.47932003, 0.07932003],
+       [0.27932003, 0.27932003, 0.27932003],
+       [0.07932003, 0.07932003, 0.67932003]])</code></pre>
 </div>
 </div>
 <p>Choose the first row of random_lhd and swap two randomly selected elements</p>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pyLHD.swap_elements(random_lhd,idx<span class="op">=</span><span class="dv">1</span>,<span class="bu">type</span><span class="op">=</span><span class="st">'row'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>array([[0.9463803, 0.7463803, 0.9463803],
-       [0.1463803, 0.3463803, 0.5463803],
-       [0.1463803, 0.5463803, 0.3463803],
-       [0.7463803, 0.9463803, 0.7463803],
-       [0.5463803, 0.3463803, 0.1463803]])</code></pre>
+<pre><code>array([[0.87932003, 0.87932003, 0.87932003],
+       [0.47932003, 0.47932003, 0.67932003],
+       [0.67932003, 0.47932003, 0.07932003],
+       [0.27932003, 0.27932003, 0.27932003],
+       [0.07932003, 0.07932003, 0.67932003]])</code></pre>
 </div>
 </div>
 

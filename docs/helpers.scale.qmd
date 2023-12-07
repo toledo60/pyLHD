@@ -24,7 +24,7 @@ Sample scaling from unit hypercube to different bounds
 
 ```{python}
 import pyLHD
-random_lhd = pyLHD.random_lhd(10,2, seed = 1)
+random_lhd = pyLHD.LatinHypercube(size = (10,2), seed = 1)
 random_lhd
 ```
 ```{python}

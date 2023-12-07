@@ -10,8 +10,11 @@ website:
     background: primary
     search: true
     left:
+      - text: "Introduction"
+        file: notebooks/intro_pyLHD.ipynb
       - text: "Function References"
         file: docs/index.qmd
+
 
 quartodoc:
   # the name used to import the package you want to create reference docs for
@@ -26,9 +29,9 @@ quartodoc:
     - title: Base Designs
       desc: Generate Random LHD
       contents:
-        - base.permutations_matrix
-        - base.random_lhd
-        - base.GLPdesign
+        - base.LatinSquare
+        - base.LatinHypercube
+        - base.GoodLatticePoint
     - title: Orthogonal LHD
       desc: Various constructions of orthogonal latin hypercube designs
       contents:

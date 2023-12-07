@@ -24,7 +24,7 @@ Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria
 By default `phi_p` with `p=15` and `q=1`
 ```{python}
 import pyLHD
-random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
+random_lhd = pyLHD.LatinHypercube(size = (5,3))
 pyLHD.eval_design(random_lhd)
 ```
 Evaluate design based on MaxProCriterion 

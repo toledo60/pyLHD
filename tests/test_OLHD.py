@@ -1,4 +1,3 @@
-import numpy as np
 import pytest
 from pytest import approx
 from pyLHD.criteria import AvgAbsCor, MaxAbsCor

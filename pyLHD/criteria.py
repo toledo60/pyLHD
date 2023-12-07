@@ -16,7 +16,7 @@ def MaxAbsCor(arr: npt.ArrayLike) -> float:
   Examples:
     ```{python}
     import pyLHD
-    random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
+    random_lhd = pyLHD.LatinHypercube(size = (10,3))
     pyLHD.MaxAbsCor(random_lhd)
     ```
   """
@@ -39,7 +39,7 @@ def AvgAbsCor(arr: npt.ArrayLike) -> float:
   Calculate the average absolute correlation of `random_lhd`
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
+  random_lhd = pyLHD.LatinHypercube(size = (10,3))
   pyLHD.AvgAbsCor(random_lhd)
   ```
   """
@@ -60,7 +60,7 @@ def MaxProCriterion(arr: npt.ArrayLike) -> float:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
+  random_lhd = pyLHD.LatinHypercube(size = (10,3))
   pyLHD.MaxProCriterion(random_lhd)
   ```
   """
@@ -94,7 +94,7 @@ def inter_site(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd`
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
+  random_lhd = pyLHD.LatinHypercube(size = (10,3))
   pyLHD.inter_site(random_lhd,i=2,j=4)
   ```
   Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd` with q=2 (Euclidean)
@@ -120,7 +120,7 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   Calculate the phi_p criterion for random_lhd with default settings
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
+  random_lhd = pyLHD.LatinHypercube(size = (10,3))
   pyLHD.phi_p(random_lhd)  
   ```
   Calculate the phi_p criterion of random_lhd with p=50 and q=2 (Euclidean)
@@ -154,7 +154,7 @@ def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2
   Calculate the centered_L2 discrepancy of `random_lhd`
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=10,n_columns=3)
+  random_lhd = pyLHD.LatinHypercube(size = (10,3))
   pyLHD.discrepancy(random_lhd)
   ```
   Calculate the L2 star discrepancy of `random_lhd`
@@ -268,7 +268,7 @@ def coverage(arr: npt.ArrayLike) -> float:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=5)
+  random_lhd = pyLHD.LatinHypercube(size = (5,5))
   pyLHD.coverage(random_lhd)
   ```
 
@@ -312,7 +312,7 @@ def mesh_ratio(arr: npt.ArrayLike) -> float:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=5)
+  random_lhd = pyLHD.LatinHypercube(size = (5,5))
   pyLHD.mesh_ratio(random_lhd)
   ```
   """
@@ -361,7 +361,7 @@ def maximin(arr: npt.ArrayLike) -> float:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=5)
+  random_lhd = pyLHD.LatinHypercube(size = (10,3))
   pyLHD.maximin(random_lhd)
   ```
   """  

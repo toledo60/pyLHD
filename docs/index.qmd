@@ -6,9 +6,9 @@ Generate Random LHD
 
 | | |
 | --- | --- |
-| [base.permutations_matrix](base.permutations_matrix.qmd#pyLHD.base.permutations_matrix) | Generate (n_rows x n_columns) matrix, in which each column is a random permutation of {1,2,...,n_rows} |
-| [base.random_lhd](base.random_lhd.qmd#pyLHD.base.random_lhd) | Generate a random Latin Hypercube Design |
-| [base.GLPdesign](base.GLPdesign.qmd#pyLHD.base.GLPdesign) | Good Lattice Point (GLP) Design  |
+| [base.LatinSquare](base.LatinSquare.qmd#pyLHD.base.LatinSquare) | Generate a (n x d) Latin square, where each column is a random permutation of {1,2,...,n} |
+| [base.LatinHypercube](base.LatinHypercube.qmd#pyLHD.base.LatinHypercube) | Generate a random Latin Hypercube Design |
+| [base.GoodLatticePoint](base.GoodLatticePoint.qmd#pyLHD.base.GoodLatticePoint) | Good Lattice Point (GLP) Design  |
 
 ## Orthogonal LHD
 

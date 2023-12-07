@@ -31,7 +31,7 @@ def permute_columns(arr: npt.ArrayLike, columns: Optional[List[Integral]] = None
   Examples:
   ```{python}
   import pyLHD
-  x = pyLHD.random_lhd(n_rows = 5, n_columns = 3, seed = 1)
+  x = pyLHD.LatinHypercube(size = (5,3), seed = 1)
   x
   ```
   Permute all columns
@@ -77,7 +77,7 @@ def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
   Choose the first columns of `random_lhd` and swap two randomly selected elements
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows = 5, n_columns = 3)
+  random_lhd = pyLHD.LatinHypercube(size = (5,3))
   random_lhd
   ```
   Choose column 1 of random_lhd and swap two randomly selected elements
@@ -117,7 +117,7 @@ def williams_transform(arr: npt.ArrayLike,baseline: int =1) -> npt.ArrayLike:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
+  random_lhd = pyLHD.LatinHypercube(size = (5,3))
   random_lhd
   ```
   Change the baseline
@@ -205,7 +205,7 @@ def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int =
   By default `phi_p` with `p=15` and `q=1`
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
+  random_lhd = pyLHD.LatinHypercube(size = (5,3))
   pyLHD.eval_design(random_lhd)
   ```
   Evaluate design based on MaxProCriterion 
@@ -274,7 +274,7 @@ def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list) -> npt.Arr
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(10,2, seed = 1)
+  random_lhd = pyLHD.LatinHypercube(size = (10,2), seed = 1)
   random_lhd
   ```
   ```{python}
@@ -306,7 +306,7 @@ def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
+  random_lhd = pyLHD.LatinHypercube(size = (5,3))
   pyLHD.distance_matrix(random_lhd)
   ```
   ```{python}

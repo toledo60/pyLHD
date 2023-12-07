@@ -153,20 +153,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/base.permutations_matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">base.permutations_matrix</span></a>
+  <a href="../docs/base.LatinSquare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base.LatinSquare</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/base.random_lhd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">base.random_lhd</span></a>
+  <a href="../docs/base.LatinHypercube.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base.LatinHypercube</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/base.GLPdesign.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">base.GLPdesign</span></a>
+  <a href="../docs/base.GoodLatticePoint.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base.GoodLatticePoint</span></a>
   </div>
 </li>
       </ul>
@@ -362,16 +362,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>orthogonal.OLHD_Butler01(n_rows, n_columns)</code></p>
+<p><code>orthogonal.OLHD_Butler01(size)</code></p>
 <p>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 15%">
+<col style="width: 6%">
+<col style="width: 11%">
+<col style="width: 72%">
 <col style="width: 9%">
-<col style="width: 61%">
-<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -383,15 +383,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>n_rows</code></td>
-<td>int</td>
-<td>A positive integer specifying the number of rows</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td><code>n_columns</code></td>
-<td>int</td>
-<td>A postive integer specifying the number of columns</td>
+<td><code>size</code></td>
+<td>tuple of ints</td>
+<td>Output shape of (n,d), where <code>n</code> and <code>d</code> are the number of rows and columns, respectively.</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
@@ -409,15 +403,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>ValueError</td>
-<td>If n_columns is not less than or equal to n_rows</td>
+<td>If <code>d</code> is not less than or equal to <code>n</code></td>
 </tr>
 <tr class="even">
 <td>ValueError</td>
-<td>If n_rows is not greater than or equal to 3</td>
+<td>If <code>n</code> is not greater than or equal to 3</td>
 </tr>
 <tr class="odd">
 <td>ValueError</td>
-<td>If n_rows is not an odd prime number</td>
+<td>If <code>n</code> is not an odd prime number</td>
 </tr>
 </tbody>
 </table>
@@ -434,41 +428,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>npt.ArrayLike</td>
-<td>A (n_rows by n_columns) orthogonal LHD</td>
+<td>A (n x d) orthogonal LHD</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>Create an orthogonal LHD with n_rows =11 and n_columns =5</p>
+<p>Create an orthogonal LHD with 11 rows and 5 columns</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OLHD_Butler01(n_rows<span class="op">=</span><span class="dv">11</span>,n_columns<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OLHD_Butler01(size <span class="op">=</span> (<span class="dv">11</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[ 4.,  2.,  1.,  5.,  3.],
-       [ 2.,  3.,  7.,  8., 11.],
-       [ 1.,  7., 10.,  3.,  4.],
-       [ 3., 11.,  4., 10.,  5.],
-       [ 5.,  8.,  3.,  1., 10.],
-       [ 7.,  4.,  9., 11.,  2.],
-       [ 9.,  1.,  8.,  2.,  7.],
-       [11.,  5.,  2.,  9.,  8.],
-       [10.,  9.,  5.,  4.,  1.],
-       [ 8., 10., 11.,  7.,  9.],
+<pre><code>array([[ 4.,  3.,  1.,  5.,  2.],
+       [ 2., 11.,  7.,  8.,  3.],
+       [ 1.,  4., 10.,  3.,  7.],
+       [ 3.,  5.,  4., 10., 11.],
+       [ 5., 10.,  3.,  1.,  8.],
+       [ 7.,  2.,  9., 11.,  4.],
+       [ 9.,  7.,  8.,  2.,  1.],
+       [11.,  8.,  2.,  9.,  5.],
+       [10.,  1.,  5.,  4.,  9.],
+       [ 8.,  9., 11.,  7., 10.],
        [ 6.,  6.,  6.,  6.,  6.]])</code></pre>
 </div>
 </div>
-<p>Create an orthogonal LHD with n_rows =11 and n_columns =5</p>
+<p>Create an orthogonal LHD with 7 rows and 6 columns</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> pyLHD.OLHD_Butler01(n_rows<span class="op">=</span><span class="dv">7</span>,n_columns<span class="op">=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> pyLHD.OLHD_Butler01(size <span class="op">=</span> (<span class="dv">7</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[2., 1., 3., 5., 3., 7.],
-       [1., 5., 6., 6., 5., 2.],
-       [3., 6., 1., 2., 7., 5.],
-       [5., 2., 7., 3., 6., 4.],
-       [7., 3., 2., 7., 4., 3.],
-       [6., 7., 5., 4., 2., 6.],
+<pre><code>array([[2., 1., 3., 3., 7., 5.],
+       [1., 5., 6., 5., 2., 6.],
+       [3., 6., 1., 7., 5., 2.],
+       [5., 2., 7., 6., 4., 3.],
+       [7., 3., 2., 4., 3., 7.],
+       [6., 7., 5., 2., 6., 4.],
        [4., 4., 4., 1., 1., 1.]])</code></pre>
 </div>
 </div>

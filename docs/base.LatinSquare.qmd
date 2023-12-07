@@ -1,0 +1,27 @@
+# base.LatinSquare { #pyLHD.base.LatinSquare }
+
+`base.LatinSquare(size, seed=None)`
+
+Generate a (n x d) Latin square, where each column is a random permutation of {1,2,...,n}
+
+## Parameters
+
+| Name   | Type                                                | Description                                                                                                                                                                                                     | Default    |
+|--------|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `size` | tuple of ints                                       | Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.                                                                                                                      | _required_ |
+| `seed` | Optional\[Union\[Integral, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
+
+## Returns
+
+| Type          | Description                                                                          |
+|---------------|--------------------------------------------------------------------------------------|
+| npt.ArrayLike | Generate (n x d) matrix, in which each column is a random permutation of {1,2,...,n} |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+pyLHD.LatinSquare(size = (5,3),seed = 1)
+```

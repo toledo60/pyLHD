@@ -1,0 +1,31 @@
+# base.GoodLatticePoint { #pyLHD.base.GoodLatticePoint }
+
+`base.GoodLatticePoint(size, h=None, seed=None)`
+
+Good Lattice Point (GLP) Design 
+
+## Parameters
+
+| Name   | Type                                               | Description                                                                                                                                                                                                     | Default    |
+|--------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `size` | tuple of ints                                      | Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.                                                                                                                      | _required_ |
+| `h`    | list                                               | A list whose length is same as `d`, with its elements that are smaller than and coprime to `n`.  Defaults to None. If None, a random sample of `d` elements between 1 and (`n`-1).                              | `None`     |
+| `seed` | Optional\[Union\[Integral, np.random.Generator\]\] | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
+
+## Returns
+
+| Type          | Description           |
+|---------------|-----------------------|
+| npt.ArrayLike | A (n x d) GLP design. |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+pyLHD.GoodLatticePoint(size = (5,3))
+```
+```{python}
+pyLHD.GoodLatticePoint(size = (8,4),h=[1,3,5,7])
+```

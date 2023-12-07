@@ -24,7 +24,7 @@ Randomly permute columns in a numpy ndarray
 
 ```{python}
 import pyLHD
-x = pyLHD.random_lhd(n_rows = 5, n_columns = 3, seed = 1)
+x = pyLHD.LatinHypercube(size = (5,3), seed = 1)
 x
 ```
 Permute all columns

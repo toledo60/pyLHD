@@ -24,7 +24,7 @@ Distance matrix based on specified distance measure
 
 ```{python}
 import pyLHD
-random_lhd = pyLHD.random_lhd(n_rows=5,n_columns=3)
+random_lhd = pyLHD.LatinHypercube(size = (5,3))
 pyLHD.distance_matrix(random_lhd)
 ```
 ```{python}

@@ -25,7 +25,7 @@ Swap two random elements in a matrix
 Choose the first columns of `random_lhd` and swap two randomly selected elements
 ```{python}
 import pyLHD
-random_lhd = pyLHD.random_lhd(n_rows = 5, n_columns = 3)
+random_lhd = pyLHD.LatinHypercube(size = (5,3))
 random_lhd
 ```
 Choose column 1 of random_lhd and swap two randomly selected elements

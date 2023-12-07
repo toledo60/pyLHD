@@ -3,9 +3,9 @@ website:
   - contents:
     - docs/index.qmd
     - contents:
-      - docs/base.permutations_matrix.qmd
-      - docs/base.random_lhd.qmd
-      - docs/base.GLPdesign.qmd
+      - docs/base.LatinSquare.qmd
+      - docs/base.LatinHypercube.qmd
+      - docs/base.GoodLatticePoint.qmd
       section: Base Designs
     - contents:
       - docs/orthogonal.OLHD_Butler01.qmd
