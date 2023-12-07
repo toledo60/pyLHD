@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from pytest import approx
 from pyLHD.criteria import AvgAbsCor, MaxAbsCor
-from pyLHD.OLHD import OLHD_Ye98
+from pyLHD.orthogonal import OLHD_Ye98
 
 @pytest.mark.benchmark
 @pytest.mark.parametrize("m", [4, 8, 10])

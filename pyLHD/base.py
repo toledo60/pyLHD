@@ -62,8 +62,6 @@ def random_lhd(n_rows: int, n_columns: int, scramble: Optional[bool] = True,
   return (perms-samples)/n_rows
 
 
-# Good Lattice Point Design
-
 def GLPdesign(n_rows: int, n_columns: int, h: list = None,
               seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
   """ Good Lattice Point (GLP) Design 

@@ -26,17 +26,17 @@ quartodoc:
     - title: Base Designs
       desc: Generate Random LHD
       contents:
-        - base_designs.permutations_matrix
-        - base_designs.random_lhd
-        - base_designs.GLPdesign
+        - base.permutations_matrix
+        - base.random_lhd
+        - base.GLPdesign
     - title: Orthogonal LHD
       desc: Various constructions of orthogonal latin hypercube designs
       contents:
-        - OLHD.OLHD_Butler01
-        - OLHD.OLHD_Cioppa07
-        - OLHD.OLHD_Lin09
-        - OLHD.OLHD_Sun10
-        - OLHD.OLHD_Ye98
+        - orthogonal.OLHD_Butler01
+        - orthogonal.OLHD_Cioppa07
+        - orthogonal.OLHD_Lin09
+        - orthogonal.OLHD_Sun10
+        - orthogonal.OLHD_Ye98
     - title: Criteria
       desc: Space-filling Criterias for LHD
       contents:

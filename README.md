@@ -31,7 +31,7 @@ With `pyLHD` you can generate the following designs:
 Calculate design properties such as:
 
 - `AvgAbsCor`: Calculate the average absolute correlation
-- `dij`: Calculate the Inter-site Distance (rectangular/Euclidean) between the *ith* and *jth* row
+- `inter_site`: Calculate the Inter-site Distance (rectangular/Euclidean) between the *ith* and *jth* row
 - `coverage`: Calculate the coverage measure
 - `discrepancy`: Calculate the discrepancy of a given sample
 - `MaxAbsCor`: Calculate the maximum absolute correlation

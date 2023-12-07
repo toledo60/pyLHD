@@ -1,0 +1,28 @@
+# base.permutations_matrix { #pyLHD.base.permutations_matrix }
+
+`base.permutations_matrix(n_rows, n_columns, seed=None)`
+
+Generate (n_rows x n_columns) matrix, in which each column is a random permutation of {1,2,...,n_rows}
+
+## Parameters
+
+| Name        | Type                                                | Description                                                                                                                                                                                                     | Default    |
+|-------------|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `n_rows`    | int                                                 | number of rows                                                                                                                                                                                                  | _required_ |
+| `n_columns` | int                                                 | number of columns                                                                                                                                                                                               | _required_ |
+| `seed`      | Optional\[Union\[Integral, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
+
+## Returns
+
+| Type          | Description                                                                                            |
+|---------------|--------------------------------------------------------------------------------------------------------|
+| npt.ArrayLike | Generate (n_rows x n_columns) matrix, in which each column is a random permutation of {1,2,...,n_rows} |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+pyLHD.permutations_matrix(n_rows = 6, n_columns = 3, seed = 1)
+```

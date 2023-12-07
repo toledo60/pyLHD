@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index</title>
+<title>base.random_lhd</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -60,6 +94,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -90,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/index.html">Function reference</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/base.permutations_matrix.html">Base Designs</a></li><li class="breadcrumb-item"><a href="../docs/base.random_lhd.html">base.random_lhd</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -104,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Function reference</span></a>
   </div>
 </li>
@@ -125,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/base.random_lhd.html" class="sidebar-item-text sidebar-link">
+  <a href="../docs/base.random_lhd.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">base.random_lhd</span></a>
   </div>
 </li>
@@ -311,144 +347,116 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">base.random_lhd</h1>
+</div>
 
 
-<section id="function-reference" class="level1">
-<h1>Function reference</h1>
-<section id="base-designs" class="level2">
-<h2 class="anchored" data-anchor-id="base-designs">Base Designs</h2>
-<p>Generate Random LHD</p>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><code>base.random_lhd(n_rows, n_columns, scramble=True, seed=None)</code></p>
+<p>Generate a random Latin Hypercube Design</p>
+<section id="parameters" class="level2">
+<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 18%">
+<col style="width: 72%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../docs/base.permutations_matrix.html#pyLHD.base.permutations_matrix">base.permutations_matrix</a></td>
-<td>Generate (n_rows x n_columns) matrix, in which each column is a random permutation of {1,2,…,n_rows}</td>
+<td><code>n_rows</code></td>
+<td>int</td>
+<td>number of rows</td>
+<td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><a href="../docs/base.random_lhd.html#pyLHD.base.random_lhd">base.random_lhd</a></td>
-<td>Generate a random Latin Hypercube Design</td>
+<td><code>n_columns</code></td>
+<td>int</td>
+<td>number of columns (dimnesion of parameter space)</td>
+<td><em>required</em></td>
 </tr>
 <tr class="odd">
-<td><a href="../docs/base.GLPdesign.html#pyLHD.base.GLPdesign">base.GLPdesign</a></td>
-<td>Good Lattice Point (GLP) Design</td>
+<td><code>scramble</code></td>
+<td>Optional[bool]</td>
+<td>When False, center samples within cells of a multi-dimensional grid. Otherwise, samples are randomly placed within cells of the grid. Defaults to True.</td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>seed</code></td>
+<td>Optional[Union[Integral, np.random.Generator]])</td>
+<td>If <code>seed</code>is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a `<code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>
+<td><code>None</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="orthogonal-lhd" class="level2">
-<h2 class="anchored" data-anchor-id="orthogonal-lhd">Orthogonal LHD</h2>
-<p>Various constructions of orthogonal latin hypercube designs</p>
+<section id="returns" class="level2">
+<h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 93%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../docs/orthogonal.OLHD_Butler01.html#pyLHD.orthogonal.OLHD_Butler01">orthogonal.OLHD_Butler01</a></td>
-<td>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/orthogonal.OLHD_Cioppa07.html#pyLHD.orthogonal.OLHD_Cioppa07">orthogonal.OLHD_Cioppa07</a></td>
-<td>Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/orthogonal.OLHD_Lin09.html#pyLHD.orthogonal.OLHD_Lin09">orthogonal.OLHD_Lin09</a></td>
-<td>Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al.&nbsp;(2009)</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/orthogonal.OLHD_Sun10.html#pyLHD.orthogonal.OLHD_Sun10">orthogonal.OLHD_Sun10</a></td>
-<td>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al.&nbsp;(2010)</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/orthogonal.OLHD_Ye98.html#pyLHD.orthogonal.OLHD_Ye98">orthogonal.OLHD_Ye98</a></td>
-<td>Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)</td>
+<td>npt.ArrayLike</td>
+<td>A Latin hypercube sample of <span class="math inline">\(n =\)</span> <code>n_rows</code> points generated in <span class="math inline">\([0,1)^d\)</span>, where <span class="math inline">\(d\)</span>=<code>n_columns</code>. Each univariate marginal distribution is stratisfied, placing exactly one point in <span class="math inline">\([j/n,(j+1)/n)\)</span> for <span class="math inline">\(j=0,1,\dots,n-1\)</span></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="criteria" class="level2">
-<h2 class="anchored" data-anchor-id="criteria">Criteria</h2>
-<p>Space-filling Criterias for LHD</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../docs/criteria.AvgAbsCor.html#pyLHD.criteria.AvgAbsCor">criteria.AvgAbsCor</a></td>
-<td>Calculate the Average Absolute Correlation</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.coverage.html#pyLHD.criteria.coverage">criteria.coverage</a></td>
-<td>Compute the coverage measure for a design</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.discrepancy.html#pyLHD.criteria.discrepancy">criteria.discrepancy</a></td>
-<td>Discrepancy of a given sample</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.inter_site.html#pyLHD.criteria.inter_site">criteria.inter_site</a></td>
-<td>Calculate the Inter-site Distance</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.MaxAbsCor.html#pyLHD.criteria.MaxAbsCor">criteria.MaxAbsCor</a></td>
-<td>Calculate the Maximum Absolute Correlation</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.maximin.html#pyLHD.criteria.maximin">criteria.maximin</a></td>
-<td>Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.mesh_ratio.html#pyLHD.criteria.mesh_ratio">criteria.mesh_ratio</a></td>
-<td>Compute the meshratio criterion for a given design</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.MaxProCriterion.html#pyLHD.criteria.MaxProCriterion">criteria.MaxProCriterion</a></td>
-<td>Calculate the Maximum Projection Criterion</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.phi_p.html#pyLHD.criteria.phi_p">criteria.phi_p</a></td>
-<td>Calculate the phi_p Criterion</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="helpers" class="level2">
-<h2 class="anchored" data-anchor-id="helpers">Helpers</h2>
-<p>miscellaneous utilities for working with LHDs</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../docs/helpers.check_bounds.html#pyLHD.helpers.check_bounds">helpers.check_bounds</a></td>
-<td>Check conditions for bounds input</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/helpers.distance_matrix.html#pyLHD.helpers.distance_matrix">helpers.distance_matrix</a></td>
-<td>Distance matrix based on specified distance measure</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/helpers.eval_design.html#pyLHD.helpers.eval_design">helpers.eval_design</a></td>
-<td>Evaluate a design based on a chosen criteria, a simple wrapper for all <code>criteria</code> in <code>pyLHD</code></td>
-</tr>
-<tr class="even">
-<td><a href="../docs/helpers.OA2LHD.html#pyLHD.helpers.OA2LHD">helpers.OA2LHD</a></td>
-<td>Transform an Orthogonal Array (OA) into an LHD</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/helpers.permute_columns.html#pyLHD.helpers.permute_columns">helpers.permute_columns</a></td>
-<td>Randomly permute columns in a numpy ndarray</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/helpers.scale.html#pyLHD.helpers.scale">helpers.scale</a></td>
-<td>Sample scaling from unit hypercube to different bounds</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/helpers.swap_elements.html#pyLHD.helpers.swap_elements">helpers.swap_elements</a></td>
-<td>Swap two random elements in a matrix</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/helpers.williams_transform.html#pyLHD.helpers.williams_transform">helpers.williams_transform</a></td>
-<td>Williams Transformation</td>
-</tr>
-</tbody>
-</table>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.random_lhd(n_rows <span class="op">=</span> <span class="dv">5</span>, n_columns <span class="op">=</span> <span class="dv">3</span>, seed <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>array([[0.70930042, 0.30930042, 0.10930042],
+       [0.90930042, 0.50930042, 0.90930042],
+       [0.10930042, 0.70930042, 0.30930042],
+       [0.50930042, 0.90930042, 0.70930042],
+       [0.30930042, 0.10930042, 0.50930042]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.random_lhd(n_rows <span class="op">=</span> <span class="dv">5</span>, n_columns <span class="op">=</span> <span class="dv">3</span>, seed <span class="op">=</span> <span class="dv">1</span>, scramble <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>array([[0.7, 0.3, 0.1],
+       [0.9, 0.5, 0.9],
+       [0.1, 0.7, 0.3],
+       [0.5, 0.9, 0.7],
+       [0.3, 0.1, 0.5]])</code></pre>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

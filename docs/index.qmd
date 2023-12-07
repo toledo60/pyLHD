@@ -6,9 +6,9 @@ Generate Random LHD
 
 | | |
 | --- | --- |
-| [base_designs.permutations_matrix](base_designs.permutations_matrix.qmd#pyLHD.base_designs.permutations_matrix) | Generate (n_rows x n_columns) matrix, in which each column is a random permutation of {1,2,...,n_rows} |
-| [base_designs.random_lhd](base_designs.random_lhd.qmd#pyLHD.base_designs.random_lhd) | Generate a random Latin Hypercube Design |
-| [base_designs.GLPdesign](base_designs.GLPdesign.qmd#pyLHD.base_designs.GLPdesign) | Good Lattice Point (GLP) Design  |
+| [base.permutations_matrix](base.permutations_matrix.qmd#pyLHD.base.permutations_matrix) | Generate (n_rows x n_columns) matrix, in which each column is a random permutation of {1,2,...,n_rows} |
+| [base.random_lhd](base.random_lhd.qmd#pyLHD.base.random_lhd) | Generate a random Latin Hypercube Design |
+| [base.GLPdesign](base.GLPdesign.qmd#pyLHD.base.GLPdesign) | Good Lattice Point (GLP) Design  |
 
 ## Orthogonal LHD
 
@@ -16,11 +16,11 @@ Various constructions of orthogonal latin hypercube designs
 
 | | |
 | --- | --- |
-| [OLHD.OLHD_Butler01](OLHD.OLHD_Butler01.qmd#pyLHD.OLHD.OLHD_Butler01) | Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001) |
-| [OLHD.OLHD_Cioppa07](OLHD.OLHD_Cioppa07.qmd#pyLHD.OLHD.OLHD_Cioppa07) | Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007) |
-| [OLHD.OLHD_Lin09](OLHD.OLHD_Lin09.qmd#pyLHD.OLHD.OLHD_Lin09) | Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009) |
-| [OLHD.OLHD_Sun10](OLHD.OLHD_Sun10.qmd#pyLHD.OLHD.OLHD_Sun10) | Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010) |
-| [OLHD.OLHD_Ye98](OLHD.OLHD_Ye98.qmd#pyLHD.OLHD.OLHD_Ye98) | Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998) |
+| [orthogonal.OLHD_Butler01](orthogonal.OLHD_Butler01.qmd#pyLHD.orthogonal.OLHD_Butler01) | Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001) |
+| [orthogonal.OLHD_Cioppa07](orthogonal.OLHD_Cioppa07.qmd#pyLHD.orthogonal.OLHD_Cioppa07) | Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007) |
+| [orthogonal.OLHD_Lin09](orthogonal.OLHD_Lin09.qmd#pyLHD.orthogonal.OLHD_Lin09) | Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009) |
+| [orthogonal.OLHD_Sun10](orthogonal.OLHD_Sun10.qmd#pyLHD.orthogonal.OLHD_Sun10) | Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010) |
+| [orthogonal.OLHD_Ye98](orthogonal.OLHD_Ye98.qmd#pyLHD.orthogonal.OLHD_Ye98) | Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998) |
 
 ## Criteria
 
