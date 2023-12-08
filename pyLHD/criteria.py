@@ -77,7 +77,7 @@ def MaxProCriterion(arr: npt.ArrayLike) -> float:
   return (2 / (n * (n - 1)) * temp)**(1 / p)
 
 
-def inter_site(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
+def InterSite(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   """ Calculate the Inter-site Distance
 
   Args:
@@ -95,11 +95,11 @@ def inter_site(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   ```{python}
   import pyLHD
   random_lhd = pyLHD.LatinHypercube(size = (10,3))
-  pyLHD.inter_site(random_lhd,i=2,j=4)
+  pyLHD.InterSite(random_lhd,i=2,j=4)
   ```
   Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd` with q=2 (Euclidean)
   ```{python}
-  pyLHD.inter_site(random_lhd,i=2,j=4,q=2)
+  pyLHD.InterSite(random_lhd,i=2,j=4,q=2)
   ```
   """
   return np.sum(np.abs(arr[i, :] - arr[j, :])**q)**(1/q)
@@ -130,13 +130,14 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
 
   """
   n = arr.shape[0]
-  distances = np.array([inter_site(arr, i=i, j=j, q=q) for i in range(n - 1) for j in range(i + 1, n)])
+  distances = np.array([InterSite(arr, i=i, j=j, q=q) for i in range(n - 1) for j in range(i + 1, n)])
   isd = np.sum(distances**(-p))
   return np.sum(isd)**(1/p) 
 
 
-
-def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2", "modified_L2", "mixture_L2", "symmetric_L2", "wrap_around_L2"] = "centered_L2") -> float:
+def discrepancy(arr: npt.ArrayLike,
+                method: Literal["L2", "L2_star", "centered_L2", "modified_L2",
+                                "mixture_L2", "symmetric_L2", "wrap_around_L2"] = "centered_L2") -> float:
   """ Discrepancy of a given sample
 
   Args:
@@ -166,8 +167,7 @@ def discrepancy(arr: npt.ArrayLike, method: Literal["L2", "L2_star","centered_L2
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
     raise ValueError('`arr` is not in unit hypercube')
   
-  n_rows = arr.shape[0]
-  n_columns = arr.shape[1]
+  n_rows, n_columns = arr.shape
   
   if n_rows < n_columns:
     raise ValueError('Make sure number of rows is greater than number of columns')
@@ -273,8 +273,7 @@ def coverage(arr: npt.ArrayLike) -> float:
   ```
 
   """
-  n_rows = arr.shape[0]
-  n_columns = arr.shape[1]
+  n_rows, n_columns = arr.shape
   
   if n_rows < n_columns:
     raise ValueError('Make sure number of rows is greater than number of columns')
@@ -297,7 +296,7 @@ def coverage(arr: npt.ArrayLike) -> float:
   return cov
 
 
-def mesh_ratio(arr: npt.ArrayLike) -> float:
+def MeshRatio(arr: npt.ArrayLike) -> float:
   """ Compute the meshratio criterion for a given design
 
   Args:
@@ -313,12 +312,10 @@ def mesh_ratio(arr: npt.ArrayLike) -> float:
   ```{python}
   import pyLHD
   random_lhd = pyLHD.LatinHypercube(size = (5,5))
-  pyLHD.mesh_ratio(random_lhd)
+  pyLHD.MeshRatio(random_lhd)
   ```
   """
-  
-  n_rows = arr.shape[0]
-  n_columns = arr.shape[1]
+  n_rows, n_columns = arr.shape
 
   if n_rows < n_columns:
     raise ValueError('Make sure number of rows is greater than number of columns')

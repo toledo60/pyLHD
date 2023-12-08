@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>helpers.eval_design</title>
+<title>criteria.meshratio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/helpers.check_bounds.html">Helpers</a></li><li class="breadcrumb-item"><a href="../docs/helpers.eval_design.html">helpers.eval_design</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/criteria.AvgAbsCor.html">Criteria</a></li><li class="breadcrumb-item"><a href="../docs/criteria.MeshRatio.html">criteria.MeshRatio</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -263,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/criteria.MeshRatio.html" class="sidebar-item-text sidebar-link">
+  <a href="../docs/criteria.MeshRatio.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">criteria.MeshRatio</span></a>
   </div>
 </li>
@@ -304,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.eval_design.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/helpers.eval_design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.eval_design</span></a>
   </div>
 </li>
@@ -351,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">helpers.eval_design</h1>
+<h1 class="title">criteria.MeshRatio</h1>
 </div>
 
 
@@ -366,17 +366,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>helpers.eval_design(arr, criteria='phi_p', p=15, q=1)</code></p>
-<p>Evaluate a design based on a chosen criteria, a simple wrapper for all <code>criteria</code> in <code>pyLHD</code></p>
+<p><code>criteria.MeshRatio(arr)</code></p>
+<p>Compute the meshratio criterion for a given design</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
-<colgroup>
-<col style="width: 2%">
-<col style="width: 3%">
-<col style="width: 90%">
-<col style="width: 2%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -392,11 +386,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>A numpy ndarray</td>
 <td><em>required</em></td>
 </tr>
-<tr class="even">
-<td><code>criteria</code></td>
-<td>str</td>
-<td>Criteria to choose from. Defaults to ‘phi_p’. Options include ‘phi_p’,‘MaxProCriterion’,‘AvgAbsCor’,‘AvgAbsCor’, ‘coverage’, ‘MeshRatio’, ‘maximin’ p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15 q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.</td>
-<td><code>'phi_p'</code></td>
+</tbody>
+</table>
+</section>
+<section id="raises" class="level2">
+<h2 class="anchored" data-anchor-id="raises">Raises</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ValueError</td>
+<td>Whenever number of rows is less than number of columns</td>
 </tr>
 </tbody>
 </table>
@@ -413,27 +418,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>float</td>
-<td>Calculation of chosen criteria for any LHD</td>
+<td>Calculated meshratio</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>By default <code>phi_p</code> with <code>p=15</code> and <code>q=1</code></p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">3</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.eval_design(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">5</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.MeshRatio(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>1.668252626844986</code></pre>
-</div>
-</div>
-<p>Evaluate design based on MaxProCriterion</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.eval_design(random_lhd,criteria<span class="op">=</span><span class="st">'MaxProCriterion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>13.267840175023721</code></pre>
+<pre><code>1.3093073414159542</code></pre>
 </div>
 </div>
 

@@ -89,8 +89,7 @@ def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
   pyLHD.swap_elements(random_lhd,idx=1,type='row')
   ```
   """
-  n_rows = arr.shape[0]
-  n_columns = arr.shape[1]
+  n_rows, n_columns = arr.shape
   rng = check_seed(seed)
 
   if type == 'col':
@@ -125,10 +124,9 @@ def williams_transform(arr: npt.ArrayLike,baseline: int =1) -> npt.ArrayLike:
   pyLHD.williams_transform(random_lhd,baseline=3)
   ```
   """
-  n = arr.shape[0]
-  k = arr.shape[1]
+  n, k = arr.shape
 
-  elements = np.unique(arr[:,0])
+  elements = np.unique(arr[:, 0])
   min_elements = np.amin(elements)
 
   if min_elements != 0:
@@ -172,8 +170,7 @@ def OA2LHD(arr: npt.ArrayLike, seed: Optional[Union[Integral, np.random.Generato
   pyLHD.OA2LHD(example_OA)      
   ```  
   """
-  n = arr.shape[0]
-  m = arr.shape[1]
+  n, m = arr.shape
   s = np.unique(arr[:,0]).size
 
   lhd = arr
@@ -194,7 +191,7 @@ def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int =
   Args:
       arr (npt.ArrayLike): A numpy ndarray
       criteria (str, optional): Criteria to choose from. Defaults to 'phi_p'. 
-          Options include 'phi_p','MaxProCriterion','AvgAbsCor','AvgAbsCor'
+          Options include 'phi_p','MaxProCriterion','AvgAbsCor','AvgAbsCor', 'coverage', 'MeshRatio', 'maximin'
           p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15
           q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
 
@@ -214,8 +211,11 @@ def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int =
   ``` 
   """
   criteria_functions = {
-    'MaxProCriterion': pyLHD.MaxProCriterion,
     'AvgAbsCor': pyLHD.AvgAbsCor,
+    'coverage': pyLHD.coverage,
+    'maximin': pyLHD.maximin,
+    'MeshRatio': pyLHD.MeshRatio,
+    'MaxProCriterion': pyLHD.MaxProCriterion,
     'MaxAbsCor': pyLHD.MaxAbsCor
   }
     

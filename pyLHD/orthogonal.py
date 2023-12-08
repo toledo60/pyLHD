@@ -452,8 +452,7 @@ def OLHD_Lin09(OLHD: npt.ArrayLike,OA: npt.ArrayLike ) -> npt.ArrayLike:
   pyLHD.OLHD_Lin09(OLHD = OLHD_example,OA = OA_example)
   ```
   """
-  n1 = OLHD.shape[0]
-  k = OLHD.shape[1]
+  n1, k = OLHD.shape
   
   n2 = np.unique(OA[:,0]).size
   f = int(OA.shape[1]*0.5)

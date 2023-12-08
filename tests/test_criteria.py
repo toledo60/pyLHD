@@ -2,7 +2,7 @@ import numpy as np
 from scipy.stats import qmc
 import pytest
 from pytest import approx
-from pyLHD.criteria import MaxAbsCor, MaxProCriterion, phi_p, AvgAbsCor, inter_site
+from pyLHD.criteria import MaxAbsCor, MaxProCriterion, phi_p, AvgAbsCor, InterSite
 
 
 def test_design():
@@ -94,5 +94,5 @@ def test_phi_p(n, d, p, q, expected):
 def test_inter_site(n,d,i,j,q,expected):
   sampler = qmc.LatinHypercube(d=d, strength=2, seed=88)
   sample = sampler.random(n=n)
-  assert inter_site(sample,i = i, j=j, q = q) == approx(expected)        
+  assert InterSite(sample,i = i, j=j, q = q) == approx(expected)        
 

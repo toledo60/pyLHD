@@ -31,10 +31,10 @@ Space-filling Criterias for LHD
 | [criteria.AvgAbsCor](criteria.AvgAbsCor.qmd#pyLHD.criteria.AvgAbsCor) | Calculate the Average Absolute Correlation |
 | [criteria.coverage](criteria.coverage.qmd#pyLHD.criteria.coverage) | Compute the coverage measure for a design |
 | [criteria.discrepancy](criteria.discrepancy.qmd#pyLHD.criteria.discrepancy) | Discrepancy of a given sample |
-| [criteria.inter_site](criteria.inter_site.qmd#pyLHD.criteria.inter_site) | Calculate the Inter-site Distance |
+| [criteria.InterSite](criteria.InterSite.qmd#pyLHD.criteria.InterSite) | Calculate the Inter-site Distance |
 | [criteria.MaxAbsCor](criteria.MaxAbsCor.qmd#pyLHD.criteria.MaxAbsCor) | Calculate the Maximum Absolute Correlation |
 | [criteria.maximin](criteria.maximin.qmd#pyLHD.criteria.maximin) | Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points. |
-| [criteria.mesh_ratio](criteria.mesh_ratio.qmd#pyLHD.criteria.mesh_ratio) | Compute the meshratio criterion for a given design |
+| [criteria.MeshRatio](criteria.MeshRatio.qmd#pyLHD.criteria.MeshRatio) | Compute the meshratio criterion for a given design |
 | [criteria.MaxProCriterion](criteria.MaxProCriterion.qmd#pyLHD.criteria.MaxProCriterion) | Calculate the Maximum Projection Criterion |
 | [criteria.phi_p](criteria.phi_p.qmd#pyLHD.criteria.phi_p) | Calculate the phi_p Criterion |
 

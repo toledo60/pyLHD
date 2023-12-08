@@ -11,9 +11,9 @@ website:
     search: true
     left:
       - text: "Introduction"
-        file: notebooks/intro_pyLHD.ipynb
+        href: notebooks/intro_pyLHD.ipynb
       - text: "Function References"
-        file: docs/index.qmd
+        href: docs/index.qmd    
 
 
 quartodoc:
@@ -46,10 +46,10 @@ quartodoc:
         - criteria.AvgAbsCor
         - criteria.coverage
         - criteria.discrepancy
-        - criteria.inter_site
+        - criteria.InterSite
         - criteria.MaxAbsCor
         - criteria.maximin
-        - criteria.mesh_ratio
+        - criteria.MeshRatio
         - criteria.MaxProCriterion
         - criteria.phi_p
     - title: Helpers

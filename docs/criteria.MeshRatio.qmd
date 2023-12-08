@@ -1,0 +1,33 @@
+# criteria.MeshRatio { #pyLHD.criteria.MeshRatio }
+
+`criteria.MeshRatio(arr)`
+
+Compute the meshratio criterion for a given design
+
+## Parameters
+
+| Name   | Type          | Description     | Default    |
+|--------|---------------|-----------------|------------|
+| `arr`  | npt.ArrayLike | A numpy ndarray | _required_ |
+
+## Raises
+
+| Type       | Description                                            |
+|------------|--------------------------------------------------------|
+| ValueError | Whenever number of rows is less than number of columns |
+
+## Returns
+
+| Type   | Description          |
+|--------|----------------------|
+| float  | Calculated meshratio |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+random_lhd = pyLHD.LatinHypercube(size = (5,5))
+pyLHD.MeshRatio(random_lhd)
+```

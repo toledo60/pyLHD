@@ -522,7 +522,7 @@
     "href": "docs/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a (n x d) Latin square, where each column is a random permutation of {1,2,…,n}\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.inter_site\nCalculate the Inter-site Distance\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.mesh_ratio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\nhelpers.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.williams_transform\nWilliams Transformation"
+    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a (n x d) Latin square, where each column is a random permutation of {1,2,…,n}\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\nhelpers.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.williams_transform\nWilliams Transformation"
   },
   {
     "objectID": "docs/index.html#base-designs",
@@ -543,7 +543,7 @@
     "href": "docs/index.html#criteria",
     "title": "Function reference",
     "section": "",
-    "text": "Space-filling Criterias for LHD\n\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.inter_site\nCalculate the Inter-site Distance\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.mesh_ratio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion"
+    "text": "Space-filling Criterias for LHD\n\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion"
   },
   {
     "objectID": "docs/index.html#utilities",
@@ -900,7 +900,7 @@
     "href": "docs/helpers.eval_design.html#parameters",
     "title": "helpers.eval_design",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\ncriteria\nstr\nCriteria to choose from. Defaults to ‘phi_p’. Options include ‘phi_p’,‘MaxProCriterion’,‘AvgAbsCor’,‘AvgAbsCor’ p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15 q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.\n'phi_p'"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\ncriteria\nstr\nCriteria to choose from. Defaults to ‘phi_p’. Options include ‘phi_p’,‘MaxProCriterion’,‘AvgAbsCor’,‘AvgAbsCor’, ‘coverage’, ‘MeshRatio’, ‘maximin’ p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15 q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.\n'phi_p'"
   },
   {
     "objectID": "docs/helpers.eval_design.html#returns",
@@ -914,7 +914,7 @@
     "href": "docs/helpers.eval_design.html#examples",
     "title": "helpers.eval_design",
     "section": "Examples",
-    "text": "Examples\nBy default phi_p with p=15 and q=1\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (5,3))\npyLHD.eval_design(random_lhd)\n\n1.6682498988646115\n\n\nEvaluate design based on MaxProCriterion\n\npyLHD.eval_design(random_lhd,criteria='MaxProCriterion')\n\n13.395731876861182"
+    "text": "Examples\nBy default phi_p with p=15 and q=1\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (5,3))\npyLHD.eval_design(random_lhd)\n\n1.668252626844986\n\n\nEvaluate design based on MaxProCriterion\n\npyLHD.eval_design(random_lhd,criteria='MaxProCriterion')\n\n13.267840175023721"
   },
   {
     "objectID": "docs/helpers.scale.html",
@@ -1461,5 +1461,68 @@
     "title": "base.LatinHypercube",
     "section": "Examples",
     "text": "Examples\n\nimport pyLHD\npyLHD.LatinHypercube(size = (5,3),seed = 1)\n\narray([[0.70930042, 0.30930042, 0.10930042],\n       [0.90930042, 0.50930042, 0.90930042],\n       [0.10930042, 0.70930042, 0.30930042],\n       [0.50930042, 0.90930042, 0.70930042],\n       [0.30930042, 0.10930042, 0.50930042]])\n\n\n\npyLHD.LatinHypercube(size = (5,3), seed = 1, scramble = False)\n\narray([[0.7, 0.3, 0.1],\n       [0.9, 0.5, 0.9],\n       [0.1, 0.7, 0.3],\n       [0.5, 0.9, 0.7],\n       [0.3, 0.1, 0.5]])"
+  },
+  {
+    "objectID": "docs/criteria.InterSite.html",
+    "href": "docs/criteria.InterSite.html",
+    "title": "criteria.InterSite",
+    "section": "",
+    "text": "criteria.InterSite(arr, i, j, q=1)\nCalculate the Inter-site Distance"
+  },
+  {
+    "objectID": "docs/criteria.InterSite.html#parameters",
+    "href": "docs/criteria.InterSite.html#parameters",
+    "title": "criteria.InterSite",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\ni\nint\nA positive integer, which stands for the ith row of (arr)\nrequired\n\n\nj\nint\nA positive integer, which stands for the jth row of (arr)\nrequired\n\n\nq\nint\nThe default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.\n1"
+  },
+  {
+    "objectID": "docs/criteria.InterSite.html#returns",
+    "href": "docs/criteria.InterSite.html#returns",
+    "title": "criteria.InterSite",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nfloat\npositive number indicating the distance (rectangular or Euclidean) between the ith and jth row of arr"
+  },
+  {
+    "objectID": "docs/criteria.InterSite.html#examples",
+    "href": "docs/criteria.InterSite.html#examples",
+    "title": "criteria.InterSite",
+    "section": "Examples",
+    "text": "Examples\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (10,3))\npyLHD.InterSite(random_lhd,i=2,j=4)\n\n0.9999999999999998\n\n\nCalculate the inter-site distance of the 2nd and the 4th row of random_lhd with q=2 (Euclidean)\n\npyLHD.InterSite(random_lhd,i=2,j=4,q=2)\n\n0.648074069840786"
+  },
+  {
+    "objectID": "docs/criteria.MeshRatio.html",
+    "href": "docs/criteria.MeshRatio.html",
+    "title": "criteria.MeshRatio",
+    "section": "",
+    "text": "criteria.MeshRatio(arr)\nCompute the meshratio criterion for a given design"
+  },
+  {
+    "objectID": "docs/criteria.MeshRatio.html#parameters",
+    "href": "docs/criteria.MeshRatio.html#parameters",
+    "title": "criteria.MeshRatio",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired"
+  },
+  {
+    "objectID": "docs/criteria.MeshRatio.html#raises",
+    "href": "docs/criteria.MeshRatio.html#raises",
+    "title": "criteria.MeshRatio",
+    "section": "Raises",
+    "text": "Raises\n\n\n\nType\nDescription\n\n\n\n\nValueError\nWhenever number of rows is less than number of columns"
+  },
+  {
+    "objectID": "docs/criteria.MeshRatio.html#returns",
+    "href": "docs/criteria.MeshRatio.html#returns",
+    "title": "criteria.MeshRatio",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nfloat\nCalculated meshratio"
+  },
+  {
+    "objectID": "docs/criteria.MeshRatio.html#examples",
+    "href": "docs/criteria.MeshRatio.html#examples",
+    "title": "criteria.MeshRatio",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (5,5))\npyLHD.MeshRatio(random_lhd)\n\n1.3093073414159542"
   }
 ]
