@@ -1,15 +1,20 @@
+import math
 import numpy as np
 import numpy.typing as npt
-import pyLHD
-import math
+from typing import Optional, Union
+from numbers import Integral
+from pyLHD.helpers import check_seed, is_prime, williams_transform
+
 
 # --- Butler, N.A. (2001) Construction --- #
 
-def OLHD_Butler01(size: tuple[int,int]) -> npt.ArrayLike:
+def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
   """ Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)
 
   Args:
       size (tuple of ints): Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.
+      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+          If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
 
   Raises:
       ValueError: If `d` is not less than or equal to `n`
@@ -36,11 +41,11 @@ def OLHD_Butler01(size: tuple[int,int]) -> npt.ArrayLike:
     raise ValueError("n_columns must be less than or equal to n_rows")
   if n_rows < 3:
     raise ValueError("n_rows must be greater than or equal to 3")
-  if (not pyLHD.is_prime(n_rows) or n_rows % 2 != 1):
+  if (not is_prime(n_rows) or n_rows % 2 != 1):
     raise ValueError("n_rows must be an odd prime number")
 
   n0 = int((n_rows-1)/2)
-  rng = np.random.default_rng()
+  rng = check_seed(seed)
 
   if n_columns <= n0:
     seq = np.arange(start=1, stop=n0+1)
@@ -55,7 +60,7 @@ def OLHD_Butler01(size: tuple[int,int]) -> npt.ArrayLike:
         if(n_rows % 4 == 3):
           W[i, j] = ((i+1) * g[j] + (3*n_rows - 1)/4) % n_rows
 
-    X = pyLHD.williams_transform(W)
+    X = williams_transform(W)
 
   else:
     g0 = np.arange(start=1, stop=n0+1)
@@ -69,7 +74,7 @@ def OLHD_Butler01(size: tuple[int,int]) -> npt.ArrayLike:
         if (n_rows % 4 == 3):
           W0[i, j] = ((i+1)*g0[j] + (3*n_rows-1)/4) % n_rows
 
-    X0 = pyLHD.williams_transform(W0)
+    X0 = williams_transform(W0)
 
     r = n_columns - n0
     seq = np.arange(start=1, stop=n0+1)
@@ -81,7 +86,7 @@ def OLHD_Butler01(size: tuple[int,int]) -> npt.ArrayLike:
       for j in range(r):
         W1[i, j] = ((i+1)*g1[j]) % n_rows
 
-    X1 = pyLHD.williams_transform(W1)
+    X1 = williams_transform(W1)
 
     X = np.column_stack((X0, X1))
 
@@ -291,11 +296,13 @@ def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
 
 # --- Ye (1998) Constuction --- #
 
-def OLHD_Ye98(m:int) -> npt.ArrayLike:
+def OLHD_Ye98(m:int,seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
   """Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)
 
   Args:
-      m (int): A positive integer, and it must be greater than or equal to 2 
+      m (int): A positive integer, and it must be greater than or equal to 2
+      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+          If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.      
 
   Raises:
       ValueError: If m is not greater than or equal to 2
@@ -317,7 +324,7 @@ def OLHD_Ye98(m:int) -> npt.ArrayLike:
   if m < 2:
     raise ValueError('m must be greater than or equal to 2')
   
-  rng = np.random.default_rng()
+  rng = check_seed(seed)
   q = 2**(m-1)
   # construction of M starts
   e = rng.choice(np.arange(1,q+1),q,replace=False).reshape(-1,1)

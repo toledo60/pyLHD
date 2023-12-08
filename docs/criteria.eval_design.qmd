@@ -1,6 +1,6 @@
-# helpers.eval_design { #pyLHD.helpers.eval_design }
+# criteria.eval_design { #pyLHD.criteria.eval_design }
 
-`helpers.eval_design(arr, criteria='phi_p', p=15, q=1)`
+`criteria.eval_design(arr, criteria='phi_p', p=15, q=1)`
 
 Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD`
 

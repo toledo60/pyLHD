@@ -24,11 +24,11 @@ website:
       - docs/criteria.MeshRatio.qmd
       - docs/criteria.MaxProCriterion.qmd
       - docs/criteria.phi_p.qmd
+      - docs/criteria.eval_design.qmd
       section: Criteria
     - contents:
       - docs/helpers.check_bounds.qmd
       - docs/helpers.distance_matrix.qmd
-      - docs/helpers.eval_design.qmd
       - docs/helpers.OA2LHD.qmd
       - docs/helpers.permute_columns.qmd
       - docs/helpers.scale.qmd

@@ -52,12 +52,12 @@ quartodoc:
         - criteria.MeshRatio
         - criteria.MaxProCriterion
         - criteria.phi_p
+        - criteria.eval_design 
     - title: Helpers
       desc: miscellaneous utilities for working with LHDs
       contents:
         - helpers.check_bounds  
         - helpers.distance_matrix
-        - helpers.eval_design 
         - helpers.OA2LHD               
         - helpers.permute_columns
         - helpers.scale

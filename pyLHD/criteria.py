@@ -2,7 +2,6 @@ import numpy as np
 import numpy.typing as npt
 from typing import Literal
 
-
 def MaxAbsCor(arr: npt.ArrayLike) -> float:
   """ Calculate the Maximum Absolute Correlation
 
@@ -371,3 +370,45 @@ def maximin(arr: npt.ArrayLike) -> float:
   np.fill_diagonal(dist_mat,1e30)
   min = np.amin(dist_mat,axis=0)
   return np.amin(min)
+
+
+def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int = 1) -> float:
+  """ Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD`
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      criteria (str, optional): Criteria to choose from. Defaults to 'phi_p'. 
+          Options include 'phi_p','MaxProCriterion','AvgAbsCor','AvgAbsCor', 'coverage', 'MeshRatio', 'maximin'
+          p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15
+          q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
+
+  Returns:
+      Calculation of chosen criteria for any LHD
+
+  Examples:
+  By default `phi_p` with `p=15` and `q=1`
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.LatinHypercube(size = (5,3))
+  pyLHD.eval_design(random_lhd)
+  ```
+  Evaluate design based on MaxProCriterion 
+  ```{python}
+  pyLHD.eval_design(random_lhd,criteria='MaxProCriterion')
+  ``` 
+  """
+  criteria_functions = {
+    'AvgAbsCor': AvgAbsCor,
+    'coverage': coverage,
+    'maximin': maximin,
+    'MeshRatio': MeshRatio,
+    'MaxProCriterion': MaxProCriterion,
+    'MaxAbsCor': MaxAbsCor
+  }
+    
+  if criteria in criteria_functions:
+    return criteria_functions[criteria](arr)
+  elif criteria == 'phi_p':
+    return phi_p(arr, p=p, q=q)
+  else:
+    raise ValueError(f"Invalid criteria: {criteria}")

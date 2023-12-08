@@ -1,5 +1,7 @@
 import numpy as np
-import pyLHD
+from pyLHD.criteria import eval_design
+from pyLHD.helpers import swap_elements
+from pyLHD.base import LatinHypercube
 from datetime import datetime
 
 # Lioness Algorithm for Latin hypercube designs
@@ -44,8 +46,8 @@ def LA_LHD(n,k,prun=None,m=10,N=10,criteria='phi_p',
   
   result = []
   for i in range(m):
-    X[i] = pyLHD.LatinHypercube(n,k)
-    result.append(pyLHD.eval_design(X[i],p=p,q=q,criteria=criteria))
+    X[i] = LatinHypercube(n,k)
+    result.append(eval_design(X[i],p=p,q=q,criteria=criteria))
   result = np.asarray(result).reshape(-1,1)
 
   while counter <= N: # step 3
@@ -106,13 +108,13 @@ def LA_LHD(n,k,prun=None,m=10,N=10,criteria='phi_p',
       for j in range(k): # step 7
         z =  np.random.uniform(1,0,1) # step 8
         if z <= prun:
-          X[i] = pyLHD.swap_elements(X[i],idx=j) # step 9
+          X[i] = swap_elements(X[i],idx=j) # step 9
     
     # update criteria for all agents
     
     result = []
     for i in range(m):
-      result.append(pyLHD.eval_design(X[i],p=p,q=q,criteria=criteria))
+      result.append(eval_design(X[i],p=p,q=q,criteria=criteria))
     result = np.asarray(result).reshape(-1,1) 
     time1 = datetime.now()
     timeDiff = time1-time0
@@ -141,7 +143,7 @@ def SA_LHD(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
   
   counter = 1 # step 1: counter index
   
-  X = pyLHD.LatinHypercube(size = (n,k)) # step 2
+  X = LatinHypercube(size = (n,k)) # step 2
   
   Xbest = X.copy()
   TP = T0
@@ -159,11 +161,11 @@ def SA_LHD(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
         rs = np.arange(start=1,stop=k+1)
         rcol = rng.choice(rs, 1, replace=False) #step 3:Randomly choose a column
         
-        Xnew = pyLHD.swap_elements(arr=X,idx=rcol) #step 4:swap two random elements from column 'rcol'
+        Xnew = swap_elements(arr=X,idx=rcol) #step 4:swap two random elements from column 'rcol'
         
         #step 5 begins here
-        a = pyLHD.eval_design(Xnew,criteria=criteria,p=p,q=q)
-        b = pyLHD.eval_design(X,criteria=criteria,p=p,q=q)
+        a = eval_design(Xnew,criteria=criteria,p=p,q=q)
+        b = eval_design(X,criteria=criteria,p=p,q=q)
         
         if a < b:
           X = Xnew
@@ -177,7 +179,7 @@ def SA_LHD(n,k,N=10,T0=10,rate=0.1,Tmin=1,Imax=5,criteria='phi_p',
             Flag =1 
         #step 5 ends here
         
-        c = pyLHD.eval_design(Xbest,criteria=criteria,p=p,q=q)
+        c = eval_design(Xbest,criteria=criteria,p=p,q=q)
         
         if a <c:
           Xbest = Xnew

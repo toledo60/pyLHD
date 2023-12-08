@@ -110,6 +110,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../notebooks/intro_pyLHD.html" rel="" target="">
+ <span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="../docs/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Function References</span></a>
   </li>  
@@ -241,8 +245,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/criteria.inter_site.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">criteria.inter_site</span></a>
+  <a href="../docs/criteria.InterSite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">criteria.InterSite</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -259,8 +263,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/criteria.mesh_ratio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">criteria.mesh_ratio</span></a>
+  <a href="../docs/criteria.MeshRatio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">criteria.MeshRatio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -273,6 +277,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../docs/criteria.phi_p.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">criteria.phi_p</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/criteria.eval_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">criteria.eval_design</span></a>
   </div>
 </li>
       </ul>
@@ -296,12 +306,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../docs/helpers.distance_matrix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.distance_matrix</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.eval_design.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.eval_design</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -362,16 +366,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>orthogonal.OLHD_Butler01(size)</code></p>
+<p><code>orthogonal.OLHD_Butler01(size, seed=None)</code></p>
 <p>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 11%">
-<col style="width: 72%">
-<col style="width: 9%">
+<col style="width: 2%">
+<col style="width: 18%">
+<col style="width: 74%">
+<col style="width: 4%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -387,6 +391,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>tuple of ints</td>
 <td>Output shape of (n,d), where <code>n</code> and <code>d</code> are the number of rows and columns, respectively.</td>
 <td><em>required</em></td>
+</tr>
+<tr class="even">
+<td><code>seed</code></td>
+<td>Optional[Union[Integral, np.random.Generator]])</td>
+<td>If <code>seed</code>is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a `<code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>
+<td><code>None</code></td>
 </tr>
 </tbody>
 </table>
@@ -440,16 +450,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OLHD_Butler01(size <span class="op">=</span> (<span class="dv">11</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[ 4.,  3.,  1.,  5.,  2.],
-       [ 2., 11.,  7.,  8.,  3.],
-       [ 1.,  4., 10.,  3.,  7.],
-       [ 3.,  5.,  4., 10., 11.],
-       [ 5., 10.,  3.,  1.,  8.],
-       [ 7.,  2.,  9., 11.,  4.],
-       [ 9.,  7.,  8.,  2.,  1.],
-       [11.,  8.,  2.,  9.,  5.],
-       [10.,  1.,  5.,  4.,  9.],
-       [ 8.,  9., 11.,  7., 10.],
+<pre><code>array([[ 3.,  1.,  5.,  4.,  2.],
+       [11.,  7.,  8.,  2.,  3.],
+       [ 4., 10.,  3.,  1.,  7.],
+       [ 5.,  4., 10.,  3., 11.],
+       [10.,  3.,  1.,  5.,  8.],
+       [ 2.,  9., 11.,  7.,  4.],
+       [ 7.,  8.,  2.,  9.,  1.],
+       [ 8.,  2.,  9., 11.,  5.],
+       [ 1.,  5.,  4., 10.,  9.],
+       [ 9., 11.,  7.,  8., 10.],
        [ 6.,  6.,  6.,  6.,  6.]])</code></pre>
 </div>
 </div>
@@ -457,12 +467,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> pyLHD.OLHD_Butler01(size <span class="op">=</span> (<span class="dv">7</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[2., 1., 3., 3., 7., 5.],
-       [1., 5., 6., 5., 2., 6.],
-       [3., 6., 1., 7., 5., 2.],
-       [5., 2., 7., 6., 4., 3.],
-       [7., 3., 2., 4., 3., 7.],
-       [6., 7., 5., 2., 6., 4.],
+<pre><code>array([[2., 1., 3., 5., 3., 7.],
+       [1., 5., 6., 6., 5., 2.],
+       [3., 6., 1., 2., 7., 5.],
+       [5., 2., 7., 3., 6., 4.],
+       [7., 3., 2., 7., 4., 3.],
+       [6., 7., 5., 4., 2., 6.],
        [4., 4., 4., 1., 1., 1.]])</code></pre>
 </div>
 </div>

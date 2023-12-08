@@ -1,14 +1,15 @@
 # orthogonal.OLHD_Ye98 { #pyLHD.orthogonal.OLHD_Ye98 }
 
-`orthogonal.OLHD_Ye98(m)`
+`orthogonal.OLHD_Ye98(m, seed=None)`
 
 Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)
 
 ## Parameters
 
-| Name   | Type   | Description                                                   | Default    |
-|--------|--------|---------------------------------------------------------------|------------|
-| `m`    | int    | A positive integer, and it must be greater than or equal to 2 | _required_ |
+| Name   | Type                                                | Description                                                                                                                                                                                                     | Default    |
+|--------|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `m`    | int                                                 | A positive integer, and it must be greater than or equal to 2                                                                                                                                                   | _required_ |
+| `seed` | Optional\[Union\[Integral, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
 
 ## Raises
 

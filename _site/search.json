@@ -522,7 +522,7 @@
     "href": "docs/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a (n x d) Latin square, where each column is a random permutation of {1,2,…,n}\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\nhelpers.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.williams_transform\nWilliams Transformation"
+    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a (n x d) Latin square, where each column is a random permutation of {1,2,…,n}\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.williams_transform\nWilliams Transformation"
   },
   {
     "objectID": "docs/index.html#base-designs",
@@ -543,7 +543,7 @@
     "href": "docs/index.html#criteria",
     "title": "Function reference",
     "section": "",
-    "text": "Space-filling Criterias for LHD\n\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion"
+    "text": "Space-filling Criterias for LHD\n\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD"
   },
   {
     "objectID": "docs/index.html#utilities",
@@ -1075,7 +1075,7 @@
     "href": "docs/index.html#helpers",
     "title": "Function reference",
     "section": "",
-    "text": "miscellaneous utilities for working with LHDs\n\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\nhelpers.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.williams_transform\nWilliams Transformation"
+    "text": "miscellaneous utilities for working with LHDs\n\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.williams_transform\nWilliams Transformation"
   },
   {
     "objectID": "docs/helpers.check_bounds.html",
@@ -1166,14 +1166,14 @@
     "href": "docs/orthogonal.OLHD_Butler01.html",
     "title": "orthogonal.OLHD_Butler01",
     "section": "",
-    "text": "orthogonal.OLHD_Butler01(size)\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)"
+    "text": "orthogonal.OLHD_Butler01(size, seed=None)\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)"
   },
   {
     "objectID": "docs/orthogonal.OLHD_Butler01.html#parameters",
     "href": "docs/orthogonal.OLHD_Butler01.html#parameters",
     "title": "orthogonal.OLHD_Butler01",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where n and d are the number of rows and columns, respectively.\nrequired"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where n and d are the number of rows and columns, respectively.\nrequired\n\n\nseed\nOptional[Union[Integral, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
   },
   {
     "objectID": "docs/orthogonal.OLHD_Butler01.html#raises",
@@ -1194,7 +1194,7 @@
     "href": "docs/orthogonal.OLHD_Butler01.html#examples",
     "title": "orthogonal.OLHD_Butler01",
     "section": "Examples",
-    "text": "Examples\nCreate an orthogonal LHD with 11 rows and 5 columns\n\nimport pyLHD\npyLHD.OLHD_Butler01(size = (11,5))\n\narray([[ 4.,  3.,  1.,  5.,  2.],\n       [ 2., 11.,  7.,  8.,  3.],\n       [ 1.,  4., 10.,  3.,  7.],\n       [ 3.,  5.,  4., 10., 11.],\n       [ 5., 10.,  3.,  1.,  8.],\n       [ 7.,  2.,  9., 11.,  4.],\n       [ 9.,  7.,  8.,  2.,  1.],\n       [11.,  8.,  2.,  9.,  5.],\n       [10.,  1.,  5.,  4.,  9.],\n       [ 8.,  9., 11.,  7., 10.],\n       [ 6.,  6.,  6.,  6.,  6.]])\n\n\nCreate an orthogonal LHD with 7 rows and 6 columns\n\n pyLHD.OLHD_Butler01(size = (7,6))\n\narray([[2., 1., 3., 3., 7., 5.],\n       [1., 5., 6., 5., 2., 6.],\n       [3., 6., 1., 7., 5., 2.],\n       [5., 2., 7., 6., 4., 3.],\n       [7., 3., 2., 4., 3., 7.],\n       [6., 7., 5., 2., 6., 4.],\n       [4., 4., 4., 1., 1., 1.]])"
+    "text": "Examples\nCreate an orthogonal LHD with 11 rows and 5 columns\n\nimport pyLHD\npyLHD.OLHD_Butler01(size = (11,5))\n\narray([[ 3.,  1.,  5.,  4.,  2.],\n       [11.,  7.,  8.,  2.,  3.],\n       [ 4., 10.,  3.,  1.,  7.],\n       [ 5.,  4., 10.,  3., 11.],\n       [10.,  3.,  1.,  5.,  8.],\n       [ 2.,  9., 11.,  7.,  4.],\n       [ 7.,  8.,  2.,  9.,  1.],\n       [ 8.,  2.,  9., 11.,  5.],\n       [ 1.,  5.,  4., 10.,  9.],\n       [ 9., 11.,  7.,  8., 10.],\n       [ 6.,  6.,  6.,  6.,  6.]])\n\n\nCreate an orthogonal LHD with 7 rows and 6 columns\n\n pyLHD.OLHD_Butler01(size = (7,6))\n\narray([[2., 1., 3., 5., 3., 7.],\n       [1., 5., 6., 6., 5., 2.],\n       [3., 6., 1., 2., 7., 5.],\n       [5., 2., 7., 3., 6., 4.],\n       [7., 3., 2., 7., 4., 3.],\n       [6., 7., 5., 4., 2., 6.],\n       [4., 4., 4., 1., 1., 1.]])"
   },
   {
     "objectID": "docs/orthogonal.OLHD_Sun10.html",
@@ -1320,14 +1320,14 @@
     "href": "docs/orthogonal.OLHD_Ye98.html",
     "title": "orthogonal.OLHD_Ye98",
     "section": "",
-    "text": "orthogonal.OLHD_Ye98(m)\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)"
+    "text": "orthogonal.OLHD_Ye98(m, seed=None)\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)"
   },
   {
     "objectID": "docs/orthogonal.OLHD_Ye98.html#parameters",
     "href": "docs/orthogonal.OLHD_Ye98.html#parameters",
     "title": "orthogonal.OLHD_Ye98",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nm\nint\nA positive integer, and it must be greater than or equal to 2\nrequired"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nm\nint\nA positive integer, and it must be greater than or equal to 2\nrequired\n\n\nseed\nOptional[Union[Integral, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
   },
   {
     "objectID": "docs/orthogonal.OLHD_Ye98.html#raises",
@@ -1348,7 +1348,7 @@
     "href": "docs/orthogonal.OLHD_Ye98.html#examples",
     "title": "orthogonal.OLHD_Ye98",
     "section": "Examples",
-    "text": "Examples\nCreate an orthogonal LHD with m=4. So n=2^m+1=9 runs and k=2*m-2=4 factors\n\nimport pyLHD\npyLHD.OLHD_Ye98(m=3)\n\narray([[ 1., -2., -4.,  3.],\n       [ 2.,  1., -3., -4.],\n       [ 3., -4.,  2., -1.],\n       [ 4.,  3.,  1.,  2.],\n       [ 0.,  0.,  0.,  0.],\n       [-1.,  2.,  4., -3.],\n       [-2., -1.,  3.,  4.],\n       [-3.,  4., -2.,  1.],\n       [-4., -3., -1., -2.]])\n\n\nCreate an orthogonal LHD with m=5. So n=2^m+1=17 runs and k=2*m-2=6 factors\n\npyLHD.OLHD_Ye98(m=4)\n\narray([[ 1., -3., -7., -8.,  6.,  5.],\n       [ 3.,  1., -4., -6., -8., -2.],\n       [ 4., -7.,  3., -2., -5.,  6.],\n       [ 7.,  4.,  1., -5.,  2., -8.],\n       [ 5., -2., -8.,  7.,  4., -1.],\n       [ 2.,  5., -6.,  4., -7.,  3.],\n       [ 6., -8.,  2.,  3., -1., -4.],\n       [ 8.,  6.,  5.,  1.,  3.,  7.],\n       [ 0.,  0.,  0.,  0.,  0.,  0.],\n       [-1.,  3.,  7.,  8., -6., -5.],\n       [-3., -1.,  4.,  6.,  8.,  2.],\n       [-4.,  7., -3.,  2.,  5., -6.],\n       [-7., -4., -1.,  5., -2.,  8.],\n       [-5.,  2.,  8., -7., -4.,  1.],\n       [-2., -5.,  6., -4.,  7., -3.],\n       [-6.,  8., -2., -3.,  1.,  4.],\n       [-8., -6., -5., -1., -3., -7.]])"
+    "text": "Examples\nCreate an orthogonal LHD with m=4. So n=2^m+1=9 runs and k=2*m-2=4 factors\n\nimport pyLHD\npyLHD.OLHD_Ye98(m=3)\n\narray([[ 3., -1., -4.,  2.],\n       [ 1.,  3., -2., -4.],\n       [ 2., -4.,  1., -3.],\n       [ 4.,  2.,  3.,  1.],\n       [ 0.,  0.,  0.,  0.],\n       [-3.,  1.,  4., -2.],\n       [-1., -3.,  2.,  4.],\n       [-2.,  4., -1.,  3.],\n       [-4., -2., -3., -1.]])\n\n\nCreate an orthogonal LHD with m=5. So n=2^m+1=17 runs and k=2*m-2=6 factors\n\npyLHD.OLHD_Ye98(m=4)\n\narray([[ 2., -8., -4., -5.,  1.,  3.],\n       [ 8.,  2., -7., -1., -5., -6.],\n       [ 7., -4.,  8., -6., -3.,  1.],\n       [ 4.,  7.,  2., -3.,  6., -5.],\n       [ 3., -6., -5.,  4.,  7., -2.],\n       [ 6.,  3., -1.,  7., -4.,  8.],\n       [ 1., -5.,  6.,  8., -2., -7.],\n       [ 5.,  1.,  3.,  2.,  8.,  4.],\n       [ 0.,  0.,  0.,  0.,  0.,  0.],\n       [-2.,  8.,  4.,  5., -1., -3.],\n       [-8., -2.,  7.,  1.,  5.,  6.],\n       [-7.,  4., -8.,  6.,  3., -1.],\n       [-4., -7., -2.,  3., -6.,  5.],\n       [-3.,  6.,  5., -4., -7.,  2.],\n       [-6., -3.,  1., -7.,  4., -8.],\n       [-1.,  5., -6., -8.,  2.,  7.],\n       [-5., -1., -3., -2., -8., -4.]])"
   },
   {
     "objectID": "docs/base.permutations_matrix.html",
@@ -1524,5 +1524,33 @@
     "title": "criteria.MeshRatio",
     "section": "Examples",
     "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (5,5))\npyLHD.MeshRatio(random_lhd)\n\n1.3093073414159542"
+  },
+  {
+    "objectID": "docs/criteria.eval_design.html",
+    "href": "docs/criteria.eval_design.html",
+    "title": "criteria.eval_design",
+    "section": "",
+    "text": "criteria.eval_design(arr, criteria='phi_p', p=15, q=1)\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD"
+  },
+  {
+    "objectID": "docs/criteria.eval_design.html#parameters",
+    "href": "docs/criteria.eval_design.html#parameters",
+    "title": "criteria.eval_design",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\ncriteria\nstr\nCriteria to choose from. Defaults to ‘phi_p’. Options include ‘phi_p’,‘MaxProCriterion’,‘AvgAbsCor’,‘AvgAbsCor’, ‘coverage’, ‘MeshRatio’, ‘maximin’ p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15 q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.\n'phi_p'"
+  },
+  {
+    "objectID": "docs/criteria.eval_design.html#returns",
+    "href": "docs/criteria.eval_design.html#returns",
+    "title": "criteria.eval_design",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nfloat\nCalculation of chosen criteria for any LHD"
+  },
+  {
+    "objectID": "docs/criteria.eval_design.html#examples",
+    "href": "docs/criteria.eval_design.html#examples",
+    "title": "criteria.eval_design",
+    "section": "Examples",
+    "text": "Examples\nBy default phi_p with p=15 and q=1\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (5,3))\npyLHD.eval_design(random_lhd)\n\n1.7462946661263892\n\n\nEvaluate design based on MaxProCriterion\n\npyLHD.eval_design(random_lhd,criteria='MaxProCriterion')\n\n15.537577624868801"
   }
 ]

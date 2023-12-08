@@ -1,10 +1,8 @@
-import pyLHD
 import math
 import numpy as np
 import numpy.typing as npt
 from numbers import Integral
 from typing import Optional, List, Union
-
 
 def check_seed(seed: Optional[Union[Integral,np.random.Generator]] = None) -> np.random.Generator:
   if seed is None or isinstance(seed, Integral):
@@ -183,48 +181,6 @@ def OA2LHD(arr: npt.ArrayLike, seed: Optional[Union[Integral, np.random.Generato
       np.place(lhd[:, j], lhd[:, j]== (i+1), k[i].flatten().tolist())
   lhd = lhd/100
   return lhd.astype(int)
-
-
-def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int = 1) -> float:
-  """ Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD`
-
-  Args:
-      arr (npt.ArrayLike): A numpy ndarray
-      criteria (str, optional): Criteria to choose from. Defaults to 'phi_p'. 
-          Options include 'phi_p','MaxProCriterion','AvgAbsCor','AvgAbsCor', 'coverage', 'MeshRatio', 'maximin'
-          p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15
-          q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
-
-  Returns:
-      Calculation of chosen criteria for any LHD
-
-  Examples:
-  By default `phi_p` with `p=15` and `q=1`
-  ```{python}
-  import pyLHD
-  random_lhd = pyLHD.LatinHypercube(size = (5,3))
-  pyLHD.eval_design(random_lhd)
-  ```
-  Evaluate design based on MaxProCriterion 
-  ```{python}
-  pyLHD.eval_design(random_lhd,criteria='MaxProCriterion')
-  ``` 
-  """
-  criteria_functions = {
-    'AvgAbsCor': pyLHD.AvgAbsCor,
-    'coverage': pyLHD.coverage,
-    'maximin': pyLHD.maximin,
-    'MeshRatio': pyLHD.MeshRatio,
-    'MaxProCriterion': pyLHD.MaxProCriterion,
-    'MaxAbsCor': pyLHD.MaxAbsCor
-  }
-    
-  if criteria in criteria_functions:
-    return criteria_functions[criteria](arr)
-  elif criteria == 'phi_p':
-    return pyLHD.phi_p(arr, p=p, q=q)
-  else:
-    raise ValueError(f"Invalid criteria: {criteria}")
 
 
 def check_bounds(arr: npt.ArrayLike,

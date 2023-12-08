@@ -1,14 +1,15 @@
 # orthogonal.OLHD_Butler01 { #pyLHD.orthogonal.OLHD_Butler01 }
 
-`orthogonal.OLHD_Butler01(size)`
+`orthogonal.OLHD_Butler01(size, seed=None)`
 
 Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)
 
 ## Parameters
 
-| Name   | Type          | Description                                                                                | Default    |
-|--------|---------------|--------------------------------------------------------------------------------------------|------------|
-| `size` | tuple of ints | Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively. | _required_ |
+| Name   | Type                                                | Description                                                                                                                                                                                                     | Default    |
+|--------|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `size` | tuple of ints                                       | Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.                                                                                                                      | _required_ |
+| `seed` | Optional\[Union\[Integral, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
 
 ## Raises
 
