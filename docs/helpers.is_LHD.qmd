@@ -1,0 +1,19 @@
+# helpers.is_LHD { #pyLHD.helpers.is_LHD }
+
+`helpers.is_LHD(arr)`
+
+Verify Latinhypercube sampling conditions
+
+## Parameters
+
+| Name   | Type          | Description     | Default    |
+|--------|---------------|-----------------|------------|
+| `arr`  | npt.ArrayLike | A numpy ndarray | _required_ |
+
+## Raises
+
+| Type       | Description                                                                |
+|------------|----------------------------------------------------------------------------|
+| ValueError | If `arr` is not in unit hypercube                                          |
+| ValueError | Sum of integers for each column dont add up to `n_rows * (n_rows + 1) / 2` |
+| ValueError | Each integer must appear once per column                                   |

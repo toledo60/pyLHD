@@ -40,6 +40,7 @@ quartodoc:
         - orthogonal.OLHD_Lin09
         - orthogonal.OLHD_Sun10
         - orthogonal.OLHD_Ye98
+        - orthogonal.OA2LHD
     - title: Criteria
       desc: Space-filling Criterias for LHD
       contents:
@@ -56,9 +57,9 @@ quartodoc:
     - title: Helpers
       desc: miscellaneous utilities for working with LHDs
       contents:
-        - helpers.check_bounds  
-        - helpers.distance_matrix
-        - helpers.OA2LHD               
+        - helpers.check_bounds
+        - helpers.is_LHD
+        - helpers.distance_matrix              
         - helpers.permute_columns
         - helpers.scale
         - helpers.swap_elements

@@ -486,3 +486,42 @@ def OLHD_Lin09(OLHD: npt.ArrayLike,OA: npt.ArrayLike ) -> npt.ArrayLike:
     M_list.append(M[i])    
     
   return np.hstack(M_list)
+
+
+def OA2LHD(arr: npt.ArrayLike, seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
+  """ Transform an Orthogonal Array (OA) into an LHD
+
+  Args:
+      arr (numpy.ndarray): An orthogonal array matrix
+      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+          If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.      
+
+  Returns:
+      LHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive
+  
+  Examples:
+  First create an OA(9,2,3,2)
+  ```{python}
+  import numpy as np
+  example_OA = np.array([[1,1],[1,2],[1,3],[2,1],
+                         [2,2],[2,3],[3,1],[3,2],[3,3] ])
+  ```
+  Transform the "OA" above into a LHD according to Tang (1993)
+  ```{python}
+  import pyLHD
+  pyLHD.OA2LHD(example_OA)      
+  ```  
+  """
+  n, m = arr.shape
+  s = np.unique(arr[:,0]).size
+
+  lhd = arr
+  k = np.zeros((s,int(n/s),1))
+  rng = check_seed(seed)
+  for j in range(m):
+    for i in range(s): 
+      k[i] = np.arange(start=i*int(n/s) + 1,stop=i*int(n/s)+int(n/s)+1).reshape(-1,1)
+      k[i] = rng.choice(k[i],s,replace=False)*100
+      np.place(lhd[:, j], lhd[:, j]== (i+1), k[i].flatten().tolist())
+  lhd = lhd/100
+  return lhd.astype(int)

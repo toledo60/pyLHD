@@ -13,6 +13,7 @@ website:
       - docs/orthogonal.OLHD_Lin09.qmd
       - docs/orthogonal.OLHD_Sun10.qmd
       - docs/orthogonal.OLHD_Ye98.qmd
+      - docs/orthogonal.OA2LHD.qmd
       section: Orthogonal LHD
     - contents:
       - docs/criteria.AvgAbsCor.qmd
@@ -28,8 +29,8 @@ website:
       section: Criteria
     - contents:
       - docs/helpers.check_bounds.qmd
+      - docs/helpers.is_LHD.qmd
       - docs/helpers.distance_matrix.qmd
-      - docs/helpers.OA2LHD.qmd
       - docs/helpers.permute_columns.qmd
       - docs/helpers.scale.qmd
       - docs/helpers.swap_elements.qmd

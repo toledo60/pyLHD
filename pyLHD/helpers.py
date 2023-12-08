@@ -4,15 +4,6 @@ import numpy.typing as npt
 from numbers import Integral
 from typing import Optional, List, Union
 
-def check_seed(seed: Optional[Union[Integral,np.random.Generator]] = None) -> np.random.Generator:
-  if seed is None or isinstance(seed, Integral):
-    return np.random.default_rng(seed)
-  elif isinstance(seed, (np.random.RandomState, np.random.Generator)):
-    global rng
-    return seed
-  else:
-    raise ValueError(f'seed = {seed!r} cannot be used to seed a numpy.random.Generator instance')
-
 
 def permute_columns(arr: npt.ArrayLike, columns: Optional[List[Integral]] = None,
                     seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
@@ -144,79 +135,6 @@ def williams_transform(arr: npt.ArrayLike,baseline: int =1) -> npt.ArrayLike:
   return wt
 
 
-def OA2LHD(arr: npt.ArrayLike, seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
-  """ Transform an Orthogonal Array (OA) into an LHD
-
-  Args:
-      arr (numpy.ndarray): An orthogonal array matrix
-      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
-          If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.      
-
-  Returns:
-      LHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive
-  
-  Examples:
-  First create an OA(9,2,3,2)
-  ```{python}
-  import numpy as np
-  example_OA = np.array([[1,1],[1,2],[1,3],[2,1],
-                         [2,2],[2,3],[3,1],[3,2],[3,3] ])
-  ```
-  Transform the "OA" above into a LHD according to Tang (1993)
-  ```{python}
-  import pyLHD
-  pyLHD.OA2LHD(example_OA)      
-  ```  
-  """
-  n, m = arr.shape
-  s = np.unique(arr[:,0]).size
-
-  lhd = arr
-  k = np.zeros((s,int(n/s),1))
-  rng = check_seed(seed)
-  for j in range(m):
-    for i in range(s): 
-      k[i] = np.arange(start=i*int(n/s) + 1,stop=i*int(n/s)+int(n/s)+1).reshape(-1,1)
-      k[i] = rng.choice(k[i],s,replace=False)*100
-      np.place(lhd[:, j], lhd[:, j]== (i+1), k[i].flatten().tolist())
-  lhd = lhd/100
-  return lhd.astype(int)
-
-
-def check_bounds(arr: npt.ArrayLike,
-                 lower_bounds: npt.ArrayLike, 
-                 upper_bounds: npt.ArrayLike) -> tuple[npt.ArrayLike, ...]:
-  """ Check conditions for bounds input
-
-  Args:
-      arr (npt.ArrayLike): A numpy ndarray
-
-      lower_bounds (npt.ArrayLike): Lower bounds of data
-      upper_bounds (npt.ArrayLike): Upper bounds of data
-
-  Raises:
-      ValueError: If lower, upper bounds are not same dimension of sample `arr`
-      ValueError: Whenver any of the lower bounds are greater than any of the upper bounds
-
-  Returns:
-      tuple[npt.ArrayLike, ...]: A tuple of numpy.ndarrays 
-  """
-  d = arr.shape[1]
-
-  try:
-    lower_bounds = np.broadcast_to(lower_bounds, d)
-    upper_bounds = np.broadcast_to(upper_bounds, d)
-  except ValueError as exc:
-    msg = ("'lower_bounds' and 'upper_bounds' must be broadcastable and respect"
-    " the sample dimension")
-    raise ValueError(msg) from exc
-  
-  if not np.all(lower_bounds < upper_bounds):
-    raise ValueError("Make sure all 'lower_bounds < upper_bounds'")
-  
-  return lower_bounds, upper_bounds
-
-
 def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list) -> npt.ArrayLike:
   """Sample scaling from unit hypercube to different bounds
 
@@ -283,6 +201,85 @@ def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -
     dist = lambda p1,p2: np.max(np.abs(p1-p2)).sum()
   
   return np.asarray([[dist(p1, p2) for p2 in arr] for p1 in arr])
+
+
+#################################
+####   Checks/ Conditions #######
+#################################
+
+def check_seed(seed: Optional[Union[Integral,np.random.Generator]] = None) -> np.random.Generator:
+  if seed is None or isinstance(seed, Integral):
+    return np.random.default_rng(seed)
+  elif isinstance(seed, (np.random.RandomState, np.random.Generator)):
+    global rng
+    return seed
+  else:
+    raise ValueError(f'seed = {seed!r} cannot be used to seed a numpy.random.Generator instance')
+
+
+def is_LHD(arr: npt.ArrayLike) -> None:
+  """Verify Latinhypercube sampling conditions
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+
+  Raises:
+      ValueError: If `arr` is not in unit hypercube
+      ValueError: Sum of integers for each column dont add up to `n_rows * (n_rows + 1) / 2`
+      ValueError: Each integer must appear once per column
+  """
+  # Validate range
+  if not (0 <= arr).all() or not (arr <= 1).all(): 
+      raise ValueError('arr must be in unit hypercube')
+
+  # Check column sums
+  n_rows, n_cols = arr.shape
+  expected_sum = n_rows * (n_rows + 1) / 2
+  
+  integers = np.floor(arr * n_rows)
+  sums = np.sum(integers + 1, axis=0)
+  if not np.allclose(sums, expected_sum):
+      raise ValueError('Integer sums invalid')
+
+  # Check counts
+  _, counts = np.unique(integers, return_counts=True)
+  if not np.all(counts == n_cols):
+      raise ValueError('Each integer must appear once per column')
+
+
+
+def check_bounds(arr: npt.ArrayLike,
+                 lower_bounds: npt.ArrayLike, 
+                 upper_bounds: npt.ArrayLike) -> tuple[npt.ArrayLike, ...]:
+  """ Check conditions for bounds input
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+
+      lower_bounds (npt.ArrayLike): Lower bounds of data
+      upper_bounds (npt.ArrayLike): Upper bounds of data
+
+  Raises:
+      ValueError: If lower, upper bounds are not same dimension of sample `arr`
+      ValueError: Whenver any of the lower bounds are greater than any of the upper bounds
+
+  Returns:
+      tuple[npt.ArrayLike, ...]: A tuple of numpy.ndarrays 
+  """
+  d = arr.shape[1]
+
+  try:
+    lower_bounds = np.broadcast_to(lower_bounds, d)
+    upper_bounds = np.broadcast_to(upper_bounds, d)
+  except ValueError as exc:
+    msg = ("'lower_bounds' and 'upper_bounds' must be broadcastable and respect"
+    " the sample dimension")
+    raise ValueError(msg) from exc
+  
+  if not np.all(lower_bounds < upper_bounds):
+    raise ValueError("Make sure all 'lower_bounds < upper_bounds'")
+  
+  return lower_bounds, upper_bounds
 
 
 def is_prime(n):

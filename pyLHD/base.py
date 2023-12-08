@@ -1,8 +1,8 @@
+import numpy as np
 import numpy.typing as npt
 from typing import Optional, Union
 from numbers import Integral
 from pyLHD.helpers import permute_columns, check_seed
-import numpy as np
 
 
 def LatinSquare(size: tuple[int,int], seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index</title>
+<title>helpers.is_lhd</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/index.html">Function reference</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/helpers.check_bounds.html">Helpers</a></li><li class="breadcrumb-item"><a href="../docs/helpers.is_LHD.html">helpers.is_LHD</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -108,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Function reference</span></a>
   </div>
 </li>
@@ -276,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.is_LHD.html" class="sidebar-item-text sidebar-link">
+  <a href="../docs/helpers.is_LHD.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">helpers.is_LHD</span></a>
   </div>
 </li>
@@ -323,140 +323,56 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="function-reference" class="level1">
-<h1>Function reference</h1>
-<section id="base-designs" class="level2">
-<h2 class="anchored" data-anchor-id="base-designs">Base Designs</h2>
-<p>Generate Random LHD</p>
+<section id="pyLHD.helpers.is_LHD" class="level1">
+<h1>helpers.is_LHD</h1>
+<p><code>helpers.is_LHD(arr)</code></p>
+<p>Verify Latinhypercube sampling conditions</p>
+<section id="parameters" class="level2">
+<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../docs/base.LatinSquare.html#pyLHD.base.LatinSquare">base.LatinSquare</a></td>
-<td>Generate a (n x d) Latin square, where each column is a random permutation of {1,2,…,n}</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/base.LatinHypercube.html#pyLHD.base.LatinHypercube">base.LatinHypercube</a></td>
-<td>Generate a random Latin Hypercube Design</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/base.GoodLatticePoint.html#pyLHD.base.GoodLatticePoint">base.GoodLatticePoint</a></td>
-<td>Good Lattice Point (GLP) Design</td>
+<td><code>arr</code></td>
+<td>npt.ArrayLike</td>
+<td>A numpy ndarray</td>
+<td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="orthogonal-lhd" class="level2">
-<h2 class="anchored" data-anchor-id="orthogonal-lhd">Orthogonal LHD</h2>
-<p>Various constructions of orthogonal latin hypercube designs</p>
+<section id="raises" class="level2">
+<h2 class="anchored" data-anchor-id="raises">Raises</h2>
 <table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 86%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../docs/orthogonal.OLHD_Butler01.html#pyLHD.orthogonal.OLHD_Butler01">orthogonal.OLHD_Butler01</a></td>
-<td>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)</td>
+<td>ValueError</td>
+<td>If <code>arr</code> is not in unit hypercube</td>
 </tr>
 <tr class="even">
-<td><a href="../docs/orthogonal.OLHD_Cioppa07.html#pyLHD.orthogonal.OLHD_Cioppa07">orthogonal.OLHD_Cioppa07</a></td>
-<td>Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)</td>
+<td>ValueError</td>
+<td>Sum of integers for each column dont add up to <code>n_rows * (n_rows + 1) / 2</code></td>
 </tr>
 <tr class="odd">
-<td><a href="../docs/orthogonal.OLHD_Lin09.html#pyLHD.orthogonal.OLHD_Lin09">orthogonal.OLHD_Lin09</a></td>
-<td>Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al.&nbsp;(2009)</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/orthogonal.OLHD_Sun10.html#pyLHD.orthogonal.OLHD_Sun10">orthogonal.OLHD_Sun10</a></td>
-<td>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al.&nbsp;(2010)</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/orthogonal.OLHD_Ye98.html#pyLHD.orthogonal.OLHD_Ye98">orthogonal.OLHD_Ye98</a></td>
-<td>Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/orthogonal.OA2LHD.html#pyLHD.orthogonal.OA2LHD">orthogonal.OA2LHD</a></td>
-<td>Transform an Orthogonal Array (OA) into an LHD</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="criteria" class="level2">
-<h2 class="anchored" data-anchor-id="criteria">Criteria</h2>
-<p>Space-filling Criterias for LHD</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../docs/criteria.AvgAbsCor.html#pyLHD.criteria.AvgAbsCor">criteria.AvgAbsCor</a></td>
-<td>Calculate the Average Absolute Correlation</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.coverage.html#pyLHD.criteria.coverage">criteria.coverage</a></td>
-<td>Compute the coverage measure for a design</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.discrepancy.html#pyLHD.criteria.discrepancy">criteria.discrepancy</a></td>
-<td>Discrepancy of a given sample</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.InterSite.html#pyLHD.criteria.InterSite">criteria.InterSite</a></td>
-<td>Calculate the Inter-site Distance</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.MaxAbsCor.html#pyLHD.criteria.MaxAbsCor">criteria.MaxAbsCor</a></td>
-<td>Calculate the Maximum Absolute Correlation</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.maximin.html#pyLHD.criteria.maximin">criteria.maximin</a></td>
-<td>Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.MeshRatio.html#pyLHD.criteria.MeshRatio">criteria.MeshRatio</a></td>
-<td>Compute the meshratio criterion for a given design</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.MaxProCriterion.html#pyLHD.criteria.MaxProCriterion">criteria.MaxProCriterion</a></td>
-<td>Calculate the Maximum Projection Criterion</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/criteria.phi_p.html#pyLHD.criteria.phi_p">criteria.phi_p</a></td>
-<td>Calculate the phi_p Criterion</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/criteria.eval_design.html#pyLHD.criteria.eval_design">criteria.eval_design</a></td>
-<td>Evaluate a design based on a chosen criteria, a simple wrapper for all <code>criteria</code> in <code>pyLHD</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="helpers" class="level2">
-<h2 class="anchored" data-anchor-id="helpers">Helpers</h2>
-<p>miscellaneous utilities for working with LHDs</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../docs/helpers.check_bounds.html#pyLHD.helpers.check_bounds">helpers.check_bounds</a></td>
-<td>Check conditions for bounds input</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/helpers.is_LHD.html#pyLHD.helpers.is_LHD">helpers.is_LHD</a></td>
-<td>Verify Latinhypercube sampling conditions</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/helpers.distance_matrix.html#pyLHD.helpers.distance_matrix">helpers.distance_matrix</a></td>
-<td>Distance matrix based on specified distance measure</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/helpers.permute_columns.html#pyLHD.helpers.permute_columns">helpers.permute_columns</a></td>
-<td>Randomly permute columns in a numpy ndarray</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/helpers.scale.html#pyLHD.helpers.scale">helpers.scale</a></td>
-<td>Sample scaling from unit hypercube to different bounds</td>
-</tr>
-<tr class="even">
-<td><a href="../docs/helpers.swap_elements.html#pyLHD.helpers.swap_elements">helpers.swap_elements</a></td>
-<td>Swap two random elements in a matrix</td>
-</tr>
-<tr class="odd">
-<td><a href="../docs/helpers.williams_transform.html#pyLHD.helpers.williams_transform">helpers.williams_transform</a></td>
-<td>Williams Transformation</td>
+<td>ValueError</td>
+<td>Each integer must appear once per column</td>
 </tr>
 </tbody>
 </table>

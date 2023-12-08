@@ -1,6 +1,6 @@
-# helpers.OA2LHD { #pyLHD.helpers.OA2LHD }
+# orthogonal.OA2LHD { #pyLHD.orthogonal.OA2LHD }
 
-`helpers.OA2LHD(arr, seed=None)`
+`orthogonal.OA2LHD(arr, seed=None)`
 
 Transform an Orthogonal Array (OA) into an LHD
 
