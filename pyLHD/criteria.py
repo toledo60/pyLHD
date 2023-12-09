@@ -1,6 +1,7 @@
 import numpy as np 
 import numpy.typing as npt
 from typing import Literal
+from pyLHD.helpers import distance_matrix
 
 def MaxAbsCor(arr: npt.ArrayLike) -> float:
   """ Calculate the Maximum Absolute Correlation
@@ -280,8 +281,7 @@ def coverage(arr: npt.ArrayLike) -> float:
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
     raise ValueError('`arr` is not in unit hypercube')
     
-  dist = lambda p1, p2: np.sqrt(((p1-p2)**2).sum())
-  dist_mat = np.asarray([[dist(p1, p2) for p2 in arr] for p1 in arr])
+  dist_mat = distance_matrix(arr)
   np.fill_diagonal(dist_mat,10e3)
 
   Dmin = np.amin(dist_mat,axis=0)
@@ -365,8 +365,7 @@ def maximin(arr: npt.ArrayLike) -> float:
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
     raise ValueError('`arr` is not in unit hypercube')
   
-  dist = lambda p1, p2: np.sqrt(((p1-p2)**2).sum())
-  dist_mat = np.asarray([[dist(p1, p2) for p2 in arr] for p1 in arr])
+  dist_mat = distance_matrix(arr)
   np.fill_diagonal(dist_mat,1e30)
   min = np.amin(dist_mat,axis=0)
   return np.amin(min)

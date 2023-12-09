@@ -1,9 +1,7 @@
 # pyLHD: Latin Hypercube Designs for Python
 
-pyLHD is a python implementation for something in between the R packages [LHD](https://cran.r-project.org/web/packages/LHD/index.html)
-and [DiceDesign](https://cran.r-project.org/web/packages/DiceDesign/index.html).
-
-This package is primarily designed for educational purposes and may not be highly optimized. For more efficient and thoroughly tested functions, I recommend utilizing the `scipy.qmc` module 
+This package provides functionality for constructing and analyzing Latin hypercube designs (LHDs) in Python.
+This package assists with generating LHDs and leveraging them across different experimental design applications, with emphasis to computer experiments
 
 
 ## Installation
@@ -20,8 +18,9 @@ The main dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tes
 
 With `pyLHD` you can generate the following designs:
 
-- `random_lhd`: Generate a random Latin hypercube design
-- `GLPdesign`: Generate a good lattice point design
+- `LatinSquare`: Generate a random Latin square
+- `LatinHypercube`: Generate a random Latin hypercube design
+- `GoodLatticePoint`: Generate a good lattice point design
 - `OLHD_Butler01`: Orthogonal Latin hypercube design. Based on the construction method of Butler (2001)
 - `OLHD_Cioppa07`: Orthogonal Latin hypercube design. Based on the construction method of Cioppa and Lucas (2007)
 - `OLHD_Lin09`: Orthogonal Latin hypercube design. Based on the construction method of Lin et al. (2009)
@@ -31,12 +30,12 @@ With `pyLHD` you can generate the following designs:
 Calculate design properties such as:
 
 - `AvgAbsCor`: Calculate the average absolute correlation
-- `inter_site`: Calculate the Inter-site Distance (rectangular/Euclidean) between the *ith* and *jth* row
+- `InterSite`: Calculate the Inter-site Distance (rectangular/Euclidean) between the *ith* and *jth* row
 - `coverage`: Calculate the coverage measure
 - `discrepancy`: Calculate the discrepancy of a given sample
 - `MaxAbsCor`: Calculate the maximum absolute correlation
 - `MaxProCriterion`: Calculate the maximum projection criterion
-- `mesh_ratio`: Calculate the meshratio criterion
+- `MeshRatio`: Calculate the meshratio criterion
 - `minimax`: Calculate the minimax criterion
 - `phi_p`: Calculate the phi_p criterion
 
@@ -55,5 +54,14 @@ Other helper functions include:
 
 
 For further details on any of the above function(s) check the corresponding reference(s) under [REFERENCES.md](https://github.com/toledo60/pyLHD/blob/main/REFERENCES.md). 
+
+
+## Sofware References
+
+This package implements functions similar to those found in the following software packages:
+
+- [LHD](https://cran.r-project.org/web/packages/LHD/index.html)
+- [DiceDesign](https://cran.r-project.org/web/packages/DiceDesign/index.html)
+
 
 

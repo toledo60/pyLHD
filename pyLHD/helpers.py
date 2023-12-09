@@ -190,17 +190,17 @@ def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -
   pyLHD.distance_matrix(random_lhd, metric = 'minkowski', p=5)
   ```
   """
-  
-  if metric == 'euclidean' and p ==2:
-    dist = lambda p1, p2: np.sqrt(((p1-p2)**2).sum())
-  elif metric == 'manhattan':
-    dist = lambda p1,p2: np.abs(p1-p2).sum()
-  elif metric == 'minkowski':
-    dist = lambda p1, p2: ((np.abs(p1-p2)**(p)).sum())**(1/p)
-  elif metric == 'maximum':
-    dist = lambda p1,p2: np.max(np.abs(p1-p2)).sum()
-  
-  return np.asarray([[dist(p1, p2) for p2 in arr] for p1 in arr])
+  p1 = arr[:, np.newaxis]
+  p2 = arr[np.newaxis,:]
+
+  metrics = {
+      'euclidean': np.linalg.norm(p1 - p2, axis=-1),
+      'manhattan': np.sum(np.abs(p1 - p2), axis=-1),
+      'minkowski': np.sum(np.abs(p1 - p2)**p, axis=-1)**(1/p),
+      'maximum': np.amax(np.abs(p1 - p2), axis=-1)
+  }
+
+  return metrics[metric]  
 
 
 #################################
@@ -245,7 +245,6 @@ def is_LHD(arr: npt.ArrayLike) -> None:
   _, counts = np.unique(integers, return_counts=True)
   if not np.all(counts == n_cols):
       raise ValueError('Each integer must appear once per column')
-
 
 
 def check_bounds(arr: npt.ArrayLike,

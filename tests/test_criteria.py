@@ -51,7 +51,6 @@ def test_design_2():
   np.testing.assert_allclose(sample,design,rtol=1e-05)                          
 
   
-
 @pytest.mark.parametrize("n, d, expected", [(9, 2, 0.06601886), (25, 4, 0.11555915088)])
 def test_MaxAbsCor(n, d, expected):
     sampler = qmc.LatinHypercube(d=d, strength=2, seed=88)
@@ -74,7 +73,6 @@ def test_MaxProCriterion(n, d, expected):
     sample = sampler.random(n=n)
     result = MaxProCriterion(sample)
     assert result == approx(expected)
-
 
 
 @pytest.mark.parametrize("n,d,p,q,expected", [
