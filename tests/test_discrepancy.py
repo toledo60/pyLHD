@@ -1,57 +1,74 @@
 from scipy.stats import qmc
 from pyLHD.criteria import discrepancy
+import pytest
 from pytest import approx
 import numpy as np
 
-x = qmc.LatinHypercube(d=3,seed=10)
-space = x.random(n=10)
+def test_design():
+  sampler = qmc.LatinHypercube(d=2, strength=2, seed=88)
+  sample = sampler.random(n=9)
+  design = np.array([[0.20157202, 0.20157202],
+                     [0.53490535, 0.05646416],
+                     [0.86823868, 0.22523203],
+                     [0.05646416, 0.53490535],
+                     [0.38979749, 0.38979749],
+                     [0.72313082, 0.55856536],
+                     [0.22523203, 0.86823868],
+                     [0.55856536, 0.72313082],
+                     [0.8918987,  0.8918987]])
+  np.testing.assert_allclose(sample, design, rtol=1e-06)
 
 
-def test_initial_design():
-  lhd = np.array([[0.40439983, 0.57923182, 0.61715551],
-                  [0.78507179, 0.24871954, 0.38640804],
-                  [0.83109635, 0.91582523, 0.1574491],
-                  [0.9043074,  0.81746671, 0.56617847],
-                  [0.24242395, 0.42466981, 0.71728961],
-                  [0.60665615, 0.08550053, 0.92544198],
-                  [0.18606486, 0.10934712, 0.27738856],
-                  [0.01467603, 0.76936821, 0.80301696],
-                  [0.34821658, 0.66775254, 0.07175665],
-                  [0.5394135,  0.36662355, 0.43213512]])
-  np.testing.assert_allclose(space, lhd,rtol=1e-6)
-    
-
-def test_discrepancy_C2():
-  assert discrepancy(space) == approx(0.1119206)
-
-
-def test_discrepancy_L2():
-  assert discrepancy(space, method = 'L2') == approx(0.017661)
-
-
-def test_discrepancy_L2star():
-  assert discrepancy(space, method = 'L2_star') == approx(0.04971855)
-
-
-def test_discrepancy_M2():
-  assert discrepancy(space, method = 'modified_L2') == approx(0.1298479)
-
-
-def test_discrepancy_S2():
-  assert discrepancy(space, method = 'symmetric_L2') == approx(0.4455809)
+def test_design_2():
+  sampler = qmc.LatinHypercube(d=4, strength=2, seed=88)
+  sample = sampler.random(n=25)
+  design = np.array([[0.07256593, 0.07256593, 0.07256593, 0.07256593],
+                     [0.27256593, 0.1403271, 0.27256593, 0.27256593],
+                     [0.47256593, 0.00108353, 0.47256593, 0.47256593],
+                     [0.67256593, 0.1712639, 0.67256593, 0.67256593],
+                     [0.87256593, 0.11741126, 0.87256593, 0.87256593],
+                     [0.1403271, 0.27256593, 0.3403271, 0.5403271],
+                     [0.3403271, 0.3403271, 0.5403271, 0.7403271],
+                     [0.5403271, 0.20108353, 0.7403271, 0.9403271],
+                     [0.7403271, 0.3712639, 0.9403271, 0.1403271],
+                     [0.9403271, 0.31741126, 0.1403271, 0.3403271],
+                     [0.00108353, 0.47256593, 0.40108353, 0.80108353],
+                     [0.20108353, 0.5403271, 0.60108353, 0.00108353],
+                     [0.40108353, 0.40108353, 0.80108353, 0.20108353],
+                     [0.60108353, 0.5712639, 0.00108353, 0.40108353],
+                     [0.80108353, 0.51741126, 0.20108353, 0.60108353],
+                     [0.1712639, 0.67256593, 0.7712639, 0.3712639],
+                     [0.3712639, 0.7403271, 0.9712639, 0.5712639],
+                     [0.5712639, 0.60108353, 0.1712639, 0.7712639],
+                     [0.7712639, 0.7712639, 0.3712639, 0.9712639],
+                     [0.9712639, 0.71741126, 0.5712639, 0.1712639],
+                     [0.11741126, 0.87256593, 0.91741126, 0.71741126],
+                     [0.31741126, 0.9403271, 0.11741126, 0.91741126],
+                     [0.51741126, 0.80108353, 0.31741126, 0.11741126],
+                     [0.71741126, 0.9712639, 0.51741126, 0.31741126],
+                     [0.91741126, 0.91741126, 0.71741126, 0.51741126]])
+  np.testing.assert_allclose(sample, design, rtol=1e-05)
 
 
-def test_discrepancy_W2():
-  assert discrepancy(space, method = 'wrap_around_L2') == approx(0.1700446)
-
-
-def test_discrepancy_Mix2():
-  assert discrepancy(space, method = 'mixture_L2') == approx(0.1754307)
-
-
-
-
-
-
-
+@pytest.mark.parametrize("n, d, method, expected", 
+[(9, 2, "centered_L2",0.07903468), 
+(9, 2, "L2",0.02732294),
+(9, 2, "L2_star",0.05094798),
+(9, 2, "modified_L2",0.08547994),
+(9, 2, "symmetric_L2",0.1983027),
+(9, 2, "wrap_around_L2",0.120021),
+(9, 2, "mixture_L2",0.1105645),
+(25, 4, "centered_L2",0.07397585), 
+(25, 4, "L2",0.004238196),
+(25, 4, "L2_star",0.0327091),
+(25, 4, "modified_L2",0.094341),
+(25, 4, "symmetric_L2",0.4241608),
+(25, 4, "wrap_around_L2",0.1137553),
+(25, 4, "mixture_L2",0.127585)
+])
+def test_discrepancy(n, d, expected,method):
+    sampler = qmc.LatinHypercube(d=d, strength=2, seed=88)
+    sample = sampler.random(n=n)
+    result = discrepancy(sample, method=method)
+    assert result == approx(expected)
 
