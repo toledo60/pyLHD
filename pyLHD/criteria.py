@@ -171,86 +171,73 @@ def discrepancy(arr: npt.ArrayLike,
   
   if n_rows < n_columns:
     raise ValueError('Make sure number of rows is greater than number of columns')
-
-  sum1 = 0
-  sum2 = 0
   
   if method == 'L2':
+    sum1 = np.sum(np.prod(arr * (1 - arr), axis=1))
 
-    for i in range(n_rows):
-      sum1 += np.prod(arr[i,:]*(1-arr[i,:]))
-      for k in range(n_rows):
-        q =  1
-        for j in range(n_columns):
-          q = q*(1-np.maximum(arr[i,j],arr[k,j]))*np.minimum(arr[i,j],arr[k,j])
-        sum2 += q
-    value = np.sqrt(12**(-n_columns) - (((2**(1-n_columns))/n_rows)*sum1) + ((1/n_rows**2)*sum2))  
+    min_arr = np.minimum(arr[:, np.newaxis, :], arr[np.newaxis, :, :])
+    max_arr = np.maximum(arr[:, np.newaxis, :], arr[np.newaxis, :, :])
+
+    product_term = np.prod((1 - max_arr) * min_arr, axis=2)
+    sum2 = np.sum(product_term)
+
+    # Final value calculation
+    value = np.sqrt(12 ** (-n_columns) - ((2 ** (1 - n_columns)) / n_rows) * sum1 + (1 / n_rows ** 2) * sum2) 
   
   if method == 'L2_star':
-    dL2 = 0
-    for j in range(n_rows):
-      for i in range(n_rows):
-        if i!=j:
-          t = []
-          for l in range(n_columns):
-            t.append(1-np.maximum(arr[i,l],arr[j,l]))
-          t = (np.prod(t))/(n_rows**2)
-        else:
-          t1 = 1-arr[i,:]
-          t1 = np.prod(t1)
-          t2 = 1-np.square(arr[i,:])
-          t2 = np.prod(t2)
-          t = t1/(n_rows**2)-((2**(1-n_columns))/n_rows)*t2
-    
-        dL2 += t
-  
-    value = np.sqrt(3**(-n_columns)+dL2)
+    one_minus_arr = 1 - arr
+
+    # case when i != j
+    max_arr = np.maximum(arr[:, np.newaxis, :], arr[np.newaxis, :, :])
+    prod_term = np.prod(1 - max_arr, axis=2)
+    sum_prod_term = np.sum(prod_term) - np.sum(np.prod(one_minus_arr, axis=1))
+    dL2_non_equal = sum_prod_term / (n_rows ** 2)
+
+    # case when i == j
+    t1 = np.prod(one_minus_arr, axis=1)
+    t2 = np.prod(1 - np.square(arr), axis=1)
+    dL2_equal = np.sum(t1 / (n_rows ** 2) - ((2 ** (1 - n_columns)) / n_rows) * t2)
+
+    # Combine the results
+    dL2 = dL2_non_equal + dL2_equal
+    value = np.sqrt(3 ** (-n_columns) + dL2)
       
   if method == 'centered_L2':
+    abs_diff_05 = np.abs(arr - 0.5)
 
-    for i in range(n_rows):
-      sum1 += np.prod((1+0.5*np.abs(arr[i,:]-0.5)-0.5*((abs(arr[i,:]-0.5))**2)))
-      for k in range(n_rows):
-        sum2 +=  np.prod((1+0.5*np.abs(arr[i,:]-0.5)+0.5*np.abs(arr[k,:]-0.5)-0.5*np.abs(arr[i,:]-arr[k,:])))
-    value =  np.sqrt( ( (13/12)**n_columns)-((2/n_rows)*sum1) + ((1/(n_rows**2))*sum2)  )
+    sum1 = np.sum(np.prod(1 + 0.5 * abs_diff_05 - 0.5 * (abs_diff_05 ** 2), axis=1))
+    sum2_matrix = 1 + 0.5 * abs_diff_05[:, np.newaxis, :] + 0.5 * abs_diff_05[np.newaxis, :, :] - 0.5 * np.abs(arr[:, np.newaxis, :] - arr[np.newaxis, :, :])
+    sum2 = np.sum(np.prod(sum2_matrix, axis=2))
+    value = np.sqrt(((13 / 12) ** n_columns) - ((2 / n_rows) * sum1) + ((1 / (n_rows ** 2)) * sum2))
   
   if method == 'modified_L2':
-    
-    for i in range(n_rows):
-      p = 1
-      p = np.prod((3-(arr[i,:]*arr[i,:])))
-      sum1 += p
-      
-      for k in range(n_rows):
-        q = 1
-        for j in range(n_columns):
-          q = q*(2-np.maximum(arr[i,j],arr[k,j]))
-        sum2 += q
-    value =  np.sqrt(((4/3)**n_columns) - (((2**(1-n_columns))/n_rows)*sum1) + ((1/n_rows**2)*sum2))
+    sum1 = np.sum(np.prod(3 - np.square(arr), axis=1))
+    max_arr = np.maximum(arr[:, np.newaxis, :], arr[np.newaxis, :, :])
+    sum2 = np.sum(np.prod(2 - max_arr, axis=2))
+    value = np.sqrt(((4 / 3) ** n_columns) - (((2 ** (1 - n_columns)) / n_rows) * sum1) + ((1 / n_rows ** 2) * sum2))
   
   if method == 'mixture_L2':
-    for i in range(n_rows):
-      sum1 += np.prod((5/3-0.25*np.abs(arr[i,:]-0.5)-0.25*((np.abs(arr[i,:]-0.5))**2)))
-      for k in range(n_rows):
-        sum2 += np.prod((15/8-0.25*np.abs(arr[i,:]-0.5)-0.25*np.abs(arr[k,:]-0.5)-
-                         0.75*np.abs(arr[i,:]-arr[k,:])+0.5*((np.abs(arr[i,:]-arr[k,:]))**2)))
-    value = np.sqrt(((19/12)**n_columns)-((2/n_rows)*sum1) + ((1/n_rows**2)*sum2))
+    abs_diff_05 = np.abs(arr - 0.5)
+    sum1 = np.sum(np.prod(5/3 - 0.25 * abs_diff_05 - 0.25 * (abs_diff_05 ** 2), axis=1))
+    diff_arr = np.abs(arr[:, np.newaxis, :] - arr[np.newaxis, :, :])
+    sum2_matrix = 15/8 - 0.25 * abs_diff_05[:, np.newaxis, :] - 0.25 * abs_diff_05[np.newaxis, :, :] - 0.75 * diff_arr + 0.5 * (diff_arr ** 2)
+    sum2 = np.sum(np.prod(sum2_matrix, axis=2))
+
+    value = np.sqrt(((19 / 12) ** n_columns) - ((2 / n_rows) * sum1) + ((1 / n_rows ** 2) * sum2))
      
   if method == 'symmetric_L2':
+    sum1 = np.sum(np.prod(1 + 2 * arr - 2 * np.square(arr), axis=1))
+    abs_diff = np.abs(arr[:, np.newaxis, :] - arr[np.newaxis, :, :])
+    sum2 = np.sum(np.prod(1 - abs_diff, axis=2))
+    value = np.sqrt(((4 / 3) ** n_columns) - ((2 / n_rows) * sum1) + ((2 ** n_columns / n_rows ** 2) * sum2))
 
-    for i in range(n_rows):
-      sum1 += np.prod( (1+2*arr[i,:]) - (2*arr[i,:]*arr[i,:]))
-      for k in range(n_rows):
-        sum2 += np.prod( (1-np.abs(arr[i,:]-arr[k,:])) )
-    value = np.sqrt(((4/3)**n_columns) - ((2/n_rows)*sum1) + ((2**n_columns/n_rows**2)*sum2))
   
   if method == 'wrap_around_L2':
-    for i in range(n_rows):
-      for k in range(n_rows):
-        sum1 += np.prod((1.5-((np.abs(arr[i,:]-arr[k,:]))*(1-np.abs(arr[i,:]-arr[k,:])))))
-  
-    value =  np.sqrt((-((4/3)**n_columns) + ((1/n_rows**2)*sum1)))
-  
+    pairwise_diff = np.abs(arr[:, np.newaxis, :] - arr[np.newaxis, :, :])
+    sum1_matrix = 1.5 - pairwise_diff * (1 - pairwise_diff)
+    sum1 = np.sum(np.prod(sum1_matrix, axis=2))
+    value = np.sqrt((-((4 / 3) ** n_columns) + ((1 / n_rows ** 2) * sum1)))
+
   return value
 
 
@@ -273,25 +260,23 @@ def coverage(arr: npt.ArrayLike) -> float:
   ```
 
   """
+
+  if (np.amin(arr) < 0 or np.amax(arr) > 1):
+    raise ValueError('`arr` is not in unit hypercube')
+
   n_rows, n_columns = arr.shape
   
   if n_rows < n_columns:
     raise ValueError('Make sure number of rows is greater than number of columns')
   
-  if (np.amin(arr) < 0 or np.amax(arr) > 1):
-    raise ValueError('`arr` is not in unit hypercube')
-    
   dist_mat = distance_matrix(arr)
   np.fill_diagonal(dist_mat,10e3)
 
   Dmin = np.amin(dist_mat,axis=0)
   gammabar = (1/n_rows)*np.sum(Dmin)
-  sum = 0
+  sum_squares = np.sum((Dmin - gammabar) ** 2)
 
-  for i in range(n_rows):
-    sum +=  (Dmin[i]-gammabar)*(Dmin[i]-gammabar)
-
-  cov = (1/gammabar)*((1/n_rows)*sum)**(1/2)
+  cov = (1 / gammabar) * np.sqrt((1 / n_rows) * sum_squares)
   return cov
 
 
