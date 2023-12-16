@@ -85,15 +85,14 @@ def GoodLatticePoint(size: tuple[int,int], h: list = None,
   """
   rng = check_seed(seed)
   n_rows, n_columns = size
+  # Generate h_sample
   if h is None:
-    seq = np.arange(start=1, stop=n_rows)
-    h_sample = rng.choice(seq, n_columns, replace=False)
+    h_sample = rng.choice(np.arange(1, n_rows), n_columns, replace=False)
   else:
+    if len(h) != n_columns:
+      raise ValueError(f'h must contain only {n_columns} elements')
     h_sample = rng.choice(h, n_columns, replace=False)
 
-  mat = np.zeros((n_rows, n_columns))
-
-  for i in range(n_rows):
-    for j in range(n_columns):
-      mat[i, j] = ((i+1)*h_sample[j]) % n_rows
-  return mat.astype(int)
+  # Create the matrix using vectorized operations
+  row_indices = np.arange(1, n_rows + 1).reshape(-1, 1)  # Column vector of row indices
+  return  (row_indices * h_sample) % n_rows

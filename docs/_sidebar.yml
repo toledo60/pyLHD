@@ -20,6 +20,8 @@ website:
       - docs/criteria.coverage.qmd
       - docs/criteria.discrepancy.qmd
       - docs/criteria.InterSite.qmd
+      - docs/criteria.pairwise_InterSite.qmd
+      - docs/criteria.LqDistance.qmd
       - docs/criteria.MaxAbsCor.qmd
       - docs/criteria.maximin.qmd
       - docs/criteria.MeshRatio.qmd
@@ -32,6 +34,7 @@ website:
       - docs/helpers.is_LHD.qmd
       - docs/helpers.distance_matrix.qmd
       - docs/helpers.permute_columns.qmd
+      - docs/helpers.permute_rows.qmd
       - docs/helpers.scale.qmd
       - docs/helpers.swap_elements.qmd
       - docs/helpers.williams_transform.qmd

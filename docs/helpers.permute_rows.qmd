@@ -1,0 +1,37 @@
+# helpers.permute_rows { #pyLHD.helpers.permute_rows }
+
+`helpers.permute_rows(arr, rows=None, seed=None)`
+
+Randomly permute rows in a numpy ndarray
+
+## Parameters
+
+| Name   | Type                                                | Description                                                                                                                                                                                                     | Default    |
+|--------|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | npt.ArrayLike                                       | A numpy ndarray                                                                                                                                                                                                 | _required_ |
+| `rows` | Optional\[List\[int\]\]                             | If `rows` is None all columns will be randomly permuted, otherwise provide a list of rows to permute. Defaults to None.                                                                                         | `None`     |
+| `seed` | Optional\[Union\[Integral, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
+
+## Returns
+
+| Type          | Description                                         |
+|---------------|-----------------------------------------------------|
+| npt.ArrayLike | numpy ndarray with rows of choice randomly permuted |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+x = pyLHD.LatinHypercube(size = (5,3), seed = 1)
+x
+```
+Permute all columns
+```{python}
+pyLHD.permute_rows(x)
+```
+Permute columns [0,1] with `seed=1`
+```{python}
+pyLHD.permute_rows(x, rows = [0,1], seed = 1)
+```

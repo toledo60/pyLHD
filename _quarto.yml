@@ -48,6 +48,8 @@ quartodoc:
         - criteria.coverage
         - criteria.discrepancy
         - criteria.InterSite
+        - criteria.pairwise_InterSite
+        - criteria.LqDistance
         - criteria.MaxAbsCor
         - criteria.maximin
         - criteria.MeshRatio
@@ -61,6 +63,7 @@ quartodoc:
         - helpers.is_LHD
         - helpers.distance_matrix              
         - helpers.permute_columns
+        - helpers.permute_rows
         - helpers.scale
         - helpers.swap_elements
         - helpers.williams_transform        

@@ -1,0 +1,33 @@
+# criteria.pairwise_InterSite { #pyLHD.criteria.pairwise_InterSite }
+
+`criteria.pairwise_InterSite(arr, q=1)`
+
+Calculate the Inter-site Distance between all pairwise rows
+
+## Parameters
+
+| Name   | Type          | Description                                                                                                                                                                        | Default    |
+|--------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | npt.ArrayLike | A numpy ndarray                                                                                                                                                                    | _required_ |
+| `q`    | int           | The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. | `1`        |
+
+## Returns
+
+| Type          | Description                                                      |
+|---------------|------------------------------------------------------------------|
+| npt.ArrayLike | All row pairwise Inter-site distances (rectangular or Euclidean) |
+
+## Examples
+
+
+
+Calculate all row pairwise inter-site distances of `random_lhd` with q=1 (rectangular)
+```{python}
+import pyLHD
+random_lhd = pyLHD.LatinHypercube(size = (10,3))
+pyLHD.pairwise_InterSite(random_lhd)
+```
+Calculate all row pairwise inter-site distances of `random_lhd` with q=2 (Euclidean)
+```{python}
+pyLHD.pairwise_InterSite(random_lhd,q=2)
+```

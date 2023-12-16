@@ -1,0 +1,34 @@
+# criteria.LqDistance { #pyLHD.criteria.LqDistance }
+
+`criteria.LqDistance(arr, q=1)`
+
+Calculate the Lq-Distance of a Latin Hypercube Design
+
+## Parameters
+
+| Name   | Type          | Description                                                                                                                             | Default    |
+|--------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | npt.ArrayLike | A numpy ndarray                                                                                                                         | _required_ |
+| `q`    | int           | If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. Default is q=1. | `1`        |
+
+## Returns
+
+| Type   | Description                                                                                                                                                                  |
+|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| float  | The $L_q$ distance of a LHD. Defined as $d = min \{ arr(i,j) : i  \neq j, \, i,j = 1,2,...,n \}$ The maximin $L_q$-distance design is defined as the one which maximizes $d$ |
+
+## Examples
+
+
+
+Calculate the $L_1$ distance of `random_lhd` with q=1 (rectangular)
+```{python}
+import pyLHD
+random_lhd = pyLHD.LatinHypercube(size = (10,3))
+pyLHD.LqDistance(random_lhd)
+``` 
+
+Calculate the $L_2$ distance of `random_lhd` with q=2 (Euclidean)
+```{python}
+pyLHD.LqDistance(random_lhd, q = 2)
+```

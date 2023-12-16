@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>orthogonal.olhd_cioppa07</title>
+<title>criteria.pairwise_intersite</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/orthogonal.OLHD_Butler01.html">Orthogonal LHD</a></li><li class="breadcrumb-item"><a href="../docs/orthogonal.OLHD_Cioppa07.html">orthogonal.OLHD_Cioppa07</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/criteria.AvgAbsCor.html">Criteria</a></li><li class="breadcrumb-item"><a href="../docs/criteria.pairwise_InterSite.html">criteria.pairwise_InterSite</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -192,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/orthogonal.OLHD_Cioppa07.html" class="sidebar-item-text sidebar-link active">
+  <a href="../docs/orthogonal.OLHD_Cioppa07.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">orthogonal.OLHD_Cioppa07</span></a>
   </div>
 </li>
@@ -257,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/criteria.pairwise_InterSite.html" class="sidebar-item-text sidebar-link">
+  <a href="../docs/criteria.pairwise_InterSite.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">criteria.pairwise_InterSite</span></a>
   </div>
 </li>
@@ -375,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">orthogonal.OLHD_Cioppa07</h1>
+<h1 class="title">criteria.pairwise_InterSite</h1>
 </div>
 
 
@@ -390,16 +390,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>orthogonal.OLHD_Cioppa07(m)</code></p>
-<p>Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)</p>
+<p><code>criteria.pairwise_InterSite(arr, q=1)</code></p>
+<p>Calculate the Inter-site Distance between all pairwise rows</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 69%">
-<col style="width: 13%">
+<col style="width: 3%">
+<col style="width: 6%">
+<col style="width: 83%">
+<col style="width: 5%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -411,27 +411,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>m</code></td>
-<td>int</td>
-<td>A positive integer, and it must be greater than or equal to 2</td>
+<td><code>arr</code></td>
+<td>npt.ArrayLike</td>
+<td>A numpy ndarray</td>
 <td><em>required</em></td>
 </tr>
-</tbody>
-</table>
-</section>
-<section id="raises" class="level2">
-<h2 class="anchored" data-anchor-id="raises">Raises</h2>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ValueError</td>
-<td>If m is not greater than or equal to 2</td>
+<tr class="even">
+<td><code>q</code></td>
+<td>int</td>
+<td>The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.</td>
+<td><code>1</code></td>
 </tr>
 </tbody>
 </table>
@@ -440,8 +429,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 12%">
-<col style="width: 87%">
+<col style="width: 18%">
+<col style="width: 81%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -452,75 +441,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>npt.ArrayLike</td>
-<td>An orthogonal LHD with the following run size: (n=2^m + 1) and factor size: (k= m+ (m-1 choose 2))</td>
+<td>All row pairwise Inter-site distances (rectangular or Euclidean)</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>Create an orthogonal LHD with m=4. So n=2^m+1=17 runs and k=4+3=7 factors</p>
+<p>Calculate all row pairwise inter-site distances of <code>random_lhd</code> with q=1 (rectangular)</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OLHD_Cioppa07(m<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">3</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.pairwise_InterSite(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[ 1., -2., -4., -8.,  3.,  7.,  5.],
-       [ 2.,  1., -3., -7., -4., -8.,  6.],
-       [ 3., -4.,  2., -6., -1.,  5., -7.],
-       [ 4.,  3.,  1., -5.,  2., -6., -8.],
-       [ 5., -6., -8.,  4.,  7., -3., -1.],
-       [ 6.,  5., -7.,  3., -8.,  4., -2.],
-       [ 7., -8.,  6.,  2., -5., -1.,  3.],
-       [ 8.,  7.,  5.,  1.,  6.,  2.,  4.],
-       [ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
-       [-1.,  2.,  4.,  8., -3., -7., -5.],
-       [-2., -1.,  3.,  7.,  4.,  8., -6.],
-       [-3.,  4., -2.,  6.,  1., -5.,  7.],
-       [-4., -3., -1.,  5., -2.,  6.,  8.],
-       [-5.,  6.,  8., -4., -7.,  3.,  1.],
-       [-6., -5.,  7., -3.,  8., -4.,  2.],
-       [-7.,  8., -6., -2.,  5.,  1., -3.],
-       [-8., -7., -5., -1., -6., -2., -4.]])</code></pre>
+<pre><code>array([1.6, 1.3, 1.5, 1.6, 1.5, 0.9, 1.6, 0.7, 0.6, 0.5, 1.3, 1.4, 1.1,
+       0.7, 0.8, 0.9, 1.2, 1.4, 1.5, 1.2, 0.8, 1.1, 0.8, 0.9, 0.3, 0.6,
+       1. , 1.3, 1.4, 1.9, 0.5, 1.1, 1.2, 1.5, 2. , 0.8, 1.3, 1.2, 1.7,
+       0.9, 0.4, 0.9, 0.9, 1.2, 0.5])</code></pre>
 </div>
 </div>
-<p>Create an orthogonal LHD with m=5. So n=2^m+1=33 runs and k=5+7=11 factors</p>
+<p>Calculate all row pairwise inter-site distances of <code>random_lhd</code> with q=2 (Euclidean)</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OLHD_Cioppa07(m<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.pairwise_InterSite(random_lhd,q<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[  1.,  -2.,  -4.,  -8., -16.,   3.,   7.,  15.,   5.,  13.,   9.],
-       [  2.,   1.,  -3.,  -7., -15.,  -4.,  -8., -16.,   6.,  14.,  10.],
-       [  3.,  -4.,   2.,  -6., -14.,  -1.,   5.,  13.,  -7., -15.,  11.],
-       [  4.,   3.,   1.,  -5., -13.,   2.,  -6., -14.,  -8., -16.,  12.],
-       [  5.,  -6.,  -8.,   4., -12.,   7.,  -3.,  11.,  -1.,   9., -13.],
-       [  6.,   5.,  -7.,   3., -11.,  -8.,   4., -12.,  -2.,  10., -14.],
-       [  7.,  -8.,   6.,   2., -10.,  -5.,  -1.,   9.,   3., -11., -15.],
-       [  8.,   7.,   5.,   1.,  -9.,   6.,   2., -10.,   4., -12., -16.],
-       [  9., -10., -12., -16.,   8.,  11.,  15.,  -7.,  13.,  -5.,  -1.],
-       [ 10.,   9., -11., -15.,   7., -12., -16.,   8.,  14.,  -6.,  -2.],
-       [ 11., -12.,  10., -14.,   6.,  -9.,  13.,  -5., -15.,   7.,  -3.],
-       [ 12.,  11.,   9., -13.,   5.,  10., -14.,   6., -16.,   8.,  -4.],
-       [ 13., -14., -16.,  12.,   4.,  15., -11.,  -3.,  -9.,  -1.,   5.],
-       [ 14.,  13., -15.,  11.,   3., -16.,  12.,   4., -10.,  -2.,   6.],
-       [ 15., -16.,  14.,  10.,   2., -13.,  -9.,  -1.,  11.,   3.,   7.],
-       [ 16.,  15.,  13.,   9.,   1.,  14.,  10.,   2.,  12.,   4.,   8.],
-       [  0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
-       [ -1.,   2.,   4.,   8.,  16.,  -3.,  -7., -15.,  -5., -13.,  -9.],
-       [ -2.,  -1.,   3.,   7.,  15.,   4.,   8.,  16.,  -6., -14., -10.],
-       [ -3.,   4.,  -2.,   6.,  14.,   1.,  -5., -13.,   7.,  15., -11.],
-       [ -4.,  -3.,  -1.,   5.,  13.,  -2.,   6.,  14.,   8.,  16., -12.],
-       [ -5.,   6.,   8.,  -4.,  12.,  -7.,   3., -11.,   1.,  -9.,  13.],
-       [ -6.,  -5.,   7.,  -3.,  11.,   8.,  -4.,  12.,   2., -10.,  14.],
-       [ -7.,   8.,  -6.,  -2.,  10.,   5.,   1.,  -9.,  -3.,  11.,  15.],
-       [ -8.,  -7.,  -5.,  -1.,   9.,  -6.,  -2.,  10.,  -4.,  12.,  16.],
-       [ -9.,  10.,  12.,  16.,  -8., -11., -15.,   7., -13.,   5.,   1.],
-       [-10.,  -9.,  11.,  15.,  -7.,  12.,  16.,  -8., -14.,   6.,   2.],
-       [-11.,  12., -10.,  14.,  -6.,   9., -13.,   5.,  15.,  -7.,   3.],
-       [-12., -11.,  -9.,  13.,  -5., -10.,  14.,  -6.,  16.,  -8.,   4.],
-       [-13.,  14.,  16., -12.,  -4., -15.,  11.,   3.,   9.,   1.,  -5.],
-       [-14., -13.,  15., -11.,  -3.,  16., -12.,  -4.,  10.,   2.,  -6.],
-       [-15.,  16., -14., -10.,  -2.,  13.,   9.,   1., -11.,  -3.,  -7.],
-       [-16., -15., -13.,  -9.,  -1., -14., -10.,  -2., -12.,  -4.,  -8.]])</code></pre>
+<pre><code>array([0.9486833 , 0.80622577, 0.94339811, 1.06770783, 1.00498756,
+       0.53851648, 1.04880885, 0.43588989, 0.42426407, 0.33166248,
+       0.94339811, 0.90553851, 0.72801099, 0.51961524, 0.48989795,
+       0.53851648, 0.70710678, 0.9486833 , 0.94339811, 0.70710678,
+       0.48989795, 0.76811457, 0.50990195, 0.64031242, 0.17320508,
+       0.37416574, 0.58309519, 0.83066239, 0.81240384, 1.1       ,
+       0.3       , 0.64031242, 0.78740079, 0.87749644, 1.17473401,
+       0.54772256, 0.78102497, 0.78740079, 1.07238053, 0.59160798,
+       0.24494897, 0.53851648, 0.64031242, 0.86023253, 0.3       ])</code></pre>
 </div>
 </div>
 

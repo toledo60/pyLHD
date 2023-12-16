@@ -47,6 +47,47 @@ def permute_columns(arr: npt.ArrayLike, columns: Optional[List[Integral]] = None
   return arr
 
 
+def permute_rows(arr: npt.ArrayLike, rows: Optional[List[Integral]] = None,
+                 seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
+  """Randomly permute rows in a numpy ndarray
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      rows (Optional[List[int]], optional): If `rows` is None all columns will be randomly permuted, otherwise provide a list of rows to permute. Defaults to None.
+      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+          If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
+  Returns:
+      numpy ndarray with rows of choice randomly permuted 
+  
+  Examples:
+  ```{python}
+  import pyLHD
+  x = pyLHD.LatinHypercube(size = (5,3), seed = 1)
+  x
+  ```
+  Permute all columns
+  ```{python}
+  pyLHD.permute_rows(x)
+  ```
+  Permute columns [0,1] with `seed=1`
+  ```{python}
+  pyLHD.permute_rows(x, rows = [0,1], seed = 1)
+  ```
+  """                 
+  rng = check_seed(seed)
+
+  if rows is not None:
+    for i in rows:
+        rng.shuffle(arr[i, :])
+  else:
+    n_rows, n_columns = arr.shape
+    ix_i = np.tile(np.arange(n_rows), (n_columns, 1)).T
+    ix_j = rng.random((n_rows, n_columns)).argsort(axis=1)
+    arr = arr[ix_i, ix_j]
+
+  return arr
+
+
 def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
                   seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
   """ Swap two random elements in a matrix

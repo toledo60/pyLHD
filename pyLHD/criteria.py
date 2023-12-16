@@ -105,6 +105,34 @@ def InterSite(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
   return np.sum(np.abs(arr[i, :] - arr[j, :])**q)**(1/q)
 
 
+def pairwise_InterSite(arr: npt.ArrayLike, q:int = 1) -> npt.ArrayLike:
+  """ Calculate the Inter-site Distance between all pairwise rows
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      q (int, optional): The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
+
+  Returns:
+      All row pairwise Inter-site distances (rectangular or Euclidean)
+  
+  Examples:
+  Calculate all row pairwise inter-site distances of `random_lhd` with q=1 (rectangular)
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.LatinHypercube(size = (10,3))
+  pyLHD.pairwise_InterSite(random_lhd)
+  ```
+  Calculate all row pairwise inter-site distances of `random_lhd` with q=2 (Euclidean)
+  ```{python}
+  pyLHD.pairwise_InterSite(random_lhd,q=2)
+  ```
+  """
+
+  n = arr.shape[0]
+  lq_distances = np.array([InterSite(arr, i=i, j=j, q=q) for i in range(n - 1) for j in range(i + 1, n)])
+  return lq_distances
+
+
 def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   """ Calculate the phi_p Criterion
 
@@ -129,10 +157,36 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   ```
 
   """
-  n = arr.shape[0]
-  distances = np.array([InterSite(arr, i=i, j=j, q=q) for i in range(n - 1) for j in range(i + 1, n)])
+  distances = pairwise_InterSite(arr, q=q)
   isd = np.sum(distances**(-p))
   return np.sum(isd)**(1/p) 
+
+
+def LqDistance(arr,q=1) -> float:
+  """Calculate the Lq-Distance of a Latin Hypercube Design
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      q (int, optional): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. Default is q=1.
+
+  Returns:
+      The $L_q$ distance of a LHD. Defined as $d = min \{ arr(i,j) : i  \\neq j, \, i,j = 1,2,...,n \}$
+          The maximin $L_q$-distance design is defined as the one which maximizes $d$
+
+  Examples:
+  Calculate the $L_1$ distance of `random_lhd` with q=1 (rectangular)
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.LatinHypercube(size = (10,3))
+  pyLHD.LqDistance(random_lhd)
+  ``` 
+
+  Calculate the $L_2$ distance of `random_lhd` with q=2 (Euclidean)
+  ```{python}
+  pyLHD.LqDistance(random_lhd, q = 2)
+  ```    
+  """
+  return pairwise_InterSite(arr,q=q).min()
 
 
 def discrepancy(arr: npt.ArrayLike,

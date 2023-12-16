@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyLHD"
-version = "0.5"
+version = "0.5.1"
 description = "Latin Hypercubes in Python"
 authors = [
     {name = "Jose Toledo", email = "toledo60@protonmail.com" }
@@ -19,9 +19,6 @@ classifiers=[
     "Operating System :: OS Independent"
 ]
 
-
-[project.optional-dependencies]
-test = [ "scipy","pytest"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

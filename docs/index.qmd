@@ -33,6 +33,8 @@ Space-filling Criterias for LHD
 | [criteria.coverage](criteria.coverage.qmd#pyLHD.criteria.coverage) | Compute the coverage measure for a design |
 | [criteria.discrepancy](criteria.discrepancy.qmd#pyLHD.criteria.discrepancy) | Discrepancy of a given sample |
 | [criteria.InterSite](criteria.InterSite.qmd#pyLHD.criteria.InterSite) | Calculate the Inter-site Distance |
+| [criteria.pairwise_InterSite](criteria.pairwise_InterSite.qmd#pyLHD.criteria.pairwise_InterSite) | Calculate the Inter-site Distance between all pairwise rows |
+| [criteria.LqDistance](criteria.LqDistance.qmd#pyLHD.criteria.LqDistance) | Calculate the Lq-Distance of a Latin Hypercube Design |
 | [criteria.MaxAbsCor](criteria.MaxAbsCor.qmd#pyLHD.criteria.MaxAbsCor) | Calculate the Maximum Absolute Correlation |
 | [criteria.maximin](criteria.maximin.qmd#pyLHD.criteria.maximin) | Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points. |
 | [criteria.MeshRatio](criteria.MeshRatio.qmd#pyLHD.criteria.MeshRatio) | Compute the meshratio criterion for a given design |
@@ -50,6 +52,7 @@ miscellaneous utilities for working with LHDs
 | [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
 | [helpers.distance_matrix](helpers.distance_matrix.qmd#pyLHD.helpers.distance_matrix) | Distance matrix based on specified distance measure |
 | [helpers.permute_columns](helpers.permute_columns.qmd#pyLHD.helpers.permute_columns) | Randomly permute columns in a numpy ndarray |
+| [helpers.permute_rows](helpers.permute_rows.qmd#pyLHD.helpers.permute_rows) | Randomly permute rows in a numpy ndarray |
 | [helpers.scale](helpers.scale.qmd#pyLHD.helpers.scale) | Sample scaling from unit hypercube to different bounds |
 | [helpers.swap_elements](helpers.swap_elements.qmd#pyLHD.helpers.swap_elements) | Swap two random elements in a matrix |
 | [helpers.williams_transform](helpers.williams_transform.qmd#pyLHD.helpers.williams_transform) | Williams Transformation |

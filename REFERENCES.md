@@ -9,7 +9,7 @@ https://people.sc.fsu.edu/~jburkardt/.
 - `discrepancy`: Fang K.T, Li R. and Sudjianto A. (2006) Design and Modeling for Computer Experiments, Chapman & Hall
 
   
-- `GLPdesign`: Korobov, A. N. "The approximate computation of multiple integrals." Dokl. Akad. Nauk SSSR. Vol. 124. 1959
+- `GoodLatticePoint`: Korobov, A. N. "The approximate computation of multiple integrals." Dokl. Akad. Nauk SSSR. Vol. 124. 1959
 
   
 - `MaxAbsCor`: Georgiou, Stelios D. "Orthogonal Latin hypercube designs from generalized orthogonal designs." Journal of Statistical Planning and Inference 139.4 (2009): 1530-1540
