@@ -49,10 +49,13 @@ miscellaneous utilities for working with LHDs
 | | |
 | --- | --- |
 | [helpers.check_bounds](helpers.check_bounds.qmd#pyLHD.helpers.check_bounds) | Check conditions for bounds input |
-| [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
+| [helpers.column_combinations](helpers.column_combinations.qmd#pyLHD.helpers.column_combinations) | Generates all unique combinations of columns from the given array, selecting 'k' columns at a time. |
 | [helpers.distance_matrix](helpers.distance_matrix.qmd#pyLHD.helpers.distance_matrix) | Distance matrix based on specified distance measure |
+| [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
+| [helpers.lapply](helpers.lapply.qmd#pyLHD.helpers.lapply) | Apply a function to each item in a list |
 | [helpers.permute_columns](helpers.permute_columns.qmd#pyLHD.helpers.permute_columns) | Randomly permute columns in a numpy ndarray |
 | [helpers.permute_rows](helpers.permute_rows.qmd#pyLHD.helpers.permute_rows) | Randomly permute rows in a numpy ndarray |
+| [helpers.replace_values](helpers.replace_values.qmd#pyLHD.helpers.replace_values) | Replace values in a numpy array based on a provided mapping dictionary |
 | [helpers.scale](helpers.scale.qmd#pyLHD.helpers.scale) | Sample scaling from unit hypercube to different bounds |
 | [helpers.swap_elements](helpers.swap_elements.qmd#pyLHD.helpers.swap_elements) | Swap two random elements in a matrix |
 | [helpers.williams_transform](helpers.williams_transform.qmd#pyLHD.helpers.williams_transform) | Williams Transformation |

@@ -522,7 +522,7 @@
     "href": "docs/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a (n x d) Latin square, where each column is a random permutation of {1,2,…,n}\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance\n\n\ncriteria.pairwise_InterSite\nCalculate the Inter-site Distance between all pairwise rows\n\n\ncriteria.LqDistance\nCalculate the Lq-Distance of a Latin Hypercube Design\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.williams_transform\nWilliams Transformation"
+    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a (n x d) Latin square, where each column is a random permutation of {1,2,…,n}\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance\n\n\ncriteria.pairwise_InterSite\nCalculate the Inter-site Distance between all pairwise rows\n\n\ncriteria.LqDistance\nCalculate the Lq-Distance of a Latin Hypercube Design\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.eval_design\nEvaluate a design based on a chosen criteria, a simple wrapper for all criteria in pyLHD\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.williams_transform\nWilliams Transformation"
   },
   {
     "objectID": "docs/index.html#base-designs",
@@ -1054,7 +1054,7 @@
     "href": "docs/helpers.williams_transform.html#examples",
     "title": "helpers.williams_transform",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (5,3))\nrandom_lhd\n\narray([[0.78678475, 0.18678475, 0.18678475],\n       [0.58678475, 0.58678475, 0.78678475],\n       [0.38678475, 0.78678475, 0.98678475],\n       [0.18678475, 0.98678475, 0.38678475],\n       [0.98678475, 0.38678475, 0.58678475]])\n\n\nChange the baseline\n\npyLHD.williams_transform(random_lhd,baseline=3)\n\narray([[4.2, 3. , 3. ],\n       [3.8, 3.8, 4.2],\n       [3.4, 4.2, 4.6],\n       [3. , 4.6, 3.4],\n       [4.6, 3.4, 3.8]])"
+    "text": "Examples\n\nimport pyLHD\nrandom_ls = pyLHD.LatinSquare(size = (5,3))\nrandom_ls\n\narray([[3, 2, 1],\n       [4, 1, 3],\n       [1, 3, 5],\n       [5, 4, 4],\n       [2, 5, 2]])\n\n\nChange the baseline\n\npyLHD.williams_transform(random_ls,baseline=3)\n\narray([[7, 5, 3],\n       [6, 3, 7],\n       [3, 7, 4],\n       [4, 6, 6],\n       [5, 4, 5]])"
   },
   {
     "objectID": "notebooks/intro_pyLHD.html",
@@ -1075,7 +1075,7 @@
     "href": "docs/index.html#helpers",
     "title": "Function reference",
     "section": "",
-    "text": "miscellaneous utilities for working with LHDs\n\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.williams_transform\nWilliams Transformation"
+    "text": "miscellaneous utilities for working with LHDs\n\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.williams_transform\nWilliams Transformation"
   },
   {
     "objectID": "docs/helpers.check_bounds.html",
@@ -1677,13 +1677,104 @@
     "href": "docs/criteria.LqDistance.html#returns",
     "title": "criteria.LqDistance",
     "section": "Returns",
-    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nfloat\nThe \\(L_q\\) distance of a LHD. Defined as \\(d = min \\{ arr(i,j) : i \\neq j, \\, i,j = 1,2,...,n \\}\\) The maximin \\(L_q\\)-distance design is defined as the one which maximizes \\(d\\)"
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nfloat\nThe \\(L_q\\) distance of a LHD. Defined as \\(d = min \\{ InterSite(arr(i,j)) : i \\neq j, \\, i,j = 1,2,...,n \\}\\) The maximin \\(L_q\\)-distance design is defined as the one which maximizes \\(d\\)"
   },
   {
     "objectID": "docs/criteria.LqDistance.html#examples",
     "href": "docs/criteria.LqDistance.html#examples",
     "title": "criteria.LqDistance",
     "section": "Examples",
-    "text": "Examples\nCalculate the \\(L_1\\) distance of random_lhd with q=1 (rectangular)\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (10,3))\npyLHD.LqDistance(random_lhd)\n\n0.29999999999999993\n\n\nCalculate the \\(L_2\\) distance of random_lhd with q=2 (Euclidean)\n\npyLHD.LqDistance(random_lhd, q = 2)\n\n0.17320508075688767"
+    "text": "Examples\nCalculate the \\(L_1\\) distance of random_lhd with q=1 (rectangular)\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (10,3))\npyLHD.LqDistance(random_lhd)\n\n0.49999999999999994\n\n\nCalculate the \\(L_2\\) distance of random_lhd with q=2 (Euclidean)\n\npyLHD.LqDistance(random_lhd, q = 2)\n\n0.3"
+  },
+  {
+    "objectID": "docs/helpers.lapply.html",
+    "href": "docs/helpers.lapply.html",
+    "title": "helpers.lapply",
+    "section": "",
+    "text": "helpers.lapply(lst, func, **kwargs)\nApply a function to each item in a list"
+  },
+  {
+    "objectID": "docs/helpers.lapply.html#parameters",
+    "href": "docs/helpers.lapply.html#parameters",
+    "title": "helpers.lapply",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nlst\nList[Any]\nList of elements to which the function will be applied\nrequired\n\n\nfunc\nCallable[…, Any]\nThe function to apply. It can be a built-in function or a user-defined function\nrequired\n\n\nkwargs\ndict[str, Any]\nAdditional keyword arguments to pass to the function\n{}"
+  },
+  {
+    "objectID": "docs/helpers.lapply.html#returns",
+    "href": "docs/helpers.lapply.html#returns",
+    "title": "helpers.lapply",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nList[Any]\nList[Any]: A list containing the results of applying func to each item in lst."
+  },
+  {
+    "objectID": "docs/helpers.replace_values.html",
+    "href": "docs/helpers.replace_values.html",
+    "title": "helpers.replace_values",
+    "section": "",
+    "text": "helpers.replace_values(arr, mapping)\nReplace values in a numpy array based on a provided mapping dictionary"
+  },
+  {
+    "objectID": "docs/helpers.replace_values.html#parameters",
+    "href": "docs/helpers.replace_values.html#parameters",
+    "title": "helpers.replace_values",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy array with values to be replaced.\nrequired\n\n\nmapping\ndict\nA dictionary where keys correspond to values in arr and values are the replacement values.\nrequired"
+  },
+  {
+    "objectID": "docs/helpers.replace_values.html#returns",
+    "href": "docs/helpers.replace_values.html#returns",
+    "title": "helpers.replace_values",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nA numpy array with replaced values."
+  },
+  {
+    "objectID": "docs/helpers.replace_values.html#raises",
+    "href": "docs/helpers.replace_values.html#raises",
+    "title": "helpers.replace_values",
+    "section": "Raises",
+    "text": "Raises\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nValueError\nIf mapping does not contain the same unique values as in arr, or if the keys do not match."
+  },
+  {
+    "objectID": "docs/helpers.replace_values.html#examples",
+    "href": "docs/helpers.replace_values.html#examples",
+    "title": "helpers.replace_values",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_ls = pyLHD.LatinSquare(size = (4,3))\nrandom_ls\n\narray([[3, 4, 2],\n       [2, 1, 1],\n       [4, 2, 3],\n       [1, 3, 4]])\n\n\nConsider the mapping \\(1 \\rightarrow 2, 2 \\rightarrow 11, 3 \\rightarrow 12, 4 \\rightarrow 13\\)\n\nmapping = {1:10, 2:11, 3:12, 4:13}\npyLHD.replace_values(random_ls, mapping = mapping)\n\narray([[12, 13, 11],\n       [11, 10, 10],\n       [13, 11, 12],\n       [10, 12, 13]])"
+  },
+  {
+    "objectID": "docs/helpers.lapply.html#examples",
+    "href": "docs/helpers.lapply.html#examples",
+    "title": "helpers.lapply",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nl = [[1,2],[3,5], [3,1]]\npyLHD.lapply(l, func = min)\n\n[1, 3, 1]"
+  },
+  {
+    "objectID": "docs/helpers.column_combinations.html",
+    "href": "docs/helpers.column_combinations.html",
+    "title": "helpers.column_combinations",
+    "section": "",
+    "text": "helpers.column_combinations(arr, k)\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time."
+  },
+  {
+    "objectID": "docs/helpers.column_combinations.html#parameters",
+    "href": "docs/helpers.column_combinations.html#parameters",
+    "title": "helpers.column_combinations",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\nk\nint\nThe number of columns to include in each combination. Must be a positive integer and less than or equal to the number of columns in ‘arr’.\nrequired"
+  },
+  {
+    "objectID": "docs/helpers.column_combinations.html#returns",
+    "href": "docs/helpers.column_combinations.html#returns",
+    "title": "helpers.column_combinations",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nList[npt.ArrayLike]\nList[npt.ArrayLike]: A list of arrays, each being a combination of ‘k’ columns from the original array. The combinations are returned as slices of the original array, not copies."
+  },
+  {
+    "objectID": "docs/helpers.column_combinations.html#examples",
+    "href": "docs/helpers.column_combinations.html#examples",
+    "title": "helpers.column_combinations",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_ls = pyLHD.LatinSquare(size = (4,3))\nrandom_ls\n\narray([[1, 2, 3],\n       [4, 1, 4],\n       [2, 4, 1],\n       [3, 3, 2]])\n\n\nObtain all 2 column combinations of random_ls\n\npyLHD.column_combinations(random_ls, k = 2)\n\n[array([[1, 2],\n        [4, 1],\n        [2, 4],\n        [3, 3]]),\n array([[1, 3],\n        [4, 4],\n        [2, 1],\n        [3, 2]]),\n array([[2, 3],\n        [1, 4],\n        [4, 1],\n        [3, 2]])]"
   }
 ]

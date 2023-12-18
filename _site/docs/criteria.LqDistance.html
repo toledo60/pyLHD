@@ -324,14 +324,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.is_LHD.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.is_LHD</span></a>
+  <a href="../docs/helpers.column_combinations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.column_combinations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../docs/helpers.distance_matrix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.distance_matrix</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/helpers.is_LHD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_LHD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/helpers.lapply.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.lapply</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -344,6 +356,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../docs/helpers.permute_rows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.permute_rows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/helpers.replace_values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.replace_values</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -443,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>float</td>
-<td>The <span class="math inline">\(L_q\)</span> distance of a LHD. Defined as <span class="math inline">\(d = min \{ arr(i,j) : i \neq j, \, i,j = 1,2,...,n \}\)</span> The maximin <span class="math inline">\(L_q\)</span>-distance design is defined as the one which maximizes <span class="math inline">\(d\)</span></td>
+<td>The <span class="math inline">\(L_q\)</span> distance of a LHD. Defined as <span class="math inline">\(d = min \{ InterSite(arr(i,j)) : i \neq j, \, i,j = 1,2,...,n \}\)</span> The maximin <span class="math inline">\(L_q\)</span>-distance design is defined as the one which maximizes <span class="math inline">\(d\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -456,14 +474,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">3</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>0.29999999999999993</code></pre>
+<pre><code>0.49999999999999994</code></pre>
 </div>
 </div>
 <p>Calculate the <span class="math inline">\(L_2\)</span> distance of <code>random_lhd</code> with q=2 (Euclidean)</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(random_lhd, q <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>0.17320508075688767</code></pre>
+<pre><code>0.3</code></pre>
 </div>
 </div>
 

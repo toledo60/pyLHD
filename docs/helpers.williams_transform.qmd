@@ -23,10 +23,10 @@ Williams Transformation
 
 ```{python}
 import pyLHD
-random_lhd = pyLHD.LatinHypercube(size = (5,3))
-random_lhd
+random_ls = pyLHD.LatinSquare(size = (5,3))
+random_ls
 ```
 Change the baseline
 ```{python}
-pyLHD.williams_transform(random_lhd,baseline=3)
+pyLHD.williams_transform(random_ls,baseline=3)
 ```

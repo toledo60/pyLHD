@@ -1,0 +1,40 @@
+# helpers.replace_values { #pyLHD.helpers.replace_values }
+
+`helpers.replace_values(arr, mapping)`
+
+Replace values in a numpy array based on a provided mapping dictionary
+
+## Parameters
+
+| Name      | Type          | Description                                                                                  | Default    |
+|-----------|---------------|----------------------------------------------------------------------------------------------|------------|
+| `arr`     | npt.ArrayLike | A numpy array with values to be replaced.                                                    | _required_ |
+| `mapping` | dict          | A dictionary where keys correspond to values in `arr` and values are the replacement values. | _required_ |
+
+## Returns
+
+| Type          | Description                         |
+|---------------|-------------------------------------|
+| npt.ArrayLike | A numpy array with replaced values. |
+
+## Raises
+
+| Type       | Description                                                                                    |
+|------------|------------------------------------------------------------------------------------------------|
+| ValueError | If `mapping` does not contain the same unique values as in `arr`, or if the keys do not match. |
+
+## Examples
+
+
+
+
+```{python}
+import pyLHD
+random_ls = pyLHD.LatinSquare(size = (4,3))
+random_ls
+```
+Consider the mapping $1 \rightarrow 2, 2 \rightarrow 11, 3 \rightarrow 12, 4 \rightarrow 13$
+```{python}
+mapping = {1:10, 2:11, 3:12, 4:13}
+pyLHD.replace_values(random_ls, mapping = mapping)
+```

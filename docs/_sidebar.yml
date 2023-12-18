@@ -31,10 +31,13 @@ website:
       section: Criteria
     - contents:
       - docs/helpers.check_bounds.qmd
-      - docs/helpers.is_LHD.qmd
+      - docs/helpers.column_combinations.qmd
       - docs/helpers.distance_matrix.qmd
+      - docs/helpers.is_LHD.qmd
+      - docs/helpers.lapply.qmd
       - docs/helpers.permute_columns.qmd
       - docs/helpers.permute_rows.qmd
+      - docs/helpers.replace_values.qmd
       - docs/helpers.scale.qmd
       - docs/helpers.swap_elements.qmd
       - docs/helpers.williams_transform.qmd

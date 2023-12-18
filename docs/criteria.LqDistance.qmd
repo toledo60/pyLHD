@@ -13,9 +13,9 @@ Calculate the Lq-Distance of a Latin Hypercube Design
 
 ## Returns
 
-| Type   | Description                                                                                                                                                                  |
-|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| float  | The $L_q$ distance of a LHD. Defined as $d = min \{ arr(i,j) : i  \neq j, \, i,j = 1,2,...,n \}$ The maximin $L_q$-distance design is defined as the one which maximizes $d$ |
+| Type   | Description                                                                                                                                                                             |
+|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| float  | The $L_q$ distance of a LHD. Defined as $d = min \{ InterSite(arr(i,j)) : i  \neq j, \, i,j = 1,2,...,n \}$ The maximin $L_q$-distance design is defined as the one which maximizes $d$ |
 
 ## Examples
 

@@ -170,7 +170,7 @@ def LqDistance(arr,q=1) -> float:
       q (int, optional): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. Default is q=1.
 
   Returns:
-      The $L_q$ distance of a LHD. Defined as $d = min \{ arr(i,j) : i  \\neq j, \, i,j = 1,2,...,n \}$
+      The $L_q$ distance of a LHD. Defined as $d = min \{ InterSite(arr(i,j)) : i  \\neq j, \, i,j = 1,2,...,n \}$
           The maximin $L_q$-distance design is defined as the one which maximizes $d$
 
   Examples:

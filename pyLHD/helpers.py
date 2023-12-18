@@ -2,7 +2,95 @@ import math
 import numpy as np
 import numpy.typing as npt
 from numbers import Integral
-from typing import Optional, List, Union
+from typing import Optional, List, Union, Any, Callable
+from itertools import combinations
+
+
+def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -> npt.ArrayLike:
+  """ Distance matrix based on specified distance measure
+
+  Args:
+      arr (numpy.ndarray): A design matrix
+      metric (str, optional): Specifiy the following distance measure: 
+          'euclidean': Usual distance between the two vectors (L_2 norm)
+          'maximum': Maximum distance between two components of x and y (supremum norm)
+          'manhattan': Absolute distance between the two vectors (L_1 norm)
+          'minkowski': The p norm, the pth root of the sum of the pth powers of the differences of the components
+      
+      p (int, optional): The power of the Minkowski distance. Defaults to 2.
+
+  Returns:
+      The calculated distance matrix baed on specified distance measure
+  
+  Examples:
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.LatinHypercube(size = (5,3))
+  pyLHD.distance_matrix(random_lhd)
+  ```
+  ```{python}
+  pyLHD.distance_matrix(random_lhd, metric = 'manhattan')
+  ```
+  ```{python}
+  pyLHD.distance_matrix(random_lhd, metric = 'minkowski', p=5)
+  ```
+  """
+  p1 = arr[:, np.newaxis]
+  p2 = arr[np.newaxis,:]
+
+  metrics = {
+      'euclidean': np.linalg.norm(p1 - p2, axis=-1),
+      'manhattan': np.sum(np.abs(p1 - p2), axis=-1),
+      'minkowski': np.sum(np.abs(p1 - p2)**p, axis=-1)**(1/p),
+      'maximum': np.amax(np.abs(p1 - p2), axis=-1)
+  }
+
+  return metrics[metric]  
+
+
+def replace_values(arr: npt.ArrayLike, mapping: dict) -> npt.ArrayLike:
+  """
+  Replace values in a numpy array based on a provided mapping dictionary
+
+  Args:
+      arr (npt.ArrayLike): A numpy array with values to be replaced.
+      mapping (dict): A dictionary where keys correspond to values in `arr` and values are the replacement values.
+
+  Returns:
+      A numpy array with replaced values.
+
+  Raises:
+      ValueError: If `mapping` does not contain the same unique values as in `arr`, or if the keys do not match.
+  
+  Examples:
+  
+  ```{python}
+  import pyLHD
+  random_ls = pyLHD.LatinSquare(size = (4,3))
+  random_ls
+  ```
+  Consider the mapping $1 \\rightarrow 2, 2 \\rightarrow 11, 3 \\rightarrow 12, 4 \\rightarrow 13$
+  ```{python}
+  mapping = {1:10, 2:11, 3:12, 4:13}
+  pyLHD.replace_values(random_ls, mapping = mapping)
+  ```
+
+  """  
+  unique_values_set = set(np.unique(arr))
+  mapping_keys_set = set(mapping.keys())
+
+  if unique_values_set != mapping_keys_set:
+    missing_keys = unique_values_set - mapping_keys_set
+    extra_keys = mapping_keys_set - unique_values_set
+    error_message = []
+    if missing_keys:
+      error_message.append(f"Missing keys in mapping: {missing_keys}")
+    if extra_keys:
+      error_message.append(f"Extra keys in mapping: {extra_keys}")
+    raise ValueError(' '.join(error_message))
+
+  return np.vectorize(mapping.get)(arr)
+
 
 
 def permute_columns(arr: npt.ArrayLike, columns: Optional[List[Integral]] = None,
@@ -78,7 +166,7 @@ def permute_rows(arr: npt.ArrayLike, rows: Optional[List[Integral]] = None,
 
   if rows is not None:
     for i in rows:
-        rng.shuffle(arr[i, :])
+      rng.shuffle(arr[i, :])
   else:
     n_rows, n_columns = arr.shape
     ix_i = np.tile(np.arange(n_rows), (n_columns, 1)).T
@@ -124,7 +212,6 @@ def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
 
   if type == 'col':
     location = rng.choice(n_rows, 2, replace=False)
-
     arr[location[0], idx], arr[location[1],idx] = arr[location[1], idx], arr[location[0], idx]
   else:
     location = rng.choice(n_columns, 2, replace=False)
@@ -133,7 +220,38 @@ def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
   return arr
 
 
-def williams_transform(arr: npt.ArrayLike,baseline: int =1) -> npt.ArrayLike:
+def column_combinations(arr: npt.ArrayLike, k:int) -> List[npt.ArrayLike]:
+  """
+  Generates all unique combinations of columns from the given array, selecting 'k' columns at a time.
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      k (int): The number of columns to include in each combination. Must be a positive integer and less than or equal to the number of columns in 'arr'.
+
+  Returns:
+      List[npt.ArrayLike]: A list of arrays, each being a combination of 'k' columns from the original array. The combinations are returned as slices of the original array, not copies.
+  
+  Examples:
+
+  ```{python}
+  import pyLHD
+  random_ls = pyLHD.LatinSquare(size = (4,3))
+  random_ls
+  ```
+  Obtain all 2 column combinations of `random_ls`
+  ```{python}
+  pyLHD.column_combinations(random_ls, k = 2)
+  ```
+
+  """
+  n_columns = arr.shape[1]
+  if k <=0 or k > n_columns:
+    raise ValueError(" `k` must be a positive integer and less than or equal to the number of columns in 'arr'")
+  column_combinations = combinations(range(n_columns),k)
+  return [arr[:,[i,j]] for i,j in column_combinations]
+
+
+def williams_transform(arr: npt.ArrayLike, baseline: int =1) -> npt.ArrayLike:
   """ Williams Transformation
 
   Args:
@@ -146,33 +264,28 @@ def williams_transform(arr: npt.ArrayLike,baseline: int =1) -> npt.ArrayLike:
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.LatinHypercube(size = (5,3))
-  random_lhd
+  random_ls = pyLHD.LatinSquare(size = (5,3))
+  random_ls
   ```
   Change the baseline
   ```{python}
-  pyLHD.williams_transform(random_lhd,baseline=3)
+  pyLHD.williams_transform(random_ls,baseline=3)
   ```
   """
-  n, k = arr.shape
+  n = arr.shape[0]
 
-  elements = np.unique(arr[:, 0])
-  min_elements = np.amin(elements)
+  # Adjust the array based on the minimum value in the first column
+  min_element = np.amin(arr[:, 0])
+  if min_element != 0:
+      arr -= min_element
 
-  if min_elements != 0:
-    arr = arr-min_elements
-  
-  wt = arr
+  # Apply the weight transformation
+  wt = np.where(arr < (n / 2), 2 * arr + 1, 2 * (n - arr))
 
-  for i in range(n):
-    for j in range(k):
-      if arr[i,j] < (n/2):
-        wt[i,j] = 2*arr[i,j]+1
-      else:
-        wt[i,j] = 2* (n-arr[i,j])
-  
-  if baseline !=1:
-    wt = wt+ (baseline-1)
+  # Adjust the weight based on the baseline
+  if baseline != 1:
+      wt += (baseline - 1)
+
   return wt
 
 
@@ -202,46 +315,34 @@ def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list) -> npt.Arr
   return lb + arr * (ub - lb)
 
 
-def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -> npt.ArrayLike:
-  """ Distance matrix based on specified distance measure
+#################################
+####      MISC    ###############
+#################################
+
+def lapply(lst: List[Any], func: Callable[..., Any], **kwargs: dict[str, Any]) -> List[Any]:
+  """Apply a function to each item in a list
 
   Args:
-      arr (numpy.ndarray): A design matrix
-      metric (str, optional): Specifiy the following distance measure: 
-          'euclidean': Usual distance between the two vectors (L_2 norm)
-          'maximum': Maximum distance between two components of x and y (supremum norm)
-          'manhattan': Absolute distance between the two vectors (L_1 norm)
-          'minkowski': The p norm, the pth root of the sum of the pth powers of the differences of the components
-      
-      p (int, optional): The power of the Minkowski distance. Defaults to 2.
+      lst (List[Any]): List of elements to which the function will be applied
+      func (Callable[..., Any]): The function to apply. It can be a built-in function or a user-defined function
+      kwargs (dict[str, Any]): Additional keyword arguments to pass to the function
 
   Returns:
-      The calculated distance matrix baed on specified distance measure
-  
+      List[Any]: A list containing the results of applying `func` to each item in `lst`.
+
   Examples:
+
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.LatinHypercube(size = (5,3))
-  pyLHD.distance_matrix(random_lhd)
+  l = [[1,2],[3,5], [3,1]]
+  pyLHD.lapply(l, func = min)
   ```
-  ```{python}
-  pyLHD.distance_matrix(random_lhd, metric = 'manhattan')
-  ```
-  ```{python}
-  pyLHD.distance_matrix(random_lhd, metric = 'minkowski', p=5)
-  ```
+
   """
-  p1 = arr[:, np.newaxis]
-  p2 = arr[np.newaxis,:]
+  if not isinstance(lst, list):
+    raise TypeError("The argument `lst` must be a list")
+  return [func(item,**kwargs) for item in lst]
 
-  metrics = {
-      'euclidean': np.linalg.norm(p1 - p2, axis=-1),
-      'manhattan': np.sum(np.abs(p1 - p2), axis=-1),
-      'minkowski': np.sum(np.abs(p1 - p2)**p, axis=-1)**(1/p),
-      'maximum': np.amax(np.abs(p1 - p2), axis=-1)
-  }
-
-  return metrics[metric]  
 
 
 #################################
@@ -322,7 +423,7 @@ def check_bounds(arr: npt.ArrayLike,
   return lower_bounds, upper_bounds
 
 
-def is_prime(n):
+def is_prime(n:int) -> bool:
   """Determine if a number is prime
 
   Args:
