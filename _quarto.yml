@@ -7,13 +7,18 @@ metadata-files:
 
 website: 
   navbar:
-    background: primary
     search: true
     left:
       - text: "Introduction"
         href: notebooks/intro_pyLHD.ipynb
       - text: "Function References"
         href: docs/index.qmd    
+
+
+format:
+  html:
+    theme: cosmo
+    toc: true
 
 
 quartodoc:
