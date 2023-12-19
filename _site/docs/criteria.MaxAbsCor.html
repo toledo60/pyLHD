@@ -111,11 +111,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../notebooks/intro_pyLHD.html" rel="" target="">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Examples</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../docs/index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Function References</span></a>
+ <span class="menu-text">Reference</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -299,6 +299,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../docs/criteria.UniformProCriterion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">criteria.UniformProCriterion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../docs/criteria.eval_design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">criteria.eval_design</span></a>
   </div>
@@ -336,6 +342,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../docs/helpers.is_LHD.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.is_LHD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/helpers.is_balanced_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_balanced_design</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -394,6 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   </ul>
 </nav>
@@ -462,6 +475,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p>References for the implementation of the maximum absolute correlation</p>
+<ul>
+<li>Georgiou, Stelios D. “Orthogonal Latin hypercube designs from generalized orthogonal designs.” Journal of Statistical Planning and Inference 139.4 (2009): 1530-1540.</li>
+</ul>
+</section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="cell" data-execution_count="1">
@@ -469,7 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">3</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.MaxAbsCor(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>0.5030303030303029</code></pre>
+<pre><code>0.1393939393939395</code></pre>
 </div>
 </div>
 

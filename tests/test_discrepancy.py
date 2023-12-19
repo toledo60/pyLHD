@@ -1,5 +1,5 @@
 from scipy.stats import qmc
-from pyLHD.criteria import discrepancy
+from pyLHD.criteria import discrepancy, UniformProCriterion
 import pytest
 from pytest import approx
 import numpy as np
@@ -71,4 +71,34 @@ def test_discrepancy(n, d, expected,method):
     sample = sampler.random(n=n)
     result = discrepancy(sample, method=method)
     assert result == approx(expected)
+
+
+def test_balanced_centered_L2():
+  balanced_design = np.array([
+      [2, 3, 2], [4, 5, 13], [0, 11, 9], [3, 16, 17],
+      [1, 22, 22], [8, 0, 7], [6, 8, 19], [9, 14, 24],
+      [5, 18, 4], [7, 20, 11], [12, 2, 21], [10, 9, 0],
+      [14, 12, 14], [13, 15, 6], [11, 24, 15], [17, 4, 10],
+      [15, 7, 5], [19, 10, 18], [16, 19, 20],
+      [18, 23, 1], [21, 1, 16], [23, 6, 23],
+      [22, 13, 3], [20, 17, 12], [24, 21, 8]
+  ])
+  result = discrepancy(balanced_design, method='balanced_centered_L2')
+  expected = np.sqrt(0.0015340707624760253)
+  assert result == approx(expected)
+
+
+def test_UniformProjection():
+  upd = np.array([
+      [2, 3, 2], [4, 5, 13], [0, 11, 9], [3, 16, 17],
+      [1, 22, 22], [8, 0, 7], [6, 8, 19], [9, 14, 24],
+      [5, 18, 4], [7, 20, 11], [12, 2, 21], [10, 9, 0],
+      [14, 12, 14], [13, 15, 6], [11, 24, 15], [17, 4, 10],
+      [15, 7, 5], [19, 10, 18], [16, 19, 20],
+      [18, 23, 1], [21, 1, 16], [23, 6, 23],
+      [22, 13, 3], [20, 17, 12], [24, 21, 8]
+  ])
+  result = UniformProCriterion(upd)
+  expected = 0.000527906844443852
+  assert result == approx(expected)
 

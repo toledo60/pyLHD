@@ -99,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -113,11 +113,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../notebooks/intro_pyLHD.html" rel="" target="">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Examples</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../docs/index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Function References</span></a>
+ <span class="menu-text">Reference</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -301,6 +301,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../docs/criteria.UniformProCriterion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">criteria.UniformProCriterion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../docs/criteria.eval_design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">criteria.eval_design</span></a>
   </div>
@@ -338,6 +344,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../docs/helpers.is_LHD.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.is_LHD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/helpers.is_balanced_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_balanced_design</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -389,7 +401,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
+  <li><a href="#raises" id="toc-raises" class="nav-link" data-scroll-target="#raises">Raises</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -490,10 +513,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_ls <span class="op">=</span> pyLHD.LatinSquare(size <span class="op">=</span> (<span class="dv">4</span>,<span class="dv">3</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>random_ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[3, 4, 2],
-       [2, 1, 1],
-       [4, 2, 3],
-       [1, 3, 4]])</code></pre>
+<pre><code>array([[1, 2, 4],
+       [3, 3, 2],
+       [4, 4, 1],
+       [2, 1, 3]])</code></pre>
 </div>
 </div>
 <p>Consider the mapping <span class="math inline">\(1 \rightarrow 2, 2 \rightarrow 11, 3 \rightarrow 12, 4 \rightarrow 13\)</span></p>
@@ -501,10 +524,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="dv">1</span>:<span class="dv">10</span>, <span class="dv">2</span>:<span class="dv">11</span>, <span class="dv">3</span>:<span class="dv">12</span>, <span class="dv">4</span>:<span class="dv">13</span>}</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pyLHD.replace_values(random_ls, mapping <span class="op">=</span> mapping)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[12, 13, 11],
-       [11, 10, 10],
-       [13, 11, 12],
-       [10, 12, 13]])</code></pre>
+<pre><code>array([[10, 11, 13],
+       [12, 12, 11],
+       [13, 13, 10],
+       [11, 10, 12]])</code></pre>
 </div>
 </div>
 

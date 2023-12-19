@@ -113,11 +113,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../notebooks/intro_pyLHD.html" rel="" target="">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Examples</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../docs/index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Function References</span></a>
+ <span class="menu-text">Reference</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -301,6 +301,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../docs/criteria.UniformProCriterion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">criteria.UniformProCriterion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../docs/criteria.eval_design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">criteria.eval_design</span></a>
   </div>
@@ -338,6 +344,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../docs/helpers.is_LHD.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.is_LHD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/helpers.is_balanced_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_balanced_design</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -484,14 +496,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">3</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(random_lhd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>0.49999999999999994</code></pre>
+<pre><code>0.5</code></pre>
 </div>
 </div>
 <p>Calculate the <span class="math inline">\(L_2\)</span> distance of <code>random_lhd</code> with q=2 (Euclidean)</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(random_lhd, q <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>0.3</code></pre>
+<pre><code>0.30000000000000004</code></pre>
 </div>
 </div>
 

@@ -97,7 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -111,11 +111,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../notebooks/intro_pyLHD.html" rel="" target="">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Examples</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../docs/index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Function References</span></a>
+ <span class="menu-text">Reference</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -299,6 +299,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../docs/criteria.UniformProCriterion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">criteria.UniformProCriterion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../docs/criteria.eval_design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">criteria.eval_design</span></a>
   </div>
@@ -322,14 +328,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/helpers.is_LHD.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.is_LHD</span></a>
+  <a href="../docs/helpers.column_combinations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.column_combinations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../docs/helpers.distance_matrix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.distance_matrix</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/helpers.is_LHD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_LHD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/helpers.is_balanced_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_balanced_design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/helpers.lapply.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.lapply</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -342,6 +366,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../docs/helpers.permute_rows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.permute_rows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/helpers.replace_values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.replace_values</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -369,7 +399,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -390,15 +430,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>base.LatinSquare(size, seed=None)</code></p>
-<p>Generate a (n x d) Latin square, where each column is a random permutation of {1,2,…,n}</p>
+<p><code>base.LatinSquare(size, baseline=1, seed=None)</code></p>
+<p>Generate a (n x d) Latin square, where each column is a random permutation from {baseline,baseline+1, …, baseline+(n-1)}</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 2%">
+<col style="width: 4%">
 <col style="width: 18%">
-<col style="width: 74%">
+<col style="width: 73%">
 <col style="width: 4%">
 </colgroup>
 <thead>
@@ -417,6 +457,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><em>required</em></td>
 </tr>
 <tr class="even">
+<td><code>baseline</code></td>
+<td>int</td>
+<td>A integer, which defines the minimum value for each column of the matrix. Defaults to 1.</td>
+<td><code>1</code></td>
+</tr>
+<tr class="odd">
 <td><code>seed</code></td>
 <td>Optional[Union[Integral, np.random.Generator]])</td>
 <td>If <code>seed</code>is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a `<code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>

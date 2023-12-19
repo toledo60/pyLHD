@@ -1,7 +1,7 @@
 import numpy as np 
 import numpy.typing as npt
 from typing import Literal
-from pyLHD.helpers import distance_matrix
+from pyLHD.helpers import distance_matrix, is_balanced_design, lapply, column_combinations
 
 def MaxAbsCor(arr: npt.ArrayLike) -> float:
   """ Calculate the Maximum Absolute Correlation
@@ -9,10 +9,14 @@ def MaxAbsCor(arr: npt.ArrayLike) -> float:
   Args:
       arr (npt.ArrayLike): A numpy ndarray
 
-
   Returns:
       Positive number indicating maximum absolute correlation. Rounded to 3 digits
-  
+
+  Notes:
+      References for the implementation of the maximum absolute correlation
+
+  - Georgiou, Stelios D. "Orthogonal Latin hypercube designs from generalized orthogonal designs." Journal of Statistical Planning and Inference 139.4 (2009): 1530-1540.  
+
   Examples:
     ```{python}
     import pyLHD
@@ -29,7 +33,6 @@ def AvgAbsCor(arr: npt.ArrayLike) -> float:
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
-
 
   Returns:
       A positive number indicating the average absolute correlation 
@@ -52,7 +55,6 @@ def MaxProCriterion(arr: npt.ArrayLike) -> float:
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
-
 
   Returns:
       Positive number indicating maximum projection criterion
@@ -190,7 +192,7 @@ def LqDistance(arr,q=1) -> float:
 
 
 def discrepancy(arr: npt.ArrayLike,
-                method: Literal["L2", "L2_star", "centered_L2", "modified_L2",
+                method: Literal["L2", "L2_star", "centered_L2", "modified_L2","balanced_centered_L2"
                                 "mixture_L2", "symmetric_L2", "wrap_around_L2"] = "centered_L2") -> float:
   """ Discrepancy of a given sample
 
@@ -217,10 +219,7 @@ def discrepancy(arr: npt.ArrayLike,
   pyLHD.discrepancy(random_lhd,method='L2_star')
   ``` 
   """
-  
-  if (np.amin(arr) < 0 or np.amax(arr) > 1):
-    raise ValueError('`arr` is not in unit hypercube')
-  
+    
   n_rows, n_columns = arr.shape
   
   if n_rows < n_columns:
@@ -291,8 +290,40 @@ def discrepancy(arr: npt.ArrayLike,
     sum1_matrix = 1.5 - pairwise_diff * (1 - pairwise_diff)
     sum1 = np.sum(np.prod(sum1_matrix, axis=2))
     value = np.sqrt((-((4 / 3) ** n_columns) + ((1 / n_rows ** 2) * sum1)))
+  
+  if method == 'balanced_centered_L2':
+    try:
+      s = np.unique(arr).size
+      is_balanced_design(arr, s = s)
+    except ValueError as e:
+      print(f"Error: {e}")
+      
+    # second sum
+    z = (2 * arr - s + 1) / (2 * s)
+    second_sum = np.prod(1 + 0.5 * np.abs(z) - 0.5 * np.abs(z)**2, axis=1).sum()
+    # first sum
+    z_abs = np.abs(z)
+    z_abs_diff = np.abs(z[:, np.newaxis, :] - z[np.newaxis, :, :])
+    first_sum = np.prod(1 + 0.5 * (z_abs[:, np.newaxis, :] + z_abs[np.newaxis, :, :]) - 0.5 * z_abs_diff, axis=2).sum()
+
+    value = np.sqrt((1 / n_rows**2) * first_sum - (2 / n_rows) * second_sum + (13 / 12)**n_columns)
 
   return value
+
+
+def UniformProCriterion(arr: npt.ArrayLike) -> float:
+  """Calculate the Uniform Projection Criterion
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+
+  Returns:
+      Uniform projection criteria
+  """
+  twoD_projections = column_combinations(arr, k=2)
+  balanced_CD = lapply(twoD_projections, discrepancy, method='balanced_centered_L2')
+  return np.mean([x**2 for x in balanced_CD])
+
 
 
 def coverage(arr: npt.ArrayLike) -> float:

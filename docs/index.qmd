@@ -6,7 +6,7 @@ Generate Random LHD
 
 | | |
 | --- | --- |
-| [base.LatinSquare](base.LatinSquare.qmd#pyLHD.base.LatinSquare) | Generate a (n x d) Latin square, where each column is a random permutation of {1,2,...,n} |
+| [base.LatinSquare](base.LatinSquare.qmd#pyLHD.base.LatinSquare) | Generate a (n x d) Latin square, where each column is a random permutation from {baseline,baseline+1, ..., baseline+(n-1)} |
 | [base.LatinHypercube](base.LatinHypercube.qmd#pyLHD.base.LatinHypercube) | Generate a random Latin Hypercube Design |
 | [base.GoodLatticePoint](base.GoodLatticePoint.qmd#pyLHD.base.GoodLatticePoint) | Good Lattice Point (GLP) Design  |
 
@@ -40,6 +40,7 @@ Space-filling Criterias for LHD
 | [criteria.MeshRatio](criteria.MeshRatio.qmd#pyLHD.criteria.MeshRatio) | Compute the meshratio criterion for a given design |
 | [criteria.MaxProCriterion](criteria.MaxProCriterion.qmd#pyLHD.criteria.MaxProCriterion) | Calculate the Maximum Projection Criterion |
 | [criteria.phi_p](criteria.phi_p.qmd#pyLHD.criteria.phi_p) | Calculate the phi_p Criterion |
+| [criteria.UniformProCriterion](criteria.UniformProCriterion.qmd#pyLHD.criteria.UniformProCriterion) | Calculate the Uniform Projection Criterion |
 | [criteria.eval_design](criteria.eval_design.qmd#pyLHD.criteria.eval_design) | Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD` |
 
 ## Helpers
@@ -52,6 +53,7 @@ miscellaneous utilities for working with LHDs
 | [helpers.column_combinations](helpers.column_combinations.qmd#pyLHD.helpers.column_combinations) | Generates all unique combinations of columns from the given array, selecting 'k' columns at a time. |
 | [helpers.distance_matrix](helpers.distance_matrix.qmd#pyLHD.helpers.distance_matrix) | Distance matrix based on specified distance measure |
 | [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
+| [helpers.is_balanced_design](helpers.is_balanced_design.qmd#pyLHD.helpers.is_balanced_design) | Verify a design is balanced |
 | [helpers.lapply](helpers.lapply.qmd#pyLHD.helpers.lapply) | Apply a function to each item in a list |
 | [helpers.permute_columns](helpers.permute_columns.qmd#pyLHD.helpers.permute_columns) | Randomly permute columns in a numpy ndarray |
 | [helpers.permute_rows](helpers.permute_rows.qmd#pyLHD.helpers.permute_rows) | Randomly permute rows in a numpy ndarray |

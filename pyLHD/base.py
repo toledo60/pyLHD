@@ -5,11 +5,13 @@ from numbers import Integral
 from pyLHD.helpers import permute_columns, check_seed
 
 
-def LatinSquare(size: tuple[int,int], seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
-  """ Generate a (n x d) Latin square, where each column is a random permutation of {1,2,...,n}
+def LatinSquare(size: tuple[int,int], baseline: int = 1, seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
+  """ Generate a (n x d) Latin square, where each column is a random permutation from {baseline,baseline+1, ..., baseline+(n-1)}
 
   Args:
       size (tuple of ints): Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.
+      baseline (int, optional): A integer, which defines the minimum value for each column of the matrix. Defaults to 1.
+
       seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
 
@@ -23,7 +25,7 @@ def LatinSquare(size: tuple[int,int], seed: Optional[Union[Integral, np.random.G
   ```
   """
   rng = check_seed(seed)
-  perms = np.tile(np.arange(start=1, stop=size[0]+1), (size[1], 1)).T
+  perms = np.tile(np.arange(start=baseline, stop= baseline + size[0]), (size[1], 1)).T
   perms = permute_columns(perms, seed=rng)
 
   return perms

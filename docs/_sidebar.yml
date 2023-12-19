@@ -27,6 +27,7 @@ website:
       - docs/criteria.MeshRatio.qmd
       - docs/criteria.MaxProCriterion.qmd
       - docs/criteria.phi_p.qmd
+      - docs/criteria.UniformProCriterion.qmd
       - docs/criteria.eval_design.qmd
       section: Criteria
     - contents:
@@ -34,6 +35,7 @@ website:
       - docs/helpers.column_combinations.qmd
       - docs/helpers.distance_matrix.qmd
       - docs/helpers.is_LHD.qmd
+      - docs/helpers.is_balanced_design.qmd
       - docs/helpers.lapply.qmd
       - docs/helpers.permute_columns.qmd
       - docs/helpers.permute_rows.qmd

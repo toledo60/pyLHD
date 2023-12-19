@@ -16,6 +16,12 @@ Calculate the Maximum Absolute Correlation
 |--------|------------------------------------------------------------------------------|
 | float  | Positive number indicating maximum absolute correlation. Rounded to 3 digits |
 
+## Notes
+
+References for the implementation of the maximum absolute correlation
+
+- Georgiou, Stelios D. "Orthogonal Latin hypercube designs from generalized orthogonal designs." Journal of Statistical Planning and Inference 139.4 (2009): 1530-1540.  
+
 ## Examples
 
 ```{python}

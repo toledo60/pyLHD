@@ -2,7 +2,7 @@ import math
 import numpy as np
 import numpy.typing as npt
 from numbers import Integral
-from typing import Optional, List, Union, Any, Callable
+from typing import Optional, List, Union, Any, Callable,NoReturn
 from itertools import combinations
 
 
@@ -359,7 +359,41 @@ def check_seed(seed: Optional[Union[Integral,np.random.Generator]] = None) -> np
     raise ValueError(f'seed = {seed!r} cannot be used to seed a numpy.random.Generator instance')
 
 
-def is_LHD(arr: npt.ArrayLike) -> None:
+def is_balanced_design(arr: npt.ArrayLike, s:int) -> NoReturn:
+  """Verify a design is balanced
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      s (int): Required number of levels for each factor
+
+  Raises:
+      ValueError: n should be divisible by s
+      ValueError: There should be exactly s unique levels for each factor
+      ValueError: Each level should appear (n/s) times for each factor
+
+  
+  Notes:
+      Let $(n,s^m)$ denote a design with $n$ runs and $m$ factors, each taking $s$ levels
+  """
+  n, m = arr.shape
+
+  if n % s != 0:
+    raise ValueError('n should be divisible by s')
+
+  expected_count = n // s
+
+  # Check the count for each level in each factor
+  for factor in range(m):
+    unique_levels = np.unique(arr[:, factor])
+    if len(unique_levels) != s:
+      raise ValueError('There should be exactly s unique levels for each factor')
+    counts = np.bincount(arr[:, factor] - min(unique_levels), minlength=s)
+    if not np.all(counts == expected_count):
+      raise ValueError('Each level should appear (n/s) times for each factor')
+
+
+
+def is_LHD(arr: npt.ArrayLike) -> NoReturn:
   """Verify Latinhypercube sampling conditions
 
   Args:

@@ -1,0 +1,17 @@
+# criteria.UniformProCriterion { #pyLHD.criteria.UniformProCriterion }
+
+`criteria.UniformProCriterion(arr)`
+
+Calculate the Uniform Projection Criterion
+
+## Parameters
+
+| Name   | Type          | Description     | Default    |
+|--------|---------------|-----------------|------------|
+| `arr`  | npt.ArrayLike | A numpy ndarray | _required_ |
+
+## Returns
+
+| Type   | Description                 |
+|--------|-----------------------------|
+| float  | Uniform projection criteria |

@@ -1,0 +1,24 @@
+# helpers.is_balanced_design { #pyLHD.helpers.is_balanced_design }
+
+`helpers.is_balanced_design(arr, s)`
+
+Verify a design is balanced
+
+## Parameters
+
+| Name   | Type          | Description                               | Default    |
+|--------|---------------|-------------------------------------------|------------|
+| `arr`  | npt.ArrayLike | A numpy ndarray                           | _required_ |
+| `s`    | int           | Required number of levels for each factor | _required_ |
+
+## Raises
+
+| Type       | Description                                             |
+|------------|---------------------------------------------------------|
+| ValueError | n should be divisible by s                              |
+| ValueError | There should be exactly s unique levels for each factor |
+| ValueError | Each level should appear (n/s) times for each factor    |
+
+## Notes
+
+Let $(n,s^m)$ denote a design with $n$ runs and $m$ factors, each taking $s$ levels

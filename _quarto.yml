@@ -9,10 +9,11 @@ website:
   navbar:
     search: true
     left:
-      - text: "Introduction"
-        href: notebooks/intro_pyLHD.ipynb
-      - text: "Function References"
-        href: docs/index.qmd    
+      - text: "Examples"
+        href: notebooks/intro_pyLHD.ipynb 
+      - text: "Reference"
+        href: docs/index.qmd
+
 
 
 format:
@@ -60,6 +61,7 @@ quartodoc:
         - criteria.MeshRatio
         - criteria.MaxProCriterion
         - criteria.phi_p
+        - criteria.UniformProCriterion
         - criteria.eval_design 
     - title: Helpers
       desc: miscellaneous utilities for working with LHDs
@@ -68,6 +70,7 @@ quartodoc:
         - helpers.column_combinations
         - helpers.distance_matrix           
         - helpers.is_LHD
+        - helpers.is_balanced_design
         - helpers.lapply
         - helpers.permute_columns
         - helpers.permute_rows
