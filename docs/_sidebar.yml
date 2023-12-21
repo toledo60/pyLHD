@@ -1,48 +1,48 @@
 website:
   sidebar:
   - contents:
-    - docs/index.qmd
+    - reference/index.qmd
     - contents:
-      - docs/base.LatinSquare.qmd
-      - docs/base.LatinHypercube.qmd
-      - docs/base.GoodLatticePoint.qmd
+      - reference/base.LatinSquare.qmd
+      - reference/base.LatinHypercube.qmd
+      - reference/base.GoodLatticePoint.qmd
       section: Base Designs
     - contents:
-      - docs/orthogonal.OLHD_Butler01.qmd
-      - docs/orthogonal.OLHD_Cioppa07.qmd
-      - docs/orthogonal.OLHD_Lin09.qmd
-      - docs/orthogonal.OLHD_Sun10.qmd
-      - docs/orthogonal.OLHD_Ye98.qmd
-      - docs/orthogonal.OA2LHD.qmd
+      - reference/orthogonal.OLHD_Butler01.qmd
+      - reference/orthogonal.OLHD_Cioppa07.qmd
+      - reference/orthogonal.OLHD_Lin09.qmd
+      - reference/orthogonal.OLHD_Sun10.qmd
+      - reference/orthogonal.OLHD_Ye98.qmd
+      - reference/orthogonal.OA2LHD.qmd
       section: Orthogonal LHD
     - contents:
-      - docs/criteria.Criteria.qmd
-      - docs/criteria.AvgAbsCor.qmd
-      - docs/criteria.coverage.qmd
-      - docs/criteria.discrepancy.qmd
-      - docs/criteria.InterSite.qmd
-      - docs/criteria.pairwise_InterSite.qmd
-      - docs/criteria.LqDistance.qmd
-      - docs/criteria.MaxAbsCor.qmd
-      - docs/criteria.maximin.qmd
-      - docs/criteria.MeshRatio.qmd
-      - docs/criteria.MaxProCriterion.qmd
-      - docs/criteria.phi_p.qmd
-      - docs/criteria.UniformProCriterion.qmd
+      - reference/criteria.Criteria.qmd
+      - reference/criteria.AvgAbsCor.qmd
+      - reference/criteria.coverage.qmd
+      - reference/criteria.discrepancy.qmd
+      - reference/criteria.InterSite.qmd
+      - reference/criteria.pairwise_InterSite.qmd
+      - reference/criteria.LqDistance.qmd
+      - reference/criteria.MaxAbsCor.qmd
+      - reference/criteria.maximin.qmd
+      - reference/criteria.MeshRatio.qmd
+      - reference/criteria.MaxProCriterion.qmd
+      - reference/criteria.phi_p.qmd
+      - reference/criteria.UniformProCriterion.qmd
       section: Criteria
     - contents:
-      - docs/helpers.check_bounds.qmd
-      - docs/helpers.column_combinations.qmd
-      - docs/helpers.distance_matrix.qmd
-      - docs/helpers.is_LHD.qmd
-      - docs/helpers.is_balanced_design.qmd
-      - docs/helpers.lapply.qmd
-      - docs/helpers.permute_columns.qmd
-      - docs/helpers.permute_rows.qmd
-      - docs/helpers.replace_values.qmd
-      - docs/helpers.scale.qmd
-      - docs/helpers.swap_elements.qmd
-      - docs/helpers.williams_transform.qmd
+      - reference/helpers.check_bounds.qmd
+      - reference/helpers.column_combinations.qmd
+      - reference/helpers.distance_matrix.qmd
+      - reference/helpers.is_LHD.qmd
+      - reference/helpers.is_balanced_design.qmd
+      - reference/helpers.lapply.qmd
+      - reference/helpers.permute_columns.qmd
+      - reference/helpers.permute_rows.qmd
+      - reference/helpers.replace_values.qmd
+      - reference/helpers.scale.qmd
+      - reference/helpers.swap_elements.qmd
+      - reference/helpers.williams_transform.qmd
       section: Helpers
-    id: docs
+    id: reference
   - id: dummy-sidebar
