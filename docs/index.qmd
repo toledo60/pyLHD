@@ -29,6 +29,7 @@ Space-filling Criterias for LHD
 
 | | |
 | --- | --- |
+| [criteria.Criteria](criteria.Criteria.qmd#pyLHD.criteria.Criteria) | A class representing a collection of criteria functions. |
 | [criteria.AvgAbsCor](criteria.AvgAbsCor.qmd#pyLHD.criteria.AvgAbsCor) | Calculate the Average Absolute Correlation |
 | [criteria.coverage](criteria.coverage.qmd#pyLHD.criteria.coverage) | Compute the coverage measure for a design |
 | [criteria.discrepancy](criteria.discrepancy.qmd#pyLHD.criteria.discrepancy) | Discrepancy of a given sample |
@@ -41,7 +42,6 @@ Space-filling Criterias for LHD
 | [criteria.MaxProCriterion](criteria.MaxProCriterion.qmd#pyLHD.criteria.MaxProCriterion) | Calculate the Maximum Projection Criterion |
 | [criteria.phi_p](criteria.phi_p.qmd#pyLHD.criteria.phi_p) | Calculate the phi_p Criterion |
 | [criteria.UniformProCriterion](criteria.UniformProCriterion.qmd#pyLHD.criteria.UniformProCriterion) | Calculate the Uniform Projection Criterion |
-| [criteria.eval_design](criteria.eval_design.qmd#pyLHD.criteria.eval_design) | Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD` |
 
 ## Helpers
 

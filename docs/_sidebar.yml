@@ -16,6 +16,7 @@ website:
       - docs/orthogonal.OA2LHD.qmd
       section: Orthogonal LHD
     - contents:
+      - docs/criteria.Criteria.qmd
       - docs/criteria.AvgAbsCor.qmd
       - docs/criteria.coverage.qmd
       - docs/criteria.discrepancy.qmd
@@ -28,7 +29,6 @@ website:
       - docs/criteria.MaxProCriterion.qmd
       - docs/criteria.phi_p.qmd
       - docs/criteria.UniformProCriterion.qmd
-      - docs/criteria.eval_design.qmd
       section: Criteria
     - contents:
       - docs/helpers.check_bounds.qmd

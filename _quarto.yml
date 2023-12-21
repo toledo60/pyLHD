@@ -50,6 +50,7 @@ quartodoc:
     - title: Criteria
       desc: Space-filling Criterias for LHD
       contents:
+        - criteria.Criteria
         - criteria.AvgAbsCor
         - criteria.coverage
         - criteria.discrepancy
@@ -62,7 +63,6 @@ quartodoc:
         - criteria.MaxProCriterion
         - criteria.phi_p
         - criteria.UniformProCriterion
-        - criteria.eval_design 
     - title: Helpers
       desc: miscellaneous utilities for working with LHDs
       contents:

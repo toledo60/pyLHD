@@ -3,6 +3,60 @@ import numpy.typing as npt
 from typing import Literal
 from pyLHD.helpers import distance_matrix, is_balanced_design, lapply, column_combinations
 
+
+class Criteria:
+  """A class representing a collection of criteria functions.
+      This class allows for the selection and computation of various criteria functions based on the specified type. It supports all criteria found in pyLHD
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      type (str): A string representing the type of criteria function to be used.
+
+  Raises:
+      ValueError: If the specified criteria type is not recognized.
+
+  Examples:
+  ```{python}
+  import pyLHD
+  random_lhd = pyLHD.LatinHypercube(size = (10,3))
+  phi_p = pyLHD.Criteria(random_lhd, 'phi_p')
+  phi_p.compute()
+  ```
+  Compute `phi_p` criteria with additional arguments
+  ```{python}
+  phi_p = pyLHD.Criteria(random_lhd, 'phi_p')
+  phi_p.compute(p=10, q=2)
+  ```
+  """
+
+  def __init__(self, arr: npt.ArrayLike, type: str):
+    self.arr = arr
+    self.type = type
+    self.criteria_functions = {
+        "MaxAbsCor": MaxAbsCor,
+        "AvgAbsCor": AvgAbsCor,
+        "MaxProCriterion": MaxProCriterion,
+        "UniformProCriterion": UniformProCriterion,
+        "InterSite": InterSite,
+        "phi_p": phi_p,
+        "discrepancy": discrepancy,
+        "coverage": coverage,
+        "maximin": maximin,
+        "MeshRatio": MeshRatio,
+        "LqDistance": LqDistance,
+        "pairwise_InterSite": pairwise_InterSite}
+    
+    if type not in self.criteria_functions:
+      raise ValueError(f"Unknown criteria type: {type}")
+
+  def update(self, new_arr: npt.ArrayLike, *args, **kwargs) -> float:
+    self.arr = new_arr
+    return self.compute(*args, **kwargs)
+
+  def compute(self, *args, **kwargs) -> float:
+    return self.criteria_functions[self.type](self.arr, *args, **kwargs)
+
+
 def MaxAbsCor(arr: npt.ArrayLike) -> float:
   """ Calculate the Maximum Absolute Correlation
 
@@ -439,45 +493,3 @@ def maximin(arr: npt.ArrayLike) -> float:
   np.fill_diagonal(dist_mat,1e30)
   min = np.amin(dist_mat,axis=0)
   return np.amin(min)
-
-
-def eval_design(arr: npt.ArrayLike, criteria: str = 'phi_p',p: int = 15,q: int = 1) -> float:
-  """ Evaluate a design based on a chosen criteria, a simple wrapper for all `criteria` in `pyLHD`
-
-  Args:
-      arr (npt.ArrayLike): A numpy ndarray
-      criteria (str, optional): Criteria to choose from. Defaults to 'phi_p'. 
-          Options include 'phi_p','MaxProCriterion','AvgAbsCor','AvgAbsCor', 'coverage', 'MeshRatio', 'maximin'
-          p (int): A positive integer, which is the parameter in the phi_p formula. The default is set to be 15
-          q (int): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
-
-  Returns:
-      Calculation of chosen criteria for any LHD
-
-  Examples:
-  By default `phi_p` with `p=15` and `q=1`
-  ```{python}
-  import pyLHD
-  random_lhd = pyLHD.LatinHypercube(size = (5,3))
-  pyLHD.eval_design(random_lhd)
-  ```
-  Evaluate design based on MaxProCriterion 
-  ```{python}
-  pyLHD.eval_design(random_lhd,criteria='MaxProCriterion')
-  ``` 
-  """
-  criteria_functions = {
-    'AvgAbsCor': AvgAbsCor,
-    'coverage': coverage,
-    'maximin': maximin,
-    'MeshRatio': MeshRatio,
-    'MaxProCriterion': MaxProCriterion,
-    'MaxAbsCor': MaxAbsCor
-  }
-    
-  if criteria in criteria_functions:
-    return criteria_functions[criteria](arr)
-  elif criteria == 'phi_p':
-    return phi_p(arr, p=p, q=q)
-  else:
-    raise ValueError(f"Invalid criteria: {criteria}")

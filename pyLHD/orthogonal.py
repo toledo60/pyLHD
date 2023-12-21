@@ -464,9 +464,7 @@ def OLHD_Lin09(OLHD: npt.ArrayLike,OA: npt.ArrayLike ) -> npt.ArrayLike:
   n2 = np.unique(OA[:,0]).size
   f = int(OA.shape[1]*0.5)
   
-  l = []
-  for i in range(k):
-    l.append(OA.copy())
+  l = [OA.copy() for i in range(k)]
   
   A = np.stack(l)
   M = np.zeros((k,n2**2,2*f))
@@ -514,13 +512,13 @@ def OA2LHD(arr: npt.ArrayLike, seed: Optional[Union[Integral, np.random.Generato
   """
   n, m = arr.shape
   s = np.unique(arr[:,0]).size
-
-  lhd = arr
-  k = np.zeros((s,int(n/s),1))
+  lhd = arr.copy()
+  unique_levels = int(n/s)
+  k = np.zeros((s,unique_levels,1))
   rng = check_seed(seed)
   for j in range(m):
     for i in range(s): 
-      k[i] = np.arange(start=i*int(n/s) + 1,stop=i*int(n/s)+int(n/s)+1).reshape(-1,1)
+      k[i] = np.arange(start=i*unique_levels + 1,stop=i*unique_levels+unique_levels+1).reshape(-1,1)
       k[i] = rng.choice(k[i],s,replace=False)*100
       np.place(lhd[:, j], lhd[:, j]== (i+1), k[i].flatten().tolist())
   lhd = lhd/100
