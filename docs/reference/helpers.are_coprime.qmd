@@ -1,0 +1,30 @@
+# helpers.are_coprime { #pyLHD.helpers.are_coprime }
+
+`helpers.are_coprime(a, b)`
+
+Check if two integers are coprime
+
+## Parameters
+
+| Name   | Type   | Description   | Default    |
+|--------|--------|---------------|------------|
+| `a`    | int    | An integer    | _required_ |
+| `b`    | int    | An integer    | _required_ |
+
+## Returns
+
+| Type   | Description                              |
+|--------|------------------------------------------|
+| bool   | Returns True if two integers are coprime |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+pyLHD.are_coprime(2,12)
+```
+```{python}
+pyLHD.are_coprime(3,11)
+```

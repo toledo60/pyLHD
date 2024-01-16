@@ -110,11 +110,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../notebooks/intro_pyLHD.ipynb" rel="" target="">
- <span class="menu-text">Examples</span></a>
+    <a class="nav-link" href="../notebooks/intro_pyLHD.html" rel="" target="">
+ <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../docs/index.qmd" rel="" target="">
+    <a class="nav-link active" href="../reference/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Reference</span></a>
   </li>  
 </ul>
@@ -322,6 +322,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.are_coprime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.are_coprime</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.check_bounds.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.check_bounds</span></a>
   </div>
@@ -358,6 +364,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.LinearPermutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.LinearPermutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.permute_columns.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.permute_columns</span></a>
   </div>
@@ -384,6 +396,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../reference/helpers.swap_elements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.swap_elements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.totatives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.totatives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -430,16 +448,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>base.GoodLatticePoint(size, h=None, seed=None)</code></p>
+<p><code>base.GoodLatticePoint(N)</code></p>
 <p>Good Lattice Point (GLP) Design</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 2%">
-<col style="width: 18%">
-<col style="width: 74%">
-<col style="width: 4%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 60%">
+<col style="width: 17%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -451,22 +469,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>size</code></td>
-<td>tuple of ints</td>
-<td>Output shape of (n,d), where <code>n</code> and <code>d</code> are the number of rows and columns, respectively.</td>
+<td><code>N</code></td>
+<td>int</td>
+<td>An integer specifying the number of rows</td>
 <td><em>required</em></td>
-</tr>
-<tr class="even">
-<td><code>h</code></td>
-<td>list</td>
-<td>A list whose length is same as <code>d</code>, with its elements that are smaller than and coprime to <code>n</code>. Defaults to None. If None, a random sample of <code>d</code> elements between 1 and (<code>n</code>-1).</td>
-<td><code>None</code></td>
-</tr>
-<tr class="odd">
-<td><code>seed</code></td>
-<td>Optional[Union[Integral, np.random.Generator]]</td>
-<td>If <code>seed</code>is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a `<code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>
-<td><code>None</code></td>
 </tr>
 </tbody>
 </table>
@@ -474,6 +480,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns" class="level2">
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 89%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Type</th>
@@ -483,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>npt.ArrayLike</td>
-<td>A (n x d) GLP design.</td>
+<td>A (N x euler_phi(N)) GLP design, where euler_phi(N) is the number of poositive integers that are less than and coprime to N</td>
 </tr>
 </tbody>
 </table>
@@ -492,26 +502,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.GoodLatticePoint(size <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.totatives(N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[4, 2, 1],
-       [3, 4, 2],
-       [2, 1, 3],
-       [1, 3, 4],
-       [0, 0, 0]])</code></pre>
+<pre><code>[1, 2, 3, 4]</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.GoodLatticePoint(size <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">4</span>),h<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.GoodLatticePoint(N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[7, 1, 3, 5],
-       [6, 2, 6, 2],
-       [5, 3, 1, 7],
-       [4, 4, 4, 4],
-       [3, 5, 7, 1],
-       [2, 6, 2, 6],
-       [1, 7, 5, 3],
+<pre><code>array([[1, 2, 3, 4],
+       [2, 4, 1, 3],
+       [3, 1, 4, 2],
+       [4, 3, 2, 1],
        [0, 0, 0, 0]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pyLHD.GoodLatticePoint(N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>array([[ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10],
+       [ 2,  4,  6,  8, 10,  1,  3,  5,  7,  9],
+       [ 3,  6,  9,  1,  4,  7, 10,  2,  5,  8],
+       [ 4,  8,  1,  5,  9,  2,  6, 10,  3,  7],
+       [ 5, 10,  4,  9,  3,  8,  2,  7,  1,  6],
+       [ 6,  1,  7,  2,  8,  3,  9,  4, 10,  5],
+       [ 7,  3, 10,  6,  2,  9,  5,  1,  8,  4],
+       [ 8,  5,  2, 10,  7,  4,  1,  9,  6,  3],
+       [ 9,  7,  5,  3,  1, 10,  8,  6,  4,  2],
+       [10,  9,  8,  7,  6,  5,  4,  3,  2,  1],
+       [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0]])</code></pre>
 </div>
 </div>
 

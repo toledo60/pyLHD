@@ -110,11 +110,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../notebooks/intro_pyLHD.ipynb" rel="" target="">
- <span class="menu-text">Examples</span></a>
+    <a class="nav-link" href="../notebooks/intro_pyLHD.html" rel="" target="">
+ <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../docs/index.qmd" rel="" target="">
+    <a class="nav-link active" href="../reference/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Reference</span></a>
   </li>  
 </ul>
@@ -322,6 +322,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.are_coprime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.are_coprime</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.check_bounds.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.check_bounds</span></a>
   </div>
@@ -358,6 +364,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.LinearPermutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.LinearPermutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.permute_columns.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.permute_columns</span></a>
   </div>
@@ -384,6 +396,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../reference/helpers.swap_elements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.swap_elements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.totatives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.totatives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -431,8 +449,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p><code>criteria.Criteria(self, arr, type)</code></p>
-<p>A class representing a collection of criteria functions.</p>
-<pre><code>This class allows for the selection and computation of various criteria functions based on the specified type. It supports all criteria found in pyLHD</code></pre>
+<p>A class representing a collection of criteria functions. This class allows for the selection and computation of various criteria functions based on the specified type. It supports all criteria found in pyLHD</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
@@ -486,20 +503,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">3</span>))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>phi_p <span class="op">=</span> pyLHD.Criteria(random_lhd, <span class="st">'phi_p'</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>phi_p.compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">3</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>phi_p <span class="op">=</span> pyLHD.Criteria(random_lhd, <span class="st">'phi_p'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>phi_p.compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>3.333563669754402</code></pre>
+<pre><code>2.6246774317587476</code></pre>
 </div>
 </div>
 <p>Compute <code>phi_p</code> criteria with additional arguments</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>phi_p <span class="op">=</span> pyLHD.Criteria(random_lhd, <span class="st">'phi_p'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>phi_p.compute(p<span class="op">=</span><span class="dv">10</span>, q<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>phi_p <span class="op">=</span> pyLHD.Criteria(random_lhd, <span class="st">'phi_p'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>phi_p.compute(p<span class="op">=</span><span class="dv">10</span>, q<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>5.776007620426095</code></pre>
+<pre><code>4.4178813265929735</code></pre>
 </div>
 </div>
 

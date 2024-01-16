@@ -62,15 +62,18 @@ quartodoc:
     - title: Helpers
       desc: miscellaneous utilities for working with LHDs
       contents:
+        - helpers.are_coprime
         - helpers.check_bounds
         - helpers.column_combinations
         - helpers.distance_matrix           
         - helpers.is_LHD
         - helpers.is_balanced_design
         - helpers.lapply
+        - helpers.LinearPermutation
         - helpers.permute_columns
         - helpers.permute_rows
         - helpers.replace_values
         - helpers.scale
         - helpers.swap_elements
+        - helpers.totatives
         - helpers.williams_transform        

@@ -1,0 +1,26 @@
+# helpers.totatives { #pyLHD.helpers.totatives }
+
+`helpers.totatives(N)`
+
+Generate all positive integers less than and coprime to N from [1,N)
+
+## Parameters
+
+| Name   | Type   | Description                     | Default    |
+|--------|--------|---------------------------------|------------|
+| `N`    | int    | The number to find coprimes for | _required_ |
+
+## Returns
+
+| Type        | Description                                                  |
+|-------------|--------------------------------------------------------------|
+| List\[int\] | List[int]: A list of integers in [1,N) that are coprime to N |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+pyLHD.totatives(11)
+```

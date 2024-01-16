@@ -259,7 +259,7 @@ def williams_transform(arr: npt.ArrayLike, baseline: int =1) -> npt.ArrayLike:
       baseline (int, optional): A integer, which defines the minimum value for each column of the matrix. Defaults to 1.
 
   Returns:
-      After applying Williams transformation, a matrix whose sizes are the same as input matrix
+      After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)}
   
   Examples:
   ```{python}
@@ -342,6 +342,63 @@ def lapply(lst: List[Any], func: Callable[..., Any], **kwargs: dict[str, Any]) -
   if not isinstance(lst, list):
     raise TypeError("The argument `lst` must be a list")
   return [func(item,**kwargs) for item in lst]
+
+
+
+def are_coprime(a:int, b:int) -> bool:
+  """Check if two integers are coprime
+
+  Args:
+      a (int):  An integer
+      b (int): An integer
+
+  Returns:
+      bool: Returns True if two integers are coprime
+  
+  Examples:
+  ```{python}
+  import pyLHD
+  pyLHD.are_coprime(2,12)
+  ```
+  ```{python}
+  pyLHD.are_coprime(3,11)
+  ```
+  """
+  return math.gcd(a, b) == 1
+
+
+
+def LinearPermutation(arr: npt.ArrayLike, shift_value: int, modulus:int) -> npt.ArrayLike:
+  """Apply a linear permutation to a Latin Hypercube design
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      shift_value (int): Value by which each element in the array is to be incremented
+      modulus (int): Modulus used for the permutation
+
+  Returns:
+      npt.ArrayLike: A new array where each element is the result of `(arr + shift_value) % modulus`
+  """
+  return (arr + shift_value)%modulus
+
+
+def totatives(N:int) -> List[int]:
+  """
+  Generate all positive integers less than and coprime to N from [1,N)
+
+  Args:
+      N (int): The number to find coprimes for
+
+  Returns:
+      List[int]: A list of integers in [1,N) that are coprime to N
+  
+  Examples:
+  ```{python}
+  import pyLHD
+  pyLHD.totatives(11)
+  ```
+  """
+  return [i for i in range(1, N + 1) if are_coprime(i, N)]
 
 
 

@@ -3,7 +3,6 @@
 `criteria.Criteria(self, arr, type)`
 
 A class representing a collection of criteria functions.
-
     This class allows for the selection and computation of various criteria functions based on the specified type. It supports all criteria found in pyLHD
 
 ## Parameters

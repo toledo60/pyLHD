@@ -2,11 +2,11 @@ import numpy as np
 import numpy.typing as npt
 from typing import Optional, Union
 from numbers import Integral
-from pyLHD.helpers import permute_columns, check_seed
+from pyLHD.helpers import permute_columns, check_seed, totatives
 
 
 def LatinSquare(size: tuple[int,int], baseline: int = 1, seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
-  """ Generate a (n x d) Latin square, where each column is a random permutation from {baseline,baseline+1, ..., baseline+(n-1)}
+  """ Generate a random (n x d) Latin square
 
   Args:
       size (tuple of ints): Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.
@@ -16,7 +16,7 @@ def LatinSquare(size: tuple[int,int], baseline: int = 1, seed: Optional[Union[In
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
 
   Returns:
-      Generate (n x d) matrix, in which each column is a random permutation of {1,2,...,n}
+      Generated random (n x d) Latin square, in which each column is a random permutation of {baseline,baseline+1, ..., baseline+(n-1)}
   
   Examples:
   ```{python}
@@ -62,39 +62,29 @@ def LatinHypercube(size: tuple[int, int], scramble: Optional[bool] = True,
   return (perms-samples)/size[0]
 
 
-def GoodLatticePoint(size: tuple[int,int], h: list = None,
-                     seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
+def GoodLatticePoint(N:int) -> npt.ArrayLike:
   """ Good Lattice Point (GLP) Design 
 
   Args:
-      size (tuple of ints): Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.
-      h (list, optional): A list whose length is same as `d`, with its elements that are smaller than and coprime to `n`. 
-          Defaults to None. If None, a random sample of `d` elements between 1 and (`n`-1).
-      seed (Optional[Union[Integral, np.random.Generator]]): If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
-          If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
+      N (int): An integer specifying the number of rows
 
   Returns:
-      A (n x d) GLP design.
+      A (N x euler_phi(N)) GLP design, where euler_phi(N) is the number of poositive integers that are less than and coprime to N
   
   Examples:
   ```{python}
   import pyLHD
-  pyLHD.GoodLatticePoint(size = (5,3))
+  N = 5
+  pyLHD.totatives(N)
   ```
   ```{python}
-  pyLHD.GoodLatticePoint(size = (8,4),h=[1,3,5,7])
+  pyLHD.GoodLatticePoint(N)
   ```
-  """
-  rng = check_seed(seed)
-  n_rows, n_columns = size
-  # Generate h_sample
-  if h is None:
-    h_sample = rng.choice(np.arange(1, n_rows), n_columns, replace=False)
-  else:
-    if len(h) != n_columns:
-      raise ValueError(f'h must contain only {n_columns} elements')
-    h_sample = rng.choice(h, n_columns, replace=False)
-
-  # Create the matrix using vectorized operations
-  row_indices = np.arange(1, n_rows + 1).reshape(-1, 1)  # Column vector of row indices
-  return  (row_indices * h_sample) % n_rows
+  ```{python}
+  N = 11
+  pyLHD.GoodLatticePoint(N)
+  ```
+  """  
+  h = totatives(N)
+  row_indices = np.arange(1, N + 1).reshape(-1, 1)
+  return  (row_indices * h) % N

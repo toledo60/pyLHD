@@ -1,0 +1,19 @@
+# helpers.LinearPermutation { #pyLHD.helpers.LinearPermutation }
+
+`helpers.LinearPermutation(arr, shift_value, modulus)`
+
+Apply a linear permutation to a Latin Hypercube design
+
+## Parameters
+
+| Name          | Type          | Description                                                   | Default    |
+|---------------|---------------|---------------------------------------------------------------|------------|
+| `arr`         | npt.ArrayLike | A numpy ndarray                                               | _required_ |
+| `shift_value` | int           | Value by which each element in the array is to be incremented | _required_ |
+| `modulus`     | int           | Modulus used for the permutation                              | _required_ |
+
+## Returns
+
+| Type          | Description                                                                                    |
+|---------------|------------------------------------------------------------------------------------------------|
+| npt.ArrayLike | npt.ArrayLike: A new array where each element is the result of `(arr + shift_value) % modulus` |

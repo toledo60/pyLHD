@@ -13,9 +13,9 @@ Williams Transformation
 
 ## Returns
 
-| Type          | Description                                                                               |
-|---------------|-------------------------------------------------------------------------------------------|
-| npt.ArrayLike | After applying Williams transformation, a matrix whose sizes are the same as input matrix |
+| Type          | Description                                                                                                                     |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------|
+| npt.ArrayLike | After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)} |
 
 ## Examples
 

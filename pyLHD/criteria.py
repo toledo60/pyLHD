@@ -183,7 +183,6 @@ def pairwise_InterSite(arr: npt.ArrayLike, q:int = 1) -> npt.ArrayLike:
   pyLHD.pairwise_InterSite(random_lhd,q=2)
   ```
   """
-
   n = arr.shape[0]
   lq_distances = np.array([InterSite(arr, i=i, j=j, q=q) for i in range(n - 1) for j in range(i + 1, n)])
   return lq_distances
@@ -191,7 +190,7 @@ def pairwise_InterSite(arr: npt.ArrayLike, q:int = 1) -> npt.ArrayLike:
 
 def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   """ Calculate the phi_p Criterion
-
+  
   Args:
       arr (npt.ArrayLike): A numpy ndarray
 
@@ -211,7 +210,6 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   ```{python}
   pyLHD.phi_p(random_lhd,p=50,q=2) 
   ```
-
   """
   distances = pairwise_InterSite(arr, q=q)
   isd = np.sum(distances**(-p))

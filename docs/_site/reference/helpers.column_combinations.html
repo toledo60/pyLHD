@@ -110,11 +110,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../notebooks/intro_pyLHD.ipynb" rel="" target="">
- <span class="menu-text">Examples</span></a>
+    <a class="nav-link" href="../notebooks/intro_pyLHD.html" rel="" target="">
+ <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../docs/index.qmd" rel="" target="">
+    <a class="nav-link active" href="../reference/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Reference</span></a>
   </li>  
 </ul>
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.check_bounds.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.column_combinations.html">helpers.column_combinations</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.column_combinations.html">helpers.column_combinations</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -322,6 +322,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.are_coprime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.are_coprime</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.check_bounds.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.check_bounds</span></a>
   </div>
@@ -358,6 +364,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.LinearPermutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.LinearPermutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.permute_columns.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.permute_columns</span></a>
   </div>
@@ -384,6 +396,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../reference/helpers.swap_elements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.swap_elements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.totatives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.totatives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -493,28 +511,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_ls <span class="op">=</span> pyLHD.LatinSquare(size <span class="op">=</span> (<span class="dv">4</span>,<span class="dv">3</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>random_ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[3, 4, 1],
-       [4, 1, 4],
-       [2, 3, 2],
-       [1, 2, 3]])</code></pre>
+<pre><code>array([[4, 4, 2],
+       [3, 2, 1],
+       [1, 3, 3],
+       [2, 1, 4]])</code></pre>
 </div>
 </div>
 <p>Obtain all 2 column combinations of <code>random_ls</code></p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.column_combinations(random_ls, k <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>[array([[3, 4],
-        [4, 1],
-        [2, 3],
-        [1, 2]]),
- array([[3, 1],
-        [4, 4],
-        [2, 2],
-        [1, 3]]),
- array([[4, 1],
-        [1, 4],
+<pre><code>[array([[4, 4],
         [3, 2],
-        [2, 3]])]</code></pre>
+        [1, 3],
+        [2, 1]]),
+ array([[4, 2],
+        [3, 1],
+        [1, 3],
+        [2, 4]]),
+ array([[4, 2],
+        [2, 1],
+        [3, 3],
+        [1, 4]])]</code></pre>
 </div>
 </div>
 
