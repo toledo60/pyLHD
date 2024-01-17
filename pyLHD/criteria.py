@@ -133,43 +133,50 @@ def MaxProCriterion(arr: npt.ArrayLike) -> float:
   return (2 / (n * (n - 1)) * temp)**(1 / p)
 
 
-def InterSite(arr: npt.ArrayLike, i: int, j: int,  q: int = 1)  -> float:
-  """ Calculate the Inter-site Distance
+def InterSite(arr: npt.ArrayLike, i: int, j: int,  q: int = 1, axis: int = 0)  -> float:
+  """ Calculate the Inter-site Distance between the ith and jth index
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
-
       i (int): A positive integer, which stands for the ith row of (arr)
       j (int): A positive integer, which stands for the jth row of (arr)
       q (int, optional): The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
+      axis (int, optional): The default is set to be 0, and it coult be either 1 or 0. If (axis) is 0 compute Inter-site distance row-wise otherwise columnwise.
 
   Returns:
       positive number indicating the distance (rectangular or Euclidean) between the ith and jth row of arr
   
   Examples:
-  Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd`
+  Calculate the inter-site distance of the 0th and 2nd index of `random_lhd` (row-wise)
   ```{python}
   import pyLHD
   random_lhd = pyLHD.LatinHypercube(size = (10,3))
-  pyLHD.InterSite(random_lhd,i=2,j=4)
+  pyLHD.InterSite(random_lhd,i=0,j=2)
   ```
-  Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd` with q=2 (Euclidean)
+  Calculate the inter-site distance of the 0th and 2nd index of `random_lhd` (column-wise)
   ```{python}
-  pyLHD.InterSite(random_lhd,i=2,j=4,q=2)
+  pyLHD.InterSite(random_lhd,i=0,j=2, axis = 1)
   ```
   """
-  return np.sum(np.abs(arr[i, :] - arr[j, :])**q)**(1/q)
+  if axis == 0:
+    return np.linalg.norm(arr[i, :] - arr[j, :], ord=q)
+  elif axis == 1:
+    return np.linalg.norm(arr[:, i] - arr[:, j], ord=q)
+  else:
+      raise ValueError("Axis can only be 0 (rows) or 1 (columns).")
 
 
-def pairwise_InterSite(arr: npt.ArrayLike, q:int = 1) -> npt.ArrayLike:
-  """ Calculate the Inter-site Distance between all pairwise rows
+def pairwise_InterSite(arr: npt.ArrayLike, q:int = 1, axis:int = 0) -> npt.ArrayLike:
+  """ Calculate the Inter-site Distance between all pairwise (rows/columns)
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
       q (int, optional): The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
+      axis (int, optional): The default is set to be 0, and it coult be either 1 or 0. If (axis) is 0 compute Inter-site distance row-wise otherwise columnwise.
+
 
   Returns:
-      All row pairwise Inter-site distances (rectangular or Euclidean)
+      All (row/column) pairwise Inter-site distances (rectangular or Euclidean)
   
   Examples:
   Calculate all row pairwise inter-site distances of `random_lhd` with q=1 (rectangular)
@@ -178,13 +185,24 @@ def pairwise_InterSite(arr: npt.ArrayLike, q:int = 1) -> npt.ArrayLike:
   random_lhd = pyLHD.LatinHypercube(size = (10,3))
   pyLHD.pairwise_InterSite(random_lhd)
   ```
-  Calculate all row pairwise inter-site distances of `random_lhd` with q=2 (Euclidean)
+  Calculate all column pairwise inter-site distances of `random_lhd` with q=2 (Euclidean)
   ```{python}
-  pyLHD.pairwise_InterSite(random_lhd,q=2)
+  pyLHD.pairwise_InterSite(random_lhd,q=2, axis = 1)
   ```
   """
-  n = arr.shape[0]
-  lq_distances = np.array([InterSite(arr, i=i, j=j, q=q) for i in range(n - 1) for j in range(i + 1, n)])
+  if axis == 0:
+    diff_matrix = arr[:, np.newaxis, :] - arr[np.newaxis, :, :]
+    axis_to_sum = 2
+  elif axis == 1:
+    diff_matrix = arr[np.newaxis, :, :] - arr[:, np.newaxis, :]
+    axis_to_sum = 1 
+  else:
+      raise ValueError("Axis can only be 0 (rows) or 1 (columns).")
+
+  lq_norms = np.sum(np.abs(diff_matrix)**q, axis=axis_to_sum)**(1/q)
+  
+  i_upper = np.triu_indices_from(lq_norms, k=1)
+  lq_distances = lq_norms[i_upper]
   return lq_distances
 
 

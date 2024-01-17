@@ -1,8 +1,8 @@
 # criteria.InterSite { #pyLHD.criteria.InterSite }
 
-`criteria.InterSite(arr, i, j, q=1)`
+`criteria.InterSite(arr, i, j, q=1, axis=0)`
 
-Calculate the Inter-site Distance
+Calculate the Inter-site Distance between the ith and jth index
 
 ## Parameters
 
@@ -12,6 +12,7 @@ Calculate the Inter-site Distance
 | `i`    | int           | A positive integer, which stands for the ith row of (arr)                                                                                                                          | _required_ |
 | `j`    | int           | A positive integer, which stands for the jth row of (arr)                                                                                                                          | _required_ |
 | `q`    | int           | The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. | `1`        |
+| `axis` | int           | The default is set to be 0, and it coult be either 1 or 0. If (axis) is 0 compute Inter-site distance row-wise otherwise columnwise.                                               | `0`        |
 
 ## Returns
 
@@ -23,13 +24,13 @@ Calculate the Inter-site Distance
 
 
 
-Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd`
+Calculate the inter-site distance of the 0th and 2nd index of `random_lhd` (row-wise)
 ```{python}
 import pyLHD
 random_lhd = pyLHD.LatinHypercube(size = (10,3))
-pyLHD.InterSite(random_lhd,i=2,j=4)
+pyLHD.InterSite(random_lhd,i=0,j=2)
 ```
-Calculate the inter-site distance of the 2nd and the 4th row of `random_lhd` with q=2 (Euclidean)
+Calculate the inter-site distance of the 0th and 2nd index of `random_lhd` (column-wise)
 ```{python}
-pyLHD.InterSite(random_lhd,i=2,j=4,q=2)
+pyLHD.InterSite(random_lhd,i=0,j=2, axis = 1)
 ```

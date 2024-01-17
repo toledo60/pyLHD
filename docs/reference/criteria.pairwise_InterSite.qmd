@@ -1,8 +1,8 @@
 # criteria.pairwise_InterSite { #pyLHD.criteria.pairwise_InterSite }
 
-`criteria.pairwise_InterSite(arr, q=1)`
+`criteria.pairwise_InterSite(arr, q=1, axis=0)`
 
-Calculate the Inter-site Distance between all pairwise rows
+Calculate the Inter-site Distance between all pairwise (rows/columns)
 
 ## Parameters
 
@@ -10,12 +10,13 @@ Calculate the Inter-site Distance between all pairwise rows
 |--------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
 | `arr`  | npt.ArrayLike | A numpy ndarray                                                                                                                                                                    | _required_ |
 | `q`    | int           | The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. | `1`        |
+| `axis` | int           | The default is set to be 0, and it coult be either 1 or 0. If (axis) is 0 compute Inter-site distance row-wise otherwise columnwise.                                               | `0`        |
 
 ## Returns
 
-| Type          | Description                                                      |
-|---------------|------------------------------------------------------------------|
-| npt.ArrayLike | All row pairwise Inter-site distances (rectangular or Euclidean) |
+| Type          | Description                                                               |
+|---------------|---------------------------------------------------------------------------|
+| npt.ArrayLike | All (row/column) pairwise Inter-site distances (rectangular or Euclidean) |
 
 ## Examples
 
@@ -27,7 +28,7 @@ import pyLHD
 random_lhd = pyLHD.LatinHypercube(size = (10,3))
 pyLHD.pairwise_InterSite(random_lhd)
 ```
-Calculate all row pairwise inter-site distances of `random_lhd` with q=2 (Euclidean)
+Calculate all column pairwise inter-site distances of `random_lhd` with q=2 (Euclidean)
 ```{python}
-pyLHD.pairwise_InterSite(random_lhd,q=2)
+pyLHD.pairwise_InterSite(random_lhd,q=2, axis = 1)
 ```

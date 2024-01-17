@@ -448,8 +448,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>criteria.InterSite(arr, i, j, q=1)</code></p>
-<p>Calculate the Inter-site Distance</p>
+<p><code>criteria.InterSite(arr, i, j, q=1, axis=0)</code></p>
+<p>Calculate the Inter-site Distance between the ith and jth index</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
@@ -492,6 +492,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.</td>
 <td><code>1</code></td>
 </tr>
+<tr class="odd">
+<td><code>axis</code></td>
+<td>int</td>
+<td>The default is set to be 0, and it coult be either 1 or 0. If (axis) is 0 compute Inter-site distance row-wise otherwise columnwise.</td>
+<td><code>0</code></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -518,20 +524,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>Calculate the inter-site distance of the 2nd and the 4th row of <code>random_lhd</code></p>
+<p>Calculate the inter-site distance of the 0th and 2nd index of <code>random_lhd</code> (row-wise)</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">3</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.InterSite(random_lhd,i<span class="op">=</span><span class="dv">2</span>,j<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.InterSite(random_lhd,i<span class="op">=</span><span class="dv">0</span>,j<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>0.9999999999999999</code></pre>
+<pre><code>0.7999999999999999</code></pre>
 </div>
 </div>
-<p>Calculate the inter-site distance of the 2nd and the 4th row of <code>random_lhd</code> with q=2 (Euclidean)</p>
+<p>Calculate the inter-site distance of the 0th and 2nd index of <code>random_lhd</code> (column-wise)</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.InterSite(random_lhd,i<span class="op">=</span><span class="dv">2</span>,j<span class="op">=</span><span class="dv">4</span>,q<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.InterSite(random_lhd,i<span class="op">=</span><span class="dv">0</span>,j<span class="op">=</span><span class="dv">2</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>0.648074069840786</code></pre>
+<pre><code>4.6</code></pre>
 </div>
 </div>
 
