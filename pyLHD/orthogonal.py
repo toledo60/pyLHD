@@ -2,18 +2,17 @@ import math
 import numpy as np
 import numpy.typing as npt
 from typing import Optional, Union
-from numbers import Integral
 from pyLHD.helpers import check_seed, is_prime, williams_transform
 
 
 # --- Butler, N.A. (2001) Construction --- #
 
-def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
+def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
   """ Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)
 
   Args:
       size (tuple of ints): Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.
-      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+      seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
 
   Raises:
@@ -296,12 +295,12 @@ def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
 
 # --- Ye (1998) Constuction --- #
 
-def OLHD_Ye98(m:int,seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
+def OLHD_Ye98(m:int,seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
   """Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)
 
   Args:
       m (int): A positive integer, and it must be greater than or equal to 2
-      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+      seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.      
 
   Raises:
@@ -486,12 +485,12 @@ def OLHD_Lin09(OLHD: npt.ArrayLike,OA: npt.ArrayLike ) -> npt.ArrayLike:
   return np.hstack(M_list)
 
 
-def OA2LHD(arr: npt.ArrayLike, seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
+def OA2LHD(arr: npt.ArrayLike, seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
   """ Transform an Orthogonal Array (OA) into an LHD
 
   Args:
       arr (numpy.ndarray): An orthogonal array matrix
-      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+      seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.      
 
   Returns:

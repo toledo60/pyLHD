@@ -6,11 +6,11 @@ Generate a random Latin Hypercube Design
 
 ## Parameters
 
-| Name       | Type                                                | Description                                                                                                                                                                                                     | Default    |
-|------------|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `size`     | tuple of ints                                       | Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.                                                                                                                      | _required_ |
-| `scramble` | Optional\[bool\]                                    | When False, center samples within cells of a multi-dimensional grid.  Otherwise, samples are randomly placed within cells of the grid. Defaults to True.                                                        | `True`     |
-| `seed`     | Optional\[Union\[Integral, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
+| Name       | Type                                           | Description                                                                                                                                                                                                     | Default    |
+|------------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `size`     | tuple of ints                                  | Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.                                                                                                                      | _required_ |
+| `scramble` | Optional\[bool\]                               | When False, center samples within cells of a multi-dimensional grid.  Otherwise, samples are randomly placed within cells of the grid. Defaults to True.                                                        | `True`     |
+| `seed`     | Optional\[Union\[int, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
 
 ## Returns
 

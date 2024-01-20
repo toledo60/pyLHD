@@ -39,7 +39,7 @@
     "href": "reference/helpers.permute_columns.html#parameters",
     "title": "helpers.permute_columns",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\ncolumns\nOptional[List[int]]\nIf columns is None all columns will be randomly permuted, otherwise provide a list of columns to permute. Defaults to None.\nNone\n\n\nseed\nOptional[Union[Integral, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\ncolumns\nOptional[List[int]]\nIf columns is None all columns will be randomly permuted, otherwise provide a list of columns to permute. Defaults to None.\nNone\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
   },
   {
     "objectID": "reference/helpers.permute_columns.html#returns",
@@ -53,7 +53,7 @@
     "href": "reference/helpers.permute_columns.html#examples",
     "title": "helpers.permute_columns",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nx = pyLHD.LatinHypercube(size = (5,3), seed = 1)\nx\n\narray([[0.70930042, 0.30930042, 0.10930042],\n       [0.90930042, 0.50930042, 0.90930042],\n       [0.10930042, 0.70930042, 0.30930042],\n       [0.50930042, 0.90930042, 0.70930042],\n       [0.30930042, 0.10930042, 0.50930042]])\n\n\nPermute all columns\n\npyLHD.permute_columns(x)\n\narray([[0.10930042, 0.50930042, 0.70930042],\n       [0.50930042, 0.10930042, 0.30930042],\n       [0.30930042, 0.70930042, 0.50930042],\n       [0.90930042, 0.90930042, 0.90930042],\n       [0.70930042, 0.30930042, 0.10930042]])\n\n\nPermute columns [0,1] with seed=1\n\npyLHD.permute_columns(x, columns = [0,1], seed = 1)\n\narray([[0.30930042, 0.90930042, 0.10930042],\n       [0.70930042, 0.30930042, 0.90930042],\n       [0.90930042, 0.50930042, 0.30930042],\n       [0.10930042, 0.10930042, 0.70930042],\n       [0.50930042, 0.70930042, 0.50930042]])"
+    "text": "Examples\n\nimport pyLHD\nx = pyLHD.LatinHypercube(size = (5,3), seed = 1)\nx\n\narray([[0.70930042, 0.30930042, 0.10930042],\n       [0.90930042, 0.50930042, 0.90930042],\n       [0.10930042, 0.70930042, 0.30930042],\n       [0.50930042, 0.90930042, 0.70930042],\n       [0.30930042, 0.10930042, 0.50930042]])\n\n\nPermute all columns\n\npyLHD.permute_columns(x)\n\narray([[0.50930042, 0.50930042, 0.90930042],\n       [0.10930042, 0.30930042, 0.10930042],\n       [0.30930042, 0.90930042, 0.50930042],\n       [0.90930042, 0.10930042, 0.30930042],\n       [0.70930042, 0.70930042, 0.70930042]])\n\n\nPermute columns [0,1] with seed=1\n\npyLHD.permute_columns(x, columns = [0,1], seed = 1)\n\narray([[0.30930042, 0.90930042, 0.10930042],\n       [0.70930042, 0.30930042, 0.90930042],\n       [0.90930042, 0.50930042, 0.30930042],\n       [0.10930042, 0.10930042, 0.70930042],\n       [0.50930042, 0.70930042, 0.50930042]])"
   },
   {
     "objectID": "reference/helpers.is_LHD.html",
@@ -207,7 +207,7 @@
     "href": "reference/orthogonal.OLHD_Butler01.html#parameters",
     "title": "orthogonal.OLHD_Butler01",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where n and d are the number of rows and columns, respectively.\nrequired\n\n\nseed\nOptional[Union[Integral, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where n and d are the number of rows and columns, respectively.\nrequired\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
   },
   {
     "objectID": "reference/orthogonal.OLHD_Butler01.html#raises",
@@ -228,7 +228,7 @@
     "href": "reference/orthogonal.OLHD_Butler01.html#examples",
     "title": "orthogonal.OLHD_Butler01",
     "section": "Examples",
-    "text": "Examples\nCreate an orthogonal LHD with 11 rows and 5 columns\n\nimport pyLHD\npyLHD.OLHD_Butler01(size = (11,5))\n\narray([[ 1.,  5.,  4.,  3.,  2.],\n       [ 7.,  8.,  2., 11.,  3.],\n       [10.,  3.,  1.,  4.,  7.],\n       [ 4., 10.,  3.,  5., 11.],\n       [ 3.,  1.,  5., 10.,  8.],\n       [ 9., 11.,  7.,  2.,  4.],\n       [ 8.,  2.,  9.,  7.,  1.],\n       [ 2.,  9., 11.,  8.,  5.],\n       [ 5.,  4., 10.,  1.,  9.],\n       [11.,  7.,  8.,  9., 10.],\n       [ 6.,  6.,  6.,  6.,  6.]])\n\n\nCreate an orthogonal LHD with 7 rows and 6 columns\n\n pyLHD.OLHD_Butler01(size = (7,6))\n\narray([[2., 1., 3., 5., 3., 7.],\n       [1., 5., 6., 6., 5., 2.],\n       [3., 6., 1., 2., 7., 5.],\n       [5., 2., 7., 3., 6., 4.],\n       [7., 3., 2., 7., 4., 3.],\n       [6., 7., 5., 4., 2., 6.],\n       [4., 4., 4., 1., 1., 1.]])"
+    "text": "Examples\nCreate an orthogonal LHD with 11 rows and 5 columns\n\nimport pyLHD\npyLHD.OLHD_Butler01(size = (11,5))\n\narray([[ 2.,  3.,  5.,  1.,  4.],\n       [ 3., 11.,  8.,  7.,  2.],\n       [ 7.,  4.,  3., 10.,  1.],\n       [11.,  5., 10.,  4.,  3.],\n       [ 8., 10.,  1.,  3.,  5.],\n       [ 4.,  2., 11.,  9.,  7.],\n       [ 1.,  7.,  2.,  8.,  9.],\n       [ 5.,  8.,  9.,  2., 11.],\n       [ 9.,  1.,  4.,  5., 10.],\n       [10.,  9.,  7., 11.,  8.],\n       [ 6.,  6.,  6.,  6.,  6.]])\n\n\nCreate an orthogonal LHD with 7 rows and 6 columns\n\n pyLHD.OLHD_Butler01(size = (7,6))\n\narray([[2., 1., 3., 7., 3., 5.],\n       [1., 5., 6., 2., 5., 6.],\n       [3., 6., 1., 5., 7., 2.],\n       [5., 2., 7., 4., 6., 3.],\n       [7., 3., 2., 3., 4., 7.],\n       [6., 7., 5., 6., 2., 4.],\n       [4., 4., 4., 1., 1., 1.]])"
   },
   {
     "objectID": "reference/criteria.UniformProCriterion.html",
@@ -263,7 +263,7 @@
     "href": "reference/orthogonal.OLHD_Ye98.html#parameters",
     "title": "orthogonal.OLHD_Ye98",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nm\nint\nA positive integer, and it must be greater than or equal to 2\nrequired\n\n\nseed\nOptional[Union[Integral, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nm\nint\nA positive integer, and it must be greater than or equal to 2\nrequired\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
   },
   {
     "objectID": "reference/orthogonal.OLHD_Ye98.html#raises",
@@ -284,7 +284,7 @@
     "href": "reference/orthogonal.OLHD_Ye98.html#examples",
     "title": "orthogonal.OLHD_Ye98",
     "section": "Examples",
-    "text": "Examples\nCreate an orthogonal LHD with m=4. So n=2^m+1=9 runs and k=2*m-2=4 factors\n\nimport pyLHD\npyLHD.OLHD_Ye98(m=3)\n\narray([[ 2., -3., -1.,  4.],\n       [ 3.,  2., -4., -1.],\n       [ 4., -1.,  3., -2.],\n       [ 1.,  4.,  2.,  3.],\n       [ 0.,  0.,  0.,  0.],\n       [-2.,  3.,  1., -4.],\n       [-3., -2.,  4.,  1.],\n       [-4.,  1., -3.,  2.],\n       [-1., -4., -2., -3.]])\n\n\nCreate an orthogonal LHD with m=5. So n=2^m+1=17 runs and k=2*m-2=6 factors\n\npyLHD.OLHD_Ye98(m=4)\n\narray([[ 5., -1., -8., -3.,  7.,  2.],\n       [ 1.,  5., -6., -7., -3., -4.],\n       [ 6., -8.,  1., -4., -2.,  7.],\n       [ 8.,  6.,  5., -2.,  4., -3.],\n       [ 2., -4., -3.,  8.,  6., -5.],\n       [ 4.,  2., -7.,  6., -8.,  1.],\n       [ 7., -3.,  4.,  1., -5., -6.],\n       [ 3.,  7.,  2.,  5.,  1.,  8.],\n       [ 0.,  0.,  0.,  0.,  0.,  0.],\n       [-5.,  1.,  8.,  3., -7., -2.],\n       [-1., -5.,  6.,  7.,  3.,  4.],\n       [-6.,  8., -1.,  4.,  2., -7.],\n       [-8., -6., -5.,  2., -4.,  3.],\n       [-2.,  4.,  3., -8., -6.,  5.],\n       [-4., -2.,  7., -6.,  8., -1.],\n       [-7.,  3., -4., -1.,  5.,  6.],\n       [-3., -7., -2., -5., -1., -8.]])"
+    "text": "Examples\nCreate an orthogonal LHD with m=4. So n=2^m+1=9 runs and k=2*m-2=4 factors\n\nimport pyLHD\npyLHD.OLHD_Ye98(m=3)\n\narray([[ 1., -4., -2.,  3.],\n       [ 4.,  1., -3., -2.],\n       [ 3., -2.,  4., -1.],\n       [ 2.,  3.,  1.,  4.],\n       [ 0.,  0.,  0.,  0.],\n       [-1.,  4.,  2., -3.],\n       [-4., -1.,  3.,  2.],\n       [-3.,  2., -4.,  1.],\n       [-2., -3., -1., -4.]])\n\n\nCreate an orthogonal LHD with m=5. So n=2^m+1=17 runs and k=2*m-2=6 factors\n\npyLHD.OLHD_Ye98(m=4)\n\narray([[ 1., -2., -6., -8.,  3.,  5.],\n       [ 2.,  1., -4., -3., -8., -7.],\n       [ 4., -6.,  2., -7., -5.,  3.],\n       [ 6.,  4.,  1., -5.,  7., -8.],\n       [ 5., -7., -8.,  6.,  4., -1.],\n       [ 7.,  5., -3.,  4., -6.,  2.],\n       [ 3., -8.,  7.,  2., -1., -4.],\n       [ 8.,  3.,  5.,  1.,  2.,  6.],\n       [ 0.,  0.,  0.,  0.,  0.,  0.],\n       [-1.,  2.,  6.,  8., -3., -5.],\n       [-2., -1.,  4.,  3.,  8.,  7.],\n       [-4.,  6., -2.,  7.,  5., -3.],\n       [-6., -4., -1.,  5., -7.,  8.],\n       [-5.,  7.,  8., -6., -4.,  1.],\n       [-7., -5.,  3., -4.,  6., -2.],\n       [-3.,  8., -7., -2.,  1.,  4.],\n       [-8., -3., -5., -1., -2., -6.]])"
   },
   {
     "objectID": "reference/helpers.are_coprime.html",
@@ -361,7 +361,7 @@
     "href": "reference/base.LatinHypercube.html#parameters",
     "title": "base.LatinHypercube",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where n and d are the number of rows and columns, respectively.\nrequired\n\n\nscramble\nOptional[bool]\nWhen False, center samples within cells of a multi-dimensional grid. Otherwise, samples are randomly placed within cells of the grid. Defaults to True.\nTrue\n\n\nseed\nOptional[Union[Integral, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where n and d are the number of rows and columns, respectively.\nrequired\n\n\nscramble\nOptional[bool]\nWhen False, center samples within cells of a multi-dimensional grid. Otherwise, samples are randomly placed within cells of the grid. Defaults to True.\nTrue\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
   },
   {
     "objectID": "reference/base.LatinHypercube.html#returns",
@@ -417,7 +417,7 @@
     "href": "reference/orthogonal.OA2LHD.html#parameters",
     "title": "orthogonal.OA2LHD",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nAn orthogonal array matrix\nrequired\n\n\nseed\nOptional[Union[Integral, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.ndarray\nAn orthogonal array matrix\nrequired\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
   },
   {
     "objectID": "reference/orthogonal.OA2LHD.html#returns",
@@ -431,7 +431,7 @@
     "href": "reference/orthogonal.OA2LHD.html#examples",
     "title": "orthogonal.OA2LHD",
     "section": "Examples",
-    "text": "Examples\nFirst create an OA(9,2,3,2)\n\nimport numpy as np\nexample_OA = np.array([[1,1],[1,2],[1,3],[2,1],\n                       [2,2],[2,3],[3,1],[3,2],[3,3] ])\n\nTransform the “OA” above into a LHD according to Tang (1993)\n\nimport pyLHD\npyLHD.OA2LHD(example_OA)      \n\narray([[1, 1],\n       [2, 4],\n       [3, 8],\n       [6, 2],\n       [4, 5],\n       [5, 7],\n       [9, 3],\n       [7, 6],\n       [8, 9]])"
+    "text": "Examples\nFirst create an OA(9,2,3,2)\n\nimport numpy as np\nexample_OA = np.array([[1,1],[1,2],[1,3],[2,1],\n                       [2,2],[2,3],[3,1],[3,2],[3,3] ])\n\nTransform the “OA” above into a LHD according to Tang (1993)\n\nimport pyLHD\npyLHD.OA2LHD(example_OA)      \n\narray([[1, 3],\n       [3, 6],\n       [2, 8],\n       [6, 2],\n       [5, 4],\n       [4, 7],\n       [8, 1],\n       [9, 5],\n       [7, 9]])"
   },
   {
     "objectID": "reference/helpers.permute_rows.html",
@@ -445,7 +445,7 @@
     "href": "reference/helpers.permute_rows.html#parameters",
     "title": "helpers.permute_rows",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\nrows\nOptional[List[int]]\nIf rows is None all columns will be randomly permuted, otherwise provide a list of rows to permute. Defaults to None.\nNone\n\n\nseed\nOptional[Union[Integral, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\nrows\nOptional[List[int]]\nIf rows is None all columns will be randomly permuted, otherwise provide a list of rows to permute. Defaults to None.\nNone\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
   },
   {
     "objectID": "reference/helpers.permute_rows.html#returns",
@@ -459,7 +459,7 @@
     "href": "reference/helpers.permute_rows.html#examples",
     "title": "helpers.permute_rows",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nx = pyLHD.LatinHypercube(size = (5,3), seed = 1)\nx\n\narray([[0.70930042, 0.30930042, 0.10930042],\n       [0.90930042, 0.50930042, 0.90930042],\n       [0.10930042, 0.70930042, 0.30930042],\n       [0.50930042, 0.90930042, 0.70930042],\n       [0.30930042, 0.10930042, 0.50930042]])\n\n\nPermute all columns\n\npyLHD.permute_rows(x)\n\narray([[0.70930042, 0.30930042, 0.10930042],\n       [0.50930042, 0.90930042, 0.90930042],\n       [0.10930042, 0.30930042, 0.70930042],\n       [0.70930042, 0.50930042, 0.90930042],\n       [0.30930042, 0.10930042, 0.50930042]])\n\n\nPermute columns [0,1] with seed=1\n\npyLHD.permute_rows(x, rows = [0,1], seed = 1)\n\narray([[0.70930042, 0.30930042, 0.10930042],\n       [0.90930042, 0.90930042, 0.50930042],\n       [0.10930042, 0.70930042, 0.30930042],\n       [0.50930042, 0.90930042, 0.70930042],\n       [0.30930042, 0.10930042, 0.50930042]])"
+    "text": "Examples\n\nimport pyLHD\nx = pyLHD.LatinHypercube(size = (5,3), seed = 1)\nx\n\narray([[0.70930042, 0.30930042, 0.10930042],\n       [0.90930042, 0.50930042, 0.90930042],\n       [0.10930042, 0.70930042, 0.30930042],\n       [0.50930042, 0.90930042, 0.70930042],\n       [0.30930042, 0.10930042, 0.50930042]])\n\n\nPermute all columns\n\npyLHD.permute_rows(x)\n\narray([[0.10930042, 0.30930042, 0.70930042],\n       [0.90930042, 0.50930042, 0.90930042],\n       [0.30930042, 0.10930042, 0.70930042],\n       [0.70930042, 0.90930042, 0.50930042],\n       [0.50930042, 0.30930042, 0.10930042]])\n\n\nPermute columns [0,1] with seed=1\n\npyLHD.permute_rows(x, rows = [0,1], seed = 1)\n\narray([[0.70930042, 0.30930042, 0.10930042],\n       [0.90930042, 0.90930042, 0.50930042],\n       [0.10930042, 0.70930042, 0.30930042],\n       [0.50930042, 0.90930042, 0.70930042],\n       [0.30930042, 0.10930042, 0.50930042]])"
   },
   {
     "objectID": "reference/criteria.maximin.html",
@@ -677,5 +677,89 @@
     "title": "helpers.totatives",
     "section": "Examples",
     "text": "Examples\n\nimport pyLHD\npyLHD.totatives(11)\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+  },
+  {
+    "objectID": "reference/base.GoodLatticePoint.html",
+    "href": "reference/base.GoodLatticePoint.html",
+    "title": "base.GoodLatticePoint",
+    "section": "",
+    "text": "base.GoodLatticePoint(size, h=None, seed=None)\nGood Lattice Point (GLP) Design"
+  },
+  {
+    "objectID": "reference/base.GoodLatticePoint.html#parameters",
+    "href": "reference/base.GoodLatticePoint.html#parameters",
+    "title": "base.GoodLatticePoint",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where n and d are the number of rows and columns, respectively\nrequired\n\n\nh\nlist of ints\nA generator vector used to multiply each row of the design. Each element in h must be smaller than and coprime to n\nNone\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
+  },
+  {
+    "objectID": "reference/base.GoodLatticePoint.html#returns",
+    "href": "reference/base.GoodLatticePoint.html#returns",
+    "title": "base.GoodLatticePoint",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nGenerated random (n x d) Good lattice point set, in which each column is a random permutation of {0,1,…,n-1}"
+  },
+  {
+    "objectID": "reference/base.GoodLatticePoint.html#examples",
+    "href": "reference/base.GoodLatticePoint.html#examples",
+    "title": "base.GoodLatticePoint",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\npyLHD.GoodLatticePoint(size = (10,4))\n\narray([[1, 3, 7, 9],\n       [2, 6, 4, 8],\n       [3, 9, 1, 7],\n       [4, 2, 8, 6],\n       [5, 5, 5, 5],\n       [6, 8, 2, 4],\n       [7, 1, 9, 3],\n       [8, 4, 6, 2],\n       [9, 7, 3, 1],\n       [0, 0, 0, 0]])\n\n\n\npyLHD.GoodLatticePoint(size = (10,3),seed = 1)\n\narray([[3, 1, 9],\n       [6, 2, 8],\n       [9, 3, 7],\n       [2, 4, 6],\n       [5, 5, 5],\n       [8, 6, 4],\n       [1, 7, 3],\n       [4, 8, 2],\n       [7, 9, 1],\n       [0, 0, 0]])"
+  },
+  {
+    "objectID": "reference/base.LatinSquare.html",
+    "href": "reference/base.LatinSquare.html",
+    "title": "base.LatinSquare",
+    "section": "",
+    "text": "base.LatinSquare(size, baseline=1, seed=None)\nGenerate a random (n x d) Latin square"
+  },
+  {
+    "objectID": "reference/base.LatinSquare.html#parameters",
+    "href": "reference/base.LatinSquare.html#parameters",
+    "title": "base.LatinSquare",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where n and d are the number of rows and columns, respectively.\nrequired\n\n\nbaseline\nint\nA integer, which defines the minimum value for each column of the matrix. Defaults to 1.\n1\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
+  },
+  {
+    "objectID": "reference/base.LatinSquare.html#returns",
+    "href": "reference/base.LatinSquare.html#returns",
+    "title": "base.LatinSquare",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nGenerated random (n x d) Latin square, in which each column is a random permutation of {baseline,baseline+1, …, baseline+(n-1)}"
+  },
+  {
+    "objectID": "reference/base.LatinSquare.html#examples",
+    "href": "reference/base.LatinSquare.html#examples",
+    "title": "base.LatinSquare",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\npyLHD.LatinSquare(size = (5,3),seed = 1)\n\narray([[4, 2, 1],\n       [5, 3, 5],\n       [1, 4, 2],\n       [3, 5, 4],\n       [2, 1, 3]])"
+  },
+  {
+    "objectID": "reference/helpers.swap_elements.html",
+    "href": "reference/helpers.swap_elements.html",
+    "title": "helpers.swap_elements",
+    "section": "",
+    "text": "helpers.swap_elements(arr, idx, type='col', seed=None)\nSwap two random elements in a matrix"
+  },
+  {
+    "objectID": "reference/helpers.swap_elements.html#parameters",
+    "href": "reference/helpers.swap_elements.html#parameters",
+    "title": "helpers.swap_elements",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\nidx\nint\nA positive integer, which stands for the (idx) column or row of (arr) type (str, optional): If type is ‘col’, two random elements will be exchanged within column (idx). If type is ‘row’, two random elements will be exchanged within row (idx). Defaults to ‘col’.\nrequired\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone"
+  },
+  {
+    "objectID": "reference/helpers.swap_elements.html#returns",
+    "href": "reference/helpers.swap_elements.html#returns",
+    "title": "helpers.swap_elements",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nA new design matrix after the swap of elements"
+  },
+  {
+    "objectID": "reference/helpers.swap_elements.html#examples",
+    "href": "reference/helpers.swap_elements.html#examples",
+    "title": "helpers.swap_elements",
+    "section": "Examples",
+    "text": "Examples\nChoose the first columns of random_lhd and swap two randomly selected elements\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (5,3))\nrandom_lhd\n\narray([[0.6878749, 0.8878749, 0.8878749],\n       [0.0878749, 0.4878749, 0.0878749],\n       [0.8878749, 0.6878749, 0.6878749],\n       [0.4878749, 0.0878749, 0.2878749],\n       [0.2878749, 0.2878749, 0.4878749]])\n\n\nChoose column 1 of random_lhd and swap two randomly selected elements\n\npyLHD.swap_elements(random_lhd,idx=1,type='col')\n\narray([[0.6878749, 0.4878749, 0.8878749],\n       [0.0878749, 0.8878749, 0.0878749],\n       [0.8878749, 0.6878749, 0.6878749],\n       [0.4878749, 0.0878749, 0.2878749],\n       [0.2878749, 0.2878749, 0.4878749]])\n\n\nChoose the first row of random_lhd and swap two randomly selected elements\n\npyLHD.swap_elements(random_lhd,idx=1,type='row')\n\narray([[0.6878749, 0.4878749, 0.8878749],\n       [0.0878749, 0.8878749, 0.0878749],\n       [0.8878749, 0.6878749, 0.6878749],\n       [0.4878749, 0.0878749, 0.2878749],\n       [0.2878749, 0.2878749, 0.4878749]])"
   }
 ]

@@ -1,7 +1,6 @@
 import math
 import numpy as np
 import numpy.typing as npt
-from numbers import Integral
 from typing import Optional, List, Union, Any, Callable,NoReturn
 from itertools import combinations
 
@@ -93,14 +92,14 @@ def replace_values(arr: npt.ArrayLike, mapping: dict) -> npt.ArrayLike:
 
 
 
-def permute_columns(arr: npt.ArrayLike, columns: Optional[List[Integral]] = None,
-                    seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
+def permute_columns(arr: npt.ArrayLike, columns: Optional[List[int]] = None,
+                    seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
   """Randomly permute columns in a numpy ndarray
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
       columns (Optional[List[int]], optional): If columns is None all columns will be randomly permuted, otherwise provide a list of columns to permute. Defaults to None.
-      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+      seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
   Returns:
       numpy ndarray with columns of choice randomly permuted 
@@ -135,14 +134,14 @@ def permute_columns(arr: npt.ArrayLike, columns: Optional[List[Integral]] = None
   return arr
 
 
-def permute_rows(arr: npt.ArrayLike, rows: Optional[List[Integral]] = None,
-                 seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
+def permute_rows(arr: npt.ArrayLike, rows: Optional[List[int]] = None,
+                 seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
   """Randomly permute rows in a numpy ndarray
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
       rows (Optional[List[int]], optional): If `rows` is None all columns will be randomly permuted, otherwise provide a list of rows to permute. Defaults to None.
-      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+      seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
   Returns:
       numpy ndarray with rows of choice randomly permuted 
@@ -177,7 +176,7 @@ def permute_rows(arr: npt.ArrayLike, rows: Optional[List[Integral]] = None,
 
 
 def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
-                  seed: Optional[Union[Integral, np.random.Generator]] = None) -> npt.ArrayLike:
+                  seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
   """ Swap two random elements in a matrix
 
   Args:
@@ -185,7 +184,7 @@ def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
       idx (int): A positive integer, which stands for the (idx) column or row of (arr) type (str, optional): 
           If type is 'col', two random elements will be exchanged within column (idx).
           If type is 'row', two random elements will be exchanged within row (idx). Defaults to 'col'.
-      seed (Optional[Union[Integral, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+      seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
 
   Returns:
@@ -343,31 +342,6 @@ def lapply(lst: List[Any], func: Callable[..., Any], **kwargs: dict[str, Any]) -
     raise TypeError("The argument `lst` must be a list")
   return [func(item,**kwargs) for item in lst]
 
-
-
-def are_coprime(a:int, b:int) -> bool:
-  """Check if two integers are coprime
-
-  Args:
-      a (int):  An integer
-      b (int): An integer
-
-  Returns:
-      bool: Returns True if two integers are coprime
-  
-  Examples:
-  ```{python}
-  import pyLHD
-  pyLHD.are_coprime(2,12)
-  ```
-  ```{python}
-  pyLHD.are_coprime(3,11)
-  ```
-  """
-  return math.gcd(a, b) == 1
-
-
-
 def LinearPermutation(arr: npt.ArrayLike, shift_value: int, modulus:int) -> npt.ArrayLike:
   """Apply a linear permutation to a Latin Hypercube design
 
@@ -406,8 +380,8 @@ def totatives(N:int) -> List[int]:
 ####   Checks/ Conditions #######
 #################################
 
-def check_seed(seed: Optional[Union[Integral,np.random.Generator]] = None) -> np.random.Generator:
-  if seed is None or isinstance(seed, Integral):
+def check_seed(seed: Optional[Union[int,np.random.Generator]] = None) -> np.random.Generator:
+  if seed is None or isinstance(seed, int):
     return np.random.default_rng(seed)
   elif isinstance(seed, (np.random.RandomState, np.random.Generator)):
     global rng
@@ -526,3 +500,35 @@ def is_prime(n:int) -> bool:
   if n % 2 == 0 and n > 2:
     return False
   return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
+
+
+def are_coprime(a:int, b:int) -> bool:
+  """Check if two integers are coprime
+
+  Args:
+      a (int):  An integer
+      b (int): An integer
+
+  Returns:
+      bool: Returns True if two integers are coprime
+  
+  Examples:
+  ```{python}
+  import pyLHD
+  pyLHD.are_coprime(2,12)
+  ```
+  ```{python}
+  pyLHD.are_coprime(3,11)
+  ```
+  """
+  return math.gcd(a, b) == 1
+
+
+def VerifyGenerator(numbers: list[int], n: int, k: int) -> list[int]:
+  if is_prime(n):
+    k = n-1
+  if len(numbers) != k:
+    raise ValueError('`numbers` length must be `k`')
+  if any(element >= n or not are_coprime(element, n) for element in numbers):
+    raise ValueError('All `numbers` should be less than `n` and coprime to `n`')
+  return numbers

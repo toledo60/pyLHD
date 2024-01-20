@@ -455,8 +455,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="table">
 <colgroup>
 <col style="width: 2%">
-<col style="width: 15%">
-<col style="width: 78%">
+<col style="width: 14%">
+<col style="width: 79%">
 <col style="width: 3%">
 </colgroup>
 <thead>
@@ -482,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><code>seed</code></td>
-<td>Optional[Union[Integral, np.random.Generator]])</td>
+<td>Optional[Union[int, np.random.Generator]])</td>
 <td>If <code>seed</code>is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a `<code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>
 <td><code>None</code></td>
 </tr>
@@ -514,33 +514,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">3</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>random_lhd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[0.49706165, 0.09706165, 0.49706165],
-       [0.29706165, 0.69706165, 0.69706165],
-       [0.69706165, 0.29706165, 0.09706165],
-       [0.09706165, 0.49706165, 0.29706165],
-       [0.89706165, 0.89706165, 0.89706165]])</code></pre>
+<pre><code>array([[0.6878749, 0.8878749, 0.8878749],
+       [0.0878749, 0.4878749, 0.0878749],
+       [0.8878749, 0.6878749, 0.6878749],
+       [0.4878749, 0.0878749, 0.2878749],
+       [0.2878749, 0.2878749, 0.4878749]])</code></pre>
 </div>
 </div>
 <p>Choose column 1 of random_lhd and swap two randomly selected elements</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.swap_elements(random_lhd,idx<span class="op">=</span><span class="dv">1</span>,<span class="bu">type</span><span class="op">=</span><span class="st">'col'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[0.49706165, 0.09706165, 0.49706165],
-       [0.29706165, 0.69706165, 0.69706165],
-       [0.69706165, 0.29706165, 0.09706165],
-       [0.09706165, 0.89706165, 0.29706165],
-       [0.89706165, 0.49706165, 0.89706165]])</code></pre>
+<pre><code>array([[0.6878749, 0.4878749, 0.8878749],
+       [0.0878749, 0.8878749, 0.0878749],
+       [0.8878749, 0.6878749, 0.6878749],
+       [0.4878749, 0.0878749, 0.2878749],
+       [0.2878749, 0.2878749, 0.4878749]])</code></pre>
 </div>
 </div>
 <p>Choose the first row of random_lhd and swap two randomly selected elements</p>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pyLHD.swap_elements(random_lhd,idx<span class="op">=</span><span class="dv">1</span>,<span class="bu">type</span><span class="op">=</span><span class="st">'row'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>array([[0.49706165, 0.09706165, 0.49706165],
-       [0.69706165, 0.29706165, 0.69706165],
-       [0.69706165, 0.29706165, 0.09706165],
-       [0.09706165, 0.89706165, 0.29706165],
-       [0.89706165, 0.49706165, 0.89706165]])</code></pre>
+<pre><code>array([[0.6878749, 0.4878749, 0.8878749],
+       [0.0878749, 0.8878749, 0.0878749],
+       [0.8878749, 0.6878749, 0.6878749],
+       [0.4878749, 0.0878749, 0.2878749],
+       [0.2878749, 0.2878749, 0.4878749]])</code></pre>
 </div>
 </div>
 

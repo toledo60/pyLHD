@@ -455,8 +455,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="table">
 <colgroup>
 <col style="width: 3%">
-<col style="width: 18%">
-<col style="width: 73%">
+<col style="width: 17%">
+<col style="width: 74%">
 <col style="width: 4%">
 </colgroup>
 <thead>
@@ -482,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><code>seed</code></td>
-<td>Optional[Union[Integral, np.random.Generator]])</td>
+<td>Optional[Union[int, np.random.Generator]])</td>
 <td>If <code>seed</code>is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a `<code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>
 <td><code>None</code></td>
 </tr>
@@ -528,11 +528,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.permute_columns(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[0.10930042, 0.50930042, 0.70930042],
-       [0.50930042, 0.10930042, 0.30930042],
-       [0.30930042, 0.70930042, 0.50930042],
-       [0.90930042, 0.90930042, 0.90930042],
-       [0.70930042, 0.30930042, 0.10930042]])</code></pre>
+<pre><code>array([[0.50930042, 0.50930042, 0.90930042],
+       [0.10930042, 0.30930042, 0.10930042],
+       [0.30930042, 0.90930042, 0.50930042],
+       [0.90930042, 0.10930042, 0.30930042],
+       [0.70930042, 0.70930042, 0.70930042]])</code></pre>
 </div>
 </div>
 <p>Permute columns [0,1] with <code>seed=1</code></p>
