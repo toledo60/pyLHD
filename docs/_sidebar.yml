@@ -35,6 +35,7 @@ website:
       - reference/helpers.check_bounds.qmd
       - reference/helpers.column_combinations.qmd
       - reference/helpers.distance_matrix.qmd
+      - reference/helpers.euler_phi.qmd
       - reference/helpers.is_LHD.qmd
       - reference/helpers.is_balanced_design.qmd
       - reference/helpers.lapply.qmd

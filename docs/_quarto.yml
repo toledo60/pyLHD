@@ -65,7 +65,8 @@ quartodoc:
         - helpers.are_coprime
         - helpers.check_bounds
         - helpers.column_combinations
-        - helpers.distance_matrix           
+        - helpers.distance_matrix
+        - helpers.euler_phi           
         - helpers.is_LHD
         - helpers.is_balanced_design
         - helpers.lapply

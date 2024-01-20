@@ -53,6 +53,7 @@ miscellaneous utilities for working with LHDs
 | [helpers.check_bounds](helpers.check_bounds.qmd#pyLHD.helpers.check_bounds) | Check conditions for bounds input |
 | [helpers.column_combinations](helpers.column_combinations.qmd#pyLHD.helpers.column_combinations) | Generates all unique combinations of columns from the given array, selecting 'k' columns at a time. |
 | [helpers.distance_matrix](helpers.distance_matrix.qmd#pyLHD.helpers.distance_matrix) | Distance matrix based on specified distance measure |
+| [helpers.euler_phi](helpers.euler_phi.qmd#pyLHD.helpers.euler_phi) | Euler's Totient function |
 | [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
 | [helpers.is_balanced_design](helpers.is_balanced_design.qmd#pyLHD.helpers.is_balanced_design) | Verify a design is balanced |
 | [helpers.lapply](helpers.lapply.qmd#pyLHD.helpers.lapply) | Apply a function to each item in a list |

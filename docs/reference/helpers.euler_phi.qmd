@@ -1,0 +1,29 @@
+# helpers.euler_phi { #pyLHD.helpers.euler_phi }
+
+`helpers.euler_phi(N)`
+
+Euler's Totient function
+
+## Parameters
+
+| Name   | Type   | Description                     | Default    |
+|--------|--------|---------------------------------|------------|
+| `N`    | int    | The number to find coprimes for | _required_ |
+
+## Returns
+
+| Type   | Description                                                            |
+|--------|------------------------------------------------------------------------|
+| int    | The number of positive integers from [1,N), less than and coprime to N |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+pyLHD.totatives(11)
+```
+```{python}
+pyLHD.euler_phi(11)
+```

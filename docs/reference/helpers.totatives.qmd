@@ -12,9 +12,9 @@ Generate all positive integers less than and coprime to N from [1,N)
 
 ## Returns
 
-| Type        | Description                                                  |
-|-------------|--------------------------------------------------------------|
-| List\[int\] | List[int]: A list of integers in [1,N) that are coprime to N |
+| Type        | Description                                                    |
+|-------------|----------------------------------------------------------------|
+| List\[int\] | List[int]: A list of integers from [1,N) that are coprime to N |
 
 ## Examples
 

@@ -364,7 +364,7 @@ def totatives(N:int) -> List[int]:
       N (int): The number to find coprimes for
 
   Returns:
-      List[int]: A list of integers in [1,N) that are coprime to N
+      List[int]: A list of integers from [1,N) that are coprime to N
   
   Examples:
   ```{python}
@@ -374,6 +374,27 @@ def totatives(N:int) -> List[int]:
   """
   return [i for i in range(1, N + 1) if are_coprime(i, N)]
 
+
+def euler_phi(N:int) -> int:
+  """
+  Euler's Totient function
+
+  Args:
+      N (int): The number to find coprimes for
+
+  Returns:
+      (int): The number of positive integers from [1,N), less than and coprime to N 
+  
+  Examples:
+  ```{python}
+  import pyLHD
+  pyLHD.totatives(11)
+  ```
+  ```{python}
+  pyLHD.euler_phi(11)
+  ```
+  """  
+  return len(totatives(N))
 
 
 #################################
