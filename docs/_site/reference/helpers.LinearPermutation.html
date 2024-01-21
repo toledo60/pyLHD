@@ -312,6 +312,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.euler_phi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.euler_phi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.is_LHD.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.is_LHD</span></a>
   </div>
@@ -403,16 +409,16 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="pyLHD.helpers.LinearPermutation" class="level1">
 <h1>helpers.LinearPermutation</h1>
-<p><code>helpers.LinearPermutation(arr, shift_value, modulus)</code></p>
-<p>Apply a linear permutation to a Latin Hypercube design</p>
+<p><code>helpers.LinearPermutation(arr, b, modulus=None)</code></p>
+<p>Apply a linear permutation to a Good lattice point (GLP) design</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 60%">
-<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 12%">
+<col style="width: 74%">
+<col style="width: 7%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -430,16 +436,16 @@ ul.task-list li input[type="checkbox"] {
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>shift_value</code></td>
-<td>int</td>
-<td>Value by which each element in the array is to be incremented</td>
+<td><code>b</code></td>
+<td>Union[int, list]</td>
+<td>Value by which each element in the array is to be linearly level permuted. Can either be an integer or a list of integers</td>
 <td><em>required</em></td>
 </tr>
 <tr class="odd">
 <td><code>modulus</code></td>
 <td>int</td>
-<td>Modulus used for the permutation</td>
-<td><em>required</em></td>
+<td>Modulus used for the permutation. Defaults to None. If None, the number of rows is used as the modulus.</td>
+<td><code>None</code></td>
 </tr>
 </tbody>
 </table>
@@ -448,8 +454,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 13%">
-<col style="width: 86%">
+<col style="width: 14%">
+<col style="width: 85%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -460,7 +466,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>npt.ArrayLike</td>
-<td>npt.ArrayLike: A new array where each element is the result of <code>(arr + shift_value) % modulus</code></td>
+<td>npt.ArrayLike: A new array where each element is the result of <code>(arr + b) % modulus</code></td>
 </tr>
 </tbody>
 </table>

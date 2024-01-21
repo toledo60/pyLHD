@@ -250,44 +250,6 @@ def column_combinations(arr: npt.ArrayLike, k:int) -> List[npt.ArrayLike]:
   return [arr[:,[i,j]] for i,j in column_combinations]
 
 
-def williams_transform(arr: npt.ArrayLike, baseline: int =1) -> npt.ArrayLike:
-  """ Williams Transformation
-
-  Args:
-      arr (npt.ArrayLike): A numpy ndarray
-      baseline (int, optional): A integer, which defines the minimum value for each column of the matrix. Defaults to 1.
-
-  Returns:
-      After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)}
-  
-  Examples:
-  ```{python}
-  import pyLHD
-  random_ls = pyLHD.LatinSquare(size = (5,3))
-  random_ls
-  ```
-  Change the baseline
-  ```{python}
-  pyLHD.williams_transform(random_ls,baseline=3)
-  ```
-  """
-  n = arr.shape[0]
-
-  # Adjust the array based on the minimum value in the first column
-  min_element = np.amin(arr[:, 0])
-  if min_element != 0:
-      arr -= min_element
-
-  # Apply the weight transformation
-  wt = np.where(arr < (n / 2), 2 * arr + 1, 2 * (n - arr))
-
-  # Adjust the weight based on the baseline
-  if baseline != 1:
-      wt += (baseline - 1)
-
-  return wt
-
-
 def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list) -> npt.ArrayLike:
   """Sample scaling from unit hypercube to different bounds
 
@@ -314,10 +276,6 @@ def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list) -> npt.Arr
   return lb + arr * (ub - lb)
 
 
-#################################
-####      MISC    ###############
-#################################
-
 def lapply(lst: List[Any], func: Callable[..., Any], **kwargs: dict[str, Any]) -> List[Any]:
   """Apply a function to each item in a list
 
@@ -342,18 +300,31 @@ def lapply(lst: List[Any], func: Callable[..., Any], **kwargs: dict[str, Any]) -
     raise TypeError("The argument `lst` must be a list")
   return [func(item,**kwargs) for item in lst]
 
-def LinearPermutation(arr: npt.ArrayLike, shift_value: int, modulus:int) -> npt.ArrayLike:
-  """Apply a linear permutation to a Latin Hypercube design
+
+def LinearPermutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None) -> npt.ArrayLike:
+  """Apply a linear permutation to a Good lattice point (GLP) design
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
-      shift_value (int): Value by which each element in the array is to be incremented
-      modulus (int): Modulus used for the permutation
+      b (Union[int,list]): Value by which each element in the array is to be linearly level permuted. Can either be an integer or a list of integers
+      modulus (int): Modulus used for the permutation. Defaults to None. If None, the number of rows is used as the modulus.
 
   Returns:
-      npt.ArrayLike: A new array where each element is the result of `(arr + shift_value) % modulus`
+      npt.ArrayLike: A new array where each element is the result of `(arr + b) % modulus`
   """
-  return (arr + shift_value)%modulus
+  n_rows, n_columns = arr.shape
+  if modulus is None:
+    modulus = n_rows
+  
+  if isinstance(b,int):
+    return (arr + b)%modulus
+  elif isinstance(b, list):
+    permuted_arr = arr.copy()
+    
+    for i in range(n_columns):
+      permuted_arr[:,i] = (permuted_arr[:,i] + b[i]) % modulus
+    
+    return permuted_arr
 
 
 def totatives(N:int) -> List[int]:
@@ -395,6 +366,42 @@ def euler_phi(N:int) -> int:
   ```
   """  
   return len(totatives(N))
+
+
+def williams_transform(arr: npt.ArrayLike, baseline: int = 0) -> npt.ArrayLike:
+  """ Williams Transformation
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      baseline (int, optional): A integer, which defines the minimum value for each column of the matrix. Defaults to 0.
+
+  Returns:
+      After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)}
+  
+  Examples:
+  ```{python}
+  import pyLHD
+  random_ls = pyLHD.LatinSquare(size = (5,3))
+  random_ls
+  ```
+  Change the baseline
+  ```{python}
+  pyLHD.williams_transform(random_ls,baseline=3)
+  ```
+  """
+  n = arr.shape[0]
+  # Adjust the array based on the minimum value in the first column
+  min_element = np.amin(arr[:, 0])
+  if min_element != 0:
+      arr -= min_element
+
+  # Apply the weight transformation
+  wt = np.where(arr < (n / 2), 2 * arr + 1, 2 * (n - arr))
+
+  # Adjust the weight based on the baseline
+  if baseline != 1:
+      wt += (baseline - 1)
+  return wt
 
 
 #################################

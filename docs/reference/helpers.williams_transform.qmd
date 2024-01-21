@@ -1,6 +1,6 @@
 # helpers.williams_transform { #pyLHD.helpers.williams_transform }
 
-`helpers.williams_transform(arr, baseline=1)`
+`helpers.williams_transform(arr, baseline=0)`
 
 Williams Transformation
 
@@ -9,7 +9,7 @@ Williams Transformation
 | Name       | Type          | Description                                                                              | Default    |
 |------------|---------------|------------------------------------------------------------------------------------------|------------|
 | `arr`      | npt.ArrayLike | A numpy ndarray                                                                          | _required_ |
-| `baseline` | int           | A integer, which defines the minimum value for each column of the matrix. Defaults to 1. | `1`        |
+| `baseline` | int           | A integer, which defines the minimum value for each column of the matrix. Defaults to 0. | `0`        |
 
 ## Returns
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyLHD"
-version = "0.5.7"
+version = "0.5.8"
 description = "Latin Hypercubes in Python"
 authors = [
     {name = "Jose Toledo", email = "toledo60@protonmail.com" }

@@ -59,7 +59,7 @@ def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Gener
         if(n_rows % 4 == 3):
           W[i, j] = ((i+1) * g[j] + (3*n_rows - 1)/4) % n_rows
 
-    X = williams_transform(W)
+    X = williams_transform(W,baseline = 1)
 
   else:
     g0 = np.arange(start=1, stop=n0+1)
@@ -73,7 +73,7 @@ def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Gener
         if (n_rows % 4 == 3):
           W0[i, j] = ((i+1)*g0[j] + (3*n_rows-1)/4) % n_rows
 
-    X0 = williams_transform(W0)
+    X0 = williams_transform(W0, baseline=1)
 
     r = n_columns - n0
     seq = np.arange(start=1, stop=n0+1)
@@ -85,7 +85,7 @@ def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Gener
       for j in range(r):
         W1[i, j] = ((i+1)*g1[j]) % n_rows
 
-    X1 = williams_transform(W1)
+    X1 = williams_transform(W1,baseline=1)
 
     X = np.column_stack((X0, X1))
 

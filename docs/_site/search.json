@@ -319,7 +319,7 @@
     "href": "reference/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance between the ith and jth index\n\n\ncriteria.pairwise_InterSite\nCalculate the Inter-site Distance between all pairwise (rows/columns)\n\n\ncriteria.LqDistance\nCalculate the Lq-Distance of a Latin Hypercube Design\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.LinearPermutation\nApply a linear permutation to a Latin Hypercube design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.williams_transform\nWilliams Transformation"
+    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance between the ith and jth index\n\n\ncriteria.pairwise_InterSite\nCalculate the Inter-site Distance between all pairwise (rows/columns)\n\n\ncriteria.LqDistance\nCalculate the Lq-Distance of a Latin Hypercube Design\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.LinearPermutation\nApply a linear permutation to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.williams_transform\nWilliams Transformation"
   },
   {
     "objectID": "reference/index.html#base-designs",
@@ -347,7 +347,7 @@
     "href": "reference/index.html#helpers",
     "title": "Function reference",
     "section": "",
-    "text": "miscellaneous utilities for working with LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.LinearPermutation\nApply a linear permutation to a Latin Hypercube design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.williams_transform\nWilliams Transformation"
+    "text": "miscellaneous utilities for working with LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.LinearPermutation\nApply a linear permutation to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.williams_transform\nWilliams Transformation"
   },
   {
     "objectID": "reference/base.LatinHypercube.html",
@@ -627,14 +627,14 @@
     "href": "reference/helpers.williams_transform.html",
     "title": "helpers.williams_transform",
     "section": "",
-    "text": "helpers.williams_transform(arr, baseline=1)\nWilliams Transformation"
+    "text": "helpers.williams_transform(arr, baseline=0)\nWilliams Transformation"
   },
   {
     "objectID": "reference/helpers.williams_transform.html#parameters",
     "href": "reference/helpers.williams_transform.html#parameters",
     "title": "helpers.williams_transform",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\nbaseline\nint\nA integer, which defines the minimum value for each column of the matrix. Defaults to 1.\n1"
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\nbaseline\nint\nA integer, which defines the minimum value for each column of the matrix. Defaults to 0.\n0"
   },
   {
     "objectID": "reference/helpers.williams_transform.html#returns",
@@ -648,7 +648,7 @@
     "href": "reference/helpers.williams_transform.html#examples",
     "title": "helpers.williams_transform",
     "section": "Examples",
-    "text": "Examples\n\nimport pyLHD\nrandom_ls = pyLHD.LatinSquare(size = (5,3))\nrandom_ls\n\narray([[4, 3, 1],\n       [3, 2, 2],\n       [1, 5, 4],\n       [5, 4, 3],\n       [2, 1, 5]])\n\n\nChange the baseline\n\npyLHD.williams_transform(random_ls,baseline=3)\n\narray([[6, 7, 3],\n       [7, 5, 5],\n       [3, 4, 6],\n       [4, 6, 7],\n       [5, 3, 4]])"
+    "text": "Examples\n\nimport pyLHD\nrandom_ls = pyLHD.LatinSquare(size = (5,3))\nrandom_ls\n\narray([[3, 5, 4],\n       [5, 4, 5],\n       [1, 3, 1],\n       [2, 2, 3],\n       [4, 1, 2]])\n\n\nChange the baseline\n\npyLHD.williams_transform(random_ls,baseline=3)\n\narray([[7, 4, 6],\n       [4, 6, 4],\n       [3, 7, 3],\n       [5, 5, 7],\n       [6, 3, 5]])"
   },
   {
     "objectID": "reference/helpers.totatives.html",
@@ -789,5 +789,26 @@
     "title": "helpers.euler_phi",
     "section": "Examples",
     "text": "Examples\n\nimport pyLHD\npyLHD.totatives(11)\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n\n\npyLHD.euler_phi(11)\n\n10"
+  },
+  {
+    "objectID": "reference/helpers.LinearPermutation.html",
+    "href": "reference/helpers.LinearPermutation.html",
+    "title": "helpers.LinearPermutation",
+    "section": "",
+    "text": "helpers.LinearPermutation(arr, b, modulus=None)\nApply a linear permutation to a Good lattice point (GLP) design\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\nb\nUnion[int, list]\nValue by which each element in the array is to be linearly level permuted. Can either be an integer or a list of integers\nrequired\n\n\nmodulus\nint\nModulus used for the permutation. Defaults to None. If None, the number of rows is used as the modulus.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nnpt.ArrayLike: A new array where each element is the result of (arr + b) % modulus"
+  },
+  {
+    "objectID": "reference/helpers.LinearPermutation.html#parameters",
+    "href": "reference/helpers.LinearPermutation.html#parameters",
+    "title": "helpers.LinearPermutation",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\nb\nUnion[int, list]\nValue by which each element in the array is to be linearly level permuted. Can either be an integer or a list of integers\nrequired\n\n\nmodulus\nint\nModulus used for the permutation. Defaults to None. If None, the number of rows is used as the modulus.\nNone"
+  },
+  {
+    "objectID": "reference/helpers.LinearPermutation.html#returns",
+    "href": "reference/helpers.LinearPermutation.html#returns",
+    "title": "helpers.LinearPermutation",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\nnpt.ArrayLike\nnpt.ArrayLike: A new array where each element is the result of (arr + b) % modulus"
   }
 ]
