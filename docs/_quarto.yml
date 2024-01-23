@@ -34,8 +34,12 @@ quartodoc:
         - base.LatinSquare
         - base.LatinHypercube
         - base.GoodLatticePoint
+    - title: Maximin LHD
+      desc: Algebraic Constructions of Maximin LHD
+      contents:
+        - maximin.LeaveOneOut
     - title: Orthogonal LHD
-      desc: Various constructions of orthogonal latin hypercube designs
+      desc: Algebraic Constructions of Orthogonal LHD
       contents:
         - orthogonal.OLHD_Butler01
         - orthogonal.OLHD_Cioppa07
@@ -44,7 +48,7 @@ quartodoc:
         - orthogonal.OLHD_Ye98
         - orthogonal.OA2LHD
     - title: Criteria
-      desc: Space-filling Criterias for LHD
+      desc: Space-filling and Projection Criterias for LHD
       contents:
         - criteria.Criteria
         - criteria.AvgAbsCor
@@ -60,7 +64,7 @@ quartodoc:
         - criteria.phi_p
         - criteria.UniformProCriterion
     - title: Helpers
-      desc: miscellaneous utilities for working with LHDs
+      desc: Miscellaneous Utilities for Manipulating LHDs
       contents:
         - helpers.are_coprime
         - helpers.check_bounds
@@ -79,4 +83,4 @@ quartodoc:
         - helpers.swap_elements
         - helpers.totatives
         - helpers.VerifyGenerator
-        - helpers.williams_transform        
+        - helpers.WilliamsTransform       

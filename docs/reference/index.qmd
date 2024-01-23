@@ -10,9 +10,17 @@ Generate Random LHD
 | [base.LatinHypercube](base.LatinHypercube.qmd#pyLHD.base.LatinHypercube) | Generate a random Latin Hypercube Design |
 | [base.GoodLatticePoint](base.GoodLatticePoint.qmd#pyLHD.base.GoodLatticePoint) | Good Lattice Point (GLP) Design  |
 
+## Maximin LHD
+
+Algebraic Constructions of Maximin LHD
+
+| | |
+| --- | --- |
+| [maximin.LeaveOneOut](maximin.LeaveOneOut.qmd#pyLHD.maximin.LeaveOneOut) | Apply the Leave-one-out Procedure to Generate a Maxmin LHD |
+
 ## Orthogonal LHD
 
-Various constructions of orthogonal latin hypercube designs
+Algebraic Constructions of Orthogonal LHD
 
 | | |
 | --- | --- |
@@ -25,7 +33,7 @@ Various constructions of orthogonal latin hypercube designs
 
 ## Criteria
 
-Space-filling Criterias for LHD
+Space-filling and Projection Criterias for LHD
 
 | | |
 | --- | --- |
@@ -45,7 +53,7 @@ Space-filling Criterias for LHD
 
 ## Helpers
 
-miscellaneous utilities for working with LHDs
+Miscellaneous Utilities for Manipulating LHDs
 
 | | |
 | --- | --- |
@@ -66,4 +74,4 @@ miscellaneous utilities for working with LHDs
 | [helpers.swap_elements](helpers.swap_elements.qmd#pyLHD.helpers.swap_elements) | Swap two random elements in a matrix |
 | [helpers.totatives](helpers.totatives.qmd#pyLHD.helpers.totatives) | Generate all positive integers less than and coprime to N from [1,N) |
 | [helpers.VerifyGenerator](helpers.VerifyGenerator.qmd#pyLHD.helpers.VerifyGenerator) | Verify generator used to construct good lattice points (GLP) design |
-| [helpers.williams_transform](helpers.williams_transform.qmd#pyLHD.helpers.williams_transform) | Williams Transformation |
+| [helpers.WilliamsTransform](helpers.WilliamsTransform.qmd#pyLHD.helpers.WilliamsTransform) | Williams Transformation |

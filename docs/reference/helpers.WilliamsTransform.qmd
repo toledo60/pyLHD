@@ -1,0 +1,32 @@
+# helpers.WilliamsTransform { #pyLHD.helpers.WilliamsTransform }
+
+`helpers.WilliamsTransform(arr, baseline=0)`
+
+Williams Transformation
+
+## Parameters
+
+| Name       | Type          | Description                                                                              | Default    |
+|------------|---------------|------------------------------------------------------------------------------------------|------------|
+| `arr`      | npt.ArrayLike | A numpy ndarray                                                                          | _required_ |
+| `baseline` | int           | A integer, which defines the minimum value for each column of the matrix. Defaults to 0. | `0`        |
+
+## Returns
+
+| Type          | Description                                                                                                                     |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------|
+| npt.ArrayLike | After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)} |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+random_ls = pyLHD.LatinSquare(size = (5,3))
+random_ls
+```
+Change the baseline
+```{python}
+pyLHD.WilliamsTransform(random_ls,baseline=3)
+```

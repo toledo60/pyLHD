@@ -319,7 +319,7 @@
     "href": "reference/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nVarious constructions of orthogonal latin hypercube designs\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance between the ith and jth index\n\n\ncriteria.pairwise_InterSite\nCalculate the Inter-site Distance between all pairwise (rows/columns)\n\n\ncriteria.LqDistance\nCalculate the Lq-Distance of a Latin Hypercube Design\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion\n\n\n\n\n\n\nmiscellaneous utilities for working with LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.LevelPermutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.VerifyGenerator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.williams_transform\nWilliams Transformation"
+    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nAlgebraic Constructions of Maximin LHD\n\n\n\nmaximin.LeaveOneOut\nApply the Leave-one-out Procedure to Generate a Maxmin LHD\n\n\n\n\n\n\nAlgebraic Constructions of Orthogonal LHD\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling and Projection Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance between the ith and jth index\n\n\ncriteria.pairwise_InterSite\nCalculate the Inter-site Distance between all pairwise (rows/columns)\n\n\ncriteria.LqDistance\nCalculate the Lq-Distance of a Latin Hypercube Design\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion\n\n\n\n\n\n\nMiscellaneous Utilities for Manipulating LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.LevelPermutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.VerifyGenerator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.WilliamsTransform\nWilliams Transformation"
   },
   {
     "objectID": "reference/index.html#base-designs",
@@ -333,21 +333,21 @@
     "href": "reference/index.html#orthogonal-lhd",
     "title": "Function reference",
     "section": "",
-    "text": "Various constructions of orthogonal latin hypercube designs\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD"
+    "text": "Algebraic Constructions of Orthogonal LHD\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD"
   },
   {
     "objectID": "reference/index.html#criteria",
     "href": "reference/index.html#criteria",
     "title": "Function reference",
     "section": "",
-    "text": "Space-filling Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance between the ith and jth index\n\n\ncriteria.pairwise_InterSite\nCalculate the Inter-site Distance between all pairwise (rows/columns)\n\n\ncriteria.LqDistance\nCalculate the Lq-Distance of a Latin Hypercube Design\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion"
+    "text": "Space-filling and Projection Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.InterSite\nCalculate the Inter-site Distance between the ith and jth index\n\n\ncriteria.pairwise_InterSite\nCalculate the Inter-site Distance between all pairwise (rows/columns)\n\n\ncriteria.LqDistance\nCalculate the Lq-Distance of a Latin Hypercube Design\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.maximin\nCompute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion"
   },
   {
     "objectID": "reference/index.html#helpers",
     "href": "reference/index.html#helpers",
     "title": "Function reference",
     "section": "",
-    "text": "miscellaneous utilities for working with LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.LevelPermutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.VerifyGenerator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.williams_transform\nWilliams Transformation"
+    "text": "Miscellaneous Utilities for Manipulating LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.LevelPermutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.VerifyGenerator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.WilliamsTransform\nWilliams Transformation"
   },
   {
     "objectID": "reference/base.LatinHypercube.html",
@@ -887,5 +887,68 @@
     "title": "helpers.VerifyGenerator",
     "section": "",
     "text": "Type\nDescription\n\n\n\n\nlist[int]\nlist[int]: If all conditions hold, numbers is returned"
+  },
+  {
+    "objectID": "reference/index.html#maximin-lhd",
+    "href": "reference/index.html#maximin-lhd",
+    "title": "Function reference",
+    "section": "",
+    "text": "Algebraic Constructions of Maximin LHD\n\n\n\nmaximin.LeaveOneOut\nApply the Leave-one-out Procedure to Generate a Maxmin LHD"
+  },
+  {
+    "objectID": "reference/helpers.WilliamsTransform.html",
+    "href": "reference/helpers.WilliamsTransform.html",
+    "title": "helpers.WilliamsTransform",
+    "section": "",
+    "text": "helpers.WilliamsTransform(arr, baseline=0)\nWilliams Transformation"
+  },
+  {
+    "objectID": "reference/helpers.WilliamsTransform.html#parameters",
+    "href": "reference/helpers.WilliamsTransform.html#parameters",
+    "title": "helpers.WilliamsTransform",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarray\nrequired\n\n\nbaseline\nint\nA integer, which defines the minimum value for each column of the matrix. Defaults to 0.\n0"
+  },
+  {
+    "objectID": "reference/helpers.WilliamsTransform.html#returns",
+    "href": "reference/helpers.WilliamsTransform.html#returns",
+    "title": "helpers.WilliamsTransform",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nAfter applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, …, baseline+(n-1)}"
+  },
+  {
+    "objectID": "reference/helpers.WilliamsTransform.html#examples",
+    "href": "reference/helpers.WilliamsTransform.html#examples",
+    "title": "helpers.WilliamsTransform",
+    "section": "Examples",
+    "text": "Examples\n\nimport pyLHD\nrandom_ls = pyLHD.LatinSquare(size = (5,3))\nrandom_ls\n\narray([[1, 5, 1],\n       [2, 1, 2],\n       [5, 4, 4],\n       [3, 3, 5],\n       [4, 2, 3]])\n\n\nChange the baseline\n\npyLHD.WilliamsTransform(random_ls,baseline=3)\n\narray([[3, 4, 3],\n       [5, 3, 5],\n       [4, 6, 6],\n       [7, 7, 4],\n       [6, 5, 7]])"
+  },
+  {
+    "objectID": "reference/maximin.LeaveOneOut.html",
+    "href": "reference/maximin.LeaveOneOut.html",
+    "title": "maximin.LeaveOneOut",
+    "section": "",
+    "text": "maximin.LeaveOneOut(arr, b, method='LP')\nApply the Leave-one-out Procedure to Generate a Maxmin LHD"
+  },
+  {
+    "objectID": "reference/maximin.LeaveOneOut.html#parameters",
+    "href": "reference/maximin.LeaveOneOut.html#parameters",
+    "title": "maximin.LeaveOneOut",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnpt.ArrayLike\nA numpy ndarry, with initial shape \\((n \\times d)\\)\nrequired\n\n\nb\nint\nInteger to apply either linear level permutation or William’s transformation\nrequired\n\n\nmethod\nLiteral['LP', 'WT']\nLinear level permutation (LP) or William’s transformation (WT). Defaults to ‘LP’.\n'LP'"
+  },
+  {
+    "objectID": "reference/maximin.LeaveOneOut.html#raises",
+    "href": "reference/maximin.LeaveOneOut.html#raises",
+    "title": "maximin.LeaveOneOut",
+    "section": "Raises",
+    "text": "Raises\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nTypeError\nb must be an integer\n\n\nValueError\nGiven an LHD with column permutations (0,1,…,n-1), b must be within (0,1,…,n-1)\n\n\nValueError\nIf method is not ‘LP’ or ‘WT’"
+  },
+  {
+    "objectID": "reference/maximin.LeaveOneOut.html#returns",
+    "href": "reference/maximin.LeaveOneOut.html#returns",
+    "title": "maximin.LeaveOneOut",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnpt.ArrayLike\nnpt.ArrayLike: After removing the last constant row of initial LHD, an \\((n-1) \\times d\\) maximin LHD is returned\n\n\n\nExample:\n\nimport pyLHD\nn = 11\nd = pyLHD.euler_phi(n)\nx = pyLHD.GoodLatticePoint(size = (n,d))\nx\n\narray([[ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10],\n       [ 2,  4,  6,  8, 10,  1,  3,  5,  7,  9],\n       [ 3,  6,  9,  1,  4,  7, 10,  2,  5,  8],\n       [ 4,  8,  1,  5,  9,  2,  6, 10,  3,  7],\n       [ 5, 10,  4,  9,  3,  8,  2,  7,  1,  6],\n       [ 6,  1,  7,  2,  8,  3,  9,  4, 10,  5],\n       [ 7,  3, 10,  6,  2,  9,  5,  1,  8,  4],\n       [ 8,  5,  2, 10,  7,  4,  1,  9,  6,  3],\n       [ 9,  7,  5,  3,  1, 10,  8,  6,  4,  2],\n       [10,  9,  8,  7,  6,  5,  4,  3,  2,  1],\n       [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0]])\n\n\nThe initial \\(L_1\\)-distance of x is\n\npyLHD.LqDistance(x, q=1)\n\n30.0\n\n\nAfter applying the Leave-one-out method with a simple linear level permutation, we should obtain an \\((n-1) \\times d\\) LHD with higher \\(L_1\\)-distance\n\nx_lp = pyLHD.LeaveOneOut(x, b = 1, method = 'LP')\nx_lp\n\narray([[1, 2, 3, 4, 5, 6, 7, 8, 9, 0],\n       [2, 4, 6, 8, 0, 1, 3, 5, 7, 9],\n       [3, 6, 9, 1, 4, 7, 0, 2, 5, 8],\n       [4, 8, 1, 5, 9, 2, 6, 0, 3, 7],\n       [5, 0, 4, 9, 3, 8, 2, 7, 1, 6],\n       [6, 1, 7, 2, 8, 3, 9, 4, 0, 5],\n       [7, 3, 0, 6, 2, 9, 5, 1, 8, 4],\n       [8, 5, 2, 0, 7, 4, 1, 9, 6, 3],\n       [9, 7, 5, 3, 1, 0, 8, 6, 4, 2],\n       [0, 9, 8, 7, 6, 5, 4, 3, 2, 1]])\n\n\n\npyLHD.LqDistance(x_lp,q=1)\n\n32.0\n\n\nLeave-one-out method using William’s transformation\n\nx_wt = pyLHD.LeaveOneOut(x, b = 1, method = 'WT')\nx_wt\n\narray([[3, 5, 7, 9, 8, 6, 4, 2, 1, 0],\n       [5, 9, 6, 2, 0, 3, 7, 8, 4, 1],\n       [7, 6, 1, 3, 9, 4, 0, 5, 8, 2],\n       [9, 2, 3, 8, 1, 5, 6, 0, 7, 4],\n       [8, 0, 9, 1, 7, 2, 5, 4, 3, 6],\n       [6, 3, 4, 5, 2, 7, 1, 9, 0, 8],\n       [4, 7, 0, 6, 5, 1, 8, 3, 2, 9],\n       [2, 8, 5, 0, 4, 9, 3, 1, 6, 7],\n       [1, 4, 8, 7, 3, 0, 2, 6, 9, 5],\n       [0, 1, 2, 4, 6, 8, 9, 7, 5, 3]])\n\n\n\npyLHD.LqDistance(x_wt,q=1)\n\n36.0"
   }
 ]

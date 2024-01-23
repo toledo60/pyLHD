@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index</title>
+<title>maximin.leaveoneout</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -60,6 +94,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -94,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">Function reference</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/maximin.LeaveOneOut.html">Maximin LHD</a></li><li class="breadcrumb-item"><a href="../reference/maximin.LeaveOneOut.html">maximin.LeaveOneOut</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -108,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Function reference</span></a>
   </div>
 </li>
@@ -152,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/maximin.LeaveOneOut.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/maximin.LeaveOneOut.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">maximin.LeaveOneOut</span></a>
   </div>
 </li>
@@ -423,230 +459,198 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#function-reference" id="toc-function-reference" class="nav-link active" data-scroll-target="#function-reference">Function reference</a>
-  <ul class="collapse">
-  <li><a href="#base-designs" id="toc-base-designs" class="nav-link" data-scroll-target="#base-designs">Base Designs</a></li>
-  <li><a href="#maximin-lhd" id="toc-maximin-lhd" class="nav-link" data-scroll-target="#maximin-lhd">Maximin LHD</a></li>
-  <li><a href="#orthogonal-lhd" id="toc-orthogonal-lhd" class="nav-link" data-scroll-target="#orthogonal-lhd">Orthogonal LHD</a></li>
-  <li><a href="#criteria" id="toc-criteria" class="nav-link" data-scroll-target="#criteria">Criteria</a></li>
-  <li><a href="#helpers" id="toc-helpers" class="nav-link" data-scroll-target="#helpers">Helpers</a></li>
-  </ul></li>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#raises" id="toc-raises" class="nav-link" data-scroll-target="#raises">Raises</a></li>
+  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">maximin.LeaveOneOut</h1>
+</div>
 
 
-<section id="function-reference" class="level1">
-<h1>Function reference</h1>
-<section id="base-designs" class="level2">
-<h2 class="anchored" data-anchor-id="base-designs">Base Designs</h2>
-<p>Generate Random LHD</p>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><code>maximin.LeaveOneOut(arr, b, method='LP')</code></p>
+<p>Apply the Leave-one-out Procedure to Generate a Maxmin LHD</p>
+<section id="parameters" class="level2">
+<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 27%">
+<col style="width: 57%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../reference/base.LatinSquare.html#pyLHD.base.LatinSquare">base.LatinSquare</a></td>
-<td>Generate a random (n x d) Latin square</td>
+<td><code>arr</code></td>
+<td>npt.ArrayLike</td>
+<td>A numpy ndarry, with initial shape <span class="math inline">\((n \times d)\)</span></td>
+<td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><a href="../reference/base.LatinHypercube.html#pyLHD.base.LatinHypercube">base.LatinHypercube</a></td>
-<td>Generate a random Latin Hypercube Design</td>
+<td><code>b</code></td>
+<td>int</td>
+<td>Integer to apply either linear level permutation or William’s transformation</td>
+<td><em>required</em></td>
 </tr>
 <tr class="odd">
-<td><a href="../reference/base.GoodLatticePoint.html#pyLHD.base.GoodLatticePoint">base.GoodLatticePoint</a></td>
-<td>Good Lattice Point (GLP) Design</td>
+<td><code>method</code></td>
+<td>Literal['LP', 'WT']</td>
+<td>Linear level permutation (LP) or William’s transformation (WT). Defaults to ‘LP’.</td>
+<td><code>'LP'</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="maximin-lhd" class="level2">
-<h2 class="anchored" data-anchor-id="maximin-lhd">Maximin LHD</h2>
-<p>Algebraic Constructions of Maximin LHD</p>
+<section id="raises" class="level2">
+<h2 class="anchored" data-anchor-id="raises">Raises</h2>
 <table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 87%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../reference/maximin.LeaveOneOut.html#pyLHD.maximin.LeaveOneOut">maximin.LeaveOneOut</a></td>
-<td>Apply the Leave-one-out Procedure to Generate a Maxmin LHD</td>
+<td>TypeError</td>
+<td><code>b</code> must be an integer</td>
+</tr>
+<tr class="even">
+<td>ValueError</td>
+<td>Given an LHD with column permutations (0,1,…,n-1), <code>b</code> must be within (0,1,…,n-1)</td>
+</tr>
+<tr class="odd">
+<td>ValueError</td>
+<td>If <code>method</code> is not ‘LP’ or ‘WT’</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="orthogonal-lhd" class="level2">
-<h2 class="anchored" data-anchor-id="orthogonal-lhd">Orthogonal LHD</h2>
-<p>Algebraic Constructions of Orthogonal LHD</p>
+<section id="returns" class="level2">
+<h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 88%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../reference/orthogonal.OLHD_Butler01.html#pyLHD.orthogonal.OLHD_Butler01">orthogonal.OLHD_Butler01</a></td>
-<td>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/orthogonal.OLHD_Cioppa07.html#pyLHD.orthogonal.OLHD_Cioppa07">orthogonal.OLHD_Cioppa07</a></td>
-<td>Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/orthogonal.OLHD_Lin09.html#pyLHD.orthogonal.OLHD_Lin09">orthogonal.OLHD_Lin09</a></td>
-<td>Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al.&nbsp;(2009)</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/orthogonal.OLHD_Sun10.html#pyLHD.orthogonal.OLHD_Sun10">orthogonal.OLHD_Sun10</a></td>
-<td>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al.&nbsp;(2010)</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/orthogonal.OLHD_Ye98.html#pyLHD.orthogonal.OLHD_Ye98">orthogonal.OLHD_Ye98</a></td>
-<td>Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/orthogonal.OA2LHD.html#pyLHD.orthogonal.OA2LHD">orthogonal.OA2LHD</a></td>
-<td>Transform an Orthogonal Array (OA) into an LHD</td>
+<td>npt.ArrayLike</td>
+<td>npt.ArrayLike: After removing the last constant row of initial LHD, an <span class="math inline">\((n-1) \times d\)</span> maximin LHD is returned</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="criteria" class="level2">
-<h2 class="anchored" data-anchor-id="criteria">Criteria</h2>
-<p>Space-filling and Projection Criterias for LHD</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../reference/criteria.Criteria.html#pyLHD.criteria.Criteria">criteria.Criteria</a></td>
-<td>A class representing a collection of criteria functions.</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.AvgAbsCor.html#pyLHD.criteria.AvgAbsCor">criteria.AvgAbsCor</a></td>
-<td>Calculate the Average Absolute Correlation</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/criteria.coverage.html#pyLHD.criteria.coverage">criteria.coverage</a></td>
-<td>Compute the coverage measure for a design</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.discrepancy.html#pyLHD.criteria.discrepancy">criteria.discrepancy</a></td>
-<td>Discrepancy of a given sample</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/criteria.InterSite.html#pyLHD.criteria.InterSite">criteria.InterSite</a></td>
-<td>Calculate the Inter-site Distance between the ith and jth index</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.pairwise_InterSite.html#pyLHD.criteria.pairwise_InterSite">criteria.pairwise_InterSite</a></td>
-<td>Calculate the Inter-site Distance between all pairwise (rows/columns)</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/criteria.LqDistance.html#pyLHD.criteria.LqDistance">criteria.LqDistance</a></td>
-<td>Calculate the Lq-Distance of a Latin Hypercube Design</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.MaxAbsCor.html#pyLHD.criteria.MaxAbsCor">criteria.MaxAbsCor</a></td>
-<td>Calculate the Maximum Absolute Correlation</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/criteria.maximin.html#pyLHD.criteria.maximin">criteria.maximin</a></td>
-<td>Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.MeshRatio.html#pyLHD.criteria.MeshRatio">criteria.MeshRatio</a></td>
-<td>Compute the meshratio criterion for a given design</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/criteria.MaxProCriterion.html#pyLHD.criteria.MaxProCriterion">criteria.MaxProCriterion</a></td>
-<td>Calculate the Maximum Projection Criterion</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.phi_p.html#pyLHD.criteria.phi_p">criteria.phi_p</a></td>
-<td>Calculate the phi_p Criterion</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/criteria.UniformProCriterion.html#pyLHD.criteria.UniformProCriterion">criteria.UniformProCriterion</a></td>
-<td>Calculate the Uniform Projection Criterion</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="helpers" class="level2">
-<h2 class="anchored" data-anchor-id="helpers">Helpers</h2>
-<p>Miscellaneous Utilities for Manipulating LHDs</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../reference/helpers.are_coprime.html#pyLHD.helpers.are_coprime">helpers.are_coprime</a></td>
-<td>Check if two integers are coprime</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.check_bounds.html#pyLHD.helpers.check_bounds">helpers.check_bounds</a></td>
-<td>Check conditions for bounds input</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.column_combinations.html#pyLHD.helpers.column_combinations">helpers.column_combinations</a></td>
-<td>Generates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.distance_matrix.html#pyLHD.helpers.distance_matrix">helpers.distance_matrix</a></td>
-<td>Distance matrix based on specified distance measure</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.euler_phi.html#pyLHD.helpers.euler_phi">helpers.euler_phi</a></td>
-<td>Euler’s Totient function</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.is_prime.html#pyLHD.helpers.is_prime">helpers.is_prime</a></td>
-<td>Determine if a number is prime</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.is_LHD.html#pyLHD.helpers.is_LHD">helpers.is_LHD</a></td>
-<td>Verify Latinhypercube sampling conditions</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.is_balanced_design.html#pyLHD.helpers.is_balanced_design">helpers.is_balanced_design</a></td>
-<td>Verify a design is balanced</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.lapply.html#pyLHD.helpers.lapply">helpers.lapply</a></td>
-<td>Apply a function to each item in a list</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.LevelPermutation.html#pyLHD.helpers.LevelPermutation">helpers.LevelPermutation</a></td>
-<td>Apply level permutations to a Good lattice point (GLP) design</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.permute_columns.html#pyLHD.helpers.permute_columns">helpers.permute_columns</a></td>
-<td>Randomly permute columns in a numpy ndarray</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.permute_rows.html#pyLHD.helpers.permute_rows">helpers.permute_rows</a></td>
-<td>Randomly permute rows in a numpy ndarray</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.replace_values.html#pyLHD.helpers.replace_values">helpers.replace_values</a></td>
-<td>Replace values in a numpy array based on a provided mapping dictionary</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.scale.html#pyLHD.helpers.scale">helpers.scale</a></td>
-<td>Sample scaling from unit hypercube to different bounds</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.swap_elements.html#pyLHD.helpers.swap_elements">helpers.swap_elements</a></td>
-<td>Swap two random elements in a matrix</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.totatives.html#pyLHD.helpers.totatives">helpers.totatives</a></td>
-<td>Generate all positive integers less than and coprime to N from [1,N)</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.VerifyGenerator.html#pyLHD.helpers.VerifyGenerator">helpers.VerifyGenerator</a></td>
-<td>Verify generator used to construct good lattice points (GLP) design</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.WilliamsTransform.html#pyLHD.helpers.WilliamsTransform">helpers.WilliamsTransform</a></td>
-<td>Williams Transformation</td>
-</tr>
-</tbody>
-</table>
+<p>Example:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> pyLHD.euler_phi(n)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> pyLHD.GoodLatticePoint(size <span class="op">=</span> (n,d))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>array([[ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10],
+       [ 2,  4,  6,  8, 10,  1,  3,  5,  7,  9],
+       [ 3,  6,  9,  1,  4,  7, 10,  2,  5,  8],
+       [ 4,  8,  1,  5,  9,  2,  6, 10,  3,  7],
+       [ 5, 10,  4,  9,  3,  8,  2,  7,  1,  6],
+       [ 6,  1,  7,  2,  8,  3,  9,  4, 10,  5],
+       [ 7,  3, 10,  6,  2,  9,  5,  1,  8,  4],
+       [ 8,  5,  2, 10,  7,  4,  1,  9,  6,  3],
+       [ 9,  7,  5,  3,  1, 10,  8,  6,  4,  2],
+       [10,  9,  8,  7,  6,  5,  4,  3,  2,  1],
+       [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0]])</code></pre>
+</div>
+</div>
+<p>The initial <span class="math inline">\(L_1\)</span>-distance of <code>x</code> is</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(x, q<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>30.0</code></pre>
+</div>
+</div>
+<p>After applying the Leave-one-out method with a simple linear level permutation, we should obtain an <span class="math inline">\((n-1) \times d\)</span> LHD with higher <span class="math inline">\(L_1\)</span>-distance</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x_lp <span class="op">=</span> pyLHD.LeaveOneOut(x, b <span class="op">=</span> <span class="dv">1</span>, method <span class="op">=</span> <span class="st">'LP'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x_lp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>array([[1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+       [2, 4, 6, 8, 0, 1, 3, 5, 7, 9],
+       [3, 6, 9, 1, 4, 7, 0, 2, 5, 8],
+       [4, 8, 1, 5, 9, 2, 6, 0, 3, 7],
+       [5, 0, 4, 9, 3, 8, 2, 7, 1, 6],
+       [6, 1, 7, 2, 8, 3, 9, 4, 0, 5],
+       [7, 3, 0, 6, 2, 9, 5, 1, 8, 4],
+       [8, 5, 2, 0, 7, 4, 1, 9, 6, 3],
+       [9, 7, 5, 3, 1, 0, 8, 6, 4, 2],
+       [0, 9, 8, 7, 6, 5, 4, 3, 2, 1]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(x_lp,q<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>32.0</code></pre>
+</div>
+</div>
+<p>Leave-one-out method using William’s transformation</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x_wt <span class="op">=</span> pyLHD.LeaveOneOut(x, b <span class="op">=</span> <span class="dv">1</span>, method <span class="op">=</span> <span class="st">'WT'</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x_wt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>array([[3, 5, 7, 9, 8, 6, 4, 2, 1, 0],
+       [5, 9, 6, 2, 0, 3, 7, 8, 4, 1],
+       [7, 6, 1, 3, 9, 4, 0, 5, 8, 2],
+       [9, 2, 3, 8, 1, 5, 6, 0, 7, 4],
+       [8, 0, 9, 1, 7, 2, 5, 4, 3, 6],
+       [6, 3, 4, 5, 2, 7, 1, 9, 0, 8],
+       [4, 7, 0, 6, 5, 1, 8, 3, 2, 9],
+       [2, 8, 5, 0, 4, 9, 3, 1, 6, 7],
+       [1, 4, 8, 7, 3, 0, 2, 6, 9, 5],
+       [0, 1, 2, 4, 6, 8, 9, 7, 5, 3]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(x_wt,q<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>36.0</code></pre>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -384,7 +384,7 @@ def euler_phi(N:int) -> int:
   return len(totatives(N))
 
 
-def williams_transform(arr: npt.ArrayLike, baseline: int = 0) -> npt.ArrayLike:
+def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0) -> npt.ArrayLike:
   """ Williams Transformation
 
   Args:
@@ -402,7 +402,7 @@ def williams_transform(arr: npt.ArrayLike, baseline: int = 0) -> npt.ArrayLike:
   ```
   Change the baseline
   ```{python}
-  pyLHD.williams_transform(random_ls,baseline=3)
+  pyLHD.WilliamsTransform(random_ls,baseline=3)
   ```
   """
   n = arr.shape[0]

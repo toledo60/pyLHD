@@ -1,0 +1,56 @@
+# maximin.LeaveOneOut { #pyLHD.maximin.LeaveOneOut }
+
+`maximin.LeaveOneOut(arr, b, method='LP')`
+
+Apply the Leave-one-out Procedure to Generate a Maxmin LHD
+
+## Parameters
+
+| Name     | Type                                  | Description                                                                       | Default    |
+|----------|---------------------------------------|-----------------------------------------------------------------------------------|------------|
+| `arr`    | npt.ArrayLike                         | A numpy ndarry, with initial shape $(n \times d)$                                 | _required_ |
+| `b`      | int                                   | Integer to apply either linear level permutation or William's transformation      | _required_ |
+| `method` | Literal\[&#39;LP&#39;, &#39;WT&#39;\] | Linear level permutation (LP) or William's transformation (WT). Defaults to 'LP'. | `'LP'`     |
+
+## Raises
+
+| Type       | Description                                                                           |
+|------------|---------------------------------------------------------------------------------------|
+| TypeError  | `b` must be an integer                                                                |
+| ValueError | Given an LHD with column permutations (0,1,...,n-1), `b` must be within (0,1,...,n-1) |
+| ValueError | If `method` is not 'LP' or 'WT'                                                       |
+
+## Returns
+
+| Type          | Description                                                                                                     |
+|---------------|-----------------------------------------------------------------------------------------------------------------|
+| npt.ArrayLike | npt.ArrayLike: After removing the last constant row of initial LHD, an $(n-1) \times d$ maximin LHD is returned |
+
+Example:
+```{python}
+import pyLHD
+n = 11
+d = pyLHD.euler_phi(n)
+x = pyLHD.GoodLatticePoint(size = (n,d))
+x
+```
+The initial $L_1$-distance of `x` is
+```{python}
+pyLHD.LqDistance(x, q=1)
+```
+After applying the Leave-one-out method with a simple linear level permutation, we should obtain an $(n-1) \times d$ LHD with higher $L_1$-distance
+```{python}
+x_lp = pyLHD.LeaveOneOut(x, b = 1, method = 'LP')
+x_lp
+```
+```{python}
+pyLHD.LqDistance(x_lp,q=1)
+```
+Leave-one-out method using William's transformation
+```{python}
+x_wt = pyLHD.LeaveOneOut(x, b = 1, method = 'WT')
+x_wt
+```
+```{python}
+pyLHD.LqDistance(x_wt,q=1)
+```
