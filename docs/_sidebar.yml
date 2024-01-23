@@ -36,16 +36,18 @@ website:
       - reference/helpers.column_combinations.qmd
       - reference/helpers.distance_matrix.qmd
       - reference/helpers.euler_phi.qmd
+      - reference/helpers.is_prime.qmd
       - reference/helpers.is_LHD.qmd
       - reference/helpers.is_balanced_design.qmd
       - reference/helpers.lapply.qmd
-      - reference/helpers.LinearPermutation.qmd
+      - reference/helpers.LevelPermutation.qmd
       - reference/helpers.permute_columns.qmd
       - reference/helpers.permute_rows.qmd
       - reference/helpers.replace_values.qmd
       - reference/helpers.scale.qmd
       - reference/helpers.swap_elements.qmd
       - reference/helpers.totatives.qmd
+      - reference/helpers.VerifyGenerator.qmd
       - reference/helpers.williams_transform.qmd
       section: Helpers
     id: reference

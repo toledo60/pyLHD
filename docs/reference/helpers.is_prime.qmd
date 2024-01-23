@@ -1,0 +1,17 @@
+# helpers.is_prime { #pyLHD.helpers.is_prime }
+
+`helpers.is_prime(n)`
+
+Determine if a number is prime
+
+## Parameters
+
+| Name   | Type   | Description   | Default    |
+|--------|--------|---------------|------------|
+| `n`    | int    | Any integer   | _required_ |
+
+## Returns
+
+| Type   | Description                                            |
+|--------|--------------------------------------------------------|
+| bool   | [logical]: True if n is prime, False if n is not prime |

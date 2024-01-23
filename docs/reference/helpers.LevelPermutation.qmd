@@ -1,0 +1,36 @@
+# helpers.LevelPermutation { #pyLHD.helpers.LevelPermutation }
+
+`helpers.LevelPermutation(arr, b, modulus=None)`
+
+Apply level permutations to a Good lattice point (GLP) design
+
+## Parameters
+
+| Name      | Type               | Description                                                                                                      | Default    |
+|-----------|--------------------|------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`     | npt.ArrayLike      | A numpy ndarray                                                                                                  | _required_ |
+| `b`       | Union\[int, list\] | Value by which each element in the array is to be level permuted. Can either be an integer or a list of integers | _required_ |
+| `modulus` | int                | Modulus used for the permutation. Defaults to None. If None, the number of rows is used as the modulus.          | `None`     |
+
+## Returns
+
+| Type          | Description                                                                          |
+|---------------|--------------------------------------------------------------------------------------|
+| npt.ArrayLike | npt.ArrayLike: A new array where each element is the result of `(arr + b) % modulus` |
+
+## Examples
+
+
+
+```{python}
+import pyLHD
+GLP = pyLHD.GoodLatticePoint(size = (10, pyLHD.euler_phi(10)))
+GLP
+```
+Apply a simple linear level permutation in the form of $D = D+b (mod \,N)$
+```{python}
+pyLHD.LevelPermutation(GLP,b = 2)
+```
+```{python}
+pyLHD.LevelPermutation(GLP, b = [1,4,3,2])
+```

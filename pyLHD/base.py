@@ -71,7 +71,7 @@ def GoodLatticePoint(size: tuple[int, int], h: list[int] = None,
       seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
   Returns:
-      Generated random (n x d) Good lattice point set, in which each column is a random permutation of {0,1,...,n-1}
+      Generated random (n x d) Good lattice point set, where each column is a random permutation of {0,1,...,n-1}
   
   Examples:
   ```{python}
@@ -84,14 +84,14 @@ def GoodLatticePoint(size: tuple[int, int], h: list[int] = None,
   """  
   n,d = size
   if d >= n:
-    raise ValueError('k must be less than n')
+    raise ValueError('d must be less than n. Recall, size = (n,d)')
   
   if h is not None:
     h = VerifyGenerator(h,n,d)
   else:
-    rng = check_seed(seed)
     h = totatives(n)  
-    if len(h) !=d:
+    if len(h) != d:
+      rng = check_seed(seed)
       h = rng.choice(h,d,replace = False)
   
   row_indices = np.arange(1, n + 1).reshape(-1, 1)

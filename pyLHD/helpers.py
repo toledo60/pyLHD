@@ -91,7 +91,6 @@ def replace_values(arr: npt.ArrayLike, mapping: dict) -> npt.ArrayLike:
   return np.vectorize(mapping.get)(arr)
 
 
-
 def permute_columns(arr: npt.ArrayLike, columns: Optional[List[int]] = None,
                     seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
   """Randomly permute columns in a numpy ndarray
@@ -301,16 +300,33 @@ def lapply(lst: List[Any], func: Callable[..., Any], **kwargs: dict[str, Any]) -
   return [func(item,**kwargs) for item in lst]
 
 
-def LinearPermutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None) -> npt.ArrayLike:
-  """Apply a linear permutation to a Good lattice point (GLP) design
+####################################
+#### GoodLatticePonint Helpers #####
+####################################
+
+def LevelPermutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None) -> npt.ArrayLike:
+  """Apply level permutations to a Good lattice point (GLP) design
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
-      b (Union[int,list]): Value by which each element in the array is to be linearly level permuted. Can either be an integer or a list of integers
+      b (Union[int,list]): Value by which each element in the array is to be level permuted. Can either be an integer or a list of integers
       modulus (int): Modulus used for the permutation. Defaults to None. If None, the number of rows is used as the modulus.
 
   Returns:
       npt.ArrayLike: A new array where each element is the result of `(arr + b) % modulus`
+  Examples:
+  ```{python}
+  import pyLHD
+  GLP = pyLHD.GoodLatticePoint(size = (10, pyLHD.euler_phi(10)))
+  GLP
+  ```
+  Apply a simple linear level permutation in the form of $D = D+b (mod \,N)$
+  ```{python}
+  pyLHD.LevelPermutation(GLP,b = 2)
+  ```
+  ```{python}
+  pyLHD.LevelPermutation(GLP, b = [1,4,3,2])
+  ```
   """
   n_rows, n_columns = arr.shape
   if modulus is None:
@@ -320,11 +336,11 @@ def LinearPermutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None
     return (arr + b)%modulus
   elif isinstance(b, list):
     permuted_arr = arr.copy()
-    
     for i in range(n_columns):
       permuted_arr[:,i] = (permuted_arr[:,i] + b[i]) % modulus
-    
     return permuted_arr
+  else:
+    raise ValueError("'b' should either be an integer or list of integers")
 
 
 def totatives(N:int) -> List[int]:
@@ -451,7 +467,6 @@ def is_balanced_design(arr: npt.ArrayLike, s:int) -> NoReturn:
       raise ValueError('Each level should appear (n/s) times for each factor')
 
 
-
 def is_LHD(arr: npt.ArrayLike) -> NoReturn:
   """Verify Latinhypercube sampling conditions
 
@@ -553,6 +568,20 @@ def are_coprime(a:int, b:int) -> bool:
 
 
 def VerifyGenerator(numbers: list[int], n: int, k: int) -> list[int]:
+  """Verify generator used to construct good lattice points (GLP) design
+
+  Args:
+      numbers (list[int]): integers used for the generator
+      n (int): number of rows in a GLP design
+      k (int): number of columns in a GLP design
+
+  Raises:
+      ValueError: length of generator `numbers` is not the same as the number of columns `k`
+      ValueError: All `numbers` should be less than `n` and coprime to `n`
+
+  Returns:
+      list[int]: If all conditions hold, `numbers` is returned
+  """
   if is_prime(n):
     k = n-1
   if len(numbers) != k:

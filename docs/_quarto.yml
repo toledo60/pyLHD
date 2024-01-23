@@ -66,15 +66,17 @@ quartodoc:
         - helpers.check_bounds
         - helpers.column_combinations
         - helpers.distance_matrix
-        - helpers.euler_phi           
+        - helpers.euler_phi
+        - helpers.is_prime
         - helpers.is_LHD
         - helpers.is_balanced_design
         - helpers.lapply
-        - helpers.LinearPermutation
+        - helpers.LevelPermutation
         - helpers.permute_columns
         - helpers.permute_rows
         - helpers.replace_values
         - helpers.scale
         - helpers.swap_elements
         - helpers.totatives
+        - helpers.VerifyGenerator
         - helpers.williams_transform        
