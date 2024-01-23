@@ -384,25 +384,31 @@ def euler_phi(N:int) -> int:
   return len(totatives(N))
 
 
-def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0) -> npt.ArrayLike:
+def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0, modified = False) -> npt.ArrayLike:
   """ Williams Transformation
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
       baseline (int, optional): A integer, which defines the minimum value for each column of the matrix. Defaults to 0.
+      modified (bool,optional): Implement modifed version of Williams Transformation. Defaults to False.
 
   Returns:
-      After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)}
+      After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)}.
+          For the modified version. Whenever n is odd, n=2m+1 the columns will be permutations will always be even numbers
   
   Examples:
   ```{python}
   import pyLHD
-  random_ls = pyLHD.LatinSquare(size = (5,3))
-  random_ls
+  x = pyLHD.GoodLatticePoint(size = (7,6))
+  x
   ```
-  Change the baseline
+  Apply Williams Transformation, with `baseline =0` the column level permutations will be (0,1,2,...,6)
   ```{python}
-  pyLHD.WilliamsTransform(random_ls,baseline=3)
+  pyLHD.WilliamsTransform(x)
+  ```
+  Apply modified Williams Transformation, with `baseline =0` the column level permutations will be (0,2,4,6)
+  ```{python}
+  pyLHD.WilliamsTransform(x, modified = True)
   ```
   """
   n = arr.shape[0]
@@ -412,11 +418,14 @@ def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0) -> npt.ArrayLike:
       arr -= min_element
 
   # Apply the weight transformation
-  wt = np.where(arr < (n / 2), 2 * arr + 1, 2 * (n - arr))
+  if not modified:
+    wt = np.where(arr < (n / 2), 2 * arr + 1, 2 * (n - arr))
+  else:
+    wt = np.where(arr < (n/2), 2 * arr + 1, 2 * (n - arr) + 1)
 
   # Adjust the weight based on the baseline
   if baseline != 1:
-      wt += (baseline - 1)
+    wt += (baseline - 1)
   return wt
 
 
