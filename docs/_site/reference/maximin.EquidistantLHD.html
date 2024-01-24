@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>maximin.maximinlhd</title>
+<title>maximin.equidistantlhd</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,6 +94,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -128,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/maximin.BestLinearPermutation.html">Maximin LHD</a></li><li class="breadcrumb-item"><a href="../reference/maximin.maximinLHD.html">maximin.maximinLHD</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/maximin.BestLinearPermutation.html">Maximin LHD</a></li><li class="breadcrumb-item"><a href="../reference/maximin.EquidistantLHD.html">maximin.EquidistantLHD</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -192,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/maximin.EquidistantLHD.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/maximin.EquidistantLHD.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">maximin.EquidistantLHD</span></a>
   </div>
 </li>
@@ -204,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/maximin.maximinLHD.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/maximin.maximinLHD.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">maximin.maximinLHD</span></a>
   </div>
 </li>
@@ -470,7 +472,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
-  <li><a href="#raises" id="toc-raises" class="nav-link" data-scroll-target="#raises">Raises</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
   </ul>
 </nav>
@@ -480,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">maximin.maximinLHD</h1>
+<h1 class="title">maximin.EquidistantLHD</h1>
 </div>
 
 
@@ -495,17 +496,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><code>maximin.maximinLHD(size, h=None, method='LP', seed=None)</code></p>
-<p>Generate a maximin LHD based on the L1-distance</p>
+<p><code>maximin.EquidistantLHD(N)</code></p>
+<p>Generate an Equidistant Latin Hypercube</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
-<colgroup>
-<col style="width: 3%">
-<col style="width: 17%">
-<col style="width: 74%">
-<col style="width: 4%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -516,45 +511,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>size</code></td>
-<td>tuple of ints</td>
-<td>Output shape of (n,d), where <code>n</code> and <code>d</code> are the number of rows and columns, respectively.</td>
+<td><code>N</code></td>
+<td>int</td>
+<td>An odd integer</td>
 <td><em>required</em></td>
-</tr>
-<tr class="even">
-<td><code>h</code></td>
-<td>list of ints</td>
-<td>A generator vector used to multiply each row of the design. Each element in <code>h</code> must be smaller than and coprime to <code>n</code></td>
-<td><code>None</code></td>
-</tr>
-<tr class="odd">
-<td><code>method</code></td>
-<td>Literal['LP', 'WT']</td>
-<td>Linear level permutation (LP) or William’s transformation (WT). Defaults to ‘LP’.</td>
-<td><code>'LP'</code></td>
-</tr>
-<tr class="even">
-<td><code>seed</code></td>
-<td>Optional[Union[int, np.random.Generator]])</td>
-<td>If <code>seed</code>is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a `<code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>
-<td><code>None</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="raises" class="level2">
-<h2 class="anchored" data-anchor-id="raises">Raises</h2>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ValueError</td>
-<td>If <code>method</code> is not ‘LP’ or ‘WT’</td>
 </tr>
 </tbody>
 </table>
@@ -563,8 +523,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 8%">
-<col style="width: 91%">
+<col style="width: 5%">
+<col style="width: 94%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -575,31 +535,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>npt.ArrayLike</td>
-<td>npt.ArrayLike: A maximin LHD based on the L1-distance. Construction is obtained by applying Williams transformation on linearly permuted good lattice point (GLP) designs</td>
+<td>npt.ArrayLike: Given an odd integer <span class="math inline">\(N=(2m+1)\)</span>, return an <span class="math inline">\((m \times m)\)</span> equidistant LHD. This design, is a cyclic Latin square, with each level occuring once in each row and once in each column. It is also a maximin distance LHD in terms of <span class="math inline">\(L_1\)</span>-distance</td>
 </tr>
 </tbody>
 </table>
 <p>Example:</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> pyLHD.GoodLatticePoint(size <span class="op">=</span> (<span class="dv">11</span>,<span class="dv">10</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> pyLHD.EquidistantLHD(N <span class="op">=</span> N)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>30.0</code></pre>
+<pre><code>array([[1, 2, 3, 4, 5],
+       [2, 4, 5, 3, 1],
+       [3, 5, 2, 1, 4],
+       [4, 3, 1, 5, 2],
+       [5, 1, 4, 2, 3]])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> pyLHD.maximinLHD(size <span class="op">=</span> (<span class="dv">11</span>,<span class="dv">10</span>), method <span class="op">=</span> <span class="st">'LP'</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.pairwise_InterSite(x, q<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>31.0</code></pre>
+<pre><code>array([10., 10., 10., 10., 10., 10., 10., 10., 10., 10.])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> pyLHD.maximinLHD(size <span class="op">=</span> (<span class="dv">11</span>,<span class="dv">10</span>), method <span class="op">=</span> <span class="st">'WT'</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(x, q<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>39.0</code></pre>
+<pre><code>10.0</code></pre>
 </div>
 </div>
 

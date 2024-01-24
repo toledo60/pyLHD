@@ -158,3 +158,33 @@ def maximinLHD(size: tuple[int, int], h: list[int] = None,
     return WilliamsTransform(LevelPermutation(D, b=b))
   else:
     raise ValueError("'method' must be either 'LP' or 'WT'")
+
+
+def EquidistantLHD(N:int) -> npt.ArrayLike:
+  """Generate an Equidistant Latin Hypercube
+
+  Args:
+      N (int): An odd integer
+
+  Returns:
+      npt.ArrayLike: Given an odd integer $N=(2m+1)$, return an $(m \\times m)$ equidistant LHD. 
+          This design, is a cyclic Latin square, with each level occuring once in each row and once in each column.
+          It is also a maximin distance LHD in terms of $L_1$-distance
+  Example:
+  ```{python}
+  import pyLHD
+  N = 11
+  x = pyLHD.EquidistantLHD(N = N)
+  x
+  ```
+  ```{python}
+  pyLHD.pairwise_InterSite(x, q=1)
+  ```
+  ```{python}
+  pyLHD.LqDistance(x, q=1)
+  ```
+  """
+  m = (N-1)//2
+  D = GoodLatticePoint(size = (N,N-1))
+  w = WilliamsTransform(D, modified=True)//2
+  return w[:m,:m]

@@ -17,6 +17,7 @@ Algebraic Constructions of Maximin LHD
 | | |
 | --- | --- |
 | [maximin.BestLinearPermutation](maximin.BestLinearPermutation.qmd#pyLHD.maximin.BestLinearPermutation) | Optimal linear permutation value to achieve larger L1-distance for a LHD |
+| [maximin.EquidistantLHD](maximin.EquidistantLHD.qmd#pyLHD.maximin.EquidistantLHD) | Generate an Equidistant Latin Hypercube |
 | [maximin.LeaveOneOut](maximin.LeaveOneOut.qmd#pyLHD.maximin.LeaveOneOut) | Apply the Leave-one-out Procedure to Generate a Maxmin LHD |
 | [maximin.maximinLHD](maximin.maximinLHD.qmd#pyLHD.maximin.maximinLHD) | Generate a maximin LHD based on the L1-distance |
 

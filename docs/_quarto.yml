@@ -38,6 +38,7 @@ quartodoc:
       desc: Algebraic Constructions of Maximin LHD
       contents:
         - maximin.BestLinearPermutation
+        - maximin.EquidistantLHD
         - maximin.LeaveOneOut
         - maximin.maximinLHD
     - title: Orthogonal LHD

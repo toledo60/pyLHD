@@ -9,6 +9,7 @@ website:
       section: Base Designs
     - contents:
       - reference/maximin.BestLinearPermutation.qmd
+      - reference/maximin.EquidistantLHD.qmd
       - reference/maximin.LeaveOneOut.qmd
       - reference/maximin.maximinLHD.qmd
       section: Maximin LHD

@@ -415,16 +415,16 @@ def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0, modified = False) -
   ```
   """
   n = arr.shape[0]
-  # Adjust the array based on the minimum value in the first column
-  min_element = np.amin(arr[:, 0])
-  if min_element != 0:
-      arr -= min_element
+  x = arr.copy()
+
+  min_elements = np.amin(x, axis=0)
+  x -= min_elements
 
   # Apply the weight transformation
   if not modified:
-    wt = np.where(arr < (n / 2), 2 * arr + 1, 2 * (n - arr))
+    wt = np.where(x < (n / 2), 2 * x + 1, 2 * (n - x))
   else:
-    wt = np.where(arr < (n/2), 2 * arr + 1, 2 * (n - arr) + 1)
+    wt = np.where(x < (n/2), 2 * x + 1, 2 * (n - x) + 1)
 
   # Adjust the weight based on the baseline
   if baseline != 1:
