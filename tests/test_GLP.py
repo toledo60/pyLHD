@@ -2,7 +2,6 @@ import pyLHD
 import pytest
 from pytest import approx
 
-
 @pytest.mark.parametrize("p, t, expected", [(3, 2, 14), (5, 2, 126), (7,3,25212)])
 def test_OddPrimePower(p, t, expected):
     N = p**t
@@ -28,7 +27,7 @@ def test_MultiplyOddPrimes(p, q, expected):
 
 
 @pytest.mark.parametrize("t,expected", [(2,2), (5,128), (7,2048)])
-def test_Double(t, expected):
+def test_Power2(t, expected):
     N = 2**t
     sample = pyLHD.GoodLatticePoint(size = (N, pyLHD.euler_phi(N)))
     result = pyLHD.LqDistance(sample,q=1)

@@ -24,7 +24,7 @@ Generates all unique combinations of columns from the given array, selecting 'k'
 
 ```{python}
 import pyLHD
-random_ls = pyLHD.LatinSquare(size = (4,3))
+random_ls = pyLHD.LatinSquare(size = (4,4),seed = 1)
 random_ls
 ```
 Obtain all 2 column combinations of `random_ls`

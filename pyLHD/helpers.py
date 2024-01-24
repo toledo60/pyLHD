@@ -65,7 +65,7 @@ def replace_values(arr: npt.ArrayLike, mapping: dict) -> npt.ArrayLike:
   
   ```{python}
   import pyLHD
-  random_ls = pyLHD.LatinSquare(size = (4,3))
+  random_ls = pyLHD.LatinSquare(size = (4,4), seed = 1)
   random_ls
   ```
   Consider the mapping $1 \\rightarrow 2, 2 \\rightarrow 11, 3 \\rightarrow 12, 4 \\rightarrow 13$
@@ -233,7 +233,7 @@ def column_combinations(arr: npt.ArrayLike, k:int) -> List[npt.ArrayLike]:
 
   ```{python}
   import pyLHD
-  random_ls = pyLHD.LatinSquare(size = (4,3))
+  random_ls = pyLHD.LatinSquare(size = (4,4),seed = 1)
   random_ls
   ```
   Obtain all 2 column combinations of `random_ls`
@@ -380,8 +380,11 @@ def euler_phi(N:int) -> int:
   ```{python}
   pyLHD.euler_phi(11)
   ```
-  """  
-  return len(totatives(N))
+  """
+  if is_prime(N) and N>1:
+    return N-1
+  else:
+    return len(totatives(N))
 
 
 def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0, modified = False) -> npt.ArrayLike:

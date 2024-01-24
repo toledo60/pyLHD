@@ -16,7 +16,9 @@ Algebraic Constructions of Maximin LHD
 
 | | |
 | --- | --- |
+| [maximin.BestLinearPermutation](maximin.BestLinearPermutation.qmd#pyLHD.maximin.BestLinearPermutation) | Optimal linear permutation value to achieve larger L1-distance for a LHD |
 | [maximin.LeaveOneOut](maximin.LeaveOneOut.qmd#pyLHD.maximin.LeaveOneOut) | Apply the Leave-one-out Procedure to Generate a Maxmin LHD |
+| [maximin.maximinLHD](maximin.maximinLHD.qmd#pyLHD.maximin.maximinLHD) | Generate a maximin LHD based on the L1-distance |
 
 ## Orthogonal LHD
 
@@ -45,7 +47,6 @@ Space-filling and Projection Criterias for LHD
 | [criteria.pairwise_InterSite](criteria.pairwise_InterSite.qmd#pyLHD.criteria.pairwise_InterSite) | Calculate the Inter-site Distance between all pairwise (rows/columns) |
 | [criteria.LqDistance](criteria.LqDistance.qmd#pyLHD.criteria.LqDistance) | Calculate the Lq-Distance of a Latin Hypercube Design |
 | [criteria.MaxAbsCor](criteria.MaxAbsCor.qmd#pyLHD.criteria.MaxAbsCor) | Calculate the Maximum Absolute Correlation |
-| [criteria.maximin](criteria.maximin.qmd#pyLHD.criteria.maximin) | Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points. |
 | [criteria.MeshRatio](criteria.MeshRatio.qmd#pyLHD.criteria.MeshRatio) | Compute the meshratio criterion for a given design |
 | [criteria.MaxProCriterion](criteria.MaxProCriterion.qmd#pyLHD.criteria.MaxProCriterion) | Calculate the Maximum Projection Criterion |
 | [criteria.phi_p](criteria.phi_p.qmd#pyLHD.criteria.phi_p) | Calculate the phi_p Criterion |

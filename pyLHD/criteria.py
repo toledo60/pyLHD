@@ -3,7 +3,6 @@ import numpy.typing as npt
 from typing import Literal
 from pyLHD.helpers import distance_matrix, is_balanced_design, lapply, column_combinations
 
-
 class Criteria:
   """A class representing a collection of criteria functions.
       This class allows for the selection and computation of various criteria functions based on the specified type. It supports all criteria found in pyLHD
@@ -41,7 +40,6 @@ class Criteria:
         "phi_p": phi_p,
         "discrepancy": discrepancy,
         "coverage": coverage,
-        "maximin": maximin,
         "MeshRatio": MeshRatio,
         "LqDistance": LqDistance,
         "pairwise_InterSite": pairwise_InterSite}
@@ -200,7 +198,6 @@ def pairwise_InterSite(arr: npt.ArrayLike, q:int = 1, axis:int = 0) -> npt.Array
       raise ValueError("Axis can only be 0 (rows) or 1 (columns).")
 
   lq_norms = np.sum(np.abs(diff_matrix)**q, axis=axis_to_sum)**(1/q)
-  
   i_upper = np.triu_indices_from(lq_norms, k=1)
   lq_distances = lq_norms[i_upper]
   return lq_distances
@@ -395,7 +392,6 @@ def UniformProCriterion(arr: npt.ArrayLike) -> float:
   return np.mean([x**2 for x in balanced_CD])
 
 
-
 def coverage(arr: npt.ArrayLike) -> float:
   """ Compute the coverage measure for a design
 
@@ -483,29 +479,3 @@ def MeshRatio(arr: npt.ArrayLike) -> float:
       min_dist = a
   ratio = np.sqrt(max_dist/min_dist)
   return ratio
-
-
-def maximin(arr: npt.ArrayLike) -> float:
-  """ Compute the maximin criterion for a given design. A higher value corresponds to a more regular scattering of design points.
-
-  Args:
-      arr (npt.ArrayLike): A numpy ndarray
-  
-  Returns:
-      Calculated maximin criterion
-
-  Examples:
-  ```{python}
-  import pyLHD
-  random_lhd = pyLHD.LatinHypercube(size = (10,3))
-  pyLHD.maximin(random_lhd)
-  ```
-  """  
-
-  if (np.amin(arr) < 0 or np.amax(arr) > 1):
-    raise ValueError('`arr` is not in unit hypercube')
-  
-  dist_mat = distance_matrix(arr)
-  np.fill_diagonal(dist_mat,1e30)
-  min = np.amin(dist_mat,axis=0)
-  return np.amin(min)

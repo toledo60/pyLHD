@@ -20,13 +20,15 @@ def LatinSquare(size: tuple[int,int], baseline: int = 1, seed: Optional[Union[in
   Examples:
   ```{python}
   import pyLHD
-  pyLHD.LatinSquare(size = (5,3),seed = 1)
+  pyLHD.LatinSquare(size = (5,5),seed = 1)
   ```
   """
+  n,d = size
+  if n != d:
+    raise ValueError("'size' should be a square, i.e, n=d")
   rng = check_seed(seed)
-  perms = np.tile(np.arange(start=baseline, stop= baseline + size[0]), (size[1], 1)).T
+  perms = np.tile(np.arange(start=baseline, stop= baseline + n), (d, 1)).T
   perms = permute_columns(perms, seed=rng)
-
   return perms
 
 
@@ -53,12 +55,13 @@ def LatinHypercube(size: tuple[int, int], scramble: Optional[bool] = True,
   pyLHD.LatinHypercube(size = (5,3), seed = 1, scramble = False)
   ```          
   """
-
+  n,d = size
   rng = check_seed(seed)
-  perms = LatinSquare(size = size, seed=rng)
-  samples = 0.5 if not scramble else rng.uniform()
 
-  return (perms-samples)/size[0]
+  perms = np.tile(np.arange(start=1, stop= 1 + n), (d, 1)).T
+  perms = permute_columns(perms, seed=rng)
+  samples = 0.5 if not scramble else rng.uniform()
+  return (perms-samples)/n
 
 
 def GoodLatticePoint(size: tuple[int, int], h: list[int] = None,

@@ -30,7 +30,7 @@ Replace values in a numpy array based on a provided mapping dictionary
 
 ```{python}
 import pyLHD
-random_ls = pyLHD.LatinSquare(size = (4,3))
+random_ls = pyLHD.LatinSquare(size = (4,4), seed = 1)
 random_ls
 ```
 Consider the mapping $1 \rightarrow 2, 2 \rightarrow 11, 3 \rightarrow 12, 4 \rightarrow 13$

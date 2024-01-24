@@ -1,0 +1,23 @@
+# maximin.BestLinearPermutation { #pyLHD.maximin.BestLinearPermutation }
+
+`maximin.BestLinearPermutation(N)`
+
+Optimal linear permutation value to achieve larger L1-distance for a LHD
+
+## Parameters
+
+| Name   | Type   | Description     | Default    |
+|--------|--------|-----------------|------------|
+| `N`    | int    | A prime integer | _required_ |
+
+## Raises
+
+| Type       | Description                   |
+|------------|-------------------------------|
+| ValueError | If `N` is not a prime integer |
+
+## Returns
+
+| Type   | Description                                                                                                                  |
+|--------|------------------------------------------------------------------------------------------------------------------------------|
+| int    | Optimal value of `b` to apply a linear level permutation and achieve higher $L_1$-distance. That is $D_b = D + b (mod \, N)$ |

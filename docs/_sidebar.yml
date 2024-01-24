@@ -8,7 +8,9 @@ website:
       - reference/base.GoodLatticePoint.qmd
       section: Base Designs
     - contents:
+      - reference/maximin.BestLinearPermutation.qmd
       - reference/maximin.LeaveOneOut.qmd
+      - reference/maximin.maximinLHD.qmd
       section: Maximin LHD
     - contents:
       - reference/orthogonal.OLHD_Butler01.qmd
@@ -27,7 +29,6 @@ website:
       - reference/criteria.pairwise_InterSite.qmd
       - reference/criteria.LqDistance.qmd
       - reference/criteria.MaxAbsCor.qmd
-      - reference/criteria.maximin.qmd
       - reference/criteria.MeshRatio.qmd
       - reference/criteria.MaxProCriterion.qmd
       - reference/criteria.phi_p.qmd

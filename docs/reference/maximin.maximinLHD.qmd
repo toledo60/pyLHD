@@ -1,0 +1,41 @@
+# maximin.maximinLHD { #pyLHD.maximin.maximinLHD }
+
+`maximin.maximinLHD(size, h=None, method='LP', seed=None)`
+
+Generate a maximin LHD based on the L1-distance
+
+## Parameters
+
+| Name     | Type                                           | Description                                                                                                                                                                                                     | Default    |
+|----------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `size`   | tuple of ints                                  | Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.                                                                                                                      | _required_ |
+| `h`      | list of ints                                   | A generator vector used to multiply each row of the design. Each element in `h` must be smaller than and coprime to `n`                                                                                         | `None`     |
+| `method` | Literal\[&#39;LP&#39;, &#39;WT&#39;\]          | Linear level permutation (LP) or William's transformation (WT). Defaults to 'LP'.                                                                                                                               | `'LP'`     |
+| `seed`   | Optional\[Union\[int, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
+
+## Raises
+
+| Type       | Description                     |
+|------------|---------------------------------|
+| ValueError | If `method` is not 'LP' or 'WT' |
+
+## Returns
+
+| Type          | Description                                                                                                                                                               |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| npt.ArrayLike | npt.ArrayLike: A maximin LHD based on the L1-distance. Construction is obtained by applying Williams transformation on linearly permuted good lattice point (GLP) designs |
+
+Example:
+```{python}
+import pyLHD
+x = pyLHD.GoodLatticePoint(size = (11,10))
+pyLHD.LqDistance(x)
+```
+```{python}
+y = pyLHD.maximinLHD(size = (11,10), method = 'LP')
+pyLHD.LqDistance(y)
+```
+```{python}
+w = pyLHD.maximinLHD(size = (11,10), method = 'WT')
+pyLHD.LqDistance(w)
+```

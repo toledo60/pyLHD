@@ -37,7 +37,9 @@ quartodoc:
     - title: Maximin LHD
       desc: Algebraic Constructions of Maximin LHD
       contents:
+        - maximin.BestLinearPermutation
         - maximin.LeaveOneOut
+        - maximin.maximinLHD
     - title: Orthogonal LHD
       desc: Algebraic Constructions of Orthogonal LHD
       contents:
@@ -58,7 +60,6 @@ quartodoc:
         - criteria.pairwise_InterSite
         - criteria.LqDistance
         - criteria.MaxAbsCor
-        - criteria.maximin
         - criteria.MeshRatio
         - criteria.MaxProCriterion
         - criteria.phi_p

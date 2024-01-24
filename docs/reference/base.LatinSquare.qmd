@@ -24,5 +24,5 @@ Generate a random (n x d) Latin square
 
 ```{python}
 import pyLHD
-pyLHD.LatinSquare(size = (5,3),seed = 1)
+pyLHD.LatinSquare(size = (5,5),seed = 1)
 ```

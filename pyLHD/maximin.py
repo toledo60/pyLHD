@@ -1,6 +1,11 @@
+import numpy as np
 import numpy.typing as npt
 from typing import Literal
-from pyLHD.helpers import LevelPermutation, WilliamsTransform
+from pyLHD.helpers import LevelPermutation, WilliamsTransform,is_prime
+from pyLHD.base import GoodLatticePoint
+from pyLHD.criteria import LqDistance
+from typing import Union, Optional
+
 
 def LeaveOneOut(arr: npt.ArrayLike, b: int,
                 method: Literal['LP', 'WT'] = 'LP') -> npt.ArrayLike:
@@ -65,3 +70,91 @@ def LeaveOneOut(arr: npt.ArrayLike, b: int,
   # Decrease levels greater than the deleted level by one
   new_arr[new_arr > b] -= 1
   return new_arr
+
+def BestLinearPermutation(N:int) -> int:
+  """Optimal linear permutation value to achieve larger L1-distance for a LHD
+
+  Args:
+      N (int): A prime integer
+
+  Raises:
+      ValueError:  If `N` is not a prime integer
+
+  Returns:
+      int: Optimal value of `b` to apply a linear level permutation and achieve higher $L_1$-distance. That is $D_b = D + b (mod \\, N)$
+  """
+  if not is_prime(N):
+    raise ValueError("'N' must be a prime number")
+  c_zero = int(np.sqrt((N**2 - 1)/12))
+  def_poly = c_zero**2 + 2*((c_zero + 1)**2)
+  
+  if def_poly >= (N**2 - 1)/4:
+    c = c_zero
+  else :
+    c = c_zero + 1
+      
+  y = (N-1)/2 + c
+  if (y % 2) == 0: 
+    b = int(y/2)
+  else :
+    b = int((2*N - y - 1)/2)
+  return b 
+
+
+def maximinLHD(size: tuple[int, int], h: list[int] = None,
+               method: Literal['LP','WT'] = 'LP',
+               seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
+  """Generate a maximin LHD based on the L1-distance
+
+  Args:
+      size (tuple of ints): Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.      
+      h (list of ints): A generator vector used to multiply each row of the design. Each element in `h` must be smaller than and coprime to `n`    
+      method (Literal[&#39;LP&#39;, &#39;WT&#39;], optional): Linear level permutation (LP) or William's transformation (WT). Defaults to 'LP'.
+      seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+          If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
+  Raises:
+      ValueError: If `method` is not 'LP' or 'WT'
+
+  Returns:
+      npt.ArrayLike: A maximin LHD based on the L1-distance. Construction is obtained by applying Williams transformation on linearly permuted good lattice point (GLP) designs
+  Example:
+  ```{python}
+  import pyLHD
+  x = pyLHD.GoodLatticePoint(size = (11,10))
+  pyLHD.LqDistance(x)
+  ```
+  ```{python}
+  y = pyLHD.maximinLHD(size = (11,10), method = 'LP')
+  pyLHD.LqDistance(y)
+  ```
+  ```{python}
+  w = pyLHD.maximinLHD(size = (11,10), method = 'WT')
+  pyLHD.LqDistance(w)
+  ```
+
+  """
+
+  n,_ = size
+  D =  GoodLatticePoint(size=size, h = h, seed=seed)
+
+  def find_best_b(transform_func):
+    max_L1 = float('-inf')
+    best_b = -1
+    for it in range(n):
+      current_L1 = LqDistance(transform_func(LevelPermutation(D, b=it)))
+      if current_L1 > max_L1:
+        max_L1 = current_L1
+        best_b = it
+    return best_b  
+  
+  if is_prime(n):
+    b = BestLinearPermutation(n)
+  else:
+    transform_func = lambda x: x if method == 'LP' else WilliamsTransform
+    b = find_best_b(transform_func)
+  if method == 'LP':
+    return LevelPermutation(D, b=b)
+  elif method == 'WT':
+    return WilliamsTransform(LevelPermutation(D, b=b))
+  else:
+    raise ValueError("'method' must be either 'LP' or 'WT'")
