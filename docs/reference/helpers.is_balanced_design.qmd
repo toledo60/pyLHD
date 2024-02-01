@@ -6,10 +6,10 @@ Verify a design is balanced
 
 ## Parameters
 
-| Name   | Type          | Description                               | Default    |
-|--------|---------------|-------------------------------------------|------------|
-| `arr`  | npt.ArrayLike | A numpy ndarray                           | _required_ |
-| `s`    | int           | Required number of levels for each factor | _required_ |
+| Name   | Type                  | Description                               | Default    |
+|--------|-----------------------|-------------------------------------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray                           | _required_ |
+| `s`    | int                   | Required number of levels for each factor | _required_ |
 
 ## Raises
 

@@ -1,7 +1,7 @@
 import math
 import numpy as np
 import numpy.typing as npt
-from typing import Optional, List, Union, Any, Callable,NoReturn
+from typing import Optional, List, Union, Any, Callable, NoReturn
 from itertools import combinations
 
 
@@ -304,6 +304,32 @@ def lapply(lst: List[Any], func: Callable[..., Any], **kwargs: dict[str, Any]) -
 #### GoodLatticePonint Helpers #####
 ####################################
 
+def zero_base(arr: npt.ArrayLike) -> npt.ArrayLike:
+  """ Normalize the columns by subtracting the minimum element of each column
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+
+  Returns:
+      A normalized array such that the columns are subtracted by the minimum element of each column
+  
+  Example:
+  ```{python}
+  import pyLHD
+  x = pyLHD.LatinSquare(size = (5,5), baseline = 3, seed = 1)
+  x
+  ```
+  ```{python}
+  pyLHD.zero_base(x)
+  ```
+
+  """
+  x = arr.copy()
+  min_elements = np.amin(x, axis=0)
+  x -= min_elements
+  return x
+
+
 def LevelPermutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None) -> npt.ArrayLike:
   """Apply level permutations to a Good lattice point (GLP) design
 
@@ -415,10 +441,7 @@ def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0, modified = False) -
   ```
   """
   n = arr.shape[0]
-  x = arr.copy()
-
-  min_elements = np.amin(x, axis=0)
-  x -= min_elements
+  x = zero_base(arr)
 
   # Apply the weight transformation
   if not modified:
@@ -430,7 +453,6 @@ def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0, modified = False) -
   if baseline != 1:
     wt += (baseline - 1)
   return wt
-
 
 #################################
 ####   Checks/ Conditions #######

@@ -6,10 +6,10 @@ Discrepancy of a given sample
 
 ## Parameters
 
-| Name     | Type          | Description                                                                                                                                                   | Default         |
-|----------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `arr`    | npt.ArrayLike | A numpy ndarray                                                                                                                                               | _required_      |
-| `method` | str           | Type of discrepancy. Defaults to 'centered_L2'. Options include: 'L2', 'L2_star','centered_L2', 'modified_L2', 'mixture_L2', 'symmetric_L2', 'wrap_around_L2' | `'centered_L2'` |
+| Name     | Type                  | Description                                                                                                                                                   | Default         |
+|----------|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| `arr`    | numpy.numpy.ArrayLike | A numpy ndarray                                                                                                                                               | _required_      |
+| `method` | str                   | Type of discrepancy. Defaults to 'centered_L2'. Options include: 'L2', 'L2_star','centered_L2', 'modified_L2', 'mixture_L2', 'symmetric_L2', 'wrap_around_L2' | `'centered_L2'` |
 
 ## Raises
 
@@ -23,10 +23,7 @@ Discrepancy of a given sample
 |--------|--------------------------|
 | float  | Desired discrepancy type |
 
-## Examples
-
-
-
+Examples:
 Calculate the centered_L2 discrepancy of `random_lhd`
 ```{python}
 import pyLHD

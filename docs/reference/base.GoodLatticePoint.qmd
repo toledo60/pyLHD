@@ -6,22 +6,19 @@ Good Lattice Point (GLP) Design
 
 ## Parameters
 
-| Name   | Type                                           | Description                                                                                                                                                                                                     | Default    |
-|--------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `size` | tuple of ints                                  | Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively                                                                                                                       | _required_ |
-| `h`    | list of ints                                   | A generator vector used to multiply each row of the design. Each element in `h` must be smaller than and coprime to `n`                                                                                         | `None`     |
-| `seed` | Optional\[Union\[int, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
+| Name   | Type                                                                              | Description                                                                                                                                                                                                     | Default    |
+|--------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `size` | tuple of ints                                                                     | Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively                                                                                                                       | _required_ |
+| `h`    | list of ints                                                                      | A generator vector used to multiply each row of the design. Each element in `h` must be smaller than and coprime to `n`                                                                                         | `None`     |
+| `seed` | typing.Optional\[typing.Union\[int, numpy.numpy.random.numpy.random.Generator\]\] | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
 
 ## Returns
 
-| Type          | Description                                                                                                 |
-|---------------|-------------------------------------------------------------------------------------------------------------|
-| npt.ArrayLike | Generated random (n x d) Good lattice point set, where each column is a random permutation of {0,1,...,n-1} |
+| Type                  | Description                                                                                                 |
+|-----------------------|-------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ArrayLike | Generated random (n x d) Good lattice point set, where each column is a random permutation of {0,1,...,n-1} |
 
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 pyLHD.GoodLatticePoint(size = (10,4))

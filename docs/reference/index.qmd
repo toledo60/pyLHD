@@ -1,4 +1,4 @@
-# Function reference
+# Function reference {.doc .doc-index}
 
 ## Base Designs
 
@@ -46,7 +46,7 @@ Space-filling and Projection Criterias for LHD
 | [criteria.discrepancy](criteria.discrepancy.qmd#pyLHD.criteria.discrepancy) | Discrepancy of a given sample |
 | [criteria.InterSite](criteria.InterSite.qmd#pyLHD.criteria.InterSite) | Calculate the Inter-site Distance between the ith and jth index |
 | [criteria.pairwise_InterSite](criteria.pairwise_InterSite.qmd#pyLHD.criteria.pairwise_InterSite) | Calculate the Inter-site Distance between all pairwise (rows/columns) |
-| [criteria.LqDistance](criteria.LqDistance.qmd#pyLHD.criteria.LqDistance) | Calculate the Lq-Distance of a Latin Hypercube Design |
+| [criteria.LqDistance](criteria.LqDistance.qmd#pyLHD.criteria.LqDistance) | Calculate the Lq-Distance of a Latin Hypercube Design  |
 | [criteria.MaxAbsCor](criteria.MaxAbsCor.qmd#pyLHD.criteria.MaxAbsCor) | Calculate the Maximum Absolute Correlation |
 | [criteria.MeshRatio](criteria.MeshRatio.qmd#pyLHD.criteria.MeshRatio) | Compute the meshratio criterion for a given design |
 | [criteria.MaxProCriterion](criteria.MaxProCriterion.qmd#pyLHD.criteria.MaxProCriterion) | Calculate the Maximum Projection Criterion |
@@ -77,3 +77,4 @@ Miscellaneous Utilities for Manipulating LHDs
 | [helpers.totatives](helpers.totatives.qmd#pyLHD.helpers.totatives) | Generate all positive integers less than and coprime to N from [1,N) |
 | [helpers.VerifyGenerator](helpers.VerifyGenerator.qmd#pyLHD.helpers.VerifyGenerator) | Verify generator used to construct good lattice points (GLP) design |
 | [helpers.WilliamsTransform](helpers.WilliamsTransform.qmd#pyLHD.helpers.WilliamsTransform) | Williams Transformation |
+| [helpers.zero_base](helpers.zero_base.qmd#pyLHD.helpers.zero_base) | Normalize the columns by subtracting the minimum element of each column |

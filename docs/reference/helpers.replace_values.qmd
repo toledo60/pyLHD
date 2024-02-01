@@ -6,16 +6,16 @@ Replace values in a numpy array based on a provided mapping dictionary
 
 ## Parameters
 
-| Name      | Type          | Description                                                                                  | Default    |
-|-----------|---------------|----------------------------------------------------------------------------------------------|------------|
-| `arr`     | npt.ArrayLike | A numpy array with values to be replaced.                                                    | _required_ |
-| `mapping` | dict          | A dictionary where keys correspond to values in `arr` and values are the replacement values. | _required_ |
+| Name      | Type                  | Description                                                                                  | Default    |
+|-----------|-----------------------|----------------------------------------------------------------------------------------------|------------|
+| `arr`     | numpy.numpy.ArrayLike | A numpy array with values to be replaced.                                                    | _required_ |
+| `mapping` | dict                  | A dictionary where keys correspond to values in `arr` and values are the replacement values. | _required_ |
 
 ## Returns
 
-| Type          | Description                         |
-|---------------|-------------------------------------|
-| npt.ArrayLike | A numpy array with replaced values. |
+| Type                  | Description                         |
+|-----------------------|-------------------------------------|
+| numpy.numpy.ArrayLike | A numpy array with replaced values. |
 
 ## Raises
 
@@ -23,10 +23,7 @@ Replace values in a numpy array based on a provided mapping dictionary
 |------------|------------------------------------------------------------------------------------------------|
 | ValueError | If `mapping` does not contain the same unique values as in `arr`, or if the keys do not match. |
 
-## Examples
-
-
-
+Examples:
 
 ```{python}
 import pyLHD

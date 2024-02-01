@@ -6,21 +6,18 @@ Generates all unique combinations of columns from the given array, selecting 'k'
 
 ## Parameters
 
-| Name   | Type          | Description                                                                                                                                | Default    |
-|--------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`  | npt.ArrayLike | A numpy ndarray                                                                                                                            | _required_ |
-| `k`    | int           | The number of columns to include in each combination. Must be a positive integer and less than or equal to the number of columns in 'arr'. | _required_ |
+| Name   | Type                  | Description                                                                                                                                | Default    |
+|--------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray                                                                                                                            | _required_ |
+| `k`    | int                   | The number of columns to include in each combination. Must be a positive integer and less than or equal to the number of columns in 'arr'. | _required_ |
 
 ## Returns
 
-| Type                  | Description                                                                                                                                                                        |
-|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| List\[npt.ArrayLike\] | List[npt.ArrayLike]: A list of arrays, each being a combination of 'k' columns from the original array. The combinations are returned as slices of the original array, not copies. |
+| Type                                 | Description                                                                                                                                                                        |
+|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| typing.List\[numpy.numpy.ArrayLike\] | List[npt.ArrayLike]: A list of arrays, each being a combination of 'k' columns from the original array. The combinations are returned as slices of the original array, not copies. |
 
-## Examples
-
-
-
+Examples:
 
 ```{python}
 import pyLHD

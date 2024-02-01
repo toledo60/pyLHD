@@ -1,10 +1,9 @@
 import numpy as np
 import numpy.typing as npt
-from typing import Literal
+from typing import Union, Optional, Literal
 from pyLHD.helpers import LevelPermutation, WilliamsTransform,is_prime
 from pyLHD.base import GoodLatticePoint
 from pyLHD.criteria import LqDistance
-from typing import Union, Optional
 
 
 def LeaveOneOut(arr: npt.ArrayLike, b: int,
@@ -27,8 +26,7 @@ def LeaveOneOut(arr: npt.ArrayLike, b: int,
   ```{python}
   import pyLHD
   n = 11
-  d = pyLHD.euler_phi(n)
-  x = pyLHD.GoodLatticePoint(size = (n,d))
+  x = pyLHD.GoodLatticePoint(size = (n,n-1))
   x
   ```
   The initial $L_1$-distance of `x` is
@@ -70,6 +68,7 @@ def LeaveOneOut(arr: npt.ArrayLike, b: int,
   # Decrease levels greater than the deleted level by one
   new_arr[new_arr > b] -= 1
   return new_arr
+
 
 def BestLinearPermutation(N:int) -> int:
   """Optimal linear permutation value to achieve larger L1-distance for a LHD

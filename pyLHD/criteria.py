@@ -232,7 +232,7 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
 
 
 def LqDistance(arr,q=1) -> float:
-  """Calculate the Lq-Distance of a Latin Hypercube Design
+  """Calculate the Lq-Distance of a Latin Hypercube Design 
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
@@ -259,7 +259,7 @@ def LqDistance(arr,q=1) -> float:
 
 
 def discrepancy(arr: npt.ArrayLike,
-                method: Literal["L2", "L2_star", "centered_L2", "modified_L2","balanced_centered_L2"
+                method: Literal["L2", "L2_star", "centered_L2", "modified_L2","balanced_centered_L2",
                                 "mixture_L2", "symmetric_L2", "wrap_around_L2"] = "centered_L2") -> float:
   """ Discrepancy of a given sample
 
@@ -286,7 +286,6 @@ def discrepancy(arr: npt.ArrayLike,
   pyLHD.discrepancy(random_lhd,method='L2_star')
   ``` 
   """
-    
   n_rows, n_columns = arr.shape
   
   if n_rows < n_columns:

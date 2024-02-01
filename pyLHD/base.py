@@ -3,7 +3,6 @@ import numpy.typing as npt
 from typing import Optional, Union
 from pyLHD.helpers import permute_columns, check_seed, totatives, VerifyGenerator
 
-
 def LatinSquare(size: tuple[int,int], baseline: int = 1, seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
   """ Generate a random (n x d) Latin square
 
@@ -28,8 +27,7 @@ def LatinSquare(size: tuple[int,int], baseline: int = 1, seed: Optional[Union[in
     raise ValueError("'size' should be a square, i.e, n=d")
   rng = check_seed(seed)
   perms = np.tile(np.arange(start=baseline, stop= baseline + n), (d, 1)).T
-  perms = permute_columns(perms, seed=rng)
-  return perms
+  return permute_columns(perms, seed=rng)
 
 
 def LatinHypercube(size: tuple[int, int], scramble: Optional[bool] = True,
@@ -42,6 +40,7 @@ def LatinHypercube(size: tuple[int, int], scramble: Optional[bool] = True,
           Otherwise, samples are randomly placed within cells of the grid. Defaults to True.
       seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
+
   Returns:
       A Latin hypercube sample of $n$ points generated in $[0,1)^d$ 
           Each univariate marginal distribution is stratisfied, placing exactly one point in 
@@ -71,8 +70,9 @@ def GoodLatticePoint(size: tuple[int, int], h: list[int] = None,
   Args:
       size (tuple of ints): Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively
       h (list of ints): A generator vector used to multiply each row of the design. Each element in `h` must be smaller than and coprime to `n`    
-      seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+      seed (Optional[Union[int, np.random.Generator]]): If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
+  
   Returns:
       Generated random (n x d) Good lattice point set, where each column is a random permutation of {0,1,...,n-1}
   

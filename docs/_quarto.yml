@@ -85,4 +85,5 @@ quartodoc:
         - helpers.swap_elements
         - helpers.totatives
         - helpers.VerifyGenerator
-        - helpers.WilliamsTransform       
+        - helpers.WilliamsTransform
+        - helpers.zero_base    

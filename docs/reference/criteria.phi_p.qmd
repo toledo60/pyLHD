@@ -6,10 +6,10 @@ Calculate the phi_p Criterion
 
 ## Parameters
 
-| Name   | Type          | Description                                                                                                                                                                                                           | Default    |
-|--------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`  | npt.ArrayLike | A numpy ndarray                                                                                                                                                                                                       | _required_ |
-| `p`    | int           | A positive integer, which is the parameter in the phi_p formula. The default is set to be 15. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. | `15`       |
+| Name   | Type                  | Description                                                                                                                                                                                                           | Default    |
+|--------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray                                                                                                                                                                                                       | _required_ |
+| `p`    | int                   | A positive integer, which is the parameter in the phi_p formula. The default is set to be 15. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. | `15`       |
 
 ## Returns
 
@@ -17,10 +17,7 @@ Calculate the phi_p Criterion
 |--------|------------------------------------|
 | float  | A positive number indicating phi_p |
 
-## Examples
-
-
-
+Examples:
 Calculate the phi_p criterion for random_lhd with default settings
 ```{python}
 import pyLHD

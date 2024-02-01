@@ -13,17 +13,14 @@ Generate a maximin LHD based on the L1-distance
 | `method` | Literal\[&#39;LP&#39;, &#39;WT&#39;\]          | Linear level permutation (LP) or William's transformation (WT). Defaults to 'LP'.                                                                                                                               | `'LP'`     |
 | `seed`   | Optional\[Union\[int, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
 
-## Raises
-
-| Type       | Description                     |
-|------------|---------------------------------|
-| ValueError | If `method` is not 'LP' or 'WT' |
+Raises:
+    ValueError: If `method` is not 'LP' or 'WT'
 
 ## Returns
 
-| Type          | Description                                                                                                                                                               |
-|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| npt.ArrayLike | npt.ArrayLike: A maximin LHD based on the L1-distance. Construction is obtained by applying Williams transformation on linearly permuted good lattice point (GLP) designs |
+| Type                  | Description                                                                                                                                                               |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ArrayLike | npt.ArrayLike: A maximin LHD based on the L1-distance. Construction is obtained by applying Williams transformation on linearly permuted good lattice point (GLP) designs |
 
 Example:
 ```{python}

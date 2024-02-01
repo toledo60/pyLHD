@@ -6,9 +6,9 @@ Calculate the Maximum Projection Criterion
 
 ## Parameters
 
-| Name   | Type          | Description     | Default    |
-|--------|---------------|-----------------|------------|
-| `arr`  | npt.ArrayLike | A numpy ndarray | _required_ |
+| Name   | Type                  | Description     | Default    |
+|--------|-----------------------|-----------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray | _required_ |
 
 ## Returns
 
@@ -16,10 +16,7 @@ Calculate the Maximum Projection Criterion
 |--------|---------------------------------------------------------|
 | float  | Positive number indicating maximum projection criterion |
 
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 random_lhd = pyLHD.LatinHypercube(size = (10,3))

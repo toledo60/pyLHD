@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,6 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -97,13 +104,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -112,17 +146,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../notebooks/intro_pyLHD.html" rel="" target="" aria-current="page">
- <span class="menu-text">Overview</span></a>
+    <a class="nav-link active" href="../notebooks/intro_pyLHD.html" aria-current="page"> 
+<span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../reference/index.html" rel="" target="">
- <span class="menu-text">Reference</span></a>
+    <a class="nav-link" href="../reference/index.html"> 
+<span class="menu-text">Reference</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -135,9 +169,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#maximin-distance-criterion" id="toc-maximin-distance-criterion" class="nav-link active" data-scroll-target="#maximin-distance-criterion">Maximin distance Criterion</a></li>
+  <li><a href="#introduction-to-pylhd" id="toc-introduction-to-pylhd" class="nav-link active" data-scroll-target="#introduction-to-pylhd">1. Introduction to pyLHD</a>
+  <ul class="collapse">
+  <li><a href="#maximin-distance-criterion" id="toc-maximin-distance-criterion" class="nav-link" data-scroll-target="#maximin-distance-criterion">Maximin distance Criterion</a></li>
   <li><a href="#maximum-projection-criterion" id="toc-maximum-projection-criterion" class="nav-link" data-scroll-target="#maximum-projection-criterion">Maximum Projection Criterion</a></li>
   <li><a href="#orthogonality-criteria" id="toc-orthogonality-criteria" class="nav-link" data-scroll-target="#orthogonality-criteria">Orthogonality Criteria</a></li>
+  </ul></li>
   <li><a href="#algebraic-construction-functions" id="toc-algebraic-construction-functions" class="nav-link" data-scroll-target="#algebraic-construction-functions">2. Algebraic Construction Functions</a></li>
   </ul>
 </nav>
@@ -160,8 +197,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
+
+<section id="introduction-to-pylhd" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-pylhd">1. Introduction to pyLHD</h2>
 <p>pyLHD is a python implementation of the R package <a href="https://cran.r-project.org/web/packages/LHD/index.html">LHD</a> by Hongzhi Wang, Qian Xiao, Abhyuday Mandal. As of now, only the algebraic construction of Latin hypercube designs (LHD) are implemented in this package. For search algorithms to construct LHDs such as: Simulated annealing, particle swarm optimization, and genetic algorithms refer to the R package.</p>
 <p>In section 2 algebraic construction methods for LHDs are discussed</p>
 <p>To evalute the generated LHDs we consider the following criteria</p>
@@ -188,11 +229,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ave(|q|) = \frac{2 \sum_{i=1}^{k-1} \sum_{j=i+1}^k |q_{ij}|}{k(k-1)} \quad \text{and} \quad \max |q| = \underset{i,j}{\max} |q_{ij}|
 \]</span></p>
 <p>where <span class="math inline">\(q_{ij}\)</span> is the correlation between the <span class="math inline">\(i\)</span>th and <span class="math inline">\(j\)</span>th columns of the design matrix <span class="math inline">\(X\)</span>. Orthogonal design have <span class="math inline">\(ave(|q|)=0\)</span> and <span class="math inline">\(\max|q|=0\)</span>, which may not exist for all design sizes. Designs with smaller <span class="math inline">\(ave(|q|)\)</span> or <span class="math inline">\(\max|q|\)</span> are generally preferred in practice.</p>
-<div class="cell" data-execution_count="1">
+<div id="cell-2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Lets start by generating a random centered LHD with 5 rows and 3 columns</p>
-<div class="cell" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">3</span>),scramble<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -205,35 +246,35 @@ ave(|q|) = \frac{2 \sum_{i=1}^{k-1} \sum_{j=i+1}^k |q_{ij}|}{k(k-1)} \quad \text
 </div>
 <p>We evaluate the above design with the different optimamlity criteria described earlier:</p>
 <p>The maximin distance criterion (Manhattan)</p>
-<div class="cell" data-execution_count="3">
+<div id="cell-6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pyLHD.phi_p(X,p<span class="op">=</span><span class="dv">15</span>,q<span class="op">=</span><span class="dv">1</span>) <span class="co"># using default parameters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>1.312360649138747</code></pre>
 </div>
 </div>
 <p>The maximin distance criterion (Euclidean)</p>
-<div class="cell" data-execution_count="4">
+<div id="cell-8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pyLHD.phi_p(X,p<span class="op">=</span><span class="dv">10</span>,q<span class="op">=</span><span class="dv">2</span>) <span class="co"># different p used than above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>2.210980529249712</code></pre>
 </div>
 </div>
 <p>The average absolute correlation</p>
-<div class="cell" data-execution_count="5">
+<div id="cell-10" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pyLHD.AvgAbsCor(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>0.3333333333333334</code></pre>
 </div>
 </div>
 <p>The maximum absolute correlation</p>
-<div class="cell" data-execution_count="6">
+<div id="cell-12" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pyLHD.MaxAbsCor(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>0.6</code></pre>
 </div>
 </div>
 <p>The maximum projection criterion</p>
-<div class="cell" data-execution_count="7">
+<div id="cell-14" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pyLHD.MaxProCriterion(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>10.757357196557185</code></pre>
@@ -245,7 +286,7 @@ W(x) = \begin{cases}
       2(N-x)-1 &amp; N/2 \leq x &lt; N   
       \end{cases}
 \]</span></p>
-<div class="cell" data-execution_count="8">
+<div id="cell-16" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>W_x <span class="op">=</span> pyLHD.WilliamsTransform(X)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>W_x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -257,13 +298,14 @@ W(x) = \begin{cases}
 </div>
 </div>
 <p>Lets evaluate the new transformed design</p>
-<div class="cell" data-execution_count="9">
+<div id="cell-18" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pyLHD.phi_p(W_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>0.6561803245693735</code></pre>
 </div>
 </div>
 <p>The <span class="math inline">\(\phi_p\)</span> value of transformed <span class="math inline">\(W_x\)</span> is smaller than the original design <span class="math inline">\(X\)</span></p>
+</section>
 </section>
 <section id="algebraic-construction-functions" class="level2">
 <h2 class="anchored" data-anchor-id="algebraic-construction-functions">2. Algebraic Construction Functions</h2>
@@ -321,7 +363,7 @@ W(x) = \begin{cases}
 </table>
 <p>For theoretical details on the construction methods, a good overview is <strong>Section 4.2: Algebraic Constuctions for Orthogonal LHDs</strong> from <a href="https://arxiv.org/abs/2010.09154">Musings about Constructions of Efficient Latin Hypercube Designs with Flexible Run-sizes</a></p>
 <p>We start by implementing Ye 1998 construction, the resulting desig will have <span class="math inline">\(2^m+1\)</span> runs and <span class="math inline">\(2m-2\)</span> factors</p>
-<div class="cell" data-execution_count="10">
+<div id="cell-23" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Ye98 <span class="op">=</span> pyLHD.OLHD_Ye98(m<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>Ye98</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -344,14 +386,14 @@ W(x) = \begin{cases}
        [-1., -8., -3., -2., -6., -5.]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="11">
+<div id="cell-24" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pyLHD.MaxAbsCor(Ye98) <span class="co"># column-wise correlation are 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>0.0</code></pre>
 </div>
 </div>
 <p>Cioppa and Lucas 2007 construction, the resulting design will be a <span class="math inline">\(2^m+1\)</span> by <span class="math inline">\(m+ {m-1 \choose 2}\)</span> orthogonal LHD. Note <span class="math inline">\(m \geq 2\)</span></p>
-<div class="cell" data-execution_count="12">
+<div id="cell-26" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Cioppa07 <span class="op">=</span> pyLHD.OLHD_Cioppa07(m<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>Cioppa07</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -366,14 +408,14 @@ W(x) = \begin{cases}
        [-4., -3., -1., -2.]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="13">
+<div id="cell-27" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pyLHD.MaxAbsCor(Cioppa07) <span class="co"># column-wise correlation are 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>0.0</code></pre>
 </div>
 </div>
 <p>Sun et al.&nbsp;2010 construction, the resulting design will be <span class="math inline">\(r2^{c+1}\)</span> by <span class="math inline">\(2^c\)</span> if type=‘even’. If type=‘odd’ the resulting design will be <span class="math inline">\(r2^{c+1} + 1\)</span> by <span class="math inline">\(2^c\)</span>, where <span class="math inline">\(r\)</span> and <span class="math inline">\(c\)</span> are positive integers.</p>
-<div class="cell" data-execution_count="14">
+<div id="cell-29" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Sun10_odd <span class="op">=</span> pyLHD.OLHD_Sun10(C<span class="op">=</span><span class="dv">2</span>,r<span class="op">=</span><span class="dv">2</span>,<span class="bu">type</span><span class="op">=</span><span class="st">'odd'</span>)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>Sun10_odd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -396,7 +438,7 @@ W(x) = \begin{cases}
        [-8.,  7., -6.,  5.]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="15">
+<div id="cell-30" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>Sun10_even <span class="op">=</span> pyLHD.OLHD_Sun10(C<span class="op">=</span><span class="dv">2</span>,r<span class="op">=</span><span class="dv">2</span>,<span class="bu">type</span><span class="op">=</span><span class="st">'even'</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>Sun10_even</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
@@ -420,11 +462,11 @@ W(x) = \begin{cases}
 </div>
 <p>Line et al.&nbsp;2009 construction, the resulting design will be <span class="math inline">\(n^2\)</span> by <span class="math inline">\(2fp\)</span>. This is obtained by using a <span class="math inline">\(n\)</span> by <span class="math inline">\(p\)</span> orthogonal LHD with a <span class="math inline">\(n^2\)</span> by <span class="math inline">\(2f\)</span> strength 2 and level <span class="math inline">\(n\)</span> orthogonal array.</p>
 <p>Start by generating an orthogonal LHD</p>
-<div class="cell" data-execution_count="16">
+<div id="cell-32" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>OLHD_example <span class="op">=</span> pyLHD.OLHD_Cioppa07(m<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, create an orthogonal array with 25 rows, 6 columns, 5 levels, and strength 2 OA(25,6,5,2)</p>
-<div class="cell" data-execution_count="17">
+<div id="cell-34" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>OA_example <span class="op">=</span> np.array([[<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>],[<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>],</span>
@@ -442,7 +484,7 @@ W(x) = \begin{cases}
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>                      [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>] ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now using Lin at al.&nbsp;2009 construction, we couple OLHD and OA to obtain</p>
-<div class="cell" data-execution_count="18">
+<div id="cell-36" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Lin09 <span class="op">=</span> pyLHD.OLHD_Lin09(OLHD<span class="op">=</span>OLHD_example,OA<span class="op">=</span>OA_example)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>Lin09</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
@@ -499,7 +541,7 @@ W(x) = \begin{cases}
 </div>
 </div>
 <p>We can convert an orthogonal array into a LHD using the function OA2LHD. Consider the earlier OA_example with 25 rows and 6 columns.</p>
-<div class="cell" data-execution_count="19">
+<div id="cell-38" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pyLHD.OA2LHD(OA_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>array([[10,  8,  7,  8,  6,  1],
@@ -530,7 +572,7 @@ W(x) = \begin{cases}
 </div>
 </div>
 <p>Lastly, we consider Butler 2001 construction by generating a <span class="math inline">\(n\)</span> by <span class="math inline">\(k\)</span> OLHD</p>
-<div class="cell" data-execution_count="20">
+<div id="cell-40" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Butler01 <span class="op">=</span> pyLHD.OLHD_Butler01(size <span class="op">=</span> (<span class="dv">11</span>,<span class="dv">5</span>))</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>Butler01 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
@@ -631,10 +673,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -644,8 +685,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -658,6 +708,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -701,6 +870,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -726,6 +896,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -786,6 +982,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

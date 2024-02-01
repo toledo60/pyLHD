@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>base.goodlatticepoint</title>
+<title>helpers.zero_base</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/base.LatinSquare.html">Base Designs</a></li><li class="breadcrumb-item"><a href="../reference/base.GoodLatticePoint.html">base.GoodLatticePoint</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.zero_base.html">helpers.zero_base</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/base.GoodLatticePoint.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/base.GoodLatticePoint.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">base.GoodLatticePoint</span></a>
   </div>
 </li>
@@ -466,7 +466,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.zero_base.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/helpers.zero_base.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">helpers.zero_base</span></a>
   </div>
 </li>
@@ -490,9 +490,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/base.LatinSquare.html">Base Designs</a></li><li class="breadcrumb-item"><a href="../reference/base.GoodLatticePoint.html">base.GoodLatticePoint</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.zero_base.html">helpers.zero_base</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">base.GoodLatticePoint</h1>
+<h1 class="title">helpers.zero_base</h1>
 </div>
 
 
@@ -509,17 +509,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><code>base.GoodLatticePoint(size, h=None, seed=None)</code></p>
-<p>Good Lattice Point (GLP) Design</p>
+<p><code>helpers.zero_base(arr)</code></p>
+<p>Normalize the columns by subtracting the minimum element of each column</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
-<colgroup>
-<col style="width: 2%">
-<col style="width: 26%">
-<col style="width: 66%">
-<col style="width: 3%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -530,22 +524,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>size</code></td>
-<td>tuple of ints</td>
-<td>Output shape of (n,d), where <code>n</code> and <code>d</code> are the number of rows and columns, respectively</td>
+<td><code>arr</code></td>
+<td>numpy.numpy.ArrayLike</td>
+<td>A numpy ndarray</td>
 <td><em>required</em></td>
-</tr>
-<tr class="even">
-<td><code>h</code></td>
-<td>list of ints</td>
-<td>A generator vector used to multiply each row of the design. Each element in <code>h</code> must be smaller than and coprime to <code>n</code></td>
-<td><code>None</code></td>
-</tr>
-<tr class="odd">
-<td><code>seed</code></td>
-<td>typing.Optional[typing.Union[int, numpy.numpy.random.numpy.random.Generator]]</td>
-<td>If <code>seed</code>is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a `<code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>
-<td><code>None</code></td>
 </tr>
 </tbody>
 </table>
@@ -554,8 +536,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 82%">
+<col style="width: 19%">
+<col style="width: 80%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -566,40 +548,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>numpy.numpy.ArrayLike</td>
-<td>Generated random (n x d) Good lattice point set, where each column is a random permutation of {0,1,…,n-1}</td>
+<td>A normalized array such that the columns are subtracted by the minimum element of each column</td>
 </tr>
 </tbody>
 </table>
-<p>Examples:</p>
-<div id="c99b3dca" class="cell" data-execution_count="1">
+<p>Example:</p>
+<div id="c973093c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.GoodLatticePoint(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> pyLHD.LatinSquare(size <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">5</span>), baseline <span class="op">=</span> <span class="dv">3</span>, seed <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[1, 3, 7, 9],
-       [2, 6, 4, 8],
-       [3, 9, 1, 7],
-       [4, 2, 8, 6],
-       [5, 5, 5, 5],
-       [6, 8, 2, 4],
-       [7, 1, 9, 3],
-       [8, 4, 6, 2],
-       [9, 7, 3, 1],
-       [0, 0, 0, 0]])</code></pre>
+<pre><code>array([[4, 6, 3, 6, 4],
+       [6, 7, 5, 4, 6],
+       [3, 5, 6, 5, 5],
+       [7, 4, 4, 3, 3],
+       [5, 3, 7, 7, 7]])</code></pre>
 </div>
 </div>
-<div id="b02bde50" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.GoodLatticePoint(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">3</span>),seed <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8b1e6e3c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.zero_base(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[3, 1, 9],
-       [6, 2, 8],
-       [9, 3, 7],
-       [2, 4, 6],
-       [5, 5, 5],
-       [8, 6, 4],
-       [1, 7, 3],
-       [4, 8, 2],
-       [7, 9, 1],
-       [0, 0, 0]])</code></pre>
+<pre><code>array([[1, 3, 0, 3, 1],
+       [3, 4, 2, 1, 3],
+       [0, 2, 3, 2, 2],
+       [4, 1, 1, 0, 0],
+       [2, 0, 4, 4, 4]])</code></pre>
 </div>
 </div>
 

@@ -6,22 +6,19 @@ Apply a function to each item in a list
 
 ## Parameters
 
-| Name     | Type                 | Description                                                                     | Default    |
-|----------|----------------------|---------------------------------------------------------------------------------|------------|
-| `lst`    | List\[Any\]          | List of elements to which the function will be applied                          | _required_ |
-| `func`   | Callable\[..., Any\] | The function to apply. It can be a built-in function or a user-defined function | _required_ |
-| `kwargs` | dict\[str, Any\]     | Additional keyword arguments to pass to the function                            | `{}`       |
+| Name     | Type                               | Description                                                                     | Default    |
+|----------|------------------------------------|---------------------------------------------------------------------------------|------------|
+| `lst`    | typing.List\[typing.Any\]          | List of elements to which the function will be applied                          | _required_ |
+| `func`   | typing.Callable\[..., typing.Any\] | The function to apply. It can be a built-in function or a user-defined function | _required_ |
+| `kwargs` | dict\[str, typing.Any\]            | Additional keyword arguments to pass to the function                            | `{}`       |
 
 ## Returns
 
-| Type        | Description                                                                        |
-|-------------|------------------------------------------------------------------------------------|
-| List\[Any\] | List[Any]: A list containing the results of applying `func` to each item in `lst`. |
+| Type                      | Description                                                                        |
+|---------------------------|------------------------------------------------------------------------------------|
+| typing.List\[typing.Any\] | List[Any]: A list containing the results of applying `func` to each item in `lst`. |
 
-## Examples
-
-
-
+Examples:
 
 ```{python}
 import pyLHD

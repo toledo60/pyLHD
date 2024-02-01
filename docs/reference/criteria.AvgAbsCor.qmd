@@ -6,9 +6,9 @@ Calculate the Average Absolute Correlation
 
 ## Parameters
 
-| Name   | Type          | Description     | Default    |
-|--------|---------------|-----------------|------------|
-| `arr`  | npt.ArrayLike | A numpy ndarray | _required_ |
+| Name   | Type                  | Description     | Default    |
+|--------|-----------------------|-----------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray | _required_ |
 
 ## Returns
 
@@ -17,10 +17,7 @@ Calculate the Average Absolute Correlation
 | float  | A positive number indicating the average absolute correlation |
 | float  | of input matrix                                               |
 
-## Examples
-
-
-
+Examples:
 Calculate the average absolute correlation of `random_lhd`
 ```{python}
 import pyLHD

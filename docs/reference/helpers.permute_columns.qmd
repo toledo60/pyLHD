@@ -8,20 +8,14 @@ Randomly permute columns in a numpy ndarray
 
 | Name      | Type                                           | Description                                                                                                                                                                                                     | Default    |
 |-----------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`     | npt.ArrayLike                                  | A numpy ndarray                                                                                                                                                                                                 | _required_ |
-| `columns` | Optional\[List\[int\]\]                        | If columns is None all columns will be randomly permuted, otherwise provide a list of columns to permute. Defaults to None.                                                                                     | `None`     |
+| `arr`     | numpy.numpy.ArrayLike                          | A numpy ndarray                                                                                                                                                                                                 | _required_ |
+| `columns` | typing.Optional\[typing.List\[int\]\]          | If columns is None all columns will be randomly permuted, otherwise provide a list of columns to permute. Defaults to None.                                                                                     | `None`     |
 | `seed`    | Optional\[Union\[int, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
 
-## Returns
+Returns:
+    numpy ndarray with columns of choice randomly permuted 
 
-| Type          | Description                                            |
-|---------------|--------------------------------------------------------|
-| npt.ArrayLike | numpy ndarray with columns of choice randomly permuted |
-
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 x = pyLHD.LatinHypercube(size = (5,3), seed = 1)

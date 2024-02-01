@@ -6,11 +6,11 @@ Check conditions for bounds input
 
 ## Parameters
 
-| Name           | Type          | Description          | Default    |
-|----------------|---------------|----------------------|------------|
-| `arr`          | npt.ArrayLike | A numpy ndarray      | _required_ |
-| `lower_bounds` | npt.ArrayLike | Lower bounds of data | _required_ |
-| `upper_bounds` | npt.ArrayLike | Upper bounds of data | _required_ |
+| Name           | Type                  | Description          | Default    |
+|----------------|-----------------------|----------------------|------------|
+| `arr`          | numpy.numpy.ArrayLike | A numpy ndarray      | _required_ |
+| `lower_bounds` | numpy.numpy.ArrayLike | Lower bounds of data | _required_ |
+| `upper_bounds` | numpy.numpy.ArrayLike | Upper bounds of data | _required_ |
 
 ## Raises
 
@@ -21,6 +21,6 @@ Check conditions for bounds input
 
 ## Returns
 
-| Type                        | Description                                          |
-|-----------------------------|------------------------------------------------------|
-| tuple\[npt.ArrayLike, ...\] | tuple[npt.ArrayLike, ...]: A tuple of numpy.ndarrays |
+| Type                                | Description                                          |
+|-------------------------------------|------------------------------------------------------|
+| tuple\[numpy.numpy.ArrayLike, ...\] | tuple[npt.ArrayLike, ...]: A tuple of numpy.ndarrays |

@@ -16,10 +16,7 @@ Euler's Totient function
 |--------|------------------------------------------------------------------------|
 | int    | The number of positive integers from [1,N), less than and coprime to N |
 
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 pyLHD.totatives(11)

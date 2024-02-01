@@ -8,19 +8,16 @@ Transform an Orthogonal Array (OA) into an LHD
 
 | Name   | Type                                           | Description                                                                                                                                                                                                     | Default    |
 |--------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`  | numpy.ndarray                                  | An orthogonal array matrix                                                                                                                                                                                      | _required_ |
+| `arr`  | numpy.numpy.ndarray                            | An orthogonal array matrix                                                                                                                                                                                      | _required_ |
 | `seed` | Optional\[Union\[int, np.random.Generator\]\]) | If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).  If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None. | `None`     |
 
 ## Returns
 
-| Type          | Description                                                                                           |
-|---------------|-------------------------------------------------------------------------------------------------------|
-| npt.ArrayLike | LHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive |
+| Type                  | Description                                                                                           |
+|-----------------------|-------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ArrayLike | LHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive |
 
-## Examples
-
-
-
+Examples:
 First create an OA(9,2,3,2)
 ```{python}
 import numpy as np

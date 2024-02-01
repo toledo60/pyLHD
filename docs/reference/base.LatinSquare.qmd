@@ -14,14 +14,11 @@ Generate a random (n x d) Latin square
 
 ## Returns
 
-| Type          | Description                                                                                                                       |
-|---------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| npt.ArrayLike | Generated random (n x d) Latin square, in which each column is a random permutation of {baseline,baseline+1, ..., baseline+(n-1)} |
+| Type                  | Description                                                                                                                       |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ArrayLike | Generated random (n x d) Latin square, in which each column is a random permutation of {baseline,baseline+1, ..., baseline+(n-1)} |
 
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 pyLHD.LatinSquare(size = (5,5),seed = 1)

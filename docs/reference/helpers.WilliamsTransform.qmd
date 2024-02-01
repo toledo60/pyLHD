@@ -6,22 +6,19 @@ Williams Transformation
 
 ## Parameters
 
-| Name       | Type             | Description                                                                              | Default    |
-|------------|------------------|------------------------------------------------------------------------------------------|------------|
-| `arr`      | npt.ArrayLike    | A numpy ndarray                                                                          | _required_ |
-| `baseline` | int              | A integer, which defines the minimum value for each column of the matrix. Defaults to 0. | `0`        |
-| `modified` | (bool, optional) | Implement modifed version of Williams Transformation. Defaults to False.                 | `False`    |
+| Name       | Type                  | Description                                                                              | Default    |
+|------------|-----------------------|------------------------------------------------------------------------------------------|------------|
+| `arr`      | numpy.numpy.ArrayLike | A numpy ndarray                                                                          | _required_ |
+| `baseline` | int                   | A integer, which defines the minimum value for each column of the matrix. Defaults to 0. | `0`        |
+| `modified` | (bool, optional)      | Implement modifed version of Williams Transformation. Defaults to False.                 | `False`    |
 
 ## Returns
 
-| Type          | Description                                                                                                                                                                                                                                       |
-|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| npt.ArrayLike | After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)}. For the modified version. Whenever n is odd, n=2m+1 the columns will be permutations will always be even numbers |
+| Type                  | Description                                                                                                                                                                                                                                       |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ArrayLike | After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)}. For the modified version. Whenever n is odd, n=2m+1 the columns will be permutations will always be even numbers |
 
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 x = pyLHD.GoodLatticePoint(size = (7,6))

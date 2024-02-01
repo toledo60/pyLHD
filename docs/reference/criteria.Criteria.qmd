@@ -7,10 +7,10 @@ A class representing a collection of criteria functions.
 
 ## Parameters
 
-| Name   | Type          | Description                                                     | Default    |
-|--------|---------------|-----------------------------------------------------------------|------------|
-| `arr`  | npt.ArrayLike | A numpy ndarray                                                 | _required_ |
-| `type` | str           | A string representing the type of criteria function to be used. | _required_ |
+| Name   | Type                  | Description                                                     | Default    |
+|--------|-----------------------|-----------------------------------------------------------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray                                                 | _required_ |
+| `type` | str                   | A string representing the type of criteria function to be used. | _required_ |
 
 ## Raises
 
@@ -18,10 +18,7 @@ A class representing a collection of criteria functions.
 |------------|---------------------------------------------------|
 | ValueError | If the specified criteria type is not recognized. |
 
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 random_lhd = pyLHD.LatinHypercube(size = (10,3))

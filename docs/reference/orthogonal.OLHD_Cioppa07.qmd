@@ -18,14 +18,11 @@ Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and
 
 ## Returns
 
-| Type          | Description                                                                                         |
-|---------------|-----------------------------------------------------------------------------------------------------|
-| npt.ArrayLike | An orthogonal LHD with the following run size: (n=2^m + 1) and  factor size: (k= m+ (m-1 choose 2)) |
+| Type                  | Description                                                                                         |
+|-----------------------|-----------------------------------------------------------------------------------------------------|
+| numpy.numpy.ArrayLike | An orthogonal LHD with the following run size: (n=2^m + 1) and  factor size: (k= m+ (m-1 choose 2)) |
 
-## Examples
-
-
-
+Examples:
 Create an orthogonal LHD with m=4. So n=2^m+1=17 runs and k=4+3=7 factors
 ```{python}
 import pyLHD

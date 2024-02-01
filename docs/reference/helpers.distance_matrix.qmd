@@ -6,22 +6,19 @@ Distance matrix based on specified distance measure
 
 ## Parameters
 
-| Name     | Type          | Description                                                                                                                                                                                                                                                                                                                                                      | Default       |
-|----------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| `arr`    | numpy.ndarray | A design matrix                                                                                                                                                                                                                                                                                                                                                  | _required_    |
-| `metric` | str           | Specifiy the following distance measure:  'euclidean': Usual distance between the two vectors (L_2 norm) 'maximum': Maximum distance between two components of x and y (supremum norm) 'manhattan': Absolute distance between the two vectors (L_1 norm) 'minkowski': The p norm, the pth root of the sum of the pth powers of the differences of the components | `'euclidean'` |
-| `p`      | int           | The power of the Minkowski distance. Defaults to 2.                                                                                                                                                                                                                                                                                                              | `2`           |
+| Name     | Type                | Description                                                                                                                                                                                                                                                                                                                                                      | Default       |
+|----------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| `arr`    | numpy.numpy.ndarray | A design matrix                                                                                                                                                                                                                                                                                                                                                  | _required_    |
+| `metric` | str                 | Specifiy the following distance measure:  'euclidean': Usual distance between the two vectors (L_2 norm) 'maximum': Maximum distance between two components of x and y (supremum norm) 'manhattan': Absolute distance between the two vectors (L_1 norm) 'minkowski': The p norm, the pth root of the sum of the pth powers of the differences of the components | `'euclidean'` |
+| `p`      | int                 | The power of the Minkowski distance. Defaults to 2.                                                                                                                                                                                                                                                                                                              | `2`           |
 
 ## Returns
 
-| Type          | Description                                                       |
-|---------------|-------------------------------------------------------------------|
-| npt.ArrayLike | The calculated distance matrix baed on specified distance measure |
+| Type                  | Description                                                       |
+|-----------------------|-------------------------------------------------------------------|
+| numpy.numpy.ArrayLike | The calculated distance matrix baed on specified distance measure |
 
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 random_lhd = pyLHD.LatinHypercube(size = (5,3))

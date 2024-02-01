@@ -6,22 +6,19 @@ Sample scaling from unit hypercube to different bounds
 
 ## Parameters
 
-| Name           | Type          | Description                      | Default    |
-|----------------|---------------|----------------------------------|------------|
-| `arr`          | npt.ArrayLike | A numpy ndarray                  | _required_ |
-| `lower_bounds` | list          | Lower bounds of transformed data | _required_ |
-| `upper_bounds` | list          | Upper bounds of transformed data | _required_ |
+| Name           | Type                  | Description                      | Default    |
+|----------------|-----------------------|----------------------------------|------------|
+| `arr`          | numpy.numpy.ArrayLike | A numpy ndarray                  | _required_ |
+| `lower_bounds` | list                  | Lower bounds of transformed data | _required_ |
+| `upper_bounds` | list                  | Upper bounds of transformed data | _required_ |
 
 ## Returns
 
-| Type          | Description                                                         |
-|---------------|---------------------------------------------------------------------|
-| npt.ArrayLike | npt.ArrayLike: Scaled numpy ndarray to [lower_bounds, upper_bounds] |
+| Type                  | Description                                                         |
+|-----------------------|---------------------------------------------------------------------|
+| numpy.numpy.ArrayLike | npt.ArrayLike: Scaled numpy ndarray to [lower_bounds, upper_bounds] |
 
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 random_lhd = pyLHD.LatinHypercube(size = (10,2), seed = 1)

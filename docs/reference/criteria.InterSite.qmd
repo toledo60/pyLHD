@@ -6,13 +6,13 @@ Calculate the Inter-site Distance between the ith and jth index
 
 ## Parameters
 
-| Name   | Type          | Description                                                                                                                                                                        | Default    |
-|--------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`  | npt.ArrayLike | A numpy ndarray                                                                                                                                                                    | _required_ |
-| `i`    | int           | A positive integer, which stands for the ith row of (arr)                                                                                                                          | _required_ |
-| `j`    | int           | A positive integer, which stands for the jth row of (arr)                                                                                                                          | _required_ |
-| `q`    | int           | The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. | `1`        |
-| `axis` | int           | The default is set to be 0, and it coult be either 1 or 0. If (axis) is 0 compute Inter-site distance row-wise otherwise columnwise.                                               | `0`        |
+| Name   | Type                  | Description                                                                                                                                                                        | Default    |
+|--------|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray                                                                                                                                                                    | _required_ |
+| `i`    | int                   | A positive integer, which stands for the ith row of (arr)                                                                                                                          | _required_ |
+| `j`    | int                   | A positive integer, which stands for the jth row of (arr)                                                                                                                          | _required_ |
+| `q`    | int                   | The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. | `1`        |
+| `axis` | int                   | The default is set to be 0, and it coult be either 1 or 0. If (axis) is 0 compute Inter-site distance row-wise otherwise columnwise.                                               | `0`        |
 
 ## Returns
 
@@ -20,10 +20,7 @@ Calculate the Inter-site Distance between the ith and jth index
 |--------|-------------------------------------------------------------------------------------------------------|
 | float  | positive number indicating the distance (rectangular or Euclidean) between the ith and jth row of arr |
 
-## Examples
-
-
-
+Examples:
 Calculate the inter-site distance of the 0th and 2nd index of `random_lhd` (row-wise)
 ```{python}
 import pyLHD

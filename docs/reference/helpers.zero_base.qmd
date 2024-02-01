@@ -1,0 +1,27 @@
+# helpers.zero_base { #pyLHD.helpers.zero_base }
+
+`helpers.zero_base(arr)`
+
+Normalize the columns by subtracting the minimum element of each column
+
+## Parameters
+
+| Name   | Type                  | Description     | Default    |
+|--------|-----------------------|-----------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray | _required_ |
+
+## Returns
+
+| Type                  | Description                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------|
+| numpy.numpy.ArrayLike | A normalized array such that the columns are subtracted by the minimum element of each column |
+
+Example:
+```{python}
+import pyLHD
+x = pyLHD.LatinSquare(size = (5,5), baseline = 3, seed = 1)
+x
+```
+```{python}
+pyLHD.zero_base(x)
+```

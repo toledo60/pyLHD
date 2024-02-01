@@ -6,22 +6,19 @@ Apply level permutations to a Good lattice point (GLP) design
 
 ## Parameters
 
-| Name      | Type               | Description                                                                                                      | Default    |
-|-----------|--------------------|------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`     | npt.ArrayLike      | A numpy ndarray                                                                                                  | _required_ |
-| `b`       | Union\[int, list\] | Value by which each element in the array is to be level permuted. Can either be an integer or a list of integers | _required_ |
-| `modulus` | int                | Modulus used for the permutation. Defaults to None. If None, the number of rows is used as the modulus.          | `None`     |
+| Name      | Type                      | Description                                                                                                      | Default    |
+|-----------|---------------------------|------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`     | numpy.numpy.ArrayLike     | A numpy ndarray                                                                                                  | _required_ |
+| `b`       | typing.Union\[int, list\] | Value by which each element in the array is to be level permuted. Can either be an integer or a list of integers | _required_ |
+| `modulus` | int                       | Modulus used for the permutation. Defaults to None. If None, the number of rows is used as the modulus.          | `None`     |
 
 ## Returns
 
-| Type          | Description                                                                          |
-|---------------|--------------------------------------------------------------------------------------|
-| npt.ArrayLike | npt.ArrayLike: A new array where each element is the result of `(arr + b) % modulus` |
+| Type                  | Description                                                                          |
+|-----------------------|--------------------------------------------------------------------------------------|
+| numpy.numpy.ArrayLike | npt.ArrayLike: A new array where each element is the result of `(arr + b) % modulus` |
 
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 GLP = pyLHD.GoodLatticePoint(size = (10, pyLHD.euler_phi(10)))

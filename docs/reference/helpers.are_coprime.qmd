@@ -17,10 +17,7 @@ Check if two integers are coprime
 |--------|------------------------------------------|
 | bool   | Returns True if two integers are coprime |
 
-## Examples
-
-
-
+Examples:
 ```{python}
 import pyLHD
 pyLHD.are_coprime(2,12)

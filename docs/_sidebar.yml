@@ -54,6 +54,7 @@ website:
       - reference/helpers.totatives.qmd
       - reference/helpers.VerifyGenerator.qmd
       - reference/helpers.WilliamsTransform.qmd
+      - reference/helpers.zero_base.qmd
       section: Helpers
     id: reference
   - id: dummy-sidebar
