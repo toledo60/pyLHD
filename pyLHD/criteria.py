@@ -1,7 +1,7 @@
 import numpy as np 
 import numpy.typing as npt
 from typing import Literal
-from pyLHD.helpers import distance_matrix, is_balanced_design, lapply, column_combinations
+from pyLHD.helpers import distance_matrix, is_balanced_design
 
 class Criteria:
   """A class representing a collection of criteria functions.
@@ -386,9 +386,29 @@ def UniformProCriterion(arr: npt.ArrayLike) -> float:
   Returns:
       Uniform projection criteria
   """
-  twoD_projections = column_combinations(arr, k=2)
-  balanced_CD = lapply(twoD_projections, discrepancy, method='balanced_centered_L2')
-  return np.mean([x**2 for x in balanced_CD])
+  try:
+    s = np.unique(arr).size
+    is_balanced_design(arr, s = s)
+  except ValueError as e:
+    print(f"Error: {e}")  
+  
+  n,m = arr.shape
+  diffs = arr[:, np.newaxis, :] - arr[np.newaxis, :, :]
+  l1_norms = np.sum(np.abs(diffs), axis=2)
+  squared_l1_norms = l1_norms**2
+  
+  total_sum1 = np.sum(squared_l1_norms)
+  row_sums = np.sum(l1_norms, axis=1)
+  total_sum2 = np.sum(row_sums**2)
+  
+  gD = total_sum1 - (2/n)*total_sum2
+  
+  val1 = 4*m*(m-1)*(n**2)*(s**2)
+  val2 = 4*(5*m - 2)*(s**4) + 30*(3*m - 5) *(s**2) + 15*m + 33
+  val3 = 720 *(m-1)*(s**4)
+  C_ms = (val2/val3) + (1+(-1)**s)/(64*(s**4))
+  
+  return gD/val1 + C_ms
 
 
 def coverage(arr: npt.ArrayLike) -> float:
@@ -408,7 +428,6 @@ def coverage(arr: npt.ArrayLike) -> float:
   random_lhd = pyLHD.LatinHypercube(size = (5,5))
   pyLHD.coverage(random_lhd)
   ```
-
   """
 
   if (np.amin(arr) < 0 or np.amax(arr) > 1):

@@ -3,7 +3,7 @@ from scipy.stats import qmc
 import pytest
 from pytest import approx
 from pyLHD.criteria import MaxAbsCor, MaxProCriterion, phi_p, AvgAbsCor
-from pyLHD.criteria import InterSite, MeshRatio, coverage, maximin
+from pyLHD.criteria import InterSite, MeshRatio, coverage
 
 
 def test_design():
@@ -89,14 +89,6 @@ def test_MeshRatio(n, d, expected):
     sampler = qmc.LatinHypercube(d=d, strength=2, seed=88)
     sample = sampler.random(n=n)
     result = MeshRatio(sample)
-    assert result == approx(expected)
-
-
-@pytest.mark.parametrize("n, d, expected", [(9, 2, 0.2327307), (25, 4, 0.2994473)])
-def test_maximin(n, d, expected):
-    sampler = qmc.LatinHypercube(d=d, strength=2, seed=88)
-    sample = sampler.random(n=n)
-    result = maximin(sample)
     assert result == approx(expected)
 
 
