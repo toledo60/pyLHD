@@ -2,6 +2,7 @@ import numpy as np
 import numpy.typing as npt
 from typing import Literal
 from pyLHD.helpers import distance_matrix, is_balanced_design
+from scipy.spatial.distance import pdist
 
 class Criteria:
   """A class representing a collection of criteria functions.
@@ -36,13 +37,10 @@ class Criteria:
         "AvgAbsCor": AvgAbsCor,
         "MaxProCriterion": MaxProCriterion,
         "UniformProCriterion": UniformProCriterion,
-        "InterSite": InterSite,
         "phi_p": phi_p,
         "discrepancy": discrepancy,
         "coverage": coverage,
-        "MeshRatio": MeshRatio,
-        "LqDistance": LqDistance,
-        "pairwise_InterSite": pairwise_InterSite}
+        "MeshRatio": MeshRatio}
     
     if type not in self.criteria_functions:
       raise ValueError(f"Unknown criteria type: {type}")
@@ -131,76 +129,80 @@ def MaxProCriterion(arr: npt.ArrayLike) -> float:
   return (2 / (n * (n - 1)) * temp)**(1 / p)
 
 
-def InterSite(arr: npt.ArrayLike, i: int, j: int,  q: int = 1, axis: int = 0)  -> float:
-  """ Calculate the Inter-site Distance between the ith and jth index
-
-  Args:
-      arr (npt.ArrayLike): A numpy ndarray
-      i (int): A positive integer, which stands for the ith row of (arr)
-      j (int): A positive integer, which stands for the jth row of (arr)
-      q (int, optional): The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
-      axis (int, optional): The default is set to be 0, and it coult be either 1 or 0. If (axis) is 0 compute Inter-site distance row-wise otherwise columnwise.
-
-  Returns:
-      positive number indicating the distance (rectangular or Euclidean) between the ith and jth row of arr
+class LqDistance:
+  def __init__(self,arr: npt.ArrayLike, q=1):
+    self.arr = arr
+    self.q = q
   
-  Examples:
-  Calculate the inter-site distance of the 0th and 2nd index of `random_lhd` (row-wise)
-  ```{python}
-  import pyLHD
-  random_lhd = pyLHD.LatinHypercube(size = (10,3))
-  pyLHD.InterSite(random_lhd,i=0,j=2)
-  ```
-  Calculate the inter-site distance of the 0th and 2nd index of `random_lhd` (column-wise)
-  ```{python}
-  pyLHD.InterSite(random_lhd,i=0,j=2, axis = 1)
-  ```
-  """
-  if axis == 0:
-    return np.linalg.norm(arr[i, :] - arr[j, :], ord=q)
-  elif axis == 1:
-    return np.linalg.norm(arr[:, i] - arr[:, j], ord=q)
-  else:
-      raise ValueError("Axis can only be 0 (rows) or 1 (columns).")
 
+  def pairwise(self) -> np.ndarray:
+    """Calculate the Lq distance among all pairwise distances in the array
 
-def pairwise_InterSite(arr: npt.ArrayLike, q:int = 1, axis:int = 0) -> npt.ArrayLike:
-  """ Calculate the Inter-site Distance between all pairwise (rows/columns)
-
-  Args:
-      arr (npt.ArrayLike): A numpy ndarray
-      q (int, optional): The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.
-      axis (int, optional): The default is set to be 0, and it coult be either 1 or 0. If (axis) is 0 compute Inter-site distance row-wise otherwise columnwise.
-
-
-  Returns:
-      All (row/column) pairwise Inter-site distances (rectangular or Euclidean)
+    Returns:
+        The Lq distance among all pairs of points in the array
+    
+    Example:
+    ```{python}
+    import pyLHD
+    sample = pyLHD.GoodLatticePoint(size = (5,3),seed =1)
+    l1 = pyLHD.LqDistance(sample,q=1)
+    l1.pairwise()
+    ```
+    """    
+    return pdist(self.arr,'minkowski',p=self.q)
   
-  Examples:
-  Calculate all row pairwise inter-site distances of `random_lhd` with q=1 (rectangular)
-  ```{python}
-  import pyLHD
-  random_lhd = pyLHD.LatinHypercube(size = (10,3))
-  pyLHD.pairwise_InterSite(random_lhd)
-  ```
-  Calculate all column pairwise inter-site distances of `random_lhd` with q=2 (Euclidean)
-  ```{python}
-  pyLHD.pairwise_InterSite(random_lhd,q=2, axis = 1)
-  ```
-  """
-  if axis == 0:
-    diff_matrix = arr[:, np.newaxis, :] - arr[np.newaxis, :, :]
-    axis_to_sum = 2
-  elif axis == 1:
-    diff_matrix = arr[np.newaxis, :, :] - arr[:, np.newaxis, :]
-    axis_to_sum = 1 
-  else:
-      raise ValueError("Axis can only be 0 (rows) or 1 (columns).")
+  def design(self) -> float:
+    """Calculate the minimum Lq distance among all pairwise distances in the array
 
-  lq_norms = np.sum(np.abs(diff_matrix)**q, axis=axis_to_sum)**(1/q)
-  i_upper = np.triu_indices_from(lq_norms, k=1)
-  lq_distances = lq_norms[i_upper]
-  return lq_distances
+    Returns:
+        The minimum Lq distance among all pairs of points in the array
+    
+    Example:
+    ```{python}
+    import pyLHD
+    sample = pyLHD.GoodLatticePoint(size = (5,3),seed =1)
+    l1 = pyLHD.LqDistance(sample,q=1)
+    l1.pairwise()
+    ```
+    ```{python}
+    l1.design()
+    ```
+    """
+    return self.pairwise().min()
+  
+  def index(self,i:int, j:int, axis:int = 0) -> float:
+    """ Calculate the Lq norm (distance) between two points (rows or columns) in an array.
+        The points can be either two rows or two columns in the array, depending on the axis parameter
+
+    Args:
+        i (int): The index of the first point (row or column based on axis)
+        j (int): The index of the second point (row or column based on axis)
+        axis (int, optional): The axis along which to compute the distance
+            axis = 0 for distances between rows, axis = 1 for distances between columns. Defaults to 0
+
+    Raises:
+        ValueError: If the axis is not 0 (for rows) or 1 (for columns)
+
+    Returns:
+        The Lq distance between the two specified points
+    
+    Example:
+    ```{python}
+    import pyLHD
+    sample = pyLHD.GoodLatticePoint(size = (5,3),seed =1)
+    l1 = pyLHD.LqDistance(sample,q=1)
+    l1.index(i = 0, j = 1)
+    ```
+    ```{python}
+    l1.index(i = 0, j = 1, axis = 1)
+    ```
+    """
+    if axis == 0:
+      return np.linalg.norm(self.arr[i, :] - self.arr[j, :], ord=self.q)
+    elif axis == 1:
+      return np.linalg.norm(self.arr[:, i] - self.arr[:, j], ord=self.q)
+    else:
+        raise ValueError("Axis can only be 0 (rows) or 1 (columns)")
 
 
 def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
@@ -226,36 +228,10 @@ def phi_p(arr: npt.ArrayLike, p: int = 15,q: int = 1) -> float:
   pyLHD.phi_p(random_lhd,p=50,q=2) 
   ```
   """
-  distances = pairwise_InterSite(arr, q=q)
+  lq = LqDistance(arr, q=q)
+  distances = lq.pairwise()
   isd = np.sum(distances**(-p))
   return np.sum(isd)**(1/p) 
-
-
-def LqDistance(arr,q=1) -> float:
-  """Calculate the Lq-Distance of a Latin Hypercube Design 
-
-  Args:
-      arr (npt.ArrayLike): A numpy ndarray
-      q (int, optional): If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. Default is q=1.
-
-  Returns:
-      The $L_q$ distance of a LHD. Defined as $d = min \{ InterSite(arr(i,j)) : i  \\neq j, \, i,j = 1,2,...,n \}$
-          The maximin $L_q$-distance design is defined as the one which maximizes $d$
-
-  Examples:
-  Calculate the $L_1$ distance of `random_lhd` with q=1 (rectangular)
-  ```{python}
-  import pyLHD
-  random_lhd = pyLHD.LatinHypercube(size = (10,3))
-  pyLHD.LqDistance(random_lhd)
-  ``` 
-
-  Calculate the $L_2$ distance of `random_lhd` with q=2 (Euclidean)
-  ```{python}
-  pyLHD.LqDistance(random_lhd, q = 2)
-  ```    
-  """
-  return pairwise_InterSite(arr,q=q).min()
 
 
 def discrepancy(arr: npt.ArrayLike,
@@ -305,7 +281,6 @@ def discrepancy(arr: npt.ArrayLike,
   
   if method == 'L2_star':
     one_minus_arr = 1 - arr
-
     # case when i != j
     max_arr = np.maximum(arr[:, np.newaxis, :], arr[np.newaxis, :, :])
     prod_term = np.prod(1 - max_arr, axis=2)
@@ -350,7 +325,6 @@ def discrepancy(arr: npt.ArrayLike,
     sum2 = np.sum(np.prod(1 - abs_diff, axis=2))
     value = np.sqrt(((4 / 3) ** n_columns) - ((2 / n_rows) * sum1) + ((2 ** n_columns / n_rows ** 2) * sum2))
 
-  
   if method == 'wrap_around_L2':
     pairwise_diff = np.abs(arr[:, np.newaxis, :] - arr[np.newaxis, :, :])
     sum1_matrix = 1.5 - pairwise_diff * (1 - pairwise_diff)
@@ -429,12 +403,10 @@ def coverage(arr: npt.ArrayLike) -> float:
   pyLHD.coverage(random_lhd)
   ```
   """
-
   if (np.amin(arr) < 0 or np.amax(arr) > 1):
     raise ValueError('`arr` is not in unit hypercube')
 
   n_rows, n_columns = arr.shape
-  
   if n_rows < n_columns:
     raise ValueError('Make sure number of rows is greater than number of columns')
   
@@ -445,8 +417,7 @@ def coverage(arr: npt.ArrayLike) -> float:
   gammabar = (1/n_rows)*np.sum(Dmin)
   sum_squares = np.sum((Dmin - gammabar) ** 2)
 
-  cov = (1 / gammabar) * np.sqrt((1 / n_rows) * sum_squares)
-  return cov
+  return (1 / gammabar) * np.sqrt((1 / n_rows) * sum_squares)
 
 
 def MeshRatio(arr: npt.ArrayLike) -> float:
@@ -469,7 +440,6 @@ def MeshRatio(arr: npt.ArrayLike) -> float:
   ```
   """
   n_rows, n_columns = arr.shape
-
   if n_rows < n_columns:
     raise ValueError('Make sure number of rows is greater than number of columns')
   

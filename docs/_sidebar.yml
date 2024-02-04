@@ -26,8 +26,6 @@ website:
       - reference/criteria.AvgAbsCor.qmd
       - reference/criteria.coverage.qmd
       - reference/criteria.discrepancy.qmd
-      - reference/criteria.InterSite.qmd
-      - reference/criteria.pairwise_InterSite.qmd
       - reference/criteria.LqDistance.qmd
       - reference/criteria.MaxAbsCor.qmd
       - reference/criteria.MeshRatio.qmd

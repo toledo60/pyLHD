@@ -1,31 +1,94 @@
 # criteria.LqDistance { #pyLHD.criteria.LqDistance }
 
-`criteria.LqDistance(arr, q=1)`
+`criteria.LqDistance(self, arr, q=1)`
 
-Calculate the Lq-Distance of a Latin Hypercube Design 
 
-## Parameters
 
-| Name   | Type                  | Description                                                                                                                             | Default    |
-|--------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|
-| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray                                                                                                                         | _required_ |
-| `q`    | int                   | If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance. Default is q=1. | `1`        |
+## Methods
 
-## Returns
+| Name | Description |
+| --- | --- |
+| [design](#pyLHD.criteria.LqDistance.design) | Calculate the minimum Lq distance among all pairwise distances in the array |
+| [index](#pyLHD.criteria.LqDistance.index) | Calculate the Lq norm (distance) between two points (rows or columns) in an array. |
+| [pairwise](#pyLHD.criteria.LqDistance.pairwise) | Calculate the Lq distance among all pairwise distances in the array |
 
-| Type   | Description                                                                                                                                                                             |
-|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| float  | The $L_q$ distance of a LHD. Defined as $d = min \{ InterSite(arr(i,j)) : i  \neq j, \, i,j = 1,2,...,n \}$ The maximin $L_q$-distance design is defined as the one which maximizes $d$ |
+### design { #pyLHD.criteria.LqDistance.design }
 
-Examples:
-Calculate the $L_1$ distance of `random_lhd` with q=1 (rectangular)
+`criteria.LqDistance.design()`
+
+Calculate the minimum Lq distance among all pairwise distances in the array
+
+#### Returns
+
+| Type   | Description                                                    |
+|--------|----------------------------------------------------------------|
+| float  | The minimum Lq distance among all pairs of points in the array |
+
+Example:
 ```{python}
 import pyLHD
-random_lhd = pyLHD.LatinHypercube(size = (10,3))
-pyLHD.LqDistance(random_lhd)
-``` 
-
-Calculate the $L_2$ distance of `random_lhd` with q=2 (Euclidean)
+sample = pyLHD.GoodLatticePoint(size = (5,3),seed =1)
+l1 = pyLHD.LqDistance(sample,q=1)
+l1.pairwise()
+```
 ```{python}
-pyLHD.LqDistance(random_lhd, q = 2)
+l1.design()
+```
+
+### index { #pyLHD.criteria.LqDistance.index }
+
+`criteria.LqDistance.index(i, j, axis=0)`
+
+Calculate the Lq norm (distance) between two points (rows or columns) in an array.
+    The points can be either two rows or two columns in the array, depending on the axis parameter
+
+#### Parameters
+
+| Name   | Type   | Description                                                                                                                             | Default    |
+|--------|--------|-----------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `i`    | int    | The index of the first point (row or column based on axis)                                                                              | _required_ |
+| `j`    | int    | The index of the second point (row or column based on axis)                                                                             | _required_ |
+| `axis` | int    | The axis along which to compute the distance axis = 0 for distances between rows, axis = 1 for distances between columns. Defaults to 0 | `0`        |
+
+#### Raises
+
+| Type       | Description                                        |
+|------------|----------------------------------------------------|
+| ValueError | If the axis is not 0 (for rows) or 1 (for columns) |
+
+#### Returns
+
+| Type   | Description                                      |
+|--------|--------------------------------------------------|
+| float  | The Lq distance between the two specified points |
+
+Example:
+```{python}
+import pyLHD
+sample = pyLHD.GoodLatticePoint(size = (5,3),seed =1)
+l1 = pyLHD.LqDistance(sample,q=1)
+l1.index(i = 0, j = 1)
+```
+```{python}
+l1.index(i = 0, j = 1, axis = 1)
+```
+
+### pairwise { #pyLHD.criteria.LqDistance.pairwise }
+
+`criteria.LqDistance.pairwise()`
+
+Calculate the Lq distance among all pairwise distances in the array
+
+#### Returns
+
+| Type                | Description                                            |
+|---------------------|--------------------------------------------------------|
+| numpy.numpy.ndarray | The Lq distance among all pairs of points in the array |
+
+Example:
+```{python}
+import pyLHD
+sample = pyLHD.GoodLatticePoint(size = (5,3),seed =1)
+l1 = pyLHD.LqDistance(sample,q=1)
+l1.pairwise()
 ```

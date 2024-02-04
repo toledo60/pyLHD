@@ -3,8 +3,7 @@ from scipy.stats import qmc
 import pytest
 from pytest import approx
 from pyLHD.criteria import MaxAbsCor, MaxProCriterion, phi_p, AvgAbsCor
-from pyLHD.criteria import InterSite, MeshRatio, coverage
-
+from pyLHD.criteria import LqDistance, MeshRatio, coverage
 
 def test_design():
   sampler = qmc.LatinHypercube(d=2, strength=2, seed=88)
@@ -103,10 +102,12 @@ def test_phi_p(n, d, p, q, expected):
    
         
 @pytest.mark.parametrize("n,d,i,j,q,expected",
-                         [(9, 2, 0, 1, 1, 0.4784412), (9, 2, 2, 1, 1, 0.5021012), (9, 2, 2, 1, 2, 0.3736224), (9, 2, 4, 1, 2, 0.3635483),
-                          (25, 4, 0, 1, 1, 0.6677612), (25, 4, 2, 1, 1, 0.7392436), (25, 4, 9, 4, 2, 0.9295394), (25, 4, 14, 8, 2, 0.8853406)])
+                         [(9, 2, 0, 1, 1, 0.4784412), (9, 2, 2, 1, 1, 0.5021012), 
+                          (9, 2, 2, 1, 2, 0.3736224), (9, 2, 4, 1, 2, 0.3635483),
+                          (25, 4, 0, 1, 1, 0.6677612), (25, 4, 2, 1, 1, 0.7392436), 
+                          (25, 4, 9, 4, 2, 0.9295394), (25, 4, 14, 8, 2, 0.8853406)])
 def test_inter_site(n, d, i, j, q, expected):
   sampler = qmc.LatinHypercube(d=d, strength=2, seed=88)
   sample = sampler.random(n=n)
-  assert InterSite(sample, i=i, j=j, q=q) == approx(expected)
-
+  lq = LqDistance(sample,q=q)
+  assert lq.index(i=i, j=j) == approx(expected)

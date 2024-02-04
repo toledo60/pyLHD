@@ -57,8 +57,6 @@ quartodoc:
         - criteria.AvgAbsCor
         - criteria.coverage
         - criteria.discrepancy
-        - criteria.InterSite
-        - criteria.pairwise_InterSite
         - criteria.LqDistance
         - criteria.MaxAbsCor
         - criteria.MeshRatio

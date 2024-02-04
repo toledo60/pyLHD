@@ -6,7 +6,7 @@ from pytest import approx
 def test_OddPrimePower(p, t, expected):
     N = p**t
     sample = pyLHD.GoodLatticePoint(size = (N, pyLHD.euler_phi(N)))
-    result = pyLHD.LqDistance(sample,q=1)
+    result = pyLHD.LqDistance(sample,q=1).design()
     assert result == approx(expected)
 
 
@@ -14,7 +14,7 @@ def test_OddPrimePower(p, t, expected):
 def test_OddPrimeDouble(p, expected):
     N = 2*p
     sample = pyLHD.GoodLatticePoint(size = (N, pyLHD.euler_phi(N)))
-    result = pyLHD.LqDistance(sample,q=1)
+    result = pyLHD.LqDistance(sample,q=1).design()
     assert result == approx(expected)
 
 
@@ -22,7 +22,7 @@ def test_OddPrimeDouble(p, expected):
 def test_MultiplyOddPrimes(p, q, expected):
     N = p*q
     sample = pyLHD.GoodLatticePoint(size = (N, pyLHD.euler_phi(N)))
-    result = pyLHD.LqDistance(sample,q=1)
+    result = pyLHD.LqDistance(sample,q=1).design()
     assert result == approx(expected)
 
 
@@ -30,6 +30,6 @@ def test_MultiplyOddPrimes(p, q, expected):
 def test_Power2(t, expected):
     N = 2**t
     sample = pyLHD.GoodLatticePoint(size = (N, pyLHD.euler_phi(N)))
-    result = pyLHD.LqDistance(sample,q=1)
+    result = pyLHD.LqDistance(sample,q=1).design()
     assert result == approx(expected) 
 

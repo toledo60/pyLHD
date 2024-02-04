@@ -44,9 +44,7 @@ Space-filling and Projection Criterias for LHD
 | [criteria.AvgAbsCor](criteria.AvgAbsCor.qmd#pyLHD.criteria.AvgAbsCor) | Calculate the Average Absolute Correlation |
 | [criteria.coverage](criteria.coverage.qmd#pyLHD.criteria.coverage) | Compute the coverage measure for a design |
 | [criteria.discrepancy](criteria.discrepancy.qmd#pyLHD.criteria.discrepancy) | Discrepancy of a given sample |
-| [criteria.InterSite](criteria.InterSite.qmd#pyLHD.criteria.InterSite) | Calculate the Inter-site Distance between the ith and jth index |
-| [criteria.pairwise_InterSite](criteria.pairwise_InterSite.qmd#pyLHD.criteria.pairwise_InterSite) | Calculate the Inter-site Distance between all pairwise (rows/columns) |
-| [criteria.LqDistance](criteria.LqDistance.qmd#pyLHD.criteria.LqDistance) | Calculate the Lq-Distance of a Latin Hypercube Design  |
+| [criteria.LqDistance](criteria.LqDistance.qmd#pyLHD.criteria.LqDistance) |  |
 | [criteria.MaxAbsCor](criteria.MaxAbsCor.qmd#pyLHD.criteria.MaxAbsCor) | Calculate the Maximum Absolute Correlation |
 | [criteria.MeshRatio](criteria.MeshRatio.qmd#pyLHD.criteria.MeshRatio) | Compute the meshratio criterion for a given design |
 | [criteria.MaxProCriterion](criteria.MaxProCriterion.qmd#pyLHD.criteria.MaxProCriterion) | Calculate the Maximum Projection Criterion |

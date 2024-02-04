@@ -43,13 +43,12 @@ def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Gener
   if (not is_prime(n_rows) or n_rows % 2 != 1):
     raise ValueError("n_rows must be an odd prime number")
 
-  n0 = int((n_rows-1)/2)
+  n0 = (n_rows-1)//2
   rng = check_seed(seed)
 
   if n_columns <= n0:
     seq = np.arange(start=1, stop=n0+1)
     g = rng.choice(seq, n_columns, replace=False)
-
     W = np.zeros((n_rows, n_columns))
 
     for i in range(n_rows):
@@ -60,14 +59,12 @@ def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Gener
           W[i, j] = ((i+1) * g[j] + (3*n_rows - 1)/4) % n_rows
 
     X = WilliamsTransform(W,baseline = 1)
-
   else:
     g0 = np.arange(start=1, stop=n0+1)
     W0 = np.zeros((n_rows, n0))
 
     for i in range(n_rows):
       for j in range(n0):
-
         if (n_rows % 4 == 1):
           W0[i, j] = ((i+1)*g0[j] + (n_rows-1)/4) % n_rows
         if (n_rows % 4 == 3):
@@ -78,7 +75,6 @@ def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Gener
     r = n_columns - n0
     seq = np.arange(start=1, stop=n0+1)
     g1 = rng.choice(seq, r, replace=False)
-
     W1 = np.zeros((n_rows, r))
 
     for i in range(n_rows):
@@ -86,9 +82,7 @@ def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Gener
         W1[i, j] = ((i+1)*g1[j]) % n_rows
 
     X1 = WilliamsTransform(W1,baseline=1)
-
     X = np.column_stack((X0, X1))
-
   return X
 
 # --- Sun et al. (2010) Construction --- #
@@ -192,10 +186,8 @@ def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
   q = 2**(m-1) 
   # construction of M starts  
   e = np.arange(1, q+1).reshape(-1,1)
-  
   I = np.eye(2)
   R = np.array([[0,1],[1,0]])
-  
   AL = np.zeros((m-1,q,q)) #there are m-1 of AL's
   
   if m==2:
@@ -203,7 +195,6 @@ def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
     M = np.hstack( (e, np.matmul(AL[m-2],e) ))
   
   if m > 2:
-    
     for i in range(m-2):
       a = 1
       b = 1
@@ -229,12 +220,9 @@ def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
     
     for i in range(m-1):
       for j in range(i+1,m-1):
-        M= np.hstack((M,AL[i] @ AL[j] @ e))
-    
-  # construction of M ends  
+        M = np.hstack((M,AL[i] @ AL[j] @ e)) # construction of M ends  
   
   # Construction of S starts
-  
   j = np.ones(q).reshape(-1,1)
   
   ak = np.zeros((m-1,q,1))
@@ -263,10 +251,8 @@ def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
     
     for i in range(m-2):
       for j in range(i+1,m-1):
-        S = np.hstack((S,ak[i]*ak[j]) )
-          
-  # construction of S ends
-  
+        S = np.hstack((S,ak[i]*ak[j]) ) # construction of S ends
+
   # construction of T starts
   
   if m==2:
@@ -285,12 +271,9 @@ def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
       for k in range(m+math.comb(m-1,2)):
         T0[i,k] = M[i,k]*S[i,k]
     # Construction of T ends
-
     CP = np.zeros((1,m+math.comb(m-1,2)))
 
-  X = np.vstack((T0,CP,-T0))
-    
-  return X
+  return np.vstack((T0,CP,-T0))
 
 
 # --- Ye (1998) Constuction --- #
@@ -330,7 +313,6 @@ def OLHD_Ye98(m:int,seed: Optional[Union[int, np.random.Generator]] = None) -> n
   
   I = np.eye(2)
   R = np.array([[0,1],[1,0]])
-  
   AL = np.zeros((m-1,q,q)) #there are m-1 of AL's  
   
   if m==2:
@@ -396,24 +378,17 @@ def OLHD_Ye98(m:int,seed: Optional[Union[int, np.random.Generator]] = None) -> n
       S = np.hstack((S,ak[i]))
     
     for i in range(1,m-1):
-      S = np.hstack((S,ak[0]*ak[i]) )
+      S = np.hstack((S,ak[0]*ak[i]) ) # construction of S ends
           
-  # construction of S ends
-  
   # construction of T starts
-  
   T0 = np.zeros((q,2*m-2))
   
   for i in range(q):
     for k in range(2*m-2):
-      T0[i,k] = M[i,k]*S[i,k]
-  
-  # constuction of T ends
+      T0[i,k] = M[i,k]*S[i,k] # constuction of T ends
   
   CP = np.zeros((1,2*m-2))
-  X = np.vstack((T0,CP,-T0))
-
-  return X
+  return np.vstack((T0,CP,-T0))
   
 
 # --- Lin et al. (2009) Constuction --- #
@@ -462,12 +437,10 @@ def OLHD_Lin09(OLHD: npt.ArrayLike,OA: npt.ArrayLike ) -> npt.ArrayLike:
   
   n2 = np.unique(OA[:,0]).size
   f = int(OA.shape[1]*0.5)
-  
   l = [OA.copy() for i in range(k)]
   
   A = np.stack(l)
   M = np.zeros((k,n2**2,2*f))
-  
   V = np.array([[1,-n2],[n2,1]])
   
   for i in range(k):
@@ -512,7 +485,7 @@ def OA2LHD(arr: npt.ArrayLike, seed: Optional[Union[int, np.random.Generator]] =
   n, m = arr.shape
   s = np.unique(arr[:,0]).size
   lhd = arr.copy()
-  unique_levels = int(n/s)
+  unique_levels = n//s
   k = np.zeros((s,unique_levels,1))
   rng = check_seed(seed)
   for j in range(m):
