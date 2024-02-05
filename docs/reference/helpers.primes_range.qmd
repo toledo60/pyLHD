@@ -1,0 +1,33 @@
+# helpers.primes_range { #pyLHD.helpers.primes_range }
+
+`helpers.primes_range(start, stop)`
+
+Generate prime numbers from a specified range
+
+## Parameters
+
+| Name    | Type   | Description                                                                                | Default    |
+|---------|--------|--------------------------------------------------------------------------------------------|------------|
+| `start` | int    | Start of interval. The interval includes this value                                        | _required_ |
+| `stop`  | int    | Stop of interval. If value is not a prime number it will return the previous prime integer | _required_ |
+
+## Raises
+
+| Type       | Description                    |
+|------------|--------------------------------|
+| ValueError | If `start` is less than `stop` |
+
+## Returns
+
+| Type               | Description                                        |
+|--------------------|----------------------------------------------------|
+| typing.List\[int\] | A list of integers from the interval [start, stop] |
+
+Example:
+```{python}
+import pyLHD
+pyLHD.primes_range(start = 3, stop = 13)
+```
+```{python}
+pyLHD.primes_range(start = 3, stop = 20)
+```

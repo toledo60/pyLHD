@@ -69,6 +69,7 @@ Miscellaneous Utilities for Manipulating LHDs
 | [helpers.LevelPermutation](helpers.LevelPermutation.qmd#pyLHD.helpers.LevelPermutation) | Apply level permutations to a Good lattice point (GLP) design |
 | [helpers.permute_columns](helpers.permute_columns.qmd#pyLHD.helpers.permute_columns) | Randomly permute columns in a numpy ndarray |
 | [helpers.permute_rows](helpers.permute_rows.qmd#pyLHD.helpers.permute_rows) | Randomly permute rows in a numpy ndarray |
+| [helpers.primes_range](helpers.primes_range.qmd#pyLHD.helpers.primes_range) | Generate prime numbers from a specified range |
 | [helpers.replace_values](helpers.replace_values.qmd#pyLHD.helpers.replace_values) | Replace values in a numpy array based on a provided mapping dictionary |
 | [helpers.scale](helpers.scale.qmd#pyLHD.helpers.scale) | Sample scaling from unit hypercube to different bounds |
 | [helpers.swap_elements](helpers.swap_elements.qmd#pyLHD.helpers.swap_elements) | Swap two random elements in a matrix |

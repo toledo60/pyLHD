@@ -453,6 +453,45 @@ def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0, modified = False) -
     wt += (baseline - 1)
   return wt
 
+
+def primes_range(start:int, stop:int)-> List[int]:
+  """Generate prime numbers from a specified range
+
+  Args:
+      start (int): Start of interval. The interval includes this value
+      stop (int): Stop of interval. If value is not a prime number it will return the previous prime integer
+
+  Raises:
+      ValueError: If `start` is less than `stop`
+
+  Returns:
+      A list of integers from the interval [start, stop]
+  
+  Example:
+  ```{python}
+  import pyLHD
+  pyLHD.primes_range(start = 3, stop = 13)
+  ```
+  ```{python}
+  pyLHD.primes_range(start = 3, stop = 20)
+  ```
+  """
+  if start > stop:
+    raise ValueError("'start' must be less than 'end'")
+  if start < 2:
+    start = 2
+  primes = []
+  for num in range(start, stop + 1):
+    is_prime = True
+    for i in range(2, int(num**0.5) + 1):
+      if num % i == 0:
+        is_prime = False
+        break
+    if is_prime:
+      primes.append(num)
+  return primes
+
+
 #################################
 ####   Checks/ Conditions #######
 #################################

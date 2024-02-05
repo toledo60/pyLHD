@@ -78,6 +78,7 @@ quartodoc:
         - helpers.LevelPermutation
         - helpers.permute_columns
         - helpers.permute_rows
+        - helpers.primes_range
         - helpers.replace_values
         - helpers.scale
         - helpers.swap_elements

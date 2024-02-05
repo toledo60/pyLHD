@@ -46,6 +46,7 @@ website:
       - reference/helpers.LevelPermutation.qmd
       - reference/helpers.permute_columns.qmd
       - reference/helpers.permute_rows.qmd
+      - reference/helpers.primes_range.qmd
       - reference/helpers.replace_values.qmd
       - reference/helpers.scale.qmd
       - reference/helpers.swap_elements.qmd
