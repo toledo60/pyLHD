@@ -1,0 +1,26 @@
+# helpers.verify_generator { #pyLHD.helpers.verify_generator }
+
+`helpers.verify_generator(numbers, n, k)`
+
+Verify generator used to construct good lattice points (GLP) design
+
+## Parameters
+
+| Name      | Type        | Description                       | Default    |
+|-----------|-------------|-----------------------------------|------------|
+| `numbers` | list\[int\] | integers used for the generator   | _required_ |
+| `n`       | int         | number of rows in a GLP design    | _required_ |
+| `k`       | int         | number of columns in a GLP design | _required_ |
+
+## Raises
+
+| Type       | Description                                                                |
+|------------|----------------------------------------------------------------------------|
+| ValueError | length of generator `numbers` is not the same as the number of columns `k` |
+| ValueError | All `numbers` should be less than `n` and coprime to `n`                   |
+
+## Returns
+
+| Type        | Description                                              |
+|-------------|----------------------------------------------------------|
+| list\[int\] | list[int]: If all conditions hold, `numbers` is returned |

@@ -62,11 +62,12 @@ Miscellaneous Utilities for Manipulating LHDs
 | [helpers.column_combinations](helpers.column_combinations.qmd#pyLHD.helpers.column_combinations) | Generates all unique combinations of columns from the given array, selecting 'k' columns at a time. |
 | [helpers.distance_matrix](helpers.distance_matrix.qmd#pyLHD.helpers.distance_matrix) | Distance matrix based on specified distance measure |
 | [helpers.euler_phi](helpers.euler_phi.qmd#pyLHD.helpers.euler_phi) | Euler's Totient function |
+| [helpers.first_n_primes](helpers.first_n_primes.qmd#pyLHD.helpers.first_n_primes) | Gernate the first `n` prime numbers |
 | [helpers.is_prime](helpers.is_prime.qmd#pyLHD.helpers.is_prime) | Determine if a number is prime |
 | [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
 | [helpers.is_balanced_design](helpers.is_balanced_design.qmd#pyLHD.helpers.is_balanced_design) | Verify a design is balanced |
 | [helpers.lapply](helpers.lapply.qmd#pyLHD.helpers.lapply) | Apply a function to each item in a list |
-| [helpers.LevelPermutation](helpers.LevelPermutation.qmd#pyLHD.helpers.LevelPermutation) | Apply level permutations to a Good lattice point (GLP) design |
+| [helpers.level_permutation](helpers.level_permutation.qmd#pyLHD.helpers.level_permutation) | Apply level permutations to a Good lattice point (GLP) design |
 | [helpers.permute_columns](helpers.permute_columns.qmd#pyLHD.helpers.permute_columns) | Randomly permute columns in a numpy ndarray |
 | [helpers.permute_rows](helpers.permute_rows.qmd#pyLHD.helpers.permute_rows) | Randomly permute rows in a numpy ndarray |
 | [helpers.primes_range](helpers.primes_range.qmd#pyLHD.helpers.primes_range) | Generate prime numbers from a specified range |
@@ -74,6 +75,6 @@ Miscellaneous Utilities for Manipulating LHDs
 | [helpers.scale](helpers.scale.qmd#pyLHD.helpers.scale) | Sample scaling from unit hypercube to different bounds |
 | [helpers.swap_elements](helpers.swap_elements.qmd#pyLHD.helpers.swap_elements) | Swap two random elements in a matrix |
 | [helpers.totatives](helpers.totatives.qmd#pyLHD.helpers.totatives) | Generate all positive integers less than and coprime to N from [1,N) |
-| [helpers.VerifyGenerator](helpers.VerifyGenerator.qmd#pyLHD.helpers.VerifyGenerator) | Verify generator used to construct good lattice points (GLP) design |
+| [helpers.verify_generator](helpers.verify_generator.qmd#pyLHD.helpers.verify_generator) | Verify generator used to construct good lattice points (GLP) design |
 | [helpers.WilliamsTransform](helpers.WilliamsTransform.qmd#pyLHD.helpers.WilliamsTransform) | Williams Transformation |
 | [helpers.zero_base](helpers.zero_base.qmd#pyLHD.helpers.zero_base) | Normalize the columns by subtracting the minimum element of each column |

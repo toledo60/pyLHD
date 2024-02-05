@@ -1094,7 +1094,7 @@
     "href": "reference/helpers.scale.html",
     "title": "helpers.scale",
     "section": "",
-    "text": "helpers.scale(arr, lower_bounds, upper_bounds)\nSample scaling from unit hypercube to different bounds",
+    "text": "helpers.scale(arr, lower_bounds, upper_bounds, as_integers=False)\nSample scaling from unit hypercube to different bounds",
     "crumbs": [
       "Reference",
       "Helpers",
@@ -1106,7 +1106,7 @@
     "href": "reference/helpers.scale.html#parameters",
     "title": "helpers.scale",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.numpy.ArrayLike\nA numpy ndarray\nrequired\n\n\nlower_bounds\nlist\nLower bounds of transformed data\nrequired\n\n\nupper_bounds\nlist\nUpper bounds of transformed data\nrequired",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.numpy.ArrayLike\nA numpy ndarray\nrequired\n\n\nlower_bounds\nlist\nLower bounds of transformed data\nrequired\n\n\nupper_bounds\nlist\nUpper bounds of transformed data\nrequired\n\n\nas_integers\nbool\nShould scale design to integer values on specified bounds. Defaults to False.s\nFalse",
     "crumbs": [
       "Reference",
       "Helpers",
@@ -1118,7 +1118,7 @@
     "href": "reference/helpers.scale.html#returns",
     "title": "helpers.scale",
     "section": "Returns",
-    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ArrayLike\nnpt.ArrayLike: Scaled numpy ndarray to [lower_bounds, upper_bounds]\n\n\n\nExamples:\n\nimport pyLHD\nrandom_lhd = pyLHD.LatinHypercube(size = (10,2), seed = 1)\nrandom_lhd\n\narray([[0.82496353, 0.42496353],\n       [0.12496353, 0.92496353],\n       [0.92496353, 0.82496353],\n       [0.72496353, 0.32496353],\n       [0.22496353, 0.22496353],\n       [0.62496353, 0.72496353],\n       [0.02496353, 0.52496353],\n       [0.42496353, 0.62496353],\n       [0.52496353, 0.12496353],\n       [0.32496353, 0.02496353]])\n\n\n\nlower_bounds = [-3,2]\nupper_bounds = [10,4]\npyLHD.scale(random_lhd,lower_bounds, upper_bounds)\n\narray([[ 7.72452593,  2.84992707],\n       [-1.37547407,  3.84992707],\n       [ 9.02452593,  3.64992707],\n       [ 6.42452593,  2.64992707],\n       [-0.07547407,  2.44992707],\n       [ 5.12452593,  3.44992707],\n       [-2.67547407,  3.04992707],\n       [ 2.52452593,  3.24992707],\n       [ 3.82452593,  2.24992707],\n       [ 1.22452593,  2.04992707]])",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ndarray\nScaled numpy ndarray to [lower_bounds, upper_bounds]\n\n\n\nExamples:\n\nimport pyLHD\nsample = pyLHD.LatinHypercube(size = (10,2), seed = 1)\nsample\n\narray([[0.82496353, 0.42496353],\n       [0.12496353, 0.92496353],\n       [0.92496353, 0.82496353],\n       [0.72496353, 0.32496353],\n       [0.22496353, 0.22496353],\n       [0.62496353, 0.72496353],\n       [0.02496353, 0.52496353],\n       [0.42496353, 0.62496353],\n       [0.52496353, 0.12496353],\n       [0.32496353, 0.02496353]])\n\n\n\nlower_bounds = [-3,2]\nupper_bounds = [10,4]\npyLHD.scale(sample,lower_bounds, upper_bounds)\n\narray([[ 7.72452593,  2.84992707],\n       [-1.37547407,  3.84992707],\n       [ 9.02452593,  3.64992707],\n       [ 6.42452593,  2.64992707],\n       [-0.07547407,  2.44992707],\n       [ 5.12452593,  3.44992707],\n       [-2.67547407,  3.04992707],\n       [ 2.52452593,  3.24992707],\n       [ 3.82452593,  2.24992707],\n       [ 1.22452593,  2.04992707]])\n\n\n\npyLHD.scale(sample,lower_bounds, upper_bounds, as_integers = True)\n\narray([[ 7,  2],\n       [-2,  3],\n       [ 9,  3],\n       [ 6,  2],\n       [-1,  2],\n       [ 5,  3],\n       [-3,  3],\n       [ 2,  3],\n       [ 3,  2],\n       [ 1,  2]])",
     "crumbs": [
       "Reference",
       "Helpers",
@@ -1441,7 +1441,7 @@
     "href": "reference/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nAlgebraic Constructions of Maximin LHD\n\n\n\nmaximin.BestLinearPermutation\nOptimal linear permutation value to achieve larger L1-distance for a LHD\n\n\nmaximin.EquidistantLHD\nGenerate an Equidistant Latin Hypercube\n\n\nmaximin.LeaveOneOut\nApply the Leave-one-out Procedure to Generate a Maxmin LHD\n\n\nmaximin.maximinLHD\nGenerate a maximin LHD based on the L1-distance\n\n\n\n\n\n\nAlgebraic Constructions of Orthogonal LHD\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling and Projection Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.LqDistance\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion\n\n\n\n\n\n\nMiscellaneous Utilities for Manipulating LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.LevelPermutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.primes_range\nGenerate prime numbers from a specified range\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.VerifyGenerator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.WilliamsTransform\nWilliams Transformation\n\n\nhelpers.zero_base\nNormalize the columns by subtracting the minimum element of each column",
+    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nAlgebraic Constructions of Maximin LHD\n\n\n\nmaximin.BestLinearPermutation\nOptimal linear permutation value to achieve larger L1-distance for a LHD\n\n\nmaximin.EquidistantLHD\nGenerate an Equidistant Latin Hypercube\n\n\nmaximin.LeaveOneOut\nApply the Leave-one-out Procedure to Generate a Maxmin LHD\n\n\nmaximin.maximinLHD\nGenerate a maximin LHD based on the L1-distance\n\n\n\n\n\n\nAlgebraic Constructions of Orthogonal LHD\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling and Projection Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.LqDistance\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion\n\n\n\n\n\n\nMiscellaneous Utilities for Manipulating LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.first_n_primes\nGernate the first n prime numbers\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.level_permutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.primes_range\nGenerate prime numbers from a specified range\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.verify_generator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.WilliamsTransform\nWilliams Transformation\n\n\nhelpers.zero_base\nNormalize the columns by subtracting the minimum element of each column",
     "crumbs": [
       "Reference",
       "Function reference"
@@ -1496,7 +1496,7 @@
     "href": "reference/index.html#helpers",
     "title": "Function reference",
     "section": "",
-    "text": "Miscellaneous Utilities for Manipulating LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.LevelPermutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.primes_range\nGenerate prime numbers from a specified range\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.VerifyGenerator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.WilliamsTransform\nWilliams Transformation\n\n\nhelpers.zero_base\nNormalize the columns by subtracting the minimum element of each column",
+    "text": "Miscellaneous Utilities for Manipulating LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.first_n_primes\nGernate the first n prime numbers\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.lapply\nApply a function to each item in a list\n\n\nhelpers.level_permutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.primes_range\nGenerate prime numbers from a specified range\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.verify_generator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.WilliamsTransform\nWilliams Transformation\n\n\nhelpers.zero_base\nNormalize the columns by subtracting the minimum element of each column",
     "crumbs": [
       "Reference",
       "Function reference"
@@ -2112,6 +2112,126 @@
       "Reference",
       "Helpers",
       "helpers.primes_range"
+    ]
+  },
+  {
+    "objectID": "reference/helpers.first_n_primes.html",
+    "href": "reference/helpers.first_n_primes.html",
+    "title": "helpers.first_n_primes",
+    "section": "",
+    "text": "helpers.first_n_primes(n)\nGernate the first n prime numbers",
+    "crumbs": [
+      "Reference",
+      "Helpers",
+      "helpers.first_n_primes"
+    ]
+  },
+  {
+    "objectID": "reference/helpers.first_n_primes.html#parameters",
+    "href": "reference/helpers.first_n_primes.html#parameters",
+    "title": "helpers.first_n_primes",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nn\nint\nTotal number of prime numbers to generate\nrequired",
+    "crumbs": [
+      "Reference",
+      "Helpers",
+      "helpers.first_n_primes"
+    ]
+  },
+  {
+    "objectID": "reference/helpers.first_n_primes.html#returns",
+    "href": "reference/helpers.first_n_primes.html#returns",
+    "title": "helpers.first_n_primes",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\ntyping.List[int]\nList[int]: A list of integers with the first n prime numbers, including 2 as the first prime number\n\n\n\nExample:\n\nimport pyLHD\npyLHD.first_n_primes(10)\n\n[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]",
+    "crumbs": [
+      "Reference",
+      "Helpers",
+      "helpers.first_n_primes"
+    ]
+  },
+  {
+    "objectID": "reference/helpers.level_permutation.html",
+    "href": "reference/helpers.level_permutation.html",
+    "title": "helpers.level_permutation",
+    "section": "",
+    "text": "helpers.level_permutation(arr, b, modulus=None)\nApply level permutations to a Good lattice point (GLP) design",
+    "crumbs": [
+      "Reference",
+      "Helpers",
+      "helpers.level_permutation"
+    ]
+  },
+  {
+    "objectID": "reference/helpers.level_permutation.html#parameters",
+    "href": "reference/helpers.level_permutation.html#parameters",
+    "title": "helpers.level_permutation",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\narr\nnumpy.numpy.ArrayLike\nA numpy ndarray\nrequired\n\n\nb\ntyping.Union[int, list]\nValue by which each element in the array is to be level permuted. Can either be an integer or a list of integers\nrequired\n\n\nmodulus\nint\nModulus used for the permutation. Defaults to None. If None, the number of rows is used as the modulus.\nNone",
+    "crumbs": [
+      "Reference",
+      "Helpers",
+      "helpers.level_permutation"
+    ]
+  },
+  {
+    "objectID": "reference/helpers.level_permutation.html#returns",
+    "href": "reference/helpers.level_permutation.html#returns",
+    "title": "helpers.level_permutation",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ndarray\nnpt.ArrayLike: A new array where each element is the result of (arr + b) % modulus\n\n\n\nExamples:\n\nimport pyLHD\nGLP = pyLHD.GoodLatticePoint(size = (10, pyLHD.euler_phi(10)))\nGLP\n\narray([[1, 3, 7, 9],\n       [2, 6, 4, 8],\n       [3, 9, 1, 7],\n       [4, 2, 8, 6],\n       [5, 5, 5, 5],\n       [6, 8, 2, 4],\n       [7, 1, 9, 3],\n       [8, 4, 6, 2],\n       [9, 7, 3, 1],\n       [0, 0, 0, 0]])\n\n\nApply a simple linear level permutation in the form of \\(D = D+b (mod \\,N)\\)\n\npyLHD.level_permutation(GLP,b = 2)\n\narray([[3, 5, 9, 1],\n       [4, 8, 6, 0],\n       [5, 1, 3, 9],\n       [6, 4, 0, 8],\n       [7, 7, 7, 7],\n       [8, 0, 4, 6],\n       [9, 3, 1, 5],\n       [0, 6, 8, 4],\n       [1, 9, 5, 3],\n       [2, 2, 2, 2]])\n\n\n\npyLHD.level_permutation(GLP, b = [1,4,3,2])\n\narray([[2, 7, 0, 1],\n       [3, 0, 7, 0],\n       [4, 3, 4, 9],\n       [5, 6, 1, 8],\n       [6, 9, 8, 7],\n       [7, 2, 5, 6],\n       [8, 5, 2, 5],\n       [9, 8, 9, 4],\n       [0, 1, 6, 3],\n       [1, 4, 3, 2]])",
+    "crumbs": [
+      "Reference",
+      "Helpers",
+      "helpers.level_permutation"
+    ]
+  },
+  {
+    "objectID": "reference/helpers.verify_generator.html",
+    "href": "reference/helpers.verify_generator.html",
+    "title": "helpers.verify_generator",
+    "section": "",
+    "text": "helpers.verify_generator(numbers, n, k)\nVerify generator used to construct good lattice points (GLP) design\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nnumbers\nlist[int]\nintegers used for the generator\nrequired\n\n\nn\nint\nnumber of rows in a GLP design\nrequired\n\n\nk\nint\nnumber of columns in a GLP design\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nValueError\nlength of generator numbers is not the same as the number of columns k\n\n\nValueError\nAll numbers should be less than n and coprime to n\n\n\n\n\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nlist[int]\nlist[int]: If all conditions hold, numbers is returned",
+    "crumbs": [
+      "Reference",
+      "Helpers",
+      "helpers.verify_generator"
+    ]
+  },
+  {
+    "objectID": "reference/helpers.verify_generator.html#parameters",
+    "href": "reference/helpers.verify_generator.html#parameters",
+    "title": "helpers.verify_generator",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nnumbers\nlist[int]\nintegers used for the generator\nrequired\n\n\nn\nint\nnumber of rows in a GLP design\nrequired\n\n\nk\nint\nnumber of columns in a GLP design\nrequired",
+    "crumbs": [
+      "Reference",
+      "Helpers",
+      "helpers.verify_generator"
+    ]
+  },
+  {
+    "objectID": "reference/helpers.verify_generator.html#raises",
+    "href": "reference/helpers.verify_generator.html#raises",
+    "title": "helpers.verify_generator",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\nValueError\nlength of generator numbers is not the same as the number of columns k\n\n\nValueError\nAll numbers should be less than n and coprime to n",
+    "crumbs": [
+      "Reference",
+      "Helpers",
+      "helpers.verify_generator"
+    ]
+  },
+  {
+    "objectID": "reference/helpers.verify_generator.html#returns",
+    "href": "reference/helpers.verify_generator.html#returns",
+    "title": "helpers.verify_generator",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\nlist[int]\nlist[int]: If all conditions hold, numbers is returned",
+    "crumbs": [
+      "Reference",
+      "Helpers",
+      "helpers.verify_generator"
     ]
   }
 ]

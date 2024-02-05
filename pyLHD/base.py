@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.typing as npt
 from typing import Optional, Union
-from pyLHD.helpers import permute_columns, check_seed, totatives, VerifyGenerator
+from pyLHD.helpers import permute_columns, check_seed, totatives, verify_generator
 
 def LatinSquare(size: tuple[int,int], baseline: int = 1, seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """ Generate a random (n x d) Latin square
@@ -90,7 +90,7 @@ def GoodLatticePoint(size: tuple[int, int], h: list[int] = None,
     raise ValueError('d must be less than n. Recall, size = (n,d)')
   
   if h is not None:
-    h = VerifyGenerator(h,n,d)
+    h = verify_generator(h,n,d)
   else:
     h = totatives(n)  
     if len(h) != d:

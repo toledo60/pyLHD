@@ -248,30 +248,40 @@ def column_combinations(arr: npt.ArrayLike, k:int) -> List[npt.ArrayLike]:
   return [arr[:,[i,j]] for i,j in column_combinations]
 
 
-def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list) -> np.ndarray:
+def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list, as_integers: bool = False) -> np.ndarray:
   """Sample scaling from unit hypercube to different bounds
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
       lower_bounds (list): Lower bounds of transformed data
       upper_bounds (list): Upper bounds of transformed data
+      as_integers (bool): Should scale design to integer values on specified bounds. Defaults to False.s
 
   Returns:
       Scaled numpy ndarray to [lower_bounds, upper_bounds]
   Examples:
   ```{python}
   import pyLHD
-  random_lhd = pyLHD.LatinHypercube(size = (10,2), seed = 1)
-  random_lhd
+  sample = pyLHD.LatinHypercube(size = (10,2), seed = 1)
+  sample
   ```
   ```{python}
   lower_bounds = [-3,2]
   upper_bounds = [10,4]
-  pyLHD.scale(random_lhd,lower_bounds, upper_bounds)
+  pyLHD.scale(sample,lower_bounds, upper_bounds)
+  ```
+  ```{python}
+  pyLHD.scale(sample,lower_bounds, upper_bounds, as_integers = True)
   ```
   """
   lb, ub = check_bounds(arr, lower_bounds, upper_bounds)
-  return lb + arr * (ub - lb)
+  scaled = lb + arr * (ub - lb)
+  
+  if not as_integers:
+    return scaled
+  else:
+    return np.floor(scaled).astype(np.int64)
+  
 
 
 def lapply(lst: List[Any], func: Callable[..., Any], **kwargs: dict[str, Any]) -> List[Any]:
@@ -329,7 +339,7 @@ def zero_base(arr: npt.ArrayLike) -> np.ndarray:
   return x
 
 
-def LevelPermutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None) -> np.ndarray:
+def level_permutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None) -> np.ndarray:
   """Apply level permutations to a Good lattice point (GLP) design
 
   Args:
@@ -347,10 +357,10 @@ def LevelPermutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None)
   ```
   Apply a simple linear level permutation in the form of $D = D+b (mod \,N)$
   ```{python}
-  pyLHD.LevelPermutation(GLP,b = 2)
+  pyLHD.level_permutation(GLP,b = 2)
   ```
   ```{python}
-  pyLHD.LevelPermutation(GLP, b = [1,4,3,2])
+  pyLHD.level_permutation(GLP, b = [1,4,3,2])
   ```
   """
   n_rows, n_columns = arr.shape
@@ -491,6 +501,41 @@ def primes_range(start:int, stop:int)-> List[int]:
       primes.append(num)
   return primes
 
+
+def first_n_primes(n:int) -> List[int]:
+  """Gernate the first `n` prime numbers
+
+  Args:
+      n (int): Total number of prime numbers to generate
+
+  Returns:
+      List[int]: A list of integers with the first `n` prime numbers, including 2 as the first prime number
+  
+  Example:
+  ```{python}
+  import pyLHD
+  pyLHD.first_n_primes(10)
+  ```
+  """
+  if n == 0:
+    return []
+  elif n == 1:
+    return [2]
+
+  primes = [2]
+  num = 3
+  while len(primes) < n:
+    is_prime = True
+    for p in primes:
+      if p * p > num:
+        break
+      if num % p == 0:
+        is_prime = False
+        break
+    if is_prime:
+      primes.append(num)
+    num += 2
+  return primes
 
 #################################
 ####   Checks/ Conditions #######
@@ -639,7 +684,7 @@ def are_coprime(a:int, b:int) -> bool:
   return math.gcd(a, b) == 1
 
 
-def VerifyGenerator(numbers: list[int], n: int, k: int) -> list[int]:
+def verify_generator(numbers: list[int], n: int, k: int) -> list[int]:
   """Verify generator used to construct good lattice points (GLP) design
 
   Args:

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>helpers.scale</title>
+<title>helpers.verify_generator</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -135,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.scale.html">helpers.scale</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.verify_generator.html">helpers.verify_generator</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -406,8 +372,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.LevelPermutation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.LevelPermutation</span></a>
+  <a href="../reference/helpers.level_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.level_permutation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -436,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.scale.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/helpers.scale.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.scale</span></a>
   </div>
 </li>
@@ -454,8 +420,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.VerifyGenerator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.VerifyGenerator</span></a>
+  <a href="../reference/helpers.verify_generator.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">helpers.verify_generator</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -482,43 +448,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#pyLHD.helpers.verify_generator" id="toc-pyLHD.helpers.verify_generator" class="nav-link active" data-scroll-target="#pyLHD.helpers.verify_generator">helpers.verify_generator</a>
+  <ul class="collapse">
+  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#raises" id="toc-raises" class="nav-link" data-scroll-target="#raises">Raises</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.scale.html">helpers.scale</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">helpers.scale</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p><code>helpers.scale(arr, lower_bounds, upper_bounds, as_integers=False)</code></p>
-<p>Sample scaling from unit hypercube to different bounds</p>
+<section id="pyLHD.helpers.verify_generator" class="level1">
+<h1>helpers.verify_generator</h1>
+<p><code>helpers.verify_generator(numbers, n, k)</code></p>
+<p>Verify generator used to construct good lattice points (GLP) design</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 12%">
-<col style="width: 17%">
-<col style="width: 61%">
-<col style="width: 9%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 49%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -530,38 +486,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>arr</code></td>
-<td>numpy.numpy.ArrayLike</td>
-<td>A numpy ndarray</td>
+<td><code>numbers</code></td>
+<td>list[int]</td>
+<td>integers used for the generator</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>lower_bounds</code></td>
-<td>list</td>
-<td>Lower bounds of transformed data</td>
+<td><code>n</code></td>
+<td>int</td>
+<td>number of rows in a GLP design</td>
 <td><em>required</em></td>
 </tr>
 <tr class="odd">
-<td><code>upper_bounds</code></td>
-<td>list</td>
-<td>Upper bounds of transformed data</td>
+<td><code>k</code></td>
+<td>int</td>
+<td>number of columns in a GLP design</td>
 <td><em>required</em></td>
-</tr>
-<tr class="even">
-<td><code>as_integers</code></td>
-<td>bool</td>
-<td>Should scale design to integer values on specified bounds. Defaults to False.s</td>
-<td><code>False</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="returns" class="level2">
-<h2 class="anchored" data-anchor-id="returns">Returns</h2>
+<section id="raises" class="level2">
+<h2 class="anchored" data-anchor-id="raises">Raises</h2>
 <table class="table">
 <colgroup>
-<col style="width: 28%">
-<col style="width: 72%">
+<col style="width: 13%">
+<col style="width: 86%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -571,63 +521,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>numpy.numpy.ndarray</td>
-<td>Scaled numpy ndarray to [lower_bounds, upper_bounds]</td>
+<td>ValueError</td>
+<td>length of generator <code>numbers</code> is not the same as the number of columns <code>k</code></td>
+</tr>
+<tr class="even">
+<td>ValueError</td>
+<td>All <code>numbers</code> should be less than <code>n</code> and coprime to <code>n</code></td>
 </tr>
 </tbody>
 </table>
-<p>Examples:</p>
-<div id="bccec911" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">2</span>), seed <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[0.82496353, 0.42496353],
-       [0.12496353, 0.92496353],
-       [0.92496353, 0.82496353],
-       [0.72496353, 0.32496353],
-       [0.22496353, 0.22496353],
-       [0.62496353, 0.72496353],
-       [0.02496353, 0.52496353],
-       [0.42496353, 0.62496353],
-       [0.52496353, 0.12496353],
-       [0.32496353, 0.02496353]])</code></pre>
-</div>
-</div>
-<div id="7eb8b5e7" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>lower_bounds <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span>,<span class="dv">2</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>upper_bounds <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">4</span>]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pyLHD.scale(sample,lower_bounds, upper_bounds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[ 7.72452593,  2.84992707],
-       [-1.37547407,  3.84992707],
-       [ 9.02452593,  3.64992707],
-       [ 6.42452593,  2.64992707],
-       [-0.07547407,  2.44992707],
-       [ 5.12452593,  3.44992707],
-       [-2.67547407,  3.04992707],
-       [ 2.52452593,  3.24992707],
-       [ 3.82452593,  2.24992707],
-       [ 1.22452593,  2.04992707]])</code></pre>
-</div>
-</div>
-<div id="90476688" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pyLHD.scale(sample,lower_bounds, upper_bounds, as_integers <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>array([[ 7,  2],
-       [-2,  3],
-       [ 9,  3],
-       [ 6,  2],
-       [-1,  2],
-       [ 5,  3],
-       [-3,  3],
-       [ 2,  3],
-       [ 3,  2],
-       [ 1,  2]])</code></pre>
-</div>
-</div>
+</section>
+<section id="returns" class="level2">
+<h2 class="anchored" data-anchor-id="returns">Returns</h2>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>list[int]</td>
+<td>list[int]: If all conditions hold, <code>numbers</code> is returned</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.typing as npt
 from typing import Union, Optional, Literal
-from pyLHD.helpers import LevelPermutation, WilliamsTransform,is_prime
+from pyLHD.helpers import level_permutation, WilliamsTransform,is_prime
 from pyLHD.base import GoodLatticePoint
 from pyLHD.criteria import LqDistance
 
@@ -57,9 +57,9 @@ def LeaveOneOut(arr: npt.ArrayLike, b: int,
     raise ValueError(f"'b' should be within the range 0 to {arr.shape[0]-1}")
   # Apply Level Permutation or Williams Transformation
   if method == 'LP':
-    new_arr = LevelPermutation(arr, b=b)
+    new_arr = level_permutation(arr, b=b)
   elif method == 'WT':
-    y = LevelPermutation(arr, b=b)
+    y = level_permutation(arr, b=b)
     new_arr = WilliamsTransform(y)
   else:
     raise ValueError("Invalid 'method' specified. Choose 'LP' or 'WT'")
@@ -139,7 +139,7 @@ def maximinLHD(size: tuple[int, int], h: list[int] = None,
     max_L1 = float('-inf')
     best_b = -1
     for it in range(n):
-      current_L1 = LqDistance(transform_func(LevelPermutation(D, b=it)))
+      current_L1 = LqDistance(transform_func(level_permutation(D, b=it)))
       if current_L1 > max_L1:
         max_L1 = current_L1
         best_b = it
@@ -151,9 +151,9 @@ def maximinLHD(size: tuple[int, int], h: list[int] = None,
     transform_func = lambda x: x if method == 'LP' else WilliamsTransform
     b = find_best_b(transform_func)
   if method == 'LP':
-    return LevelPermutation(D, b=b)
+    return level_permutation(D, b=b)
   elif method == 'WT':
-    return WilliamsTransform(LevelPermutation(D, b=b))
+    return WilliamsTransform(level_permutation(D, b=b))
   else:
     raise ValueError("'method' must be either 'LP' or 'WT'")
 

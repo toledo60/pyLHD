@@ -1,16 +1,17 @@
 # helpers.scale { #pyLHD.helpers.scale }
 
-`helpers.scale(arr, lower_bounds, upper_bounds)`
+`helpers.scale(arr, lower_bounds, upper_bounds, as_integers=False)`
 
 Sample scaling from unit hypercube to different bounds
 
 ## Parameters
 
-| Name           | Type                  | Description                      | Default    |
-|----------------|-----------------------|----------------------------------|------------|
-| `arr`          | numpy.numpy.ArrayLike | A numpy ndarray                  | _required_ |
-| `lower_bounds` | list                  | Lower bounds of transformed data | _required_ |
-| `upper_bounds` | list                  | Upper bounds of transformed data | _required_ |
+| Name           | Type                  | Description                                                                    | Default    |
+|----------------|-----------------------|--------------------------------------------------------------------------------|------------|
+| `arr`          | numpy.numpy.ArrayLike | A numpy ndarray                                                                | _required_ |
+| `lower_bounds` | list                  | Lower bounds of transformed data                                               | _required_ |
+| `upper_bounds` | list                  | Upper bounds of transformed data                                               | _required_ |
+| `as_integers`  | bool                  | Should scale design to integer values on specified bounds. Defaults to False.s | `False`    |
 
 ## Returns
 
@@ -21,11 +22,14 @@ Sample scaling from unit hypercube to different bounds
 Examples:
 ```{python}
 import pyLHD
-random_lhd = pyLHD.LatinHypercube(size = (10,2), seed = 1)
-random_lhd
+sample = pyLHD.LatinHypercube(size = (10,2), seed = 1)
+sample
 ```
 ```{python}
 lower_bounds = [-3,2]
 upper_bounds = [10,4]
-pyLHD.scale(random_lhd,lower_bounds, upper_bounds)
+pyLHD.scale(sample,lower_bounds, upper_bounds)
+```
+```{python}
+pyLHD.scale(sample,lower_bounds, upper_bounds, as_integers = True)
 ```
