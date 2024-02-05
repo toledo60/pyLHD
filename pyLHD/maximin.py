@@ -7,7 +7,7 @@ from pyLHD.criteria import LqDistance
 
 
 def LeaveOneOut(arr: npt.ArrayLike, b: int,
-                method: Literal['LP', 'WT'] = 'LP') -> npt.ArrayLike:
+                method: Literal['LP', 'WT'] = 'LP') -> np.ndarray:
   """Apply the Leave-one-out Procedure to Generate a Maxmin LHD
 
   Args:
@@ -102,7 +102,7 @@ def BestLinearPermutation(N:int) -> int:
 
 def maximinLHD(size: tuple[int, int], h: list[int] = None,
                method: Literal['LP','WT'] = 'LP',
-               seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
+               seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """Generate a maximin LHD based on the L1-distance
 
   Args:
@@ -130,7 +130,6 @@ def maximinLHD(size: tuple[int, int], h: list[int] = None,
   w = pyLHD.maximinLHD(size = (11,10), method = 'WT')
   pyLHD.LqDistance(w)
   ```
-
   """
 
   n,_ = size
@@ -159,7 +158,7 @@ def maximinLHD(size: tuple[int, int], h: list[int] = None,
     raise ValueError("'method' must be either 'LP' or 'WT'")
 
 
-def EquidistantLHD(N:int) -> npt.ArrayLike:
+def EquidistantLHD(N:int) -> np.ndarray:
   """Generate an Equidistant Latin Hypercube
 
   Args:
@@ -173,14 +172,15 @@ def EquidistantLHD(N:int) -> npt.ArrayLike:
   ```{python}
   import pyLHD
   N = 11
-  x = pyLHD.EquidistantLHD(N = N)
-  x
+  sample = pyLHD.EquidistantLHD(N = N)
+  sample
   ```
   ```{python}
-  pyLHD.pairwise_InterSite(x, q=1)
+  l1 = pyLHD.LqDistance(sample,q=1)
+  l1.pairwise()
   ```
   ```{python}
-  pyLHD.LqDistance(x, q=1)
+  l1.design()
   ```
   """
   m = (N-1)//2

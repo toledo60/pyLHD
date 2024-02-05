@@ -569,39 +569,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>numpy.numpy.ArrayLike</td>
+<td>numpy.numpy.ndarray</td>
 <td>A (n x d) orthogonal LHD</td>
 </tr>
 </tbody>
 </table>
 <p>Examples: Create an orthogonal LHD with 11 rows and 5 columns</p>
-<div id="95fdb200" class="cell" data-execution_count="1">
+<div id="05f29d01" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OLHD_Butler01(size <span class="op">=</span> (<span class="dv">11</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[ 1.,  2.,  4.,  3.,  5.],
-       [ 7.,  3.,  2., 11.,  8.],
-       [10.,  7.,  1.,  4.,  3.],
-       [ 4., 11.,  3.,  5., 10.],
-       [ 3.,  8.,  5., 10.,  1.],
-       [ 9.,  4.,  7.,  2., 11.],
-       [ 8.,  1.,  9.,  7.,  2.],
-       [ 2.,  5., 11.,  8.,  9.],
-       [ 5.,  9., 10.,  1.,  4.],
-       [11., 10.,  8.,  9.,  7.],
+<pre><code>array([[ 3.,  4.,  2.,  1.,  5.],
+       [11.,  2.,  3.,  7.,  8.],
+       [ 4.,  1.,  7., 10.,  3.],
+       [ 5.,  3., 11.,  4., 10.],
+       [10.,  5.,  8.,  3.,  1.],
+       [ 2.,  7.,  4.,  9., 11.],
+       [ 7.,  9.,  1.,  8.,  2.],
+       [ 8., 11.,  5.,  2.,  9.],
+       [ 1., 10.,  9.,  5.,  4.],
+       [ 9.,  8., 10., 11.,  7.],
        [ 6.,  6.,  6.,  6.,  6.]])</code></pre>
 </div>
 </div>
 <p>Create an orthogonal LHD with 7 rows and 6 columns</p>
-<div id="f70c3262" class="cell" data-execution_count="2">
+<div id="09abec16" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> pyLHD.OLHD_Butler01(size <span class="op">=</span> (<span class="dv">7</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[2., 1., 3., 3., 5., 7.],
-       [1., 5., 6., 5., 6., 2.],
-       [3., 6., 1., 7., 2., 5.],
-       [5., 2., 7., 6., 3., 4.],
-       [7., 3., 2., 4., 7., 3.],
-       [6., 7., 5., 2., 4., 6.],
+<pre><code>array([[2., 1., 3., 3., 7., 5.],
+       [1., 5., 6., 5., 2., 6.],
+       [3., 6., 1., 7., 5., 2.],
+       [5., 2., 7., 6., 4., 3.],
+       [7., 3., 2., 4., 3., 7.],
+       [6., 7., 5., 2., 6., 4.],
        [4., 4., 4., 1., 1., 1.]])</code></pre>
 </div>
 </div>

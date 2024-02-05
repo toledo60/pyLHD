@@ -542,8 +542,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 13%">
-<col style="width: 86%">
+<col style="width: 12%">
+<col style="width: 87%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -553,13 +553,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>numpy.numpy.ArrayLike</td>
+<td>numpy.numpy.ndarray</td>
 <td>An orthogonal LHD with the following run size: (r<em>2^(C+1)+1) if type =‘odd’, or (r</em>2^(C+1)) if type =‘even’. The resulting columns will be (2^(C))</td>
 </tr>
 </tbody>
 </table>
 <p>Examples: Create an orthogonal LHD with C=3, r=3, type = ‘odd’, so n = (3*2^(3+1) )+1 = 49 (rows) and k=2^(3)=8 (columns)</p>
-<div id="4c8ab6f0" class="cell" data-execution_count="1">
+<div id="2d9735a3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OLHD_Sun10(C<span class="op">=</span><span class="dv">3</span>,r<span class="op">=</span><span class="dv">3</span>,<span class="bu">type</span><span class="op">=</span><span class="st">'odd'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -615,7 +615,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Create an orthogonal LHD with C=3, r=3, type = ‘even’, So n = 3*2^(3+1) = 48 (rows) and k=2^(3)=8 (columns)</p>
-<div id="f8731171" class="cell" data-execution_count="2">
+<div id="1eaed8d4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OLHD_Sun10(C<span class="op">=</span><span class="dv">3</span>,r<span class="op">=</span><span class="dv">3</span>,<span class="bu">type</span><span class="op">=</span><span class="st">'even'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">

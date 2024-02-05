@@ -21,9 +21,9 @@ Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Bu
 
 ## Returns
 
-| Type                  | Description              |
-|-----------------------|--------------------------|
-| numpy.numpy.ArrayLike | A (n x d) orthogonal LHD |
+| Type                | Description              |
+|---------------------|--------------------------|
+| numpy.numpy.ndarray | A (n x d) orthogonal LHD |
 
 Examples:
 Create an orthogonal LHD with 11 rows and 5 columns

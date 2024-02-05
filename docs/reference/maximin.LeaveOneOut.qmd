@@ -22,16 +22,15 @@ Apply the Leave-one-out Procedure to Generate a Maxmin LHD
 
 ## Returns
 
-| Type                  | Description                                                                                                     |
-|-----------------------|-----------------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | npt.ArrayLike: After removing the last constant row of initial LHD, an $(n-1) \times d$ maximin LHD is returned |
+| Type                | Description                                                                                                     |
+|---------------------|-----------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | npt.ArrayLike: After removing the last constant row of initial LHD, an $(n-1) \times d$ maximin LHD is returned |
 
 Example:
 ```{python}
 import pyLHD
 n = 11
-d = pyLHD.euler_phi(n)
-x = pyLHD.GoodLatticePoint(size = (n,d))
+x = pyLHD.GoodLatticePoint(size = (n,n-1))
 x
 ```
 The initial $L_1$-distance of `x` is

@@ -3,7 +3,7 @@ import numpy.typing as npt
 from typing import Optional, Union
 from pyLHD.helpers import permute_columns, check_seed, totatives, VerifyGenerator
 
-def LatinSquare(size: tuple[int,int], baseline: int = 1, seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
+def LatinSquare(size: tuple[int,int], baseline: int = 1, seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """ Generate a random (n x d) Latin square
 
   Args:
@@ -64,7 +64,7 @@ def LatinHypercube(size: tuple[int, int], scramble: Optional[bool] = True,
 
 
 def GoodLatticePoint(size: tuple[int, int], h: list[int] = None,
-                     seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
+                     seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """ Good Lattice Point (GLP) Design 
 
   Args:

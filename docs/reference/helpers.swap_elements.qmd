@@ -14,9 +14,9 @@ Swap two random elements in a matrix
 
 ## Returns
 
-| Type                  | Description                                    |
-|-----------------------|------------------------------------------------|
-| numpy.numpy.ArrayLike | A new design matrix after the swap of elements |
+| Type                | Description                                    |
+|---------------------|------------------------------------------------|
+| numpy.numpy.ndarray | A new design matrix after the swap of elements |
 
 Examples:
 Choose the first columns of `random_lhd` and swap two randomly selected elements

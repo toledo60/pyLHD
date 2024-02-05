@@ -14,9 +14,9 @@ Distance matrix based on specified distance measure
 
 ## Returns
 
-| Type                  | Description                                                       |
-|-----------------------|-------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | The calculated distance matrix baed on specified distance measure |
+| Type                | Description                                                       |
+|---------------------|-------------------------------------------------------------------|
+| numpy.numpy.ndarray | The calculated distance matrix baed on specified distance measure |
 
 Examples:
 ```{python}

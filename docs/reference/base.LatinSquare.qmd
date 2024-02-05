@@ -14,9 +14,9 @@ Generate a random (n x d) Latin square
 
 ## Returns
 
-| Type                  | Description                                                                                                                       |
-|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | Generated random (n x d) Latin square, in which each column is a random permutation of {baseline,baseline+1, ..., baseline+(n-1)} |
+| Type                | Description                                                                                                                       |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | Generated random (n x d) Latin square, in which each column is a random permutation of {baseline,baseline+1, ..., baseline+(n-1)} |
 
 Examples:
 ```{python}

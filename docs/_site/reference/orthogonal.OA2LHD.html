@@ -536,8 +536,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 18%">
-<col style="width: 81%">
+<col style="width: 16%">
+<col style="width: 83%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -547,31 +547,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>numpy.numpy.ArrayLike</td>
+<td>numpy.numpy.ndarray</td>
 <td>LHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive</td>
 </tr>
 </tbody>
 </table>
 <p>Examples: First create an OA(9,2,3,2)</p>
-<div id="c9106c14" class="cell" data-execution_count="1">
+<div id="addf6329" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>example_OA <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">2</span>,<span class="dv">1</span>],</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                       [<span class="dv">2</span>,<span class="dv">2</span>],[<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">3</span>,<span class="dv">1</span>],[<span class="dv">3</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">3</span>] ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Transform the “OA” above into a LHD according to Tang (1993)</p>
-<div id="123aea9d" class="cell" data-execution_count="2">
+<div id="9cdeae6c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pyLHD.OA2LHD(example_OA)      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>array([[1, 2],
        [2, 5],
-       [3, 7],
-       [5, 1],
-       [4, 6],
-       [6, 8],
-       [7, 3],
-       [8, 4],
-       [9, 9]])</code></pre>
+       [3, 9],
+       [6, 3],
+       [5, 4],
+       [4, 7],
+       [9, 1],
+       [8, 6],
+       [7, 8]])</code></pre>
 </div>
 </div>
 

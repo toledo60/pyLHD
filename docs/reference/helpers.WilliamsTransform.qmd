@@ -14,9 +14,9 @@ Williams Transformation
 
 ## Returns
 
-| Type                  | Description                                                                                                                                                                                                                                       |
-|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)}. For the modified version. Whenever n is odd, n=2m+1 the columns will be permutations will always be even numbers |
+| Type                | Description                                                                                                                                                                                                                                       |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | After applying Williams transformation, a matrix whose columns are permutations from {baseline,baseline+1, ..., baseline+(n-1)}. For the modified version. Whenever n is odd, n=2m+1 the columns will be permutations will always be even numbers |
 
 Examples:
 ```{python}

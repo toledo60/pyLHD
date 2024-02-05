@@ -524,8 +524,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 80%">
+<col style="width: 18%">
+<col style="width: 81%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -535,13 +535,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>numpy.numpy.ArrayLike</td>
+<td>numpy.numpy.ndarray</td>
 <td>A normalized array such that the columns are subtracted by the minimum element of each column</td>
 </tr>
 </tbody>
 </table>
 <p>Example:</p>
-<div id="c973093c" class="cell" data-execution_count="1">
+<div id="1ff88b41" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> pyLHD.LatinSquare(size <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">5</span>), baseline <span class="op">=</span> <span class="dv">3</span>, seed <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -553,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
        [5, 3, 7, 7, 7]])</code></pre>
 </div>
 </div>
-<div id="8b1e6e3c" class="cell" data-execution_count="2">
+<div id="2a80e212" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.zero_base(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>array([[1, 3, 0, 3, 1],

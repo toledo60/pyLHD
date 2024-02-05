@@ -18,9 +18,9 @@ Raises:
 
 ## Returns
 
-| Type                  | Description                                                                                                                                                               |
-|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | npt.ArrayLike: A maximin LHD based on the L1-distance. Construction is obtained by applying Williams transformation on linearly permuted good lattice point (GLP) designs |
+| Type                | Description                                                                                                                                                               |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | npt.ArrayLike: A maximin LHD based on the L1-distance. Construction is obtained by applying Williams transformation on linearly permuted good lattice point (GLP) designs |
 
 Example:
 ```{python}

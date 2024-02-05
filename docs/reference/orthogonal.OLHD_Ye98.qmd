@@ -19,9 +19,9 @@ Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)
 
 ## Returns
 
-| Type                  | Description                                                                          |
-|-----------------------|--------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | An orthogonal LHD with the following run size: (n=2^m + 1) and factor size: (k=2m-2) |
+| Type                | Description                                                                          |
+|---------------------|--------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | An orthogonal LHD with the following run size: (n=2^m + 1) and factor size: (k=2m-2) |
 
 Examples:
 Create an orthogonal LHD with m=4. So n=2^m+1=9 runs and k=2*m-2=4 factors

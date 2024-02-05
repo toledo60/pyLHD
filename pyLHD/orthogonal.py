@@ -7,7 +7,7 @@ from pyLHD.helpers import check_seed, is_prime, WilliamsTransform
 
 # --- Butler, N.A. (2001) Construction --- #
 
-def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
+def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """ Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)
 
   Args:
@@ -87,7 +87,7 @@ def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Gener
 
 # --- Sun et al. (2010) Construction --- #
 
-def OLHD_Sun10(C: int, r: int, type: str = 'odd') -> npt.ArrayLike:
+def OLHD_Sun10(C: int, r: int, type: str = 'odd') -> np.ndarray:
   """Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)
 
   Args:
@@ -155,7 +155,7 @@ def OLHD_Sun10(C: int, r: int, type: str = 'odd') -> npt.ArrayLike:
 
 # --- Cioppa and Lucas (2007) Constuction --- #
 
-def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
+def OLHD_Cioppa07(m:int) -> np.ndarray:
   """Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)
 
   Args:
@@ -278,7 +278,7 @@ def OLHD_Cioppa07(m:int) -> npt.ArrayLike:
 
 # --- Ye (1998) Constuction --- #
 
-def OLHD_Ye98(m:int,seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
+def OLHD_Ye98(m:int,seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)
 
   Args:
@@ -393,7 +393,7 @@ def OLHD_Ye98(m:int,seed: Optional[Union[int, np.random.Generator]] = None) -> n
 
 # --- Lin et al. (2009) Constuction --- #
 
-def OLHD_Lin09(OLHD: npt.ArrayLike,OA: npt.ArrayLike ) -> npt.ArrayLike:
+def OLHD_Lin09(OLHD: npt.ArrayLike,OA: npt.ArrayLike ) -> np.ndarray:
   """Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)
 
   Args:
@@ -458,7 +458,7 @@ def OLHD_Lin09(OLHD: npt.ArrayLike,OA: npt.ArrayLike ) -> npt.ArrayLike:
   return np.hstack(M_list)
 
 
-def OA2LHD(arr: npt.ArrayLike, seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
+def OA2LHD(arr: npt.ArrayLike, seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """ Transform an Orthogonal Array (OA) into an LHD
 
   Args:

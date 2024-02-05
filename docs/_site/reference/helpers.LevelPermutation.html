@@ -571,8 +571,8 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 78%">
+<col style="width: 19%">
+<col style="width: 80%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -582,13 +582,13 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td>numpy.numpy.ArrayLike</td>
+<td>numpy.numpy.ndarray</td>
 <td>npt.ArrayLike: A new array where each element is the result of <code>(arr + b) % modulus</code></td>
 </tr>
 </tbody>
 </table>
 <p>Examples:</p>
-<div id="67ada3ff" class="cell" data-execution_count="1">
+<div id="8f20a248" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>GLP <span class="op">=</span> pyLHD.GoodLatticePoint(size <span class="op">=</span> (<span class="dv">10</span>, pyLHD.euler_phi(<span class="dv">10</span>)))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>GLP</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -606,7 +606,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Apply a simple linear level permutation in the form of <span class="math inline">\(D = D+b (mod \,N)\)</span></p>
-<div id="e256e899" class="cell" data-execution_count="2">
+<div id="9e9be712" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LevelPermutation(GLP,b <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>array([[3, 5, 9, 1],
@@ -621,7 +621,7 @@ window.Quarto = {
        [2, 2, 2, 2]])</code></pre>
 </div>
 </div>
-<div id="f6f7a829" class="cell" data-execution_count="3">
+<div id="a6ab5a46" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LevelPermutation(GLP, b <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>array([[2, 7, 0, 1],

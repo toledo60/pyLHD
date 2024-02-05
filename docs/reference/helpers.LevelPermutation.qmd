@@ -14,9 +14,9 @@ Apply level permutations to a Good lattice point (GLP) design
 
 ## Returns
 
-| Type                  | Description                                                                          |
-|-----------------------|--------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | npt.ArrayLike: A new array where each element is the result of `(arr + b) % modulus` |
+| Type                | Description                                                                          |
+|---------------------|--------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | npt.ArrayLike: A new array where each element is the result of `(arr + b) % modulus` |
 
 Examples:
 ```{python}

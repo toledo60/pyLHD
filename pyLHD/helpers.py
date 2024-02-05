@@ -4,8 +4,7 @@ import numpy.typing as npt
 from typing import Optional, List, Union, Any, Callable, NoReturn
 from itertools import combinations
 
-
-def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -> npt.ArrayLike:
+def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -> np.ndarray:
   """ Distance matrix based on specified distance measure
 
   Args:
@@ -47,7 +46,7 @@ def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -
   return metrics[metric]  
 
 
-def replace_values(arr: npt.ArrayLike, mapping: dict) -> npt.ArrayLike:
+def replace_values(arr: npt.ArrayLike, mapping: dict) -> np.ndarray:
   """
   Replace values in a numpy array based on a provided mapping dictionary
 
@@ -92,7 +91,7 @@ def replace_values(arr: npt.ArrayLike, mapping: dict) -> npt.ArrayLike:
 
 
 def permute_columns(arr: npt.ArrayLike, columns: Optional[List[int]] = None,
-                    seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
+                    seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """Randomly permute columns in a numpy ndarray
 
   Args:
@@ -134,7 +133,7 @@ def permute_columns(arr: npt.ArrayLike, columns: Optional[List[int]] = None,
 
 
 def permute_rows(arr: npt.ArrayLike, rows: Optional[List[int]] = None,
-                 seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
+                 seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """Randomly permute rows in a numpy ndarray
 
   Args:
@@ -175,7 +174,7 @@ def permute_rows(arr: npt.ArrayLike, rows: Optional[List[int]] = None,
 
 
 def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
-                  seed: Optional[Union[int, np.random.Generator]] = None) -> npt.ArrayLike:
+                  seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """ Swap two random elements in a matrix
 
   Args:
@@ -249,7 +248,7 @@ def column_combinations(arr: npt.ArrayLike, k:int) -> List[npt.ArrayLike]:
   return [arr[:,[i,j]] for i,j in column_combinations]
 
 
-def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list) -> npt.ArrayLike:
+def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list) -> np.ndarray:
   """Sample scaling from unit hypercube to different bounds
 
   Args:
@@ -258,7 +257,7 @@ def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list) -> npt.Arr
       upper_bounds (list): Upper bounds of transformed data
 
   Returns:
-      npt.ArrayLike: Scaled numpy ndarray to [lower_bounds, upper_bounds]
+      Scaled numpy ndarray to [lower_bounds, upper_bounds]
   Examples:
   ```{python}
   import pyLHD
@@ -304,7 +303,7 @@ def lapply(lst: List[Any], func: Callable[..., Any], **kwargs: dict[str, Any]) -
 #### GoodLatticePonint Helpers #####
 ####################################
 
-def zero_base(arr: npt.ArrayLike) -> npt.ArrayLike:
+def zero_base(arr: npt.ArrayLike) -> np.ndarray:
   """ Normalize the columns by subtracting the minimum element of each column
 
   Args:
@@ -330,7 +329,7 @@ def zero_base(arr: npt.ArrayLike) -> npt.ArrayLike:
   return x
 
 
-def LevelPermutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None) -> npt.ArrayLike:
+def LevelPermutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None) -> np.ndarray:
   """Apply level permutations to a Good lattice point (GLP) design
 
   Args:
@@ -413,7 +412,7 @@ def euler_phi(N:int) -> int:
     return len(totatives(N))
 
 
-def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0, modified = False) -> npt.ArrayLike:
+def WilliamsTransform(arr: npt.ArrayLike, baseline: int = 0, modified = False) -> np.ndarray:
   """ Williams Transformation
 
   Args:

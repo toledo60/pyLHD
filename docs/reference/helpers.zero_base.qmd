@@ -12,9 +12,9 @@ Normalize the columns by subtracting the minimum element of each column
 
 ## Returns
 
-| Type                  | Description                                                                                   |
-|-----------------------|-----------------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | A normalized array such that the columns are subtracted by the minimum element of each column |
+| Type                | Description                                                                                   |
+|---------------------|-----------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | A normalized array such that the columns are subtracted by the minimum element of each column |
 
 Example:
 ```{python}

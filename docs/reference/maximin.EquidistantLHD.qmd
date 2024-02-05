@@ -12,20 +12,21 @@ Generate an Equidistant Latin Hypercube
 
 ## Returns
 
-| Type                  | Description                                                                                                                                                                                                                                                       |
-|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | npt.ArrayLike: Given an odd integer $N=(2m+1)$, return an $(m \times m)$ equidistant LHD.  This design, is a cyclic Latin square, with each level occuring once in each row and once in each column. It is also a maximin distance LHD in terms of $L_1$-distance |
+| Type                | Description                                                                                                                                                                                                                                                       |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | npt.ArrayLike: Given an odd integer $N=(2m+1)$, return an $(m \times m)$ equidistant LHD.  This design, is a cyclic Latin square, with each level occuring once in each row and once in each column. It is also a maximin distance LHD in terms of $L_1$-distance |
 
 Example:
 ```{python}
 import pyLHD
 N = 11
-x = pyLHD.EquidistantLHD(N = N)
-x
+sample = pyLHD.EquidistantLHD(N = N)
+sample
 ```
 ```{python}
-pyLHD.pairwise_InterSite(x, q=1)
+l1 = pyLHD.LqDistance(sample,q=1)
+l1.pairwise()
 ```
 ```{python}
-pyLHD.LqDistance(x, q=1)
+l1.design()
 ```

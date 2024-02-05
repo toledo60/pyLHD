@@ -13,9 +13,9 @@ Transform an Orthogonal Array (OA) into an LHD
 
 ## Returns
 
-| Type                  | Description                                                                                           |
-|-----------------------|-------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | LHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive |
+| Type                | Description                                                                                           |
+|---------------------|-------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | LHD whose sizes are the same as input OA. The assumption is that the elements of OAs must be positive |
 
 Examples:
 First create an OA(9,2,3,2)

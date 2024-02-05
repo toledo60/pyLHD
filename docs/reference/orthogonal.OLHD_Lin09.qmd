@@ -13,9 +13,9 @@ Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al
 
 ## Returns
 
-| Type                  | Description                                                                                               |
-|-----------------------|-----------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | Orthogonal Latin hypercube design with the following run size: (n^2) and the following factor size: (2fp) |
+| Type                | Description                                                                                               |
+|---------------------|-----------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | Orthogonal Latin hypercube design with the following run size: (n^2) and the following factor size: (2fp) |
 
 Examples:
 Create a 5 by 2 OLHD

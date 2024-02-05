@@ -14,9 +14,9 @@ Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Su
 
 ## Returns
 
-| Type                  | Description                                                                                                                                        |
-|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | An orthogonal LHD with the following run size: (r*2^(C+1)+1) if type ='odd', or (r*2^(C+1)) if type ='even'. The resulting columns will be (2^(C)) |
+| Type                | Description                                                                                                                                        |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | An orthogonal LHD with the following run size: (r*2^(C+1)+1) if type ='odd', or (r*2^(C+1)) if type ='even'. The resulting columns will be (2^(C)) |
 
 Examples:
 Create an orthogonal LHD with C=3, r=3, type = 'odd', so n = (3*2^(3+1) )+1 = 49 (rows) and k=2^(3)=8 (columns)

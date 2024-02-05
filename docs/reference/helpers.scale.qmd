@@ -14,9 +14,9 @@ Sample scaling from unit hypercube to different bounds
 
 ## Returns
 
-| Type                  | Description                                                         |
-|-----------------------|---------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | npt.ArrayLike: Scaled numpy ndarray to [lower_bounds, upper_bounds] |
+| Type                | Description                                          |
+|---------------------|------------------------------------------------------|
+| numpy.numpy.ndarray | Scaled numpy ndarray to [lower_bounds, upper_bounds] |
 
 Examples:
 ```{python}

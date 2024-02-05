@@ -13,9 +13,9 @@ Replace values in a numpy array based on a provided mapping dictionary
 
 ## Returns
 
-| Type                  | Description                         |
-|-----------------------|-------------------------------------|
-| numpy.numpy.ArrayLike | A numpy array with replaced values. |
+| Type                | Description                         |
+|---------------------|-------------------------------------|
+| numpy.numpy.ndarray | A numpy array with replaced values. |
 
 ## Raises
 

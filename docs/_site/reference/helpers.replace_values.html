@@ -573,7 +573,7 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td>numpy.numpy.ArrayLike</td>
+<td>numpy.numpy.ndarray</td>
 <td>A numpy array with replaced values.</td>
 </tr>
 </tbody>
@@ -600,7 +600,7 @@ window.Quarto = {
 </tbody>
 </table>
 <p>Examples:</p>
-<div id="d2f4ec89" class="cell" data-execution_count="1">
+<div id="460562c5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_ls <span class="op">=</span> pyLHD.LatinSquare(size <span class="op">=</span> (<span class="dv">4</span>,<span class="dv">4</span>), seed <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>random_ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -612,7 +612,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Consider the mapping <span class="math inline">\(1 \rightarrow 2, 2 \rightarrow 11, 3 \rightarrow 12, 4 \rightarrow 13\)</span></p>
-<div id="615eb0bd" class="cell" data-execution_count="2">
+<div id="cd5556cb" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="dv">1</span>:<span class="dv">10</span>, <span class="dv">2</span>:<span class="dv">11</span>, <span class="dv">3</span>:<span class="dv">12</span>, <span class="dv">4</span>:<span class="dv">13</span>}</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pyLHD.replace_values(random_ls, mapping <span class="op">=</span> mapping)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">

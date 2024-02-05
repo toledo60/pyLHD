@@ -549,8 +549,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 11%">
-<col style="width: 88%">
+<col style="width: 10%">
+<col style="width: 89%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -560,32 +560,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>numpy.numpy.ArrayLike</td>
+<td>numpy.numpy.ndarray</td>
 <td>npt.ArrayLike: A maximin LHD based on the L1-distance. Construction is obtained by applying Williams transformation on linearly permuted good lattice point (GLP) designs</td>
 </tr>
 </tbody>
 </table>
 <p>Example:</p>
-<div id="8c42437b" class="cell" data-execution_count="1">
+<div id="798c534c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> pyLHD.GoodLatticePoint(size <span class="op">=</span> (<span class="dv">11</span>,<span class="dv">10</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>30.0</code></pre>
+<pre><code>&lt;pyLHD.criteria.LqDistance at 0x11b426390&gt;</code></pre>
 </div>
 </div>
-<div id="643b73bb" class="cell" data-execution_count="2">
+<div id="68a81c5d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> pyLHD.maximinLHD(size <span class="op">=</span> (<span class="dv">11</span>,<span class="dv">10</span>), method <span class="op">=</span> <span class="st">'LP'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>31.0</code></pre>
+<pre><code>&lt;pyLHD.criteria.LqDistance at 0x118ec6de0&gt;</code></pre>
 </div>
 </div>
-<div id="39b71154" class="cell" data-execution_count="3">
+<div id="6f8b9b36" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> pyLHD.maximinLHD(size <span class="op">=</span> (<span class="dv">11</span>,<span class="dv">10</span>), method <span class="op">=</span> <span class="st">'WT'</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pyLHD.LqDistance(w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>39.0</code></pre>
+<pre><code>&lt;pyLHD.criteria.LqDistance at 0x118f15b50&gt;</code></pre>
 </div>
 </div>
 

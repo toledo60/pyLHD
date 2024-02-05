@@ -14,9 +14,9 @@ Good Lattice Point (GLP) Design
 
 ## Returns
 
-| Type                  | Description                                                                                                 |
-|-----------------------|-------------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ArrayLike | Generated random (n x d) Good lattice point set, where each column is a random permutation of {0,1,...,n-1} |
+| Type                | Description                                                                                                 |
+|---------------------|-------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | Generated random (n x d) Good lattice point set, where each column is a random permutation of {0,1,...,n-1} |
 
 Examples:
 ```{python}
