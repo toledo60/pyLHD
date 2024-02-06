@@ -1,6 +1,6 @@
-# maximin.BestLinearPermutation { #pyLHD.maximin.BestLinearPermutation }
+# maximin.best_linear_permutation { #pyLHD.maximin.best_linear_permutation }
 
-`maximin.BestLinearPermutation(N)`
+`maximin.best_linear_permutation(N)`
 
 Optimal linear permutation value to achieve larger L1-distance for a LHD
 

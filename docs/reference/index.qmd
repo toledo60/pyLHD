@@ -16,9 +16,9 @@ Algebraic Constructions of Maximin LHD
 
 | | |
 | --- | --- |
-| [maximin.BestLinearPermutation](maximin.BestLinearPermutation.qmd#pyLHD.maximin.BestLinearPermutation) | Optimal linear permutation value to achieve larger L1-distance for a LHD |
+| [maximin.best_linear_permutation](maximin.best_linear_permutation.qmd#pyLHD.maximin.best_linear_permutation) | Optimal linear permutation value to achieve larger L1-distance for a LHD |
 | [maximin.EquidistantLHD](maximin.EquidistantLHD.qmd#pyLHD.maximin.EquidistantLHD) | Generate an Equidistant Latin Hypercube |
-| [maximin.LeaveOneOut](maximin.LeaveOneOut.qmd#pyLHD.maximin.LeaveOneOut) | Apply the Leave-one-out Procedure to Generate a Maxmin LHD |
+| [maximin.leave_one_out](maximin.leave_one_out.qmd#pyLHD.maximin.leave_one_out) | Apply the Leave-one-out Procedure to Generate a Maxmin LHD |
 | [maximin.maximinLHD](maximin.maximinLHD.qmd#pyLHD.maximin.maximinLHD) | Generate a maximin LHD based on the L1-distance |
 
 ## Orthogonal LHD
@@ -66,7 +66,6 @@ Miscellaneous Utilities for Manipulating LHDs
 | [helpers.is_prime](helpers.is_prime.qmd#pyLHD.helpers.is_prime) | Determine if a number is prime |
 | [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
 | [helpers.is_balanced_design](helpers.is_balanced_design.qmd#pyLHD.helpers.is_balanced_design) | Verify a design is balanced |
-| [helpers.lapply](helpers.lapply.qmd#pyLHD.helpers.lapply) | Apply a function to each item in a list |
 | [helpers.level_permutation](helpers.level_permutation.qmd#pyLHD.helpers.level_permutation) | Apply level permutations to a Good lattice point (GLP) design |
 | [helpers.permute_columns](helpers.permute_columns.qmd#pyLHD.helpers.permute_columns) | Randomly permute columns in a numpy ndarray |
 | [helpers.permute_rows](helpers.permute_rows.qmd#pyLHD.helpers.permute_rows) | Randomly permute rows in a numpy ndarray |

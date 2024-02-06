@@ -1,6 +1,6 @@
-# maximin.LeaveOneOut { #pyLHD.maximin.LeaveOneOut }
+# maximin.leave_one_out { #pyLHD.maximin.leave_one_out }
 
-`maximin.LeaveOneOut(arr, b, method='LP')`
+`maximin.leave_one_out(arr, b, method='LP')`
 
 Apply the Leave-one-out Procedure to Generate a Maxmin LHD
 
@@ -22,9 +22,9 @@ Apply the Leave-one-out Procedure to Generate a Maxmin LHD
 
 ## Returns
 
-| Type                | Description                                                                                                     |
-|---------------------|-----------------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ndarray | npt.ArrayLike: After removing the last constant row of initial LHD, an $(n-1) \times d$ maximin LHD is returned |
+| Type                | Description                                                                                      |
+|---------------------|--------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | After removing the last constant row of initial LHD, an $(n-1) \times d$ maximin LHD is returned |
 
 Example:
 ```{python}
@@ -35,21 +35,21 @@ x
 ```
 The initial $L_1$-distance of `x` is
 ```{python}
-pyLHD.LqDistance(x, q=1)
+pyLHD.LqDistance(x, q=1).design()
 ```
 After applying the Leave-one-out method with a simple linear level permutation, we should obtain an $(n-1) \times d$ LHD with higher $L_1$-distance
 ```{python}
-x_lp = pyLHD.LeaveOneOut(x, b = 1, method = 'LP')
+x_lp = pyLHD.leave_one_out(x, b = 1, method = 'LP')
 x_lp
 ```
 ```{python}
-pyLHD.LqDistance(x_lp,q=1)
+pyLHD.LqDistance(x_lp,q=1).design()
 ```
 Leave-one-out method using William's transformation
 ```{python}
-x_wt = pyLHD.LeaveOneOut(x, b = 1, method = 'WT')
+x_wt = pyLHD.leave_one_out(x, b = 1, method = 'WT')
 x_wt
 ```
 ```{python}
-pyLHD.LqDistance(x_wt,q=1)
+pyLHD.LqDistance(x_wt,q=1).design()
 ```

@@ -8,9 +8,9 @@ website:
       - reference/base.GoodLatticePoint.qmd
       section: Base Designs
     - contents:
-      - reference/maximin.BestLinearPermutation.qmd
+      - reference/maximin.best_linear_permutation.qmd
       - reference/maximin.EquidistantLHD.qmd
-      - reference/maximin.LeaveOneOut.qmd
+      - reference/maximin.leave_one_out.qmd
       - reference/maximin.maximinLHD.qmd
       section: Maximin LHD
     - contents:
@@ -43,7 +43,6 @@ website:
       - reference/helpers.is_prime.qmd
       - reference/helpers.is_LHD.qmd
       - reference/helpers.is_balanced_design.qmd
-      - reference/helpers.lapply.qmd
       - reference/helpers.level_permutation.qmd
       - reference/helpers.permute_columns.qmd
       - reference/helpers.permute_rows.qmd

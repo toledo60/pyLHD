@@ -283,32 +283,6 @@ def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list, as_integer
     return np.floor(scaled).astype(np.int64)
   
 
-
-def lapply(lst: List[Any], func: Callable[..., Any], **kwargs: dict[str, Any]) -> List[Any]:
-  """Apply a function to each item in a list
-
-  Args:
-      lst (List[Any]): List of elements to which the function will be applied
-      func (Callable[..., Any]): The function to apply. It can be a built-in function or a user-defined function
-      kwargs (dict[str, Any]): Additional keyword arguments to pass to the function
-
-  Returns:
-      List[Any]: A list containing the results of applying `func` to each item in `lst`.
-
-  Examples:
-
-  ```{python}
-  import pyLHD
-  l = [[1,2],[3,5], [3,1]]
-  pyLHD.lapply(l, func = min)
-  ```
-
-  """
-  if not isinstance(lst, list):
-    raise TypeError("The argument `lst` must be a list")
-  return [func(item,**kwargs) for item in lst]
-
-
 ####################################
 #### GoodLatticePonint Helpers #####
 ####################################

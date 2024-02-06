@@ -6,8 +6,8 @@ from pyLHD.base import GoodLatticePoint
 from pyLHD.criteria import LqDistance
 
 
-def LeaveOneOut(arr: npt.ArrayLike, b: int,
-                method: Literal['LP', 'WT'] = 'LP') -> np.ndarray:
+def leave_one_out(arr: npt.ArrayLike, b: int,
+                  method: Literal['LP', 'WT'] = 'LP') -> np.ndarray:
   """Apply the Leave-one-out Procedure to Generate a Maxmin LHD
 
   Args:
@@ -21,7 +21,7 @@ def LeaveOneOut(arr: npt.ArrayLike, b: int,
       ValueError: If `method` is not 'LP' or 'WT'
 
   Returns:
-      npt.ArrayLike: After removing the last constant row of initial LHD, an $(n-1) \\times d$ maximin LHD is returned
+      After removing the last constant row of initial LHD, an $(n-1) \\times d$ maximin LHD is returned
   Example:
   ```{python}
   import pyLHD
@@ -31,23 +31,23 @@ def LeaveOneOut(arr: npt.ArrayLike, b: int,
   ```
   The initial $L_1$-distance of `x` is
   ```{python}
-  pyLHD.LqDistance(x, q=1)
+  pyLHD.LqDistance(x, q=1).design()
   ```
   After applying the Leave-one-out method with a simple linear level permutation, we should obtain an $(n-1) \\times d$ LHD with higher $L_1$-distance
   ```{python}
-  x_lp = pyLHD.LeaveOneOut(x, b = 1, method = 'LP')
+  x_lp = pyLHD.leave_one_out(x, b = 1, method = 'LP')
   x_lp
   ```
   ```{python}
-  pyLHD.LqDistance(x_lp,q=1)
+  pyLHD.LqDistance(x_lp,q=1).design()
   ```
   Leave-one-out method using William's transformation
   ```{python}
-  x_wt = pyLHD.LeaveOneOut(x, b = 1, method = 'WT')
+  x_wt = pyLHD.leave_one_out(x, b = 1, method = 'WT')
   x_wt
   ```
   ```{python}
-  pyLHD.LqDistance(x_wt,q=1)
+  pyLHD.LqDistance(x_wt,q=1).design()
   ```
   """
   if not isinstance(b,int):
@@ -70,7 +70,7 @@ def LeaveOneOut(arr: npt.ArrayLike, b: int,
   return new_arr
 
 
-def BestLinearPermutation(N:int) -> int:
+def best_linear_permutation(N:int) -> int:
   """Optimal linear permutation value to achieve larger L1-distance for a LHD
 
   Args:
@@ -80,7 +80,7 @@ def BestLinearPermutation(N:int) -> int:
       ValueError:  If `N` is not a prime integer
 
   Returns:
-      int: Optimal value of `b` to apply a linear level permutation and achieve higher $L_1$-distance. That is $D_b = D + b (mod \\, N)$
+      Optimal value of `b` to apply a linear level permutation and achieve higher $L_1$-distance. That is $D_b = D + b (mod \\, N)$
   """
   if not is_prime(N):
     raise ValueError("'N' must be a prime number")
@@ -115,20 +115,20 @@ def maximinLHD(size: tuple[int, int], h: list[int] = None,
       ValueError: If `method` is not 'LP' or 'WT'
 
   Returns:
-      npt.ArrayLike: A maximin LHD based on the L1-distance. Construction is obtained by applying Williams transformation on linearly permuted good lattice point (GLP) designs
+      A maximin LHD based on the L1-distance. Construction is obtained by applying Williams transformation on linearly permuted good lattice point (GLP) designs
   Example:
   ```{python}
   import pyLHD
   x = pyLHD.GoodLatticePoint(size = (11,10))
-  pyLHD.LqDistance(x)
+  pyLHD.LqDistance(x).design()
   ```
   ```{python}
   y = pyLHD.maximinLHD(size = (11,10), method = 'LP')
-  pyLHD.LqDistance(y)
+  pyLHD.LqDistance(y).design()
   ```
   ```{python}
   w = pyLHD.maximinLHD(size = (11,10), method = 'WT')
-  pyLHD.LqDistance(w)
+  pyLHD.LqDistance(w).design()
   ```
   """
 
@@ -146,7 +146,7 @@ def maximinLHD(size: tuple[int, int], h: list[int] = None,
     return best_b  
   
   if is_prime(n):
-    b = BestLinearPermutation(n)
+    b = best_linear_permutation(n)
   else:
     transform_func = lambda x: x if method == 'LP' else WilliamsTransform
     b = find_best_b(transform_func)

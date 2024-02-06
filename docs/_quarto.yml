@@ -37,9 +37,9 @@ quartodoc:
     - title: Maximin LHD
       desc: Algebraic Constructions of Maximin LHD
       contents:
-        - maximin.BestLinearPermutation
+        - maximin.best_linear_permutation
         - maximin.EquidistantLHD
-        - maximin.LeaveOneOut
+        - maximin.leave_one_out
         - maximin.maximinLHD
     - title: Orthogonal LHD
       desc: Algebraic Constructions of Orthogonal LHD
@@ -75,7 +75,6 @@ quartodoc:
         - helpers.is_prime
         - helpers.is_LHD
         - helpers.is_balanced_design
-        - helpers.lapply
         - helpers.level_permutation
         - helpers.permute_columns
         - helpers.permute_rows
