@@ -1,0 +1,34 @@
+# projections.UPC_lower_bound { #pyLHD.projections.UPC_lower_bound }
+
+`projections.UPC_lower_bound(arr)`
+
+Uniform Projection Criteria Lower Bound
+
+## Parameters
+
+| Name   | Type                  | Description     | Default    |
+|--------|-----------------------|-----------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray | _required_ |
+
+## Returns
+
+| Type   | Description                                                                                       |
+|--------|---------------------------------------------------------------------------------------------------|
+| float  | The lower bound of the Uniform projection criteria, whenever `arr` is a balanced $(N,s^m)$ design |
+
+## Notes
+
+The lower bound is achieved if and only if the design $D$ is an equidistant design under the $L_1$-distance
+
+Example:
+```{python}
+import pyLHD
+sample = pyLHD.EquidistantLHD(N=11)
+sample
+```
+```{python}
+pyLHD.UniformProCriterion(sample)
+```
+```{python}
+pyLHD.UPC_lower_bound(sample)
+```

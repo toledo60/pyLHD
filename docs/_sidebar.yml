@@ -16,6 +16,7 @@ website:
     - contents:
       - reference/projections.best_linear_permutation.qmd
       - reference/projections.UniformProLHD.qmd
+      - reference/projections.UPC_lower_bound.qmd
       section: Projection Designs
     - contents:
       - reference/orthogonal.OLHD_Butler01.qmd

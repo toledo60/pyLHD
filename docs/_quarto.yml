@@ -46,6 +46,7 @@ quartodoc:
       contents:
         - projections.best_linear_permutation
         - projections.UniformProLHD
+        - projections.UPC_lower_bound
     - title: Orthogonal LHD
       desc: Algebraic Constructions of Orthogonal LHD
       contents:
