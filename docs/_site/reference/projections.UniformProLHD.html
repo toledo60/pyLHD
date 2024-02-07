@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>base.goodlatticepoint</title>
+<title>projections.uniformprolhd</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,6 +101,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -135,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/base.LatinSquare.html">Base Designs</a></li><li class="breadcrumb-item"><a href="../reference/base.GoodLatticePoint.html">base.GoodLatticePoint</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/projections.best_linear_permutation.html">Projection Designs</a></li><li class="breadcrumb-item"><a href="../reference/projections.UniformProLHD.html">projections.UniformProLHD</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -176,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/base.GoodLatticePoint.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/base.GoodLatticePoint.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">base.GoodLatticePoint</span></a>
   </div>
 </li>
@@ -234,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/projections.UniformProLHD.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/projections.UniformProLHD.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">projections.UniformProLHD</span></a>
   </div>
 </li>
@@ -500,6 +529,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#raises" id="toc-raises" class="nav-link" data-scroll-target="#raises">Raises</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
   </ul>
 </nav>
@@ -507,9 +537,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/base.LatinSquare.html">Base Designs</a></li><li class="breadcrumb-item"><a href="../reference/base.GoodLatticePoint.html">base.GoodLatticePoint</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/projections.best_linear_permutation.html">Projection Designs</a></li><li class="breadcrumb-item"><a href="../reference/projections.UniformProLHD.html">projections.UniformProLHD</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">base.GoodLatticePoint</h1>
+<h1 class="title">projections.UniformProLHD</h1>
 </div>
 
 
@@ -526,17 +556,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><code>base.GoodLatticePoint(size, h=None, seed=None)</code></p>
-<p>Good Lattice Point (GLP) Design</p>
+<p><code>projections.UniformProLHD(N)</code></p>
+<p>Generate a Uniform Projection Design</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
-<colgroup>
-<col style="width: 2%">
-<col style="width: 26%">
-<col style="width: 66%">
-<col style="width: 3%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -547,22 +571,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>size</code></td>
-<td>tuple of ints</td>
-<td>Output shape of (n,d), where <code>n</code> and <code>d</code> are the number of rows and columns, respectively</td>
+<td><code>N</code></td>
+<td>int</td>
+<td>An odd integer</td>
 <td><em>required</em></td>
 </tr>
-<tr class="even">
-<td><code>h</code></td>
-<td>list of ints</td>
-<td>A generator vector used to multiply each row of the design. Each element in <code>h</code> must be smaller than and coprime to <code>n</code></td>
-<td><code>None</code></td>
+</tbody>
+</table>
+</section>
+<section id="raises" class="level2">
+<h2 class="anchored" data-anchor-id="raises">Raises</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
 </tr>
+</thead>
+<tbody>
 <tr class="odd">
-<td><code>seed</code></td>
-<td>typing.Optional[typing.Union[int, numpy.numpy.random.numpy.random.Generator]]</td>
-<td>If <code>seed</code>is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a `<code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>
-<td><code>None</code></td>
+<td>ValueError</td>
+<td>If <code>N</code> is not an odd integer</td>
 </tr>
 </tbody>
 </table>
@@ -570,10 +599,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns" class="level2">
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 83%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Type</th>
@@ -583,40 +608,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>numpy.numpy.ndarray</td>
-<td>Generated random (n x d) Good lattice point set, where each column is a random permutation of {0,1,…,n-1}</td>
+<td>An <span class="math inline">\((N \times N-1)\)</span> Uniform projection design</td>
 </tr>
 </tbody>
 </table>
-<p>Examples:</p>
-<div id="488386af" class="cell" data-execution_count="1">
+<p>Example:</p>
+<div id="a72fcd8b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.GoodLatticePoint(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> pyLHD.UniformProLHD(N<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[1, 3, 7, 9],
-       [2, 6, 4, 8],
-       [3, 9, 1, 7],
-       [4, 2, 8, 6],
-       [5, 5, 5, 5],
-       [6, 8, 2, 4],
-       [7, 1, 9, 3],
-       [8, 4, 6, 2],
-       [9, 7, 3, 1],
-       [0, 0, 0, 0]])</code></pre>
+<pre><code>array([[10,  9,  7,  5,  3,  1,  0,  2,  4,  6],
+       [ 9,  5,  1,  2,  6, 10,  7,  3,  0,  4],
+       [ 7,  1,  4, 10,  5,  0,  6,  9,  3,  2],
+       [ 5,  2, 10,  3,  4,  9,  1,  6,  7,  0],
+       [ 3,  6,  5,  4,  7,  2,  9,  0, 10,  1],
+       [ 1, 10,  0,  9,  2,  7,  4,  5,  6,  3],
+       [ 0,  7,  6,  1,  9,  4,  3, 10,  2,  5],
+       [ 2,  3,  9,  6,  0,  5, 10,  4,  1,  7],
+       [ 4,  0,  3,  7, 10,  6,  2,  1,  5,  9],
+       [ 6,  4,  2,  0,  1,  3,  5,  7,  9, 10],
+       [ 8,  8,  8,  8,  8,  8,  8,  8,  8,  8]])</code></pre>
 </div>
 </div>
-<div id="a5e31ff2" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.GoodLatticePoint(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">3</span>),seed <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="847459fb" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.UniformProCriterion(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[3, 1, 9],
-       [6, 2, 8],
-       [9, 3, 7],
-       [2, 4, 6],
-       [5, 5, 5],
-       [8, 6, 4],
-       [1, 7, 3],
-       [4, 8, 2],
-       [7, 9, 1],
-       [0, 0, 0]])</code></pre>
+<pre><code>0.0032751443814554235</code></pre>
 </div>
 </div>
 

@@ -4,9 +4,6 @@ import numpy.typing as npt
 from typing import Optional, Union
 from pyLHD.helpers import check_seed, is_prime, WilliamsTransform
 
-
-# --- Butler, N.A. (2001) Construction --- #
-
 def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """ Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)
 
@@ -85,7 +82,6 @@ def OLHD_Butler01(size: tuple[int,int],seed: Optional[Union[int, np.random.Gener
     X = np.column_stack((X0, X1))
   return X
 
-# --- Sun et al. (2010) Construction --- #
 
 def OLHD_Sun10(C: int, r: int, type: str = 'odd') -> np.ndarray:
   """Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)
@@ -152,8 +148,6 @@ def OLHD_Sun10(C: int, r: int, type: str = 'odd') -> np.ndarray:
 
   return X
 
-
-# --- Cioppa and Lucas (2007) Constuction --- #
 
 def OLHD_Cioppa07(m:int) -> np.ndarray:
   """Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)
@@ -276,8 +270,6 @@ def OLHD_Cioppa07(m:int) -> np.ndarray:
   return np.vstack((T0,CP,-T0))
 
 
-# --- Ye (1998) Constuction --- #
-
 def OLHD_Ye98(m:int,seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)
 
@@ -390,8 +382,6 @@ def OLHD_Ye98(m:int,seed: Optional[Union[int, np.random.Generator]] = None) -> n
   CP = np.zeros((1,2*m-2))
   return np.vstack((T0,CP,-T0))
   
-
-# --- Lin et al. (2009) Constuction --- #
 
 def OLHD_Lin09(OLHD: npt.ArrayLike,OA: npt.ArrayLike ) -> np.ndarray:
   """Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)

@@ -35,12 +35,17 @@ quartodoc:
         - base.LatinHypercube
         - base.GoodLatticePoint
     - title: Maximin LHD
-      desc: Algebraic Constructions of Maximin LHD
+      desc: Algebraic Constructions of Maximim LHD
       contents:
         - maximin.best_linear_permutation
         - maximin.EquidistantLHD
         - maximin.leave_one_out
         - maximin.maximinLHD
+    - title: Projection Designs
+      desc: Algebraic Constructions for Optimized Projections of LHD
+      contents:
+        - projections.best_linear_permutation
+        - projections.UniformProLHD
     - title: Orthogonal LHD
       desc: Algebraic Constructions of Orthogonal LHD
       contents:

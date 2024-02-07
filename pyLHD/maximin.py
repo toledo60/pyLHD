@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.typing as npt
 from typing import Union, Optional, Literal
-from pyLHD.helpers import level_permutation, WilliamsTransform,is_prime
+from pyLHD.helpers import level_permutation, WilliamsTransform, is_prime, euler_phi, totatives, replace_values
 from pyLHD.base import GoodLatticePoint
 from pyLHD.criteria import LqDistance
 
@@ -139,7 +139,7 @@ def maximinLHD(size: tuple[int, int], h: list[int] = None,
     max_L1 = float('-inf')
     best_b = -1
     for it in range(n):
-      current_L1 = LqDistance(transform_func(level_permutation(D, b=it)))
+      current_L1 = LqDistance(transform_func(level_permutation(D, b=it))).design()
       if current_L1 > max_L1:
         max_L1 = current_L1
         best_b = it
@@ -158,16 +158,22 @@ def maximinLHD(size: tuple[int, int], h: list[int] = None,
     raise ValueError("'method' must be either 'LP' or 'WT'")
 
 
-def EquidistantLHD(N:int) -> np.ndarray:
+def EquidistantLHD(N:int, method:int = 1) -> np.ndarray:
   """Generate an Equidistant Latin Hypercube
 
   Args:
       N (int): An odd integer
+      method (int): Specify construction method, can either be 1 or 2. Defaults to 1.
 
   Returns:
-      npt.ArrayLike: Given an odd integer $N=(2m+1)$, return an $(m \\times m)$ equidistant LHD. 
-          This design, is a cyclic Latin square, with each level occuring once in each row and once in each column.
+      If `method=1`, given an odd integer $N=(2m+1)$, return an $(m \\times m)$ equidistant LHD. This design, is a cyclic Latin square, with each level occuring once in each row and once in each column.
           It is also a maximin distance LHD in terms of $L_1$-distance
+  
+  Notes:
+      If `method=1`, construction method is based on "OPTIMAL MAXIMIN L1-DISTANCE LATIN HYPERCUBE DESIGNS BASED ON GOOD LATTICE POINT DESIGNS" by LIN WANG QIAN XIAO AND HONGQUAN XU
+      
+      If `method=2`, constuction method is based on "A CONSTRUCTION METHOD FOR MAXIMIN L1-DISTANCE LATIN HYPERCUBE DESIGNS" by Ru Yuan, Yuhao Yin, Hongquan Xu, Min-Qian Liu
+      
   Example:
   ```{python}
   import pyLHD
@@ -183,7 +189,19 @@ def EquidistantLHD(N:int) -> np.ndarray:
   l1.design()
   ```
   """
-  m = (N-1)//2
-  D = GoodLatticePoint(size = (N,N-1))
-  w = WilliamsTransform(D, modified=True)//2
-  return w[:m,:m]
+  if method == 1:
+    if not is_prime(N):
+      raise ValueError('N must be an odd prime number')
+    m = (N-1)//2
+    D = GoodLatticePoint(size = (N,N-1))
+    w = WilliamsTransform(D, modified=True)//2
+    return w[:m,:m]
+  elif method == 2:
+    n = euler_phi(N)//2
+    h = totatives(N)[:n]
+    H_i, H_j = np.meshgrid(h,h)
+    product_mod_N = (H_i * H_j) % N
+    arr = np.minimum(product_mod_N, N - product_mod_N)
+    return replace_values(arr, mapping= {value: i+1 for i, value in enumerate(h)})
+  else:
+    raise ValueError('method can only be 1 or 2')

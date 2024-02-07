@@ -1,0 +1,33 @@
+# projections.UniformProLHD { #pyLHD.projections.UniformProLHD }
+
+`projections.UniformProLHD(N)`
+
+Generate a Uniform Projection Design
+
+## Parameters
+
+| Name   | Type   | Description    | Default    |
+|--------|--------|----------------|------------|
+| `N`    | int    | An odd integer | _required_ |
+
+## Raises
+
+| Type       | Description                  |
+|------------|------------------------------|
+| ValueError | If `N` is not an odd integer |
+
+## Returns
+
+| Type                | Description                                   |
+|---------------------|-----------------------------------------------|
+| numpy.numpy.ndarray | An $(N \times N-1)$ Uniform projection design |
+
+Example:
+```{python}
+import pyLHD
+sample = pyLHD.UniformProLHD(N=11)
+sample
+```
+```{python}
+pyLHD.UniformProCriterion(sample)
+```

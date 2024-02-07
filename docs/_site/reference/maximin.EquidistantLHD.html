@@ -249,12 +249,35 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Orthogonal LHD</span></a>
+ <span class="menu-text">Projection Designs</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.best_linear_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.best_linear_permutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.UniformProLHD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.UniformProLHD</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Orthogonal LHD</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/orthogonal.OLHD_Butler01.html" class="sidebar-item-text sidebar-link">
@@ -295,13 +318,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Criteria</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/criteria.Criteria.html" class="sidebar-item-text sidebar-link">
@@ -366,13 +389,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Helpers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/helpers.are_coprime.html" class="sidebar-item-text sidebar-link">
@@ -507,6 +530,7 @@ window.Quarto = {
   <ul>
   <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   </ul>
 </nav>
     </div>
@@ -532,11 +556,17 @@ window.Quarto = {
 </header>
 
 
-<p><code>maximin.EquidistantLHD(N)</code></p>
+<p><code>maximin.EquidistantLHD(N, method=1)</code></p>
 <p>Generate an Equidistant Latin Hypercube</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 69%">
+<col style="width: 12%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -551,6 +581,12 @@ window.Quarto = {
 <td>int</td>
 <td>An odd integer</td>
 <td><em>required</em></td>
+</tr>
+<tr class="even">
+<td><code>method</code></td>
+<td>int</td>
+<td>Specify construction method, can either be 1 or 2. Defaults to 1.</td>
+<td><code>1</code></td>
 </tr>
 </tbody>
 </table>
@@ -571,12 +607,17 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td>numpy.numpy.ndarray</td>
-<td>npt.ArrayLike: Given an odd integer <span class="math inline">\(N=(2m+1)\)</span>, return an <span class="math inline">\((m \times m)\)</span> equidistant LHD. This design, is a cyclic Latin square, with each level occuring once in each row and once in each column. It is also a maximin distance LHD in terms of <span class="math inline">\(L_1\)</span>-distance</td>
+<td>If <code>method=1</code>, given an odd integer <span class="math inline">\(N=(2m+1)\)</span>, return an <span class="math inline">\((m \times m)\)</span> equidistant LHD. This design, is a cyclic Latin square, with each level occuring once in each row and once in each column. It is also a maximin distance LHD in terms of <span class="math inline">\(L_1\)</span>-distance</td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p>If <code>method=1</code>, construction method is based on “OPTIMAL MAXIMIN L1-DISTANCE LATIN HYPERCUBE DESIGNS BASED ON GOOD LATTICE POINT DESIGNS” by LIN WANG QIAN XIAO AND HONGQUAN XU</p>
+<p>If <code>method=2</code>, constuction method is based on “A CONSTRUCTION METHOD FOR MAXIMIN L1-DISTANCE LATIN HYPERCUBE DESIGNS” by Ru Yuan, Yuhao Yin, Hongquan Xu, Min-Qian Liu</p>
 <p>Example:</p>
-<div id="74b76071" class="cell" data-execution_count="1">
+<div id="ac37467b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">11</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> pyLHD.EquidistantLHD(N <span class="op">=</span> N)</span>
@@ -589,14 +630,14 @@ window.Quarto = {
        [5, 1, 4, 2, 3]])</code></pre>
 </div>
 </div>
-<div id="9d6f42f4" class="cell" data-execution_count="2">
+<div id="4e698f44" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> pyLHD.LqDistance(sample,q<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>l1.pairwise()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>array([10., 10., 10., 10., 10., 10., 10., 10., 10., 10.])</code></pre>
 </div>
 </div>
-<div id="6028e7d3" class="cell" data-execution_count="3">
+<div id="a80db41d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>l1.design()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>10.0</code></pre>

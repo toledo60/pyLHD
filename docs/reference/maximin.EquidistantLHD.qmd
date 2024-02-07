@@ -1,20 +1,27 @@
 # maximin.EquidistantLHD { #pyLHD.maximin.EquidistantLHD }
 
-`maximin.EquidistantLHD(N)`
+`maximin.EquidistantLHD(N, method=1)`
 
 Generate an Equidistant Latin Hypercube
 
 ## Parameters
 
-| Name   | Type   | Description    | Default    |
-|--------|--------|----------------|------------|
-| `N`    | int    | An odd integer | _required_ |
+| Name     | Type   | Description                                                       | Default    |
+|----------|--------|-------------------------------------------------------------------|------------|
+| `N`      | int    | An odd integer                                                    | _required_ |
+| `method` | int    | Specify construction method, can either be 1 or 2. Defaults to 1. | `1`        |
 
 ## Returns
 
-| Type                | Description                                                                                                                                                                                                                                                       |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| numpy.numpy.ndarray | npt.ArrayLike: Given an odd integer $N=(2m+1)$, return an $(m \times m)$ equidistant LHD.  This design, is a cyclic Latin square, with each level occuring once in each row and once in each column. It is also a maximin distance LHD in terms of $L_1$-distance |
+| Type                | Description                                                                                                                                                                                                                                                      |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | If `method=1`, given an odd integer $N=(2m+1)$, return an $(m \times m)$ equidistant LHD. This design, is a cyclic Latin square, with each level occuring once in each row and once in each column. It is also a maximin distance LHD in terms of $L_1$-distance |
+
+## Notes
+
+If `method=1`, construction method is based on "OPTIMAL MAXIMIN L1-DISTANCE LATIN HYPERCUBE DESIGNS BASED ON GOOD LATTICE POINT DESIGNS" by LIN WANG QIAN XIAO AND HONGQUAN XU
+
+If `method=2`, constuction method is based on "A CONSTRUCTION METHOD FOR MAXIMIN L1-DISTANCE LATIN HYPERCUBE DESIGNS" by Ru Yuan, Yuhao Yin, Hongquan Xu, Min-Qian Liu
 
 Example:
 ```{python}

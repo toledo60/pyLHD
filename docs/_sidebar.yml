@@ -14,6 +14,10 @@ website:
       - reference/maximin.maximinLHD.qmd
       section: Maximin LHD
     - contents:
+      - reference/projections.best_linear_permutation.qmd
+      - reference/projections.UniformProLHD.qmd
+      section: Projection Designs
+    - contents:
       - reference/orthogonal.OLHD_Butler01.qmd
       - reference/orthogonal.OLHD_Cioppa07.qmd
       - reference/orthogonal.OLHD_Lin09.qmd

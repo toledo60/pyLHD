@@ -1441,7 +1441,7 @@
     "href": "reference/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nAlgebraic Constructions of Maximin LHD\n\n\n\nmaximin.best_linear_permutation\nOptimal linear permutation value to achieve larger L1-distance for a LHD\n\n\nmaximin.EquidistantLHD\nGenerate an Equidistant Latin Hypercube\n\n\nmaximin.leave_one_out\nApply the Leave-one-out Procedure to Generate a Maxmin LHD\n\n\nmaximin.maximinLHD\nGenerate a maximin LHD based on the L1-distance\n\n\n\n\n\n\nAlgebraic Constructions of Orthogonal LHD\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling and Projection Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.LqDistance\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion\n\n\n\n\n\n\nMiscellaneous Utilities for Manipulating LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.first_n_primes\nGernate the first n prime numbers\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.level_permutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.primes_range\nGenerate prime numbers from a specified range\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.verify_generator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.WilliamsTransform\nWilliams Transformation\n\n\nhelpers.zero_base\nNormalize the columns by subtracting the minimum element of each column",
+    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nAlgebraic Constructions of Maximim LHD\n\n\n\nmaximin.best_linear_permutation\nOptimal linear permutation value to achieve larger L1-distance for a LHD\n\n\nmaximin.EquidistantLHD\nGenerate an Equidistant Latin Hypercube\n\n\nmaximin.leave_one_out\nApply the Leave-one-out Procedure to Generate a Maxmin LHD\n\n\nmaximin.maximinLHD\nGenerate a maximin LHD based on the L1-distance\n\n\n\n\n\n\nAlgebraic Constructions for Optimized Projections of LHD\n\n\n\nprojections.best_linear_permutation\nOptimal linear permutation value to minimize the uniform projection criterion\n\n\nprojections.UniformProLHD\nGenerate a Uniform Projection Design\n\n\n\n\n\n\nAlgebraic Constructions of Orthogonal LHD\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling and Projection Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.LqDistance\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion\n\n\n\n\n\n\nMiscellaneous Utilities for Manipulating LHDs\n\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.column_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.first_n_primes\nGernate the first n prime numbers\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.level_permutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.primes_range\nGenerate prime numbers from a specified range\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.verify_generator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.WilliamsTransform\nWilliams Transformation\n\n\nhelpers.zero_base\nNormalize the columns by subtracting the minimum element of each column",
     "crumbs": [
       "Reference",
       "Function reference"
@@ -1463,7 +1463,7 @@
     "href": "reference/index.html#maximin-lhd",
     "title": "Function reference",
     "section": "",
-    "text": "Algebraic Constructions of Maximin LHD\n\n\n\nmaximin.best_linear_permutation\nOptimal linear permutation value to achieve larger L1-distance for a LHD\n\n\nmaximin.EquidistantLHD\nGenerate an Equidistant Latin Hypercube\n\n\nmaximin.leave_one_out\nApply the Leave-one-out Procedure to Generate a Maxmin LHD\n\n\nmaximin.maximinLHD\nGenerate a maximin LHD based on the L1-distance",
+    "text": "Algebraic Constructions of Maximim LHD\n\n\n\nmaximin.best_linear_permutation\nOptimal linear permutation value to achieve larger L1-distance for a LHD\n\n\nmaximin.EquidistantLHD\nGenerate an Equidistant Latin Hypercube\n\n\nmaximin.leave_one_out\nApply the Leave-one-out Procedure to Generate a Maxmin LHD\n\n\nmaximin.maximinLHD\nGenerate a maximin LHD based on the L1-distance",
     "crumbs": [
       "Reference",
       "Function reference"
@@ -1980,7 +1980,7 @@
     "href": "reference/maximin.EquidistantLHD.html",
     "title": "maximin.EquidistantLHD",
     "section": "",
-    "text": "maximin.EquidistantLHD(N)\nGenerate an Equidistant Latin Hypercube",
+    "text": "maximin.EquidistantLHD(N, method=1)\nGenerate an Equidistant Latin Hypercube",
     "crumbs": [
       "Reference",
       "Maximin LHD",
@@ -1992,7 +1992,7 @@
     "href": "reference/maximin.EquidistantLHD.html#parameters",
     "title": "maximin.EquidistantLHD",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nN\nint\nAn odd integer\nrequired",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nN\nint\nAn odd integer\nrequired\n\n\nmethod\nint\nSpecify construction method, can either be 1 or 2. Defaults to 1.\n1",
     "crumbs": [
       "Reference",
       "Maximin LHD",
@@ -2004,7 +2004,7 @@
     "href": "reference/maximin.EquidistantLHD.html#returns",
     "title": "maximin.EquidistantLHD",
     "section": "Returns",
-    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ndarray\nnpt.ArrayLike: Given an odd integer \\(N=(2m+1)\\), return an \\((m \\times m)\\) equidistant LHD. This design, is a cyclic Latin square, with each level occuring once in each row and once in each column. It is also a maximin distance LHD in terms of \\(L_1\\)-distance\n\n\n\nExample:\n\nimport pyLHD\nN = 11\nsample = pyLHD.EquidistantLHD(N = N)\nsample\n\narray([[1, 2, 3, 4, 5],\n       [2, 4, 5, 3, 1],\n       [3, 5, 2, 1, 4],\n       [4, 3, 1, 5, 2],\n       [5, 1, 4, 2, 3]])\n\n\n\nl1 = pyLHD.LqDistance(sample,q=1)\nl1.pairwise()\n\narray([10., 10., 10., 10., 10., 10., 10., 10., 10., 10.])\n\n\n\nl1.design()\n\n10.0",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ndarray\nIf method=1, given an odd integer \\(N=(2m+1)\\), return an \\((m \\times m)\\) equidistant LHD. This design, is a cyclic Latin square, with each level occuring once in each row and once in each column. It is also a maximin distance LHD in terms of \\(L_1\\)-distance",
     "crumbs": [
       "Reference",
       "Maximin LHD",
@@ -2328,6 +2328,125 @@
       "Reference",
       "Maximin LHD",
       "maximin.best_linear_permutation"
+    ]
+  },
+  {
+    "objectID": "reference/maximin.EquidistantLHD.html#notes",
+    "href": "reference/maximin.EquidistantLHD.html#notes",
+    "title": "maximin.EquidistantLHD",
+    "section": "Notes",
+    "text": "Notes\nIf method=1, construction method is based on “OPTIMAL MAXIMIN L1-DISTANCE LATIN HYPERCUBE DESIGNS BASED ON GOOD LATTICE POINT DESIGNS” by LIN WANG QIAN XIAO AND HONGQUAN XU\nIf method=2, constuction method is based on “A CONSTRUCTION METHOD FOR MAXIMIN L1-DISTANCE LATIN HYPERCUBE DESIGNS” by Ru Yuan, Yuhao Yin, Hongquan Xu, Min-Qian Liu\nExample:\n\nimport pyLHD\nN = 11\nsample = pyLHD.EquidistantLHD(N = N)\nsample\n\narray([[1, 2, 3, 4, 5],\n       [2, 4, 5, 3, 1],\n       [3, 5, 2, 1, 4],\n       [4, 3, 1, 5, 2],\n       [5, 1, 4, 2, 3]])\n\n\n\nl1 = pyLHD.LqDistance(sample,q=1)\nl1.pairwise()\n\narray([10., 10., 10., 10., 10., 10., 10., 10., 10., 10.])\n\n\n\nl1.design()\n\n10.0",
+    "crumbs": [
+      "Reference",
+      "Maximin LHD",
+      "maximin.EquidistantLHD"
+    ]
+  },
+  {
+    "objectID": "reference/projections.best_linear_permutation.html",
+    "href": "reference/projections.best_linear_permutation.html",
+    "title": "projections.best_linear_permutation",
+    "section": "",
+    "text": "projections.best_linear_permutation(N)\nOptimal linear permutation value to minimize the uniform projection criterion\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nN\nint\nA prime integer\nrequired\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nValueError\nIf N is not a prime integer\n\n\n\n\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nint\nOptimal value of b to apply a linear level permutation and minimize the uniform projection criterion. That is \\(D_b = D + b (mod \\, N)\\)",
+    "crumbs": [
+      "Reference",
+      "Projection Designs",
+      "projections.best_linear_permutation"
+    ]
+  },
+  {
+    "objectID": "reference/projections.best_linear_permutation.html#parameters",
+    "href": "reference/projections.best_linear_permutation.html#parameters",
+    "title": "projections.best_linear_permutation",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nN\nint\nA prime integer\nrequired",
+    "crumbs": [
+      "Reference",
+      "Projection Designs",
+      "projections.best_linear_permutation"
+    ]
+  },
+  {
+    "objectID": "reference/projections.best_linear_permutation.html#raises",
+    "href": "reference/projections.best_linear_permutation.html#raises",
+    "title": "projections.best_linear_permutation",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\nValueError\nIf N is not a prime integer",
+    "crumbs": [
+      "Reference",
+      "Projection Designs",
+      "projections.best_linear_permutation"
+    ]
+  },
+  {
+    "objectID": "reference/projections.best_linear_permutation.html#returns",
+    "href": "reference/projections.best_linear_permutation.html#returns",
+    "title": "projections.best_linear_permutation",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\nint\nOptimal value of b to apply a linear level permutation and minimize the uniform projection criterion. That is \\(D_b = D + b (mod \\, N)\\)",
+    "crumbs": [
+      "Reference",
+      "Projection Designs",
+      "projections.best_linear_permutation"
+    ]
+  },
+  {
+    "objectID": "reference/projections.UniformProLHD.html",
+    "href": "reference/projections.UniformProLHD.html",
+    "title": "projections.UniformProLHD",
+    "section": "",
+    "text": "projections.UniformProLHD(N)\nGenerate a Uniform Projection Design",
+    "crumbs": [
+      "Reference",
+      "Projection Designs",
+      "projections.UniformProLHD"
+    ]
+  },
+  {
+    "objectID": "reference/projections.UniformProLHD.html#parameters",
+    "href": "reference/projections.UniformProLHD.html#parameters",
+    "title": "projections.UniformProLHD",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nN\nint\nAn odd integer\nrequired",
+    "crumbs": [
+      "Reference",
+      "Projection Designs",
+      "projections.UniformProLHD"
+    ]
+  },
+  {
+    "objectID": "reference/projections.UniformProLHD.html#raises",
+    "href": "reference/projections.UniformProLHD.html#raises",
+    "title": "projections.UniformProLHD",
+    "section": "Raises",
+    "text": "Raises\n\n\n\nType\nDescription\n\n\n\n\nValueError\nIf N is not an odd integer",
+    "crumbs": [
+      "Reference",
+      "Projection Designs",
+      "projections.UniformProLHD"
+    ]
+  },
+  {
+    "objectID": "reference/projections.UniformProLHD.html#returns",
+    "href": "reference/projections.UniformProLHD.html#returns",
+    "title": "projections.UniformProLHD",
+    "section": "Returns",
+    "text": "Returns\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ndarray\nAn \\((N \\times N-1)\\) Uniform projection design\n\n\n\nExample:\n\nimport pyLHD\nsample = pyLHD.UniformProLHD(N=11)\nsample\n\narray([[10,  9,  7,  5,  3,  1,  0,  2,  4,  6],\n       [ 9,  5,  1,  2,  6, 10,  7,  3,  0,  4],\n       [ 7,  1,  4, 10,  5,  0,  6,  9,  3,  2],\n       [ 5,  2, 10,  3,  4,  9,  1,  6,  7,  0],\n       [ 3,  6,  5,  4,  7,  2,  9,  0, 10,  1],\n       [ 1, 10,  0,  9,  2,  7,  4,  5,  6,  3],\n       [ 0,  7,  6,  1,  9,  4,  3, 10,  2,  5],\n       [ 2,  3,  9,  6,  0,  5, 10,  4,  1,  7],\n       [ 4,  0,  3,  7, 10,  6,  2,  1,  5,  9],\n       [ 6,  4,  2,  0,  1,  3,  5,  7,  9, 10],\n       [ 8,  8,  8,  8,  8,  8,  8,  8,  8,  8]])\n\n\n\npyLHD.UniformProCriterion(sample)\n\n0.0032751443814554235",
+    "crumbs": [
+      "Reference",
+      "Projection Designs",
+      "projections.UniformProLHD"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#projection-designs",
+    "href": "reference/index.html#projection-designs",
+    "title": "Function reference",
+    "section": "",
+    "text": "Algebraic Constructions for Optimized Projections of LHD\n\n\n\nprojections.best_linear_permutation\nOptimal linear permutation value to minimize the uniform projection criterion\n\n\nprojections.UniformProLHD\nGenerate a Uniform Projection Design",
+    "crumbs": [
+      "Reference",
+      "Function reference"
     ]
   }
 ]

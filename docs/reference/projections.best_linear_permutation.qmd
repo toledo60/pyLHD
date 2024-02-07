@@ -1,0 +1,23 @@
+# projections.best_linear_permutation { #pyLHD.projections.best_linear_permutation }
+
+`projections.best_linear_permutation(N)`
+
+Optimal linear permutation value to minimize the uniform projection criterion
+
+## Parameters
+
+| Name   | Type   | Description     | Default    |
+|--------|--------|-----------------|------------|
+| `N`    | int    | A prime integer | _required_ |
+
+## Raises
+
+| Type       | Description                   |
+|------------|-------------------------------|
+| ValueError | If `N` is not a prime integer |
+
+## Returns
+
+| Type   | Description                                                                                                                              |
+|--------|------------------------------------------------------------------------------------------------------------------------------------------|
+| int    | Optimal value of `b` to apply a linear level permutation and minimize the uniform projection criterion. That is $D_b = D + b (mod \, N)$ |

@@ -1,7 +1,7 @@
 import math
 import numpy as np
 import numpy.typing as npt
-from typing import Optional, List, Union, Any, Callable, NoReturn
+from typing import Optional, List, Union, NoReturn
 from itertools import combinations
 
 def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -> np.ndarray:
