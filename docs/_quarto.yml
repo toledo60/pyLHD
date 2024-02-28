@@ -77,7 +77,8 @@ quartodoc:
         - helpers.column_combinations
         - helpers.distance_matrix
         - helpers.euler_phi
-        - helpers.first_n_primes
+        - helpers.generate_primes
+        - helpers.generate_prime_powers
         - helpers.is_prime
         - helpers.is_LHD
         - helpers.is_balanced_design

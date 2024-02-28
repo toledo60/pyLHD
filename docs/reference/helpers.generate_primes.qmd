@@ -1,0 +1,23 @@
+# helpers.generate_primes { #pyLHD.helpers.generate_primes }
+
+`helpers.generate_primes(n)`
+
+Gernate the first `n` prime numbers
+
+## Parameters
+
+| Name   | Type   | Description                               | Default    |
+|--------|--------|-------------------------------------------|------------|
+| `n`    | int    | Total number of prime numbers to generate | _required_ |
+
+## Returns
+
+| Type               | Description                                                                                           |
+|--------------------|-------------------------------------------------------------------------------------------------------|
+| typing.List\[int\] | List[int]: A list of integers with the first `n` prime numbers, including 2 as the first prime number |
+
+Example:
+```{python}
+import pyLHD
+pyLHD.generate_primes(10)
+```

@@ -1,0 +1,5 @@
+# helpers.generate_prime_powers { #pyLHD.helpers.generate_prime_powers }
+
+`helpers.generate_prime_powers(n)`
+
+Generate the first `n` prime powers

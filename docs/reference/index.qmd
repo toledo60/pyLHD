@@ -72,7 +72,8 @@ Miscellaneous Utilities for Manipulating LHDs
 | [helpers.column_combinations](helpers.column_combinations.qmd#pyLHD.helpers.column_combinations) | Generates all unique combinations of columns from the given array, selecting 'k' columns at a time. |
 | [helpers.distance_matrix](helpers.distance_matrix.qmd#pyLHD.helpers.distance_matrix) | Distance matrix based on specified distance measure |
 | [helpers.euler_phi](helpers.euler_phi.qmd#pyLHD.helpers.euler_phi) | Euler's Totient function |
-| [helpers.first_n_primes](helpers.first_n_primes.qmd#pyLHD.helpers.first_n_primes) | Gernate the first `n` prime numbers |
+| [helpers.generate_primes](helpers.generate_primes.qmd#pyLHD.helpers.generate_primes) | Gernate the first `n` prime numbers |
+| [helpers.generate_prime_powers](helpers.generate_prime_powers.qmd#pyLHD.helpers.generate_prime_powers) | Generate the first `n` prime powers |
 | [helpers.is_prime](helpers.is_prime.qmd#pyLHD.helpers.is_prime) | Determine if a number is prime |
 | [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
 | [helpers.is_balanced_design](helpers.is_balanced_design.qmd#pyLHD.helpers.is_balanced_design) | Verify a design is balanced |

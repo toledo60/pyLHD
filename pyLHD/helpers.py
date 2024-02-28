@@ -476,7 +476,7 @@ def primes_range(start:int, stop:int)-> List[int]:
   return primes
 
 
-def first_n_primes(n:int) -> List[int]:
+def generate_primes(n:int) -> List[int]:
   """Gernate the first `n` prime numbers
 
   Args:
@@ -488,7 +488,7 @@ def first_n_primes(n:int) -> List[int]:
   Example:
   ```{python}
   import pyLHD
-  pyLHD.first_n_primes(10)
+  pyLHD.generate_primes(10)
   ```
   """
   if n == 0:
@@ -510,6 +510,21 @@ def first_n_primes(n:int) -> List[int]:
       primes.append(num)
     num += 2
   return primes
+
+def generate_prime_powers(n:int) -> List[int]:
+  """
+  Generate the first `n` prime powers
+  """
+  primes = generate_primes(n)
+  prime_powers = set()
+  for prime in primes:
+    power = 1
+    while prime ** power <= n:
+      prime_powers.add(prime ** power)
+      power += 1
+  return sorted(prime_powers)
+
+
 
 #################################
 ####   Checks/ Conditions #######
