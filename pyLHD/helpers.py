@@ -573,6 +573,85 @@ def is_balanced_design(arr: npt.ArrayLike, s:int) -> NoReturn:
       raise ValueError('Each level should appear (n/s) times for each factor')
 
 
+def is_cyclic(arr: npt.ArrayLike) -> bool:
+  """Verify an array is cylic
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+
+  Returns:
+      Determine if an array is cyclic. That is, each row is obtained from the row above by cyclic permutation.
+  """
+  rows, cols = arr.shape
+  for i in range(1, rows):
+    if not any((np.roll(arr[i-1], -shift) == arr[i]).all() for shift in range(cols)):
+      return False
+  return True
+
+
+def is_symmetric(arr:npt.ArrayLike, rtol:float=1e-05, atol:float=1e-08) -> bool:
+  """Verify is a matrix is symmetric
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      rtol (float, optional): The relative tolerance parameter . Defaults to 1e-05.
+      atol (float, optional): The absolute tolerance parameter . Defaults to 1e-08.
+
+  Returns:
+      True, if the matrix is symmetric
+  """
+  return np.allclose(arr, arr.T, rtol=rtol, atol=atol)
+
+
+def is_skew_symmetric(arr:npt.ArrayLike, rtol=1e-05, atol=1e-08) -> bool:
+  """Verify is a matrix is skew-symmetric
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      rtol (float, optional): The relative tolerance parameter . Defaults to 1e-05.
+      atol (float, optional): The absolute tolerance parameter . Defaults to 1e-08.
+
+  Returns:
+      True, if the matrix is skew-symmetric
+  """  
+  return np.allclose(-arr, arr.T, rtol=rtol, atol=atol)
+
+
+def is_Hadamard(arr: npt.ArrayLike, rtol=1e-05, atol=1e-08) -> bool:
+  """ Determine if a matrix is a Hadamard matrix.
+
+  Args:
+      arr (npt.ArrayLike): A numpy array.
+
+  Raises:
+      ValueError: If provided array is not a square matrix.
+      ValueError: If number of rows is not a power of 2 or not divisible by 4.
+      ValueError: If values are not +1 or -1.
+      ValueError: If H*H.T != n*I, where I is the identity matrix of order n.
+
+  Returns:
+      True if given array follows Hadamard properties, otherwise False.
+  """
+  nrows, ncols = arr.shape
+
+  if nrows != ncols:
+    raise ValueError('Must be a square matrix.')
+
+  # Hadamard matrices exist for orders 1, 2, and multiples of 4.
+  if nrows != 2 or nrows % 4 != 0 or nrows != 1:
+    raise ValueError('Number of rows must be 1, 2, or a multiple of 4.')
+
+  if not np.all(np.isin(arr, [-1, 1])):
+    raise ValueError('Elements can only be +1 or -1.')
+
+  diag = nrows * np.eye(nrows)
+  crossprod = np.dot(arr, arr.T)
+
+  if not np.allclose(diag, crossprod, rtol=rtol, atol=atol):
+    raise ValueError('Not a Hadamard matrix. H*H.T != n*I.')
+  return True
+
+
 def is_LHD(arr: npt.ArrayLike) -> NoReturn:
   """Verify Latinhypercube sampling conditions
 

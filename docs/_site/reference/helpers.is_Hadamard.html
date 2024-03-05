@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>criteria.intersite</title>
+<title>helpers.is_hadamard</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -135,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/criteria.Criteria.html">Criteria</a></li><li class="breadcrumb-item"><a href="../reference/criteria.InterSite.html">criteria.InterSite</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.is_Hadamard.html">helpers.is_Hadamard</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -193,8 +159,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/maximin.BestLinearPermutation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">maximin.BestLinearPermutation</span></a>
+  <a href="../reference/maximin.best_linear_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">maximin.best_linear_permutation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -205,8 +171,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/maximin.LeaveOneOut.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">maximin.LeaveOneOut</span></a>
+  <a href="../reference/maximin.leave_one_out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">maximin.leave_one_out</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -220,12 +186,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Orthogonal LHD</span></a>
+ <span class="menu-text">Projection Designs</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.best_linear_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.best_linear_permutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.UniformProLHD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.UniformProLHD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.UPC_lower_bound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.UPC_lower_bound</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Orthogonal LHD</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/orthogonal.OLHD_Butler01.html" class="sidebar-item-text sidebar-link">
@@ -266,13 +261,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Criteria</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/criteria.Criteria.html" class="sidebar-item-text sidebar-link">
@@ -295,18 +290,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../reference/criteria.discrepancy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">criteria.discrepancy</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/criteria.InterSite.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">criteria.InterSite</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/criteria.pairwise_InterSite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">criteria.pairwise_InterSite</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -349,13 +332,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Helpers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/helpers.are_coprime.html" class="sidebar-item-text sidebar-link">
@@ -388,8 +371,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.generate_primes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.generate_primes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.generate_prime_powers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.generate_prime_powers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_cyclic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_cyclic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.is_prime.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.is_prime</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_symmetric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_symmetric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_skew_symmetric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_skew_symmetric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_Hadamard.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">helpers.is_Hadamard</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -406,14 +425,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.lapply.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.lapply</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.LevelPermutation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.LevelPermutation</span></a>
+  <a href="../reference/helpers.level_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.level_permutation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -426,6 +439,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../reference/helpers.permute_rows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.permute_rows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.primes_range.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.primes_range</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -454,8 +473,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.VerifyGenerator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.VerifyGenerator</span></a>
+  <a href="../reference/helpers.verify_generator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.verify_generator</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -482,44 +501,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#pyLHD.helpers.is_Hadamard" id="toc-pyLHD.helpers.is_Hadamard" class="nav-link active" data-scroll-target="#pyLHD.helpers.is_Hadamard">helpers.is_Hadamard</a>
+  <ul class="collapse">
+  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#raises" id="toc-raises" class="nav-link" data-scroll-target="#raises">Raises</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/criteria.Criteria.html">Criteria</a></li><li class="breadcrumb-item"><a href="../reference/criteria.InterSite.html">criteria.InterSite</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">criteria.InterSite</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p><code>criteria.InterSite(arr, i, j, q=1, axis=0)</code></p>
-<p>Calculate the Inter-site Distance between the ith and jth index</p>
+<section id="pyLHD.helpers.is_Hadamard" class="level1">
+<h1>helpers.is_Hadamard</h1>
+<p><code>helpers.is_Hadamard(arr, rtol=1e-05, atol=1e-08)</code></p>
+<p>Determine if a matrix is a Hadamard matrix.</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
-<colgroup>
-<col style="width: 3%">
-<col style="width: 10%">
-<col style="width: 80%">
-<col style="width: 5%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -532,42 +535,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td><code>arr</code></td>
 <td>numpy.numpy.ArrayLike</td>
-<td>A numpy ndarray</td>
+<td>A numpy array.</td>
 <td><em>required</em></td>
-</tr>
-<tr class="even">
-<td><code>i</code></td>
-<td>int</td>
-<td>A positive integer, which stands for the ith row of (arr)</td>
-<td><em>required</em></td>
-</tr>
-<tr class="odd">
-<td><code>j</code></td>
-<td>int</td>
-<td>A positive integer, which stands for the jth row of (arr)</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td><code>q</code></td>
-<td>int</td>
-<td>The default is set to be 1, and it could be either 1 or 2. If (q) is 1, (inter_site) is the Manhattan (rectangular) distance. If (q) is 2, (inter_site) is the Euclidean distance.</td>
-<td><code>1</code></td>
-</tr>
-<tr class="odd">
-<td><code>axis</code></td>
-<td>int</td>
-<td>The default is set to be 0, and it coult be either 1 or 0. If (axis) is 0 compute Inter-site distance row-wise otherwise columnwise.</td>
-<td><code>0</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="returns" class="level2">
-<h2 class="anchored" data-anchor-id="returns">Returns</h2>
+<section id="raises" class="level2">
+<h2 class="anchored" data-anchor-id="raises">Raises</h2>
 <table class="table">
 <colgroup>
-<col style="width: 7%">
-<col style="width: 92%">
+<col style="width: 16%">
+<col style="width: 83%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -577,29 +556,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>float</td>
-<td>positive number indicating the distance (rectangular or Euclidean) between the ith and jth row of arr</td>
+<td>ValueError</td>
+<td>If provided array is not a square matrix.</td>
+</tr>
+<tr class="even">
+<td>ValueError</td>
+<td>If number of rows is not a power of 2 or not divisible by 4.</td>
+</tr>
+<tr class="odd">
+<td>ValueError</td>
+<td>If values are not +1 or -1.</td>
+</tr>
+<tr class="even">
+<td>ValueError</td>
+<td>If H<em>H.T != n</em>I, where I is the identity matrix of order n.</td>
 </tr>
 </tbody>
 </table>
-<p>Examples: Calculate the inter-site distance of the 0th and 2nd index of <code>random_lhd</code> (row-wise)</p>
-<div id="4b82e31b" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_lhd <span class="op">=</span> pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">3</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pyLHD.InterSite(random_lhd,i<span class="op">=</span><span class="dv">0</span>,j<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>1.9</code></pre>
-</div>
-</div>
-<p>Calculate the inter-site distance of the 0th and 2nd index of <code>random_lhd</code> (column-wise)</p>
-<div id="89476c2f" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.InterSite(random_lhd,i<span class="op">=</span><span class="dv">0</span>,j<span class="op">=</span><span class="dv">2</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>4.2</code></pre>
-</div>
-</div>
+</section>
+<section id="returns" class="level2">
+<h2 class="anchored" data-anchor-id="returns">Returns</h2>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 89%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bool</td>
+<td>True if given array follows Hadamard properties, otherwise False.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

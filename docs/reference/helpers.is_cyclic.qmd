@@ -1,0 +1,17 @@
+# helpers.is_cyclic { #pyLHD.helpers.is_cyclic }
+
+`helpers.is_cyclic(arr)`
+
+Verify an array is cylic
+
+## Parameters
+
+| Name   | Type                  | Description     | Default    |
+|--------|-----------------------|-----------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray | _required_ |
+
+## Returns
+
+| Type   | Description                                                                                              |
+|--------|----------------------------------------------------------------------------------------------------------|
+| bool   | Determine if an array is cyclic. That is, each row is obtained from the row above by cyclic permutation. |

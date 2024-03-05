@@ -1,0 +1,19 @@
+# helpers.is_skew_symmetric { #pyLHD.helpers.is_skew_symmetric }
+
+`helpers.is_skew_symmetric(arr, rtol=1e-05, atol=1e-08)`
+
+Verify is a matrix is skew-symmetric
+
+## Parameters
+
+| Name   | Type                  | Description                                           | Default    |
+|--------|-----------------------|-------------------------------------------------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray                                       | _required_ |
+| `rtol` | float                 | The relative tolerance parameter . Defaults to 1e-05. | `1e-05`    |
+| `atol` | float                 | The absolute tolerance parameter . Defaults to 1e-08. | `1e-08`    |
+
+## Returns
+
+| Type   | Description                           |
+|--------|---------------------------------------|
+| bool   | True, if the matrix is skew-symmetric |

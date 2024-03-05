@@ -79,7 +79,11 @@ quartodoc:
         - helpers.euler_phi
         - helpers.generate_primes
         - helpers.generate_prime_powers
+        - helpers.is_cyclic
         - helpers.is_prime
+        - helpers.is_symmetric
+        - helpers.is_skew_symmetric
+        - helpers.is_Hadamard
         - helpers.is_LHD
         - helpers.is_balanced_design
         - helpers.level_permutation

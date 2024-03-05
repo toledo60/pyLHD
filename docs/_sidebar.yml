@@ -46,7 +46,11 @@ website:
       - reference/helpers.euler_phi.qmd
       - reference/helpers.generate_primes.qmd
       - reference/helpers.generate_prime_powers.qmd
+      - reference/helpers.is_cyclic.qmd
       - reference/helpers.is_prime.qmd
+      - reference/helpers.is_symmetric.qmd
+      - reference/helpers.is_skew_symmetric.qmd
+      - reference/helpers.is_Hadamard.qmd
       - reference/helpers.is_LHD.qmd
       - reference/helpers.is_balanced_design.qmd
       - reference/helpers.level_permutation.qmd

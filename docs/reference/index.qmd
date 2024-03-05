@@ -74,7 +74,11 @@ Miscellaneous Utilities for Manipulating LHDs
 | [helpers.euler_phi](helpers.euler_phi.qmd#pyLHD.helpers.euler_phi) | Euler's Totient function |
 | [helpers.generate_primes](helpers.generate_primes.qmd#pyLHD.helpers.generate_primes) | Gernate the first `n` prime numbers |
 | [helpers.generate_prime_powers](helpers.generate_prime_powers.qmd#pyLHD.helpers.generate_prime_powers) | Generate the first `n` prime powers |
+| [helpers.is_cyclic](helpers.is_cyclic.qmd#pyLHD.helpers.is_cyclic) | Verify an array is cylic |
 | [helpers.is_prime](helpers.is_prime.qmd#pyLHD.helpers.is_prime) | Determine if a number is prime |
+| [helpers.is_symmetric](helpers.is_symmetric.qmd#pyLHD.helpers.is_symmetric) | Verify is a matrix is symmetric |
+| [helpers.is_skew_symmetric](helpers.is_skew_symmetric.qmd#pyLHD.helpers.is_skew_symmetric) | Verify is a matrix is skew-symmetric |
+| [helpers.is_Hadamard](helpers.is_Hadamard.qmd#pyLHD.helpers.is_Hadamard) | Determine if a matrix is a Hadamard matrix. |
 | [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
 | [helpers.is_balanced_design](helpers.is_balanced_design.qmd#pyLHD.helpers.is_balanced_design) | Verify a design is balanced |
 | [helpers.level_permutation](helpers.level_permutation.qmd#pyLHD.helpers.level_permutation) | Apply level permutations to a Good lattice point (GLP) design |

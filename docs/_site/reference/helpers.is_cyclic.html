@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>helpers.verifygenerator</title>
+<title>helpers.is_cyclic</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.VerifyGenerator.html">helpers.VerifyGenerator</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.is_cyclic.html">helpers.is_cyclic</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -159,8 +159,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/maximin.BestLinearPermutation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">maximin.BestLinearPermutation</span></a>
+  <a href="../reference/maximin.best_linear_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">maximin.best_linear_permutation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -171,8 +171,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/maximin.LeaveOneOut.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">maximin.LeaveOneOut</span></a>
+  <a href="../reference/maximin.leave_one_out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">maximin.leave_one_out</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -186,12 +186,41 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Orthogonal LHD</span></a>
+ <span class="menu-text">Projection Designs</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.best_linear_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.best_linear_permutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.UniformProLHD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.UniformProLHD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.UPC_lower_bound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.UPC_lower_bound</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Orthogonal LHD</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/orthogonal.OLHD_Butler01.html" class="sidebar-item-text sidebar-link">
@@ -232,13 +261,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Criteria</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/criteria.Criteria.html" class="sidebar-item-text sidebar-link">
@@ -303,13 +332,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Helpers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/helpers.are_coprime.html" class="sidebar-item-text sidebar-link">
@@ -342,8 +371,44 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.generate_primes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.generate_primes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.generate_prime_powers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.generate_prime_powers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_cyclic.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">helpers.is_cyclic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.is_prime.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.is_prime</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_symmetric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_symmetric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_skew_symmetric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_skew_symmetric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_Hadamard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_Hadamard</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -360,14 +425,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.lapply.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.lapply</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.LevelPermutation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.LevelPermutation</span></a>
+  <a href="../reference/helpers.level_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.level_permutation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -380,6 +439,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../reference/helpers.permute_rows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.permute_rows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.primes_range.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.primes_range</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -408,8 +473,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.VerifyGenerator.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">helpers.VerifyGenerator</span></a>
+  <a href="../reference/helpers.verify_generator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.verify_generator</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -436,10 +501,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pyLHD.helpers.VerifyGenerator" id="toc-pyLHD.helpers.VerifyGenerator" class="nav-link active" data-scroll-target="#pyLHD.helpers.VerifyGenerator">helpers.VerifyGenerator</a>
+  <li><a href="#pyLHD.helpers.is_cyclic" id="toc-pyLHD.helpers.is_cyclic" class="nav-link active" data-scroll-target="#pyLHD.helpers.is_cyclic">helpers.is_cyclic</a>
   <ul class="collapse">
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
-  <li><a href="#raises" id="toc-raises" class="nav-link" data-scroll-target="#raises">Raises</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
   </ul></li>
   </ul>
@@ -451,19 +515,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="pyLHD.helpers.VerifyGenerator" class="level1">
-<h1>helpers.VerifyGenerator</h1>
-<p><code>helpers.VerifyGenerator(numbers, n, k)</code></p>
-<p>Verify generator used to construct good lattice points (GLP) design</p>
+<section id="pyLHD.helpers.is_cyclic" class="level1">
+<h1>helpers.is_cyclic</h1>
+<p><code>helpers.is_cyclic(arr)</code></p>
+<p>Verify an array is cylic</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 18%">
-<col style="width: 49%">
-<col style="width: 16%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -474,47 +532,10 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>numbers</code></td>
-<td>list[int]</td>
-<td>integers used for the generator</td>
+<td><code>arr</code></td>
+<td>numpy.numpy.ArrayLike</td>
+<td>A numpy ndarray</td>
 <td><em>required</em></td>
-</tr>
-<tr class="even">
-<td><code>n</code></td>
-<td>int</td>
-<td>number of rows in a GLP design</td>
-<td><em>required</em></td>
-</tr>
-<tr class="odd">
-<td><code>k</code></td>
-<td>int</td>
-<td>number of columns in a GLP design</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="raises" class="level2">
-<h2 class="anchored" data-anchor-id="raises">Raises</h2>
-<table class="table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 86%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ValueError</td>
-<td>length of generator <code>numbers</code> is not the same as the number of columns <code>k</code></td>
-</tr>
-<tr class="even">
-<td>ValueError</td>
-<td>All <code>numbers</code> should be less than <code>n</code> and coprime to <code>n</code></td>
 </tr>
 </tbody>
 </table>
@@ -523,8 +544,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 18%">
-<col style="width: 81%">
+<col style="width: 7%">
+<col style="width: 92%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -534,8 +555,8 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>list[int]</td>
-<td>list[int]: If all conditions hold, <code>numbers</code> is returned</td>
+<td>bool</td>
+<td>Determine if an array is cyclic. That is, each row is obtained from the row above by cyclic permutation.</td>
 </tr>
 </tbody>
 </table>

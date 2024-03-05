@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>helpers.levelpermutation</title>
+<title>helpers.is_symmetric</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -101,35 +67,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -164,7 +101,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.LevelPermutation.html">helpers.LevelPermutation</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.is_symmetric.html">helpers.is_symmetric</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -222,8 +159,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/maximin.BestLinearPermutation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">maximin.BestLinearPermutation</span></a>
+  <a href="../reference/maximin.best_linear_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">maximin.best_linear_permutation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -234,8 +171,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/maximin.LeaveOneOut.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">maximin.LeaveOneOut</span></a>
+  <a href="../reference/maximin.leave_one_out.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">maximin.leave_one_out</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -249,12 +186,41 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Orthogonal LHD</span></a>
+ <span class="menu-text">Projection Designs</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.best_linear_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.best_linear_permutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.UniformProLHD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.UniformProLHD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/projections.UPC_lower_bound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">projections.UPC_lower_bound</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Orthogonal LHD</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/orthogonal.OLHD_Butler01.html" class="sidebar-item-text sidebar-link">
@@ -295,13 +261,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Criteria</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/criteria.Criteria.html" class="sidebar-item-text sidebar-link">
@@ -366,13 +332,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Helpers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/helpers.are_coprime.html" class="sidebar-item-text sidebar-link">
@@ -405,8 +371,44 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.generate_primes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.generate_primes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.generate_prime_powers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.generate_prime_powers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_cyclic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_cyclic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.is_prime.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.is_prime</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_symmetric.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">helpers.is_symmetric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_skew_symmetric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_skew_symmetric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_Hadamard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_Hadamard</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -423,14 +425,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.lapply.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.lapply</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.LevelPermutation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">helpers.LevelPermutation</span></a>
+  <a href="../reference/helpers.level_permutation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.level_permutation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -443,6 +439,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../reference/helpers.permute_rows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.permute_rows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.primes_range.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.primes_range</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -471,8 +473,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.VerifyGenerator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">helpers.VerifyGenerator</span></a>
+  <a href="../reference/helpers.verify_generator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.verify_generator</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -499,43 +501,32 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#parameters" id="toc-parameters" class="nav-link active" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#pyLHD.helpers.is_symmetric" id="toc-pyLHD.helpers.is_symmetric" class="nav-link active" data-scroll-target="#pyLHD.helpers.is_symmetric">helpers.is_symmetric</a>
+  <ul class="collapse">
+  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.are_coprime.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.LevelPermutation.html">helpers.LevelPermutation</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">helpers.LevelPermutation</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p><code>helpers.LevelPermutation(arr, b, modulus=None)</code></p>
-<p>Apply level permutations to a Good lattice point (GLP) design</p>
+<section id="pyLHD.helpers.is_symmetric" class="level1">
+<h1>helpers.is_symmetric</h1>
+<p><code>helpers.is_symmetric(arr, rtol=1e-05, atol=1e-08)</code></p>
+<p>Verify is a matrix is symmetric</p>
 <section id="parameters" class="level2">
 <h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 16%">
-<col style="width: 69%">
-<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 23%">
+<col style="width: 56%">
+<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -553,16 +544,16 @@ window.Quarto = {
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>b</code></td>
-<td>typing.Union[int, list]</td>
-<td>Value by which each element in the array is to be level permuted. Can either be an integer or a list of integers</td>
-<td><em>required</em></td>
+<td><code>rtol</code></td>
+<td>float</td>
+<td>The relative tolerance parameter . Defaults to 1e-05.</td>
+<td><code>1e-05</code></td>
 </tr>
 <tr class="odd">
-<td><code>modulus</code></td>
-<td>int</td>
-<td>Modulus used for the permutation. Defaults to None. If None, the number of rows is used as the modulus.</td>
-<td><code>None</code></td>
+<td><code>atol</code></td>
+<td>float</td>
+<td>The absolute tolerance parameter . Defaults to 1e-08.</td>
+<td><code>1e-08</code></td>
 </tr>
 </tbody>
 </table>
@@ -570,10 +561,6 @@ window.Quarto = {
 <section id="returns" class="level2">
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 80%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Type</th>
@@ -582,62 +569,14 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td>numpy.numpy.ndarray</td>
-<td>npt.ArrayLike: A new array where each element is the result of <code>(arr + b) % modulus</code></td>
+<td>bool</td>
+<td>True, if the matrix is symmetric</td>
 </tr>
 </tbody>
 </table>
-<p>Examples:</p>
-<div id="8f20a248" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>GLP <span class="op">=</span> pyLHD.GoodLatticePoint(size <span class="op">=</span> (<span class="dv">10</span>, pyLHD.euler_phi(<span class="dv">10</span>)))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>GLP</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>array([[1, 3, 7, 9],
-       [2, 6, 4, 8],
-       [3, 9, 1, 7],
-       [4, 2, 8, 6],
-       [5, 5, 5, 5],
-       [6, 8, 2, 4],
-       [7, 1, 9, 3],
-       [8, 4, 6, 2],
-       [9, 7, 3, 1],
-       [0, 0, 0, 0]])</code></pre>
-</div>
-</div>
-<p>Apply a simple linear level permutation in the form of <span class="math inline">\(D = D+b (mod \,N)\)</span></p>
-<div id="9e9be712" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LevelPermutation(GLP,b <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([[3, 5, 9, 1],
-       [4, 8, 6, 0],
-       [5, 1, 3, 9],
-       [6, 4, 0, 8],
-       [7, 7, 7, 7],
-       [8, 0, 4, 6],
-       [9, 3, 1, 5],
-       [0, 6, 8, 4],
-       [1, 9, 5, 3],
-       [2, 2, 2, 2]])</code></pre>
-</div>
-</div>
-<div id="a6ab5a46" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LevelPermutation(GLP, b <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>array([[2, 7, 0, 1],
-       [3, 0, 7, 0],
-       [4, 3, 4, 9],
-       [5, 6, 1, 8],
-       [6, 9, 8, 7],
-       [7, 2, 5, 6],
-       [8, 5, 2, 5],
-       [9, 8, 9, 4],
-       [0, 1, 6, 3],
-       [1, 4, 3, 2]])</code></pre>
-</div>
-</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
