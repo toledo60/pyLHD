@@ -1,0 +1,25 @@
+# hadamard.jacobsthal_matrix { #pyLHD.hadamard.jacobsthal_matrix }
+
+`hadamard.jacobsthal_matrix(p, k)`
+
+Generate a Jacobsthal matrix 
+
+## Parameters
+
+| Name   | Type   | Description      | Default    |
+|--------|--------|------------------|------------|
+| `p`    | int    | A prime integer  | _required_ |
+| `k`    | int    | An integer power | _required_ |
+
+## Raises
+
+| Type       | Description                        |
+|------------|------------------------------------|
+| ValueError | If `p` is not a prime number       |
+| ValueError | If `p^k + 1` is not divisible by 4 |
+
+## Returns
+
+| Type                | Description                      |
+|---------------------|----------------------------------|
+| numpy.numpy.ndarray | Jacobsthal matrix of order (p^k) |

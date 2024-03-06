@@ -1,0 +1,31 @@
+# helpers.axis_combinations { #pyLHD.helpers.axis_combinations }
+
+`helpers.axis_combinations(arr, k, axis=0)`
+
+Generates all unique combinations of columns from the given array, selecting 'k' columns at a time.
+
+## Parameters
+
+| Name   | Type                  | Description                                                                                                            | Default    |
+|--------|-----------------------|------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray                                                                                                        | _required_ |
+| `k`    | int                   | The number of elements to include in each combination                                                                  | _required_ |
+| `axis` | int                   | Specified axis to obtain combinations. axis = 0 for row combinations, axis = 1 for column combinations. Defaults to 0. | `0`        |
+
+Returns:
+    List[npt.ArrayLike]: A list of arrays, each being a combination of 'k' elements from the original array. The combinations are returned as slices of the original array, not copies.
+
+Examples:
+```{python}
+import pyLHD
+random_ls = pyLHD.LatinSquare(size = (4,4),seed = 1)
+random_ls
+```
+Obtain all 2 column combinations of `random_ls`
+```{python}
+pyLHD.axis_combinations(random_ls, k = 2, axis = 1)
+```
+Obtain all 2 row combinations of `random_ls`
+```{python}
+pyLHD.axis_combinations(random_ls, k = 2, axis = 0)
+```

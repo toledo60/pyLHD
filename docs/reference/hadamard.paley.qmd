@@ -1,0 +1,36 @@
+# hadamard.paley { #pyLHD.hadamard.paley }
+
+`hadamard.paley(p, k, method=1)`
+
+Paley Construction 
+
+## Parameters
+
+| Name     | Type   | Description                                                                                                                                         | Default    |
+|----------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `p`      | int    | A prime integer                                                                                                                                     | _required_ |
+| `k`      | int    | An integer power                                                                                                                                    | _required_ |
+| `method` | int    | Paley construction I or Paley construction II. Defaults to 1. See https://en.wikipedia.org/wiki/Paley_construction for more details on construction | `1`        |
+
+## Raises
+
+| Type       | Description                        |
+|------------|------------------------------------|
+| ValueError | If `p` is not a prime number       |
+| ValueError | If `p^k + 1` is not divisible by 4 |
+| ValueError | If `method` is not 0 or 1          |
+
+## Returns
+
+| Type                | Description                                  |
+|---------------------|----------------------------------------------|
+| numpy.numpy.ndarray | Hadamard matrix based on Paley Constructions |
+
+Examples:
+```{python}
+import pyLHD
+pyLHD.paley(p=7,k=1)
+```
+```{python}
+pyLHD.paley(p=7,k=1, method = 2)
+```

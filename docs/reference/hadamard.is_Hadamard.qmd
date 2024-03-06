@@ -1,0 +1,43 @@
+# hadamard.is_Hadamard { #pyLHD.hadamard.is_Hadamard }
+
+`hadamard.is_Hadamard(arr, rtol=1e-05, atol=1e-08)`
+
+Determine if a matrix is a Hadamard matrix.
+
+## Parameters
+
+| Name   | Type                  | Description    | Default    |
+|--------|-----------------------|----------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy array. | _required_ |
+
+## Raises
+
+| Type       | Description                                                  |
+|------------|--------------------------------------------------------------|
+| ValueError | If provided array is not a square matrix.                    |
+| ValueError | If number of rows is not a power of 2 or not divisible by 4. |
+| ValueError | If values are not +1 or -1.                                  |
+| ValueError | If H*H.T != n*I, where I is the identity matrix of order n.  |
+
+## Returns
+
+| Type   | Description                                                       |
+|--------|-------------------------------------------------------------------|
+| bool   | True if given array follows Hadamard properties, otherwise False. |
+
+Examples:
+```{python}
+import pyLHD
+H1 = pyLHD.sylvester(n=8)
+H1
+```
+```{python}
+pyLHD.is_Hadamard(H1)
+```
+```{python}
+H2 = pyLHD.paley(p=7,k=1)
+H2
+```
+```{python}
+pyLHD.is_Hadamard(H2)
+```

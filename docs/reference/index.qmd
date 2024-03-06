@@ -10,6 +10,17 @@ Generate Random LHD
 | [base.LatinHypercube](base.LatinHypercube.qmd#pyLHD.base.LatinHypercube) | Generate a random Latin Hypercube Design |
 | [base.GoodLatticePoint](base.GoodLatticePoint.qmd#pyLHD.base.GoodLatticePoint) | Good Lattice Point (GLP) Design  |
 
+## Hadamard Matrices
+
+Constructions for Hadamard matrices
+
+| | |
+| --- | --- |
+| [hadamard.is_Hadamard](hadamard.is_Hadamard.qmd#pyLHD.hadamard.is_Hadamard) | Determine if a matrix is a Hadamard matrix. |
+| [hadamard.sylvester](hadamard.sylvester.qmd#pyLHD.hadamard.sylvester) | Hadamard matrix based on Sylvester's construction |
+| [hadamard.paley](hadamard.paley.qmd#pyLHD.hadamard.paley) | Paley Construction  |
+| [hadamard.jacobsthal_matrix](hadamard.jacobsthal_matrix.qmd#pyLHD.hadamard.jacobsthal_matrix) | Generate a Jacobsthal matrix  |
+
 ## Maximin LHD
 
 Algebraic Constructions of Maximim LHD
@@ -68,8 +79,8 @@ Miscellaneous Utilities for Manipulating LHDs
 | | |
 | --- | --- |
 | [helpers.are_coprime](helpers.are_coprime.qmd#pyLHD.helpers.are_coprime) | Check if two integers are coprime |
+| [helpers.axis_combinations](helpers.axis_combinations.qmd#pyLHD.helpers.axis_combinations) | Generates all unique combinations of columns from the given array, selecting 'k' columns at a time. |
 | [helpers.check_bounds](helpers.check_bounds.qmd#pyLHD.helpers.check_bounds) | Check conditions for bounds input |
-| [helpers.column_combinations](helpers.column_combinations.qmd#pyLHD.helpers.column_combinations) | Generates all unique combinations of columns from the given array, selecting 'k' columns at a time. |
 | [helpers.distance_matrix](helpers.distance_matrix.qmd#pyLHD.helpers.distance_matrix) | Distance matrix based on specified distance measure |
 | [helpers.euler_phi](helpers.euler_phi.qmd#pyLHD.helpers.euler_phi) | Euler's Totient function |
 | [helpers.generate_primes](helpers.generate_primes.qmd#pyLHD.helpers.generate_primes) | Gernate the first `n` prime numbers |
@@ -78,7 +89,6 @@ Miscellaneous Utilities for Manipulating LHDs
 | [helpers.is_prime](helpers.is_prime.qmd#pyLHD.helpers.is_prime) | Determine if a number is prime |
 | [helpers.is_symmetric](helpers.is_symmetric.qmd#pyLHD.helpers.is_symmetric) | Verify is a matrix is symmetric |
 | [helpers.is_skew_symmetric](helpers.is_skew_symmetric.qmd#pyLHD.helpers.is_skew_symmetric) | Verify is a matrix is skew-symmetric |
-| [helpers.is_Hadamard](helpers.is_Hadamard.qmd#pyLHD.helpers.is_Hadamard) | Determine if a matrix is a Hadamard matrix. |
 | [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
 | [helpers.is_balanced_design](helpers.is_balanced_design.qmd#pyLHD.helpers.is_balanced_design) | Verify a design is balanced |
 | [helpers.level_permutation](helpers.level_permutation.qmd#pyLHD.helpers.level_permutation) | Apply level permutations to a Good lattice point (GLP) design |

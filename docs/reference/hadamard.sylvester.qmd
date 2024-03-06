@@ -1,0 +1,32 @@
+# hadamard.sylvester { #pyLHD.hadamard.sylvester }
+
+`hadamard.sylvester(n)`
+
+Hadamard matrix based on Sylvester's construction
+
+## Parameters
+
+| Name   | Type   | Description                                      | Default    |
+|--------|--------|--------------------------------------------------|------------|
+| `n`    | int    | The order of the matrix. n must be a power of 2. | _required_ |
+
+## Raises
+
+| Type       | Description                                            |
+|------------|--------------------------------------------------------|
+| ValueError | If `n` is not a positive integer and not a power of 2. |
+
+## Returns
+
+| Type                | Description                     |
+|---------------------|---------------------------------|
+| numpy.numpy.ndarray | The Hadamard matrix of order n. |
+
+Examples:
+```{python}
+import pyLHD
+pyLHD.sylvester(n=4)
+```
+```{python}
+pyLHD.sylvester(n=8)
+```

@@ -217,19 +217,18 @@ def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
   return arr
 
 
-def column_combinations(arr: npt.ArrayLike, k:int) -> List[npt.ArrayLike]:
+def axis_combinations(arr: npt.ArrayLike, k:int, axis: int = 0) -> List[npt.ArrayLike]:
   """
   Generates all unique combinations of columns from the given array, selecting 'k' columns at a time.
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
-      k (int): The number of columns to include in each combination. Must be a positive integer and less than or equal to the number of columns in 'arr'.
-
+      k (int): The number of elements to include in each combination
+      axis (int): Specified axis to obtain combinations. axis = 0 for row combinations, axis = 1 for column combinations. Defaults to 0.
   Returns:
-      List[npt.ArrayLike]: A list of arrays, each being a combination of 'k' columns from the original array. The combinations are returned as slices of the original array, not copies.
+      List[npt.ArrayLike]: A list of arrays, each being a combination of 'k' elements from the original array. The combinations are returned as slices of the original array, not copies.
   
   Examples:
-
   ```{python}
   import pyLHD
   random_ls = pyLHD.LatinSquare(size = (4,4),seed = 1)
@@ -237,15 +236,33 @@ def column_combinations(arr: npt.ArrayLike, k:int) -> List[npt.ArrayLike]:
   ```
   Obtain all 2 column combinations of `random_ls`
   ```{python}
-  pyLHD.column_combinations(random_ls, k = 2)
+  pyLHD.axis_combinations(random_ls, k = 2, axis = 1)
+  ```
+  Obtain all 2 row combinations of `random_ls`
+  ```{python}
+  pyLHD.axis_combinations(random_ls, k = 2, axis = 0)
   ```
 
   """
-  n_columns = arr.shape[1]
-  if k <=0 or k > n_columns:
-    raise ValueError(" `k` must be a positive integer and less than or equal to the number of columns in 'arr'")
-  column_combinations = combinations(range(n_columns),k)
-  return [arr[:,[i,j]] for i,j in column_combinations]
+  n_rows, n_columns = arr.shape
+  
+  if k <= 0:
+    raise ValueError("`k` should be a positive integer")
+
+  if axis not in [0, 1]:
+    raise ValueError("`axis` can only be 0 or 1.")
+  
+  n_elements = n_columns if axis == 1 else n_rows
+
+  if k >= n_elements:
+    raise ValueError(f"`k` should be less than the number of {'columns' if axis == 1 else 'rows'}")
+
+  element_combinations = combinations(range(n_elements), k)
+
+  if axis == 1:
+    return [arr[:, list(comb)] for comb in element_combinations]
+  else:
+    return [arr[list(comb), :] for comb in element_combinations]
 
 
 def scale(arr: npt.ArrayLike, lower_bounds: list, upper_bounds: list, as_integers: bool = False) -> np.ndarray:
@@ -615,41 +632,6 @@ def is_skew_symmetric(arr:npt.ArrayLike, rtol=1e-05, atol=1e-08) -> bool:
       True, if the matrix is skew-symmetric
   """  
   return np.allclose(-arr, arr.T, rtol=rtol, atol=atol)
-
-
-def is_Hadamard(arr: npt.ArrayLike, rtol=1e-05, atol=1e-08) -> bool:
-  """ Determine if a matrix is a Hadamard matrix.
-
-  Args:
-      arr (npt.ArrayLike): A numpy array.
-
-  Raises:
-      ValueError: If provided array is not a square matrix.
-      ValueError: If number of rows is not a power of 2 or not divisible by 4.
-      ValueError: If values are not +1 or -1.
-      ValueError: If H*H.T != n*I, where I is the identity matrix of order n.
-
-  Returns:
-      True if given array follows Hadamard properties, otherwise False.
-  """
-  nrows, ncols = arr.shape
-
-  if nrows != ncols:
-    raise ValueError('Must be a square matrix.')
-
-  # Hadamard matrices exist for orders 1, 2, and multiples of 4.
-  if nrows != 2 or nrows % 4 != 0 or nrows != 1:
-    raise ValueError('Number of rows must be 1, 2, or a multiple of 4.')
-
-  if not np.all(np.isin(arr, [-1, 1])):
-    raise ValueError('Elements can only be +1 or -1.')
-
-  diag = nrows * np.eye(nrows)
-  crossprod = np.dot(arr, arr.T)
-
-  if not np.allclose(diag, crossprod, rtol=rtol, atol=atol):
-    raise ValueError('Not a Hadamard matrix. H*H.T != n*I.')
-  return True
 
 
 def is_LHD(arr: npt.ArrayLike) -> NoReturn:

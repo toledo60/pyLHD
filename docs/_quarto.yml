@@ -34,6 +34,13 @@ quartodoc:
         - base.LatinSquare
         - base.LatinHypercube
         - base.GoodLatticePoint
+    - title: Hadamard Matrices
+      desc: Constructions for Hadamard matrices
+      contents:
+        - hadamard.is_Hadamard
+        - hadamard.sylvester
+        - hadamard.paley
+        - hadamard.jacobsthal_matrix
     - title: Maximin LHD
       desc: Algebraic Constructions of Maximim LHD
       contents:
@@ -73,8 +80,8 @@ quartodoc:
       desc: Miscellaneous Utilities for Manipulating LHDs
       contents:
         - helpers.are_coprime
+        - helpers.axis_combinations        
         - helpers.check_bounds
-        - helpers.column_combinations
         - helpers.distance_matrix
         - helpers.euler_phi
         - helpers.generate_primes
@@ -83,7 +90,6 @@ quartodoc:
         - helpers.is_prime
         - helpers.is_symmetric
         - helpers.is_skew_symmetric
-        - helpers.is_Hadamard
         - helpers.is_LHD
         - helpers.is_balanced_design
         - helpers.level_permutation
