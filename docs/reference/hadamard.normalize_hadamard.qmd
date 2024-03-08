@@ -1,0 +1,38 @@
+# hadamard.normalize_hadamard { #pyLHD.hadamard.normalize_hadamard }
+
+`hadamard.normalize_hadamard(arr, axis=1)`
+
+Normalize a Hadamard matrix
+
+## Parameters
+
+| Name   | Type                  | Description                                                                                                                      | Default    |
+|--------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------|------------|
+| `arr`  | numpy.numpy.ArrayLike | A numpy ndarray                                                                                                                  | _required_ |
+| `axis` | int                   | Specified axis to normalize Hadamard matrix. axis = 0 to normalize first row, axis = 1 to normalize first column. Defaults to 0. | `1`        |
+
+## Raises
+
+| Type       | Description                                         |
+|------------|-----------------------------------------------------|
+| ValueError | If `arr` is not a proper Hadamard matrix of order n |
+
+## Returns
+
+| Type                | Description                                                                                     |
+|---------------------|-------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | np.ndarray: normalized Hadamard matrix. That is the first row or column all have a value of one |
+
+Examples:
+```{python}
+import pyLHD
+x = pyLHD.paley(p=7,k=1)
+x
+```
+```{python}
+y = pyLHD.normalize_hadamard(x)
+y
+```
+```{python}
+pyLHD.is_Hadamard(y)
+```

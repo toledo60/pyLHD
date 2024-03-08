@@ -178,3 +178,47 @@ def paley(p:int,k:int, method:int = 1) -> np.ndarray:
     return A + B
   else:
     raise ValueError("`method` can be either 1 or 2 only.")
+  
+
+def normalize_hadamard(arr:npt.ArrayLike, axis:int = 1) -> np.ndarray:
+  """Normalize a Hadamard matrix
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      axis (int): Specified axis to normalize Hadamard matrix. axis = 0 to normalize first row, axis = 1 to normalize first column. Defaults to 0.
+
+  Raises:
+      ValueError: If `arr` is not a proper Hadamard matrix of order n
+
+  Returns:
+      np.ndarray: normalized Hadamard matrix. That is the first row or column all have a value of one
+  Examples:
+  ```{python}
+  import pyLHD
+  x = pyLHD.paley(p=7,k=1)
+  x
+  ```
+  ```{python}
+  y = pyLHD.normalize_hadamard(x)
+  y
+  ```
+  ```{python}
+  pyLHD.is_Hadamard(y)
+  ```
+  """
+  if not is_Hadamard(arr):
+    raise ValueError('`arr` should be a Hadamard matrix of order n')
+  
+  if axis == 1:
+    # Normalize based on the first column
+    for i in range(arr.shape[0]):
+      if arr[i, 0] == -1:
+        arr[i, :] *= -1
+  elif axis == 0:
+    # Normalize based on the first row
+    for j in range(arr.shape[1]):
+      if arr[0, j] == -1:
+        arr[:, j] *= -1
+  
+  return arr
+

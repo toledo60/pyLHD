@@ -20,6 +20,7 @@ Constructions for Hadamard matrices
 | [hadamard.sylvester](hadamard.sylvester.qmd#pyLHD.hadamard.sylvester) | Hadamard matrix based on Sylvester's construction |
 | [hadamard.paley](hadamard.paley.qmd#pyLHD.hadamard.paley) | Paley Construction  |
 | [hadamard.jacobsthal_matrix](hadamard.jacobsthal_matrix.qmd#pyLHD.hadamard.jacobsthal_matrix) | Generate a Jacobsthal matrix  |
+| [hadamard.normalize_hadamard](hadamard.normalize_hadamard.qmd#pyLHD.hadamard.normalize_hadamard) | Normalize a Hadamard matrix |
 
 ## Maximin LHD
 
@@ -40,7 +41,6 @@ Algebraic Constructions for Optimized Projections of LHD
 | --- | --- |
 | [projections.best_linear_permutation](projections.best_linear_permutation.qmd#pyLHD.projections.best_linear_permutation) | Optimal linear permutation value to minimize the uniform projection criterion |
 | [projections.UniformProLHD](projections.UniformProLHD.qmd#pyLHD.projections.UniformProLHD) | Generate a Uniform Projection Design |
-| [projections.UPC_lower_bound](projections.UPC_lower_bound.qmd#pyLHD.projections.UPC_lower_bound) | Uniform Projection Criteria Lower Bound |
 
 ## Orthogonal LHD
 

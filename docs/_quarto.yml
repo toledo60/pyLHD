@@ -41,6 +41,7 @@ quartodoc:
         - hadamard.sylvester
         - hadamard.paley
         - hadamard.jacobsthal_matrix
+        - hadamard.normalize_hadamard
     - title: Maximin LHD
       desc: Algebraic Constructions of Maximim LHD
       contents:
@@ -53,7 +54,6 @@ quartodoc:
       contents:
         - projections.best_linear_permutation
         - projections.UniformProLHD
-        - projections.UPC_lower_bound
     - title: Orthogonal LHD
       desc: Algebraic Constructions of Orthogonal LHD
       contents:

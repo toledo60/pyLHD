@@ -12,6 +12,7 @@ website:
       - reference/hadamard.sylvester.qmd
       - reference/hadamard.paley.qmd
       - reference/hadamard.jacobsthal_matrix.qmd
+      - reference/hadamard.normalize_hadamard.qmd
       section: Hadamard Matrices
     - contents:
       - reference/maximin.best_linear_permutation.qmd
@@ -22,7 +23,6 @@ website:
     - contents:
       - reference/projections.best_linear_permutation.qmd
       - reference/projections.UniformProLHD.qmd
-      - reference/projections.UPC_lower_bound.qmd
       section: Projection Designs
     - contents:
       - reference/orthogonal.OLHD_Butler01.qmd
