@@ -90,7 +90,7 @@ def sylvester(n:int) -> np.ndarray:
 
   for _ in range(0, lg2):
     H = np.vstack((np.hstack((H, H)), np.hstack((H, -H))))
-  return H
+  return H.astype(np.int16)
 
 ####################################
 #### Payley's Construction  ########
@@ -171,11 +171,11 @@ def paley(p:int,k:int, method:int = 1) -> np.ndarray:
   I = np.identity(n=(n+1))
 
   if method == 1:
-    return S+I
+    return (S+I).astype(np.int16)
   elif method == 2:
     A = np.kron(S,np.array([[1,1],[1,-1]]))
     B = np.kron(I,np.array([[1,-1],[-1,-1]]))
-    return A + B
+    return (A+B).astype(np.int16)
   else:
     raise ValueError("`method` can be either 1 or 2 only.")
   
@@ -219,6 +219,30 @@ def normalize_hadamard(arr:npt.ArrayLike, axis:int = 1) -> np.ndarray:
     for j in range(arr.shape[1]):
       if arr[0, j] == -1:
         arr[:, j] *= -1
+  else:
+    raise ValueError("`axis` should only be either 1 or 0.")
   
   return arr
+
+
+def paley_design(p:int, k:int = 1) -> np.ndarray:
+  """Generate a Paley design
+
+  Args:
+      p (int): A prime integer
+      k (int): An integer power. Defaults to 1.
+
+  Returns:
+      np.ndarray: A Paley design of order $n=p^k + 1$. This is equivalent to a saturated orthogonal array $OA(n,n-1,2,2)$. Design will return with 0 and 1 level codings.
+  Examples:
+  ```{python}
+  import pyLHD
+  pyLHD.paley_design(p=7)
+  ```
+  """
+  H = normalize_hadamard(paley(p=p,k=k))
+  oa = H[:,1:]
+  return (oa + 1)//2
+
+
 

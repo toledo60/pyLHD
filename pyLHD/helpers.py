@@ -87,7 +87,8 @@ def replace_values(arr: npt.ArrayLike, mapping: dict) -> np.ndarray:
       error_message.append(f"Extra keys in mapping: {extra_keys}")
     raise ValueError(' '.join(error_message))
 
-  return np.vectorize(mapping.get)(arr)
+  vectorized_recode = np.vectorize(mapping.get, otypes=[arr.dtype])
+  return vectorized_recode(arr)
 
 
 def permute_columns(arr: npt.ArrayLike, columns: Optional[List[int]] = None,
@@ -173,15 +174,15 @@ def permute_rows(arr: npt.ArrayLike, rows: Optional[List[int]] = None,
   return arr
 
 
-def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
+def swap_elements(arr: npt.ArrayLike, idx: int, axis: int = 1,
                   seed: Optional[Union[int, np.random.Generator]] = None) -> np.ndarray:
   """ Swap two random elements in a matrix
 
   Args:
       arr (npt.ArrayLike): A numpy ndarray
-      idx (int): A positive integer, which stands for the (idx) column or row of (arr) type (str, optional): 
-          If type is 'col', two random elements will be exchanged within column (idx).
-          If type is 'row', two random elements will be exchanged within row (idx). Defaults to 'col'.
+      idx (int): A positive integer, which stands for the (idx) column or row of (arr) 
+      axis (int, optional): If `axis` is 1, two random elements will be exchanged within column (idx).
+          If `axis` is 0, two random elements will be exchanged within row (idx). Defaults to `axis = 1`.
       seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
 
@@ -197,23 +198,24 @@ def swap_elements(arr: npt.ArrayLike, idx: int, type: str = 'col',
   ```
   Choose column 1 of random_lhd and swap two randomly selected elements
   ```{python}
-  pyLHD.swap_elements(random_lhd,idx=1,type='col')
+  pyLHD.swap_elements(random_lhd,idx=1)
   ```
   Choose the first row of random_lhd and swap two randomly selected elements
   ```{python}
-  pyLHD.swap_elements(random_lhd,idx=1,type='row')
+  pyLHD.swap_elements(random_lhd,idx=1,axis = 0)
   ```
   """
   n_rows, n_columns = arr.shape
   rng = check_seed(seed)
 
-  if type == 'col':
+  if axis == 1:
     location = rng.choice(n_rows, 2, replace=False)
     arr[location[0], idx], arr[location[1],idx] = arr[location[1], idx], arr[location[0], idx]
-  else:
+  elif axis == 0:
     location = rng.choice(n_columns, 2, replace=False)
     arr[idx, location[0]], arr[idx, location[1]] = arr[idx, location[1]], arr[idx, location[0]]
-
+  else:
+    raise ValueError("`axis` can only be either 1 or 0.")
   return arr
 
 

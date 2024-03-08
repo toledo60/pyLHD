@@ -38,10 +38,11 @@ quartodoc:
       desc: Constructions for Hadamard matrices
       contents:
         - hadamard.is_Hadamard
+        - hadamard.jacobsthal_matrix
+        - hadamard.normalize_hadamard        
         - hadamard.sylvester
         - hadamard.paley
-        - hadamard.jacobsthal_matrix
-        - hadamard.normalize_hadamard
+        - hadamard.paley_design
     - title: Maximin LHD
       desc: Algebraic Constructions of Maximim LHD
       contents:

@@ -17,10 +17,11 @@ Constructions for Hadamard matrices
 | | |
 | --- | --- |
 | [hadamard.is_Hadamard](hadamard.is_Hadamard.qmd#pyLHD.hadamard.is_Hadamard) | Determine if a matrix is a Hadamard matrix. |
-| [hadamard.sylvester](hadamard.sylvester.qmd#pyLHD.hadamard.sylvester) | Hadamard matrix based on Sylvester's construction |
-| [hadamard.paley](hadamard.paley.qmd#pyLHD.hadamard.paley) | Paley Construction  |
 | [hadamard.jacobsthal_matrix](hadamard.jacobsthal_matrix.qmd#pyLHD.hadamard.jacobsthal_matrix) | Generate a Jacobsthal matrix  |
 | [hadamard.normalize_hadamard](hadamard.normalize_hadamard.qmd#pyLHD.hadamard.normalize_hadamard) | Normalize a Hadamard matrix |
+| [hadamard.sylvester](hadamard.sylvester.qmd#pyLHD.hadamard.sylvester) | Hadamard matrix based on Sylvester's construction |
+| [hadamard.paley](hadamard.paley.qmd#pyLHD.hadamard.paley) | Paley Construction  |
+| [hadamard.paley_design](hadamard.paley_design.qmd#pyLHD.hadamard.paley_design) | Generate a Paley design |
 
 ## Maximin LHD
 

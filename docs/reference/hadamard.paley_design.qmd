@@ -1,0 +1,24 @@
+# hadamard.paley_design { #pyLHD.hadamard.paley_design }
+
+`hadamard.paley_design(p, k=1)`
+
+Generate a Paley design
+
+## Parameters
+
+| Name   | Type   | Description                      | Default    |
+|--------|--------|----------------------------------|------------|
+| `p`    | int    | A prime integer                  | _required_ |
+| `k`    | int    | An integer power. Defaults to 1. | `1`        |
+
+## Returns
+
+| Type                | Description                                                                                                                                                         |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | np.ndarray: A Paley design of order $n=p^k + 1$. This is equivalent to a saturated orthogonal array $OA(n,n-1,2,2)$. Design will return with 0 and 1 level codings. |
+
+Examples:
+```{python}
+import pyLHD
+pyLHD.paley_design(p=7)
+```

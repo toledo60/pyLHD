@@ -9,10 +9,11 @@ website:
       section: Base Designs
     - contents:
       - reference/hadamard.is_Hadamard.qmd
-      - reference/hadamard.sylvester.qmd
-      - reference/hadamard.paley.qmd
       - reference/hadamard.jacobsthal_matrix.qmd
       - reference/hadamard.normalize_hadamard.qmd
+      - reference/hadamard.sylvester.qmd
+      - reference/hadamard.paley.qmd
+      - reference/hadamard.paley_design.qmd
       section: Hadamard Matrices
     - contents:
       - reference/maximin.best_linear_permutation.qmd
