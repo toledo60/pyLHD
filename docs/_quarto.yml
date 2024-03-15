@@ -80,6 +80,7 @@ quartodoc:
     - title: Helpers
       desc: Miscellaneous Utilities for Manipulating LHDs
       contents:
+        - helpers.alpha_allowable_perms
         - helpers.are_coprime
         - helpers.axis_combinations        
         - helpers.check_bounds

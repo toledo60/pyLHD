@@ -1,0 +1,24 @@
+# helpers.alpha_allowable_perms { #pyLHD.helpers.alpha_allowable_perms }
+
+`helpers.alpha_allowable_perms(alpha, s)`
+
+Generate alpha-allowable permutations
+
+## Parameters
+
+| Name    | Type   | Description                                                            | Default    |
+|---------|--------|------------------------------------------------------------------------|------------|
+| `alpha` | int    | A positive integer                                                     | _required_ |
+| `s`     | int    | A positive integer specifying the number of levels from (0, 1,...,s-1) | _required_ |
+
+## Returns
+
+| Type               | Description                             |
+|--------------------|-----------------------------------------|
+| typing.List\[int\] | List[int]: Alpha allowable permutations |
+
+Examples:
+```{python}
+import pyLHD
+pyLHD.alpha_allowable_perms(alpha = 2, s = 4)
+```

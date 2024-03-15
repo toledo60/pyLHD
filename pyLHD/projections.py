@@ -1,7 +1,6 @@
 import numpy as np
 from pyLHD.helpers import is_prime, WilliamsTransform, level_permutation, is_balanced_design
 from pyLHD.base import GoodLatticePoint
-import numpy.typing as npt
 
 def best_linear_permutation(N:int) -> int:
   """Optimal linear permutation value to minimize the uniform projection criterion

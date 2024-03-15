@@ -46,6 +46,7 @@ website:
       - reference/criteria.UniformProCriterion.qmd
       section: Criteria
     - contents:
+      - reference/helpers.alpha_allowable_perms.qmd
       - reference/helpers.are_coprime.qmd
       - reference/helpers.axis_combinations.qmd
       - reference/helpers.check_bounds.qmd

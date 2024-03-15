@@ -35,16 +35,14 @@ def LatinHypercube(size: tuple[int, int], scramble: Optional[bool] = True,
   """Generate a random Latin Hypercube Design
 
   Args:
-      size (tuple of ints): Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively.      
+      size (tuple of ints): Output shape of (n,d), where $n$ and $d$ are the number of rows and columns, respectively.
       scramble (Optional[bool], optional): When False, center samples within cells of a multi-dimensional grid. 
           Otherwise, samples are randomly placed within cells of the grid. Defaults to True.
-      seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). 
+      seed (Optional[Union[int, np.random.Generator]]) : If `seed`is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed).
           If `seed` is already a ``Generator` instance, then the provided instance is used. Defaults to None.
 
   Returns:
-      A Latin hypercube sample of $n$ points generated in $[0,1)^d$ 
-          Each univariate marginal distribution is stratisfied, placing exactly one point in 
-          $[j/n,(j+1)/n)$ for $j=0,1,\dots,n-1$
+      A Latin hypercube sample of $n$ points generated in $[0,1)^d$. Each univariate marginal distribution is stratisfied, placing exactly one point in $[j/n,(j+1)/n)$ for $j=0,1,\dots,n-1$
   Examples:
   ```{python}
   import pyLHD
@@ -52,7 +50,7 @@ def LatinHypercube(size: tuple[int, int], scramble: Optional[bool] = True,
   ```
   ```{python}
   pyLHD.LatinHypercube(size = (5,3), seed = 1, scramble = False)
-  ```          
+  ```
   """
   n,d = size
   rng = check_seed(seed)

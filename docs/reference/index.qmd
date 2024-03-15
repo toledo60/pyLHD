@@ -79,6 +79,7 @@ Miscellaneous Utilities for Manipulating LHDs
 
 | | |
 | --- | --- |
+| [helpers.alpha_allowable_perms](helpers.alpha_allowable_perms.qmd#pyLHD.helpers.alpha_allowable_perms) | Generate alpha-allowable permutations |
 | [helpers.are_coprime](helpers.are_coprime.qmd#pyLHD.helpers.are_coprime) | Check if two integers are coprime |
 | [helpers.axis_combinations](helpers.axis_combinations.qmd#pyLHD.helpers.axis_combinations) | Generates all unique combinations of columns from the given array, selecting 'k' columns at a time. |
 | [helpers.check_bounds](helpers.check_bounds.qmd#pyLHD.helpers.check_bounds) | Check conditions for bounds input |

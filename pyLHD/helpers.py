@@ -2,7 +2,7 @@ import math
 import numpy as np
 import numpy.typing as npt
 from typing import Optional, List, Union, NoReturn
-from itertools import combinations
+from itertools import combinations, permutations
 
 def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -> np.ndarray:
   """ Distance matrix based on specified distance measure
@@ -543,6 +543,35 @@ def generate_prime_powers(n:int) -> List[int]:
       power += 1
   return sorted(prime_powers)
 
+
+##############################################
+## Orthogonal Array Based Designs (OABDs) ####
+##############################################
+
+def is_alpha_allowable(perm:list, alpha:int, s:int) -> bool:
+  for x in range(s):
+    for y in range(s):
+      if (x // alpha == y // alpha) != (perm[x] // alpha == perm[y] // alpha):
+        return False
+  return True
+
+def alpha_allowable_perms(alpha:int, s:int) -> List[int]:
+  """Generate alpha-allowable permutations
+
+  Args:
+      alpha (int): A positive integer
+      s (int): A positive integer specifying the number of levels from (0, 1,...,s-1)
+
+  Returns:
+      List[int]: Alpha allowable permutations
+  Examples:
+  ```{python}
+  import pyLHD
+  pyLHD.alpha_allowable_perms(alpha = 2, s = 4)
+  ```
+  """
+  total_permutations = permutations(range(s))
+  return [perm for perm in total_permutations if is_alpha_allowable(perm, alpha, s)]
 
 
 #################################
