@@ -1,0 +1,26 @@
+# helpers.is_OABD { #pyLHD.helpers.is_OABD }
+
+`helpers.is_OABD(arr, alpha, s)`
+
+Verify the given array is an $OABD_{\alpha}(n,s^m)$
+
+## Parameters
+
+| Name    | Type                  | Description        | Default    |
+|---------|-----------------------|--------------------|------------|
+| `arr`   | numpy.numpy.ArrayLike | A numpy ndarray    | _required_ |
+| `alpha` | int                   | A positive integer | _required_ |
+| `s`     | int                   | A positive integer | _required_ |
+
+## Raises
+
+| Type       | Description                                 |
+|------------|---------------------------------------------|
+| TypeError  | If `s` and `alpha` are not postive integers |
+| ValueError | `s` must be a multiple of `alpha`           |
+
+## Returns
+
+| Type   | Description                                                   |
+|--------|---------------------------------------------------------------|
+| bool   | True if array is an $OABD_{\alpha}(n,s^m)$. False, otherwise. |

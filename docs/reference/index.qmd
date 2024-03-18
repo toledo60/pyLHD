@@ -93,6 +93,7 @@ Miscellaneous Utilities for Manipulating LHDs
 | [helpers.is_skew_symmetric](helpers.is_skew_symmetric.qmd#pyLHD.helpers.is_skew_symmetric) | Verify is a matrix is skew-symmetric |
 | [helpers.is_LHD](helpers.is_LHD.qmd#pyLHD.helpers.is_LHD) | Verify Latinhypercube sampling conditions |
 | [helpers.is_balanced_design](helpers.is_balanced_design.qmd#pyLHD.helpers.is_balanced_design) | Verify a design is balanced |
+| [helpers.is_OABD](helpers.is_OABD.qmd#pyLHD.helpers.is_OABD) | Verify the given array is an $OABD_{\alpha}(n,s^m)$ |
 | [helpers.level_permutation](helpers.level_permutation.qmd#pyLHD.helpers.level_permutation) | Apply level permutations to a Good lattice point (GLP) design |
 | [helpers.permute_columns](helpers.permute_columns.qmd#pyLHD.helpers.permute_columns) | Randomly permute columns in a numpy ndarray |
 | [helpers.permute_rows](helpers.permute_rows.qmd#pyLHD.helpers.permute_rows) | Randomly permute rows in a numpy ndarray |

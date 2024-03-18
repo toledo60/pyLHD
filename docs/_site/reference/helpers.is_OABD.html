@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index</title>
+<title>helpers.is_oabd</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">Function reference</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/helpers.alpha_allowable_perms.html">Helpers</a></li><li class="breadcrumb-item"><a href="../reference/helpers.is_OABD.html">helpers.is_OABD</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -144,7 +144,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Function reference</span></a>
   </div>
 </li>
@@ -495,7 +495,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/helpers.is_OABD.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/helpers.is_OABD.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">helpers.is_OABD</span></a>
   </div>
 </li>
@@ -577,15 +577,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#function-reference" id="toc-function-reference" class="nav-link active" data-scroll-target="#function-reference">Function reference</a>
+  <li><a href="#pyLHD.helpers.is_OABD" id="toc-pyLHD.helpers.is_OABD" class="nav-link active" data-scroll-target="#pyLHD.helpers.is_OABD">helpers.is_OABD</a>
   <ul class="collapse">
-  <li><a href="#base-designs" id="toc-base-designs" class="nav-link" data-scroll-target="#base-designs">Base Designs</a></li>
-  <li><a href="#hadamard-matrices" id="toc-hadamard-matrices" class="nav-link" data-scroll-target="#hadamard-matrices">Hadamard Matrices</a></li>
-  <li><a href="#maximin-lhd" id="toc-maximin-lhd" class="nav-link" data-scroll-target="#maximin-lhd">Maximin LHD</a></li>
-  <li><a href="#projection-designs" id="toc-projection-designs" class="nav-link" data-scroll-target="#projection-designs">Projection Designs</a></li>
-  <li><a href="#orthogonal-lhd" id="toc-orthogonal-lhd" class="nav-link" data-scroll-target="#orthogonal-lhd">Orthogonal LHD</a></li>
-  <li><a href="#criteria" id="toc-criteria" class="nav-link" data-scroll-target="#criteria">Criteria</a></li>
-  <li><a href="#helpers" id="toc-helpers" class="nav-link" data-scroll-target="#helpers">Helpers</a></li>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#raises" id="toc-raises" class="nav-link" data-scroll-target="#raises">Raises</a></li>
+  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -596,288 +592,81 @@ window.Quarto = {
 
 
 
-<section id="function-reference" class="level1 doc doc-index">
-<h1 class="doc doc-index">Function reference</h1>
-<section id="base-designs" class="level2">
-<h2 class="anchored" data-anchor-id="base-designs">Base Designs</h2>
-<p>Generate Random LHD</p>
+<section id="pyLHD.helpers.is_OABD" class="level1">
+<h1>helpers.is_OABD</h1>
+<p><code>helpers.is_OABD(arr, alpha, s)</code></p>
+<p>Verify the given array is an <span class="math inline">\(OABD_{\alpha}(n,s^m)\)</span></p>
+<section id="parameters" class="level2">
+<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../reference/base.LatinSquare.html#pyLHD.base.LatinSquare">base.LatinSquare</a></td>
-<td>Generate a random (n x d) Latin square</td>
+<td><code>arr</code></td>
+<td>numpy.numpy.ArrayLike</td>
+<td>A numpy ndarray</td>
+<td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><a href="../reference/base.LatinHypercube.html#pyLHD.base.LatinHypercube">base.LatinHypercube</a></td>
-<td>Generate a random Latin Hypercube Design</td>
+<td><code>alpha</code></td>
+<td>int</td>
+<td>A positive integer</td>
+<td><em>required</em></td>
 </tr>
 <tr class="odd">
-<td><a href="../reference/base.GoodLatticePoint.html#pyLHD.base.GoodLatticePoint">base.GoodLatticePoint</a></td>
-<td>Good Lattice Point (GLP) Design</td>
+<td><code>s</code></td>
+<td>int</td>
+<td>A positive integer</td>
+<td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="hadamard-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="hadamard-matrices">Hadamard Matrices</h2>
-<p>Constructions for Hadamard matrices</p>
+<section id="raises" class="level2">
+<h2 class="anchored" data-anchor-id="raises">Raises</h2>
 <table class="table">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../reference/hadamard.is_Hadamard.html#pyLHD.hadamard.is_Hadamard">hadamard.is_Hadamard</a></td>
-<td>Determine if a matrix is a Hadamard matrix.</td>
+<td>TypeError</td>
+<td>If <code>s</code> and <code>alpha</code> are not postive integers</td>
 </tr>
 <tr class="even">
-<td><a href="../reference/hadamard.jacobsthal_matrix.html#pyLHD.hadamard.jacobsthal_matrix">hadamard.jacobsthal_matrix</a></td>
-<td>Generate a Jacobsthal matrix</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/hadamard.normalize_hadamard.html#pyLHD.hadamard.normalize_hadamard">hadamard.normalize_hadamard</a></td>
-<td>Normalize a Hadamard matrix</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/hadamard.sylvester.html#pyLHD.hadamard.sylvester">hadamard.sylvester</a></td>
-<td>Hadamard matrix based on Sylvester’s construction</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/hadamard.paley.html#pyLHD.hadamard.paley">hadamard.paley</a></td>
-<td>Paley Construction</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/hadamard.paley_design.html#pyLHD.hadamard.paley_design">hadamard.paley_design</a></td>
-<td>Generate a Paley design</td>
+<td>ValueError</td>
+<td><code>s</code> must be a multiple of <code>alpha</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="maximin-lhd" class="level2">
-<h2 class="anchored" data-anchor-id="maximin-lhd">Maximin LHD</h2>
-<p>Algebraic Constructions of Maximim LHD</p>
+<section id="returns" class="level2">
+<h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 88%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../reference/maximin.best_linear_permutation.html#pyLHD.maximin.best_linear_permutation">maximin.best_linear_permutation</a></td>
-<td>Optimal linear permutation value to achieve larger L1-distance for a LHD</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/maximin.EquidistantLHD.html#pyLHD.maximin.EquidistantLHD">maximin.EquidistantLHD</a></td>
-<td>Generate an Equidistant Latin Hypercube</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/maximin.leave_one_out.html#pyLHD.maximin.leave_one_out">maximin.leave_one_out</a></td>
-<td>Apply the Leave-one-out Procedure to Generate a Maxmin LHD</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/maximin.maximinLHD.html#pyLHD.maximin.maximinLHD">maximin.maximinLHD</a></td>
-<td>Generate a maximin LHD based on the L1-distance</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="projection-designs" class="level2">
-<h2 class="anchored" data-anchor-id="projection-designs">Projection Designs</h2>
-<p>Algebraic Constructions for Optimized Projections of LHD</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../reference/projections.best_linear_permutation.html#pyLHD.projections.best_linear_permutation">projections.best_linear_permutation</a></td>
-<td>Optimal linear permutation value to minimize the uniform projection criterion</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/projections.UniformProLHD.html#pyLHD.projections.UniformProLHD">projections.UniformProLHD</a></td>
-<td>Generate a Uniform Projection Design</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="orthogonal-lhd" class="level2">
-<h2 class="anchored" data-anchor-id="orthogonal-lhd">Orthogonal LHD</h2>
-<p>Algebraic Constructions of Orthogonal LHD</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../reference/orthogonal.OLHD_Butler01.html#pyLHD.orthogonal.OLHD_Butler01">orthogonal.OLHD_Butler01</a></td>
-<td>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/orthogonal.OLHD_Cioppa07.html#pyLHD.orthogonal.OLHD_Cioppa07">orthogonal.OLHD_Cioppa07</a></td>
-<td>Orthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/orthogonal.OLHD_Lin09.html#pyLHD.orthogonal.OLHD_Lin09">orthogonal.OLHD_Lin09</a></td>
-<td>Orthogonal Latin Hypercube Design. Based on the construction method of Lin et al.&nbsp;(2009)</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/orthogonal.OLHD_Sun10.html#pyLHD.orthogonal.OLHD_Sun10">orthogonal.OLHD_Sun10</a></td>
-<td>Orthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al.&nbsp;(2010)</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/orthogonal.OLHD_Ye98.html#pyLHD.orthogonal.OLHD_Ye98">orthogonal.OLHD_Ye98</a></td>
-<td>Orthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/orthogonal.OA2LHD.html#pyLHD.orthogonal.OA2LHD">orthogonal.OA2LHD</a></td>
-<td>Transform an Orthogonal Array (OA) into an LHD</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="criteria" class="level2">
-<h2 class="anchored" data-anchor-id="criteria">Criteria</h2>
-<p>Space-filling and Projection Criterias for LHD</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../reference/criteria.Criteria.html#pyLHD.criteria.Criteria">criteria.Criteria</a></td>
-<td>A class representing a collection of criteria functions.</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.AvgAbsCor.html#pyLHD.criteria.AvgAbsCor">criteria.AvgAbsCor</a></td>
-<td>Calculate the Average Absolute Correlation</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/criteria.coverage.html#pyLHD.criteria.coverage">criteria.coverage</a></td>
-<td>Compute the coverage measure for a design</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.discrepancy.html#pyLHD.criteria.discrepancy">criteria.discrepancy</a></td>
-<td>Discrepancy of a given sample</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/criteria.LqDistance.html#pyLHD.criteria.LqDistance">criteria.LqDistance</a></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.MaxAbsCor.html#pyLHD.criteria.MaxAbsCor">criteria.MaxAbsCor</a></td>
-<td>Calculate the Maximum Absolute Correlation</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/criteria.MeshRatio.html#pyLHD.criteria.MeshRatio">criteria.MeshRatio</a></td>
-<td>Compute the meshratio criterion for a given design</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.MaxProCriterion.html#pyLHD.criteria.MaxProCriterion">criteria.MaxProCriterion</a></td>
-<td>Calculate the Maximum Projection Criterion</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/criteria.phi_p.html#pyLHD.criteria.phi_p">criteria.phi_p</a></td>
-<td>Calculate the phi_p Criterion</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/criteria.UniformProCriterion.html#pyLHD.criteria.UniformProCriterion">criteria.UniformProCriterion</a></td>
-<td>Calculate the Uniform Projection Criterion</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="helpers" class="level2">
-<h2 class="anchored" data-anchor-id="helpers">Helpers</h2>
-<p>Miscellaneous Utilities for Manipulating LHDs</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><a href="../reference/helpers.alpha_allowable_perms.html#pyLHD.helpers.alpha_allowable_perms">helpers.alpha_allowable_perms</a></td>
-<td>Generate alpha-allowable permutations</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.are_coprime.html#pyLHD.helpers.are_coprime">helpers.are_coprime</a></td>
-<td>Check if two integers are coprime</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.axis_combinations.html#pyLHD.helpers.axis_combinations">helpers.axis_combinations</a></td>
-<td>Generates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.check_bounds.html#pyLHD.helpers.check_bounds">helpers.check_bounds</a></td>
-<td>Check conditions for bounds input</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.distance_matrix.html#pyLHD.helpers.distance_matrix">helpers.distance_matrix</a></td>
-<td>Distance matrix based on specified distance measure</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.euler_phi.html#pyLHD.helpers.euler_phi">helpers.euler_phi</a></td>
-<td>Euler’s Totient function</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.generate_primes.html#pyLHD.helpers.generate_primes">helpers.generate_primes</a></td>
-<td>Gernate the first <code>n</code> prime numbers</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.generate_prime_powers.html#pyLHD.helpers.generate_prime_powers">helpers.generate_prime_powers</a></td>
-<td>Generate the first <code>n</code> prime powers</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.is_cyclic.html#pyLHD.helpers.is_cyclic">helpers.is_cyclic</a></td>
-<td>Verify an array is cylic</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.is_prime.html#pyLHD.helpers.is_prime">helpers.is_prime</a></td>
-<td>Determine if a number is prime</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.is_symmetric.html#pyLHD.helpers.is_symmetric">helpers.is_symmetric</a></td>
-<td>Verify is a matrix is symmetric</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.is_skew_symmetric.html#pyLHD.helpers.is_skew_symmetric">helpers.is_skew_symmetric</a></td>
-<td>Verify is a matrix is skew-symmetric</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.is_LHD.html#pyLHD.helpers.is_LHD">helpers.is_LHD</a></td>
-<td>Verify Latinhypercube sampling conditions</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.is_balanced_design.html#pyLHD.helpers.is_balanced_design">helpers.is_balanced_design</a></td>
-<td>Verify a design is balanced</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.is_OABD.html#pyLHD.helpers.is_OABD">helpers.is_OABD</a></td>
-<td>Verify the given array is an <span class="math inline">\(OABD_{\alpha}(n,s^m)\)</span></td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.level_permutation.html#pyLHD.helpers.level_permutation">helpers.level_permutation</a></td>
-<td>Apply level permutations to a Good lattice point (GLP) design</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.permute_columns.html#pyLHD.helpers.permute_columns">helpers.permute_columns</a></td>
-<td>Randomly permute columns in a numpy ndarray</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.permute_rows.html#pyLHD.helpers.permute_rows">helpers.permute_rows</a></td>
-<td>Randomly permute rows in a numpy ndarray</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.primes_range.html#pyLHD.helpers.primes_range">helpers.primes_range</a></td>
-<td>Generate prime numbers from a specified range</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.replace_values.html#pyLHD.helpers.replace_values">helpers.replace_values</a></td>
-<td>Replace values in a numpy array based on a provided mapping dictionary</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.scale.html#pyLHD.helpers.scale">helpers.scale</a></td>
-<td>Sample scaling from unit hypercube to different bounds</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.swap_elements.html#pyLHD.helpers.swap_elements">helpers.swap_elements</a></td>
-<td>Swap two random elements in a matrix</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.totatives.html#pyLHD.helpers.totatives">helpers.totatives</a></td>
-<td>Generate all positive integers less than and coprime to N from [1,N)</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.verify_generator.html#pyLHD.helpers.verify_generator">helpers.verify_generator</a></td>
-<td>Verify generator used to construct good lattice points (GLP) design</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/helpers.WilliamsTransform.html#pyLHD.helpers.WilliamsTransform">helpers.WilliamsTransform</a></td>
-<td>Williams Transformation</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/helpers.zero_base.html#pyLHD.helpers.zero_base">helpers.zero_base</a></td>
-<td>Normalize the columns by subtracting the minimum element of each column</td>
+<td>bool</td>
+<td>True if array is an <span class="math inline">\(OABD_{\alpha}(n,s^m)\)</span>. False, otherwise.</td>
 </tr>
 </tbody>
 </table>

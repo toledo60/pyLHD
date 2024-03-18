@@ -3,6 +3,8 @@ import numpy as np
 import numpy.typing as npt
 from typing import Optional, List, Union, NoReturn
 from itertools import combinations, permutations
+import oapackage as oa
+
 
 def distance_matrix(arr: npt.ArrayLike, metric: str = 'euclidean', p: int = 2) -> np.ndarray:
   """ Distance matrix based on specified distance measure
@@ -787,3 +789,38 @@ def verify_generator(numbers: list[int], n: int, k: int) -> list[int]:
   if any(element >= n or not are_coprime(element, n) for element in numbers):
     raise ValueError('All `numbers` should be less than `n` and coprime to `n`')
   return numbers
+
+
+def is_OABD(arr:npt.ArrayLike, alpha:int, s:int) -> bool:
+  """Verify the given array is an $OABD_{\\alpha}(n,s^m)$
+
+  Args:
+      arr (npt.ArrayLike): A numpy ndarray
+      alpha (int): A positive integer
+      s (int): A positive integer
+
+  Raises:
+      TypeError: If `s` and `alpha` are not postive integers
+      ValueError: `s` must be a multiple of `alpha`
+
+  Returns:
+      True if array is an $OABD_{\\alpha}(n,s^m)$. False, otherwise.
+  """
+  for arg, name in [(s, "s"), (alpha, "alpha")]:
+    if not isinstance(arg, int):
+      raise TypeError(f"{name} must be an integer")   
+  if s%alpha !=0:
+    raise ValueError("s must be a multiple of alpha")
+  
+  s_prime = s//alpha
+  _, m = arr.shape
+  all_pairs_orthogonal = True
+  col_pairs = combinations(range(m), 2)
+
+  for cols in col_pairs:
+    collapsed_arr = oa.array_link(np.floor_divide(arr[:, cols], alpha))
+    if not collapsed_arr.is_orthogonal_array() or not collapsed_arr.strength() == s_prime:
+      all_pairs_orthogonal = False
+      break
+  return all_pairs_orthogonal
+

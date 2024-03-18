@@ -12,7 +12,7 @@ Currently `pyLHD` can be installed from Github
 pip install git+https://github.com/toledo60/pyLHD.git
 ```
 
-The only dependency for `pyLHD` is [NumPy](https://numpy.org/) and currently tested on Python 3.9+
+and is currently tested on Python 3.9+
 
 
 ## References

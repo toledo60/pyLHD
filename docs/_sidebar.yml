@@ -60,6 +60,7 @@ website:
       - reference/helpers.is_skew_symmetric.qmd
       - reference/helpers.is_LHD.qmd
       - reference/helpers.is_balanced_design.qmd
+      - reference/helpers.is_OABD.qmd
       - reference/helpers.level_permutation.qmd
       - reference/helpers.permute_columns.qmd
       - reference/helpers.permute_rows.qmd

@@ -94,6 +94,7 @@ quartodoc:
         - helpers.is_skew_symmetric
         - helpers.is_LHD
         - helpers.is_balanced_design
+        - helpers.is_OABD
         - helpers.level_permutation
         - helpers.permute_columns
         - helpers.permute_rows
