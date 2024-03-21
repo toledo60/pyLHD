@@ -6,6 +6,7 @@ website:
       - reference/base.LatinSquare.qmd
       - reference/base.LatinHypercube.qmd
       - reference/base.GoodLatticePoint.qmd
+      - reference/base.UniformDesign.qmd
       section: Base Designs
     - contents:
       - reference/hadamard.is_Hadamard.qmd

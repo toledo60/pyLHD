@@ -350,7 +350,7 @@ def level_permutation(arr: npt.ArrayLike, b: Union[int,list], modulus:int = None
   GLP = pyLHD.GoodLatticePoint(size = (10, pyLHD.euler_phi(10)))
   GLP
   ```
-  Apply a simple linear level permutation in the form of $D = D+b (mod \,N)$
+  Apply a simple linear level permutation in the form of $D = D+b (mod N)$
   ```{python}
   pyLHD.level_permutation(GLP,b = 2)
   ```

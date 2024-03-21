@@ -1,0 +1,35 @@
+# base.UniformDesign { #pyLHD.base.UniformDesign }
+
+`base.UniformDesign(size, n_levels, n_iters=100, criteria='centered_L2')`
+
+Generate a Uniform Design (U-type)
+
+## Parameters
+
+| Name       | Type          | Description                                                                                                                                                   | Default         |
+|------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| `size`     | tuple of ints | Output shape of (n,d), where `n` and `d` are the number of rows and columns, respectively                                                                     | _required_      |
+| `n_levels` | int           | number of levels in each column for the uniform design                                                                                                        | _required_      |
+| `n_iters`  | int           | Maximium iterations to optimize specified criteria. Defaults to 100.                                                                                          | `100`           |
+| `criteria` | str           | Type of discrepancy. Defaults to 'centered_L2'. Options include: 'L2', 'L2_star','centered_L2', 'modified_L2', 'mixture_L2', 'symmetric_L2', 'wrap_around_L2' | `'centered_L2'` |
+
+## Raises
+
+| Type       | Description                                |
+|------------|--------------------------------------------|
+| ValueError | `n` should be a multiple of the `n_levels` |
+
+## Returns
+
+| Type                | Description                                                                                                                                                   |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| numpy.numpy.ndarray | np.ndarray: A U-type uniform design, $U(n,q^d)$ where $n$ is the number of rows, $q$ are the numbe of levels, and $d$ is the dimension of the uniform design. |
+
+Examples:
+```{python}
+import pyLHD
+pyLHD.UniformDesign(size = (10,3), n_levels = 2)
+```
+```{python}
+pyLHD.UniformDesign(size = (10,3), n_levels = 5, criteria = "mixture_L2")  
+```

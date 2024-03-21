@@ -209,6 +209,12 @@ window.Quarto = {
  <span class="menu-text">base.GoodLatticePoint</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/base.UniformDesign.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">base.UniformDesign</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -529,6 +535,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/helpers.is_OABD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">helpers.is_OABD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/helpers.level_permutation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">helpers.level_permutation</span></a>
   </div>
@@ -655,7 +667,7 @@ window.Quarto = {
 <tr class="odd">
 <td><code>size</code></td>
 <td>tuple of ints</td>
-<td>Output shape of (n,d), where <span class="math inline">\(n\)</span> and <span class="math inline">\(d\)</span> are the number of rows and columns, respectively.</td>
+<td>Output shape of <span class="math inline">\((n,d)\)</span>, where <span class="math inline">\(n\)</span> and <span class="math inline">\(d\)</span> are the number of rows and columns, respectively.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
@@ -667,7 +679,7 @@ window.Quarto = {
 <tr class="odd">
 <td><code>seed</code></td>
 <td>Optional[Union[int, np.random.Generator]])</td>
-<td>If <code>seed</code>is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a `<code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>
+<td>If <code>seed</code> is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If <code>seed</code> is already a <code>Generator</code> instance, then the provided instance is used. Defaults to None.</td>
 <td><code>None</code></td>
 </tr>
 </tbody>
@@ -677,8 +689,8 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 11%">
-<col style="width: 88%">
+<col style="width: 26%">
+<col style="width: 73%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -689,12 +701,12 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td>numpy.numpy.ArrayLike</td>
-<td>A Latin hypercube sample of <span class="math inline">\(n\)</span> points generated in <span class="math inline">\([0,1)^d\)</span>. Each univariate marginal distribution is stratisfied, placing exactly one point in <span class="math inline">\([j/n,(j+1)/n)\)</span> for <span class="math inline">\(j=0,1,\dots,n-1\)</span></td>
+<td>A Latin hypercube sample of <span class="math inline">\(n\)</span> points generated in <span class="math inline">\([0,1)^d\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>Examples:</p>
-<div id="d0e5b483" class="cell" data-execution_count="1">
+<div id="ffc300b4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLHD</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">3</span>),seed <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -705,7 +717,7 @@ window.Quarto = {
        [0.30930042, 0.10930042, 0.50930042]])</code></pre>
 </div>
 </div>
-<div id="9afa90f8" class="cell" data-execution_count="2">
+<div id="68219638" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pyLHD.LatinHypercube(size <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">3</span>), seed <span class="op">=</span> <span class="dv">1</span>, scramble <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>array([[0.7, 0.3, 0.1],

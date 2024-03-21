@@ -484,7 +484,7 @@
     "href": "reference/base.LatinHypercube.html#parameters",
     "title": "base.LatinHypercube",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where \\(n\\) and \\(d\\) are the number of rows and columns, respectively.\nrequired\n\n\nscramble\ntyping.Optional[bool]\nWhen False, center samples within cells of a multi-dimensional grid. Otherwise, samples are randomly placed within cells of the grid. Defaults to True.\nTrue\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of \\((n,d)\\), where \\(n\\) and \\(d\\) are the number of rows and columns, respectively.\nrequired\n\n\nscramble\ntyping.Optional[bool]\nWhen False, center samples within cells of a multi-dimensional grid. Otherwise, samples are randomly placed within cells of the grid. Defaults to True.\nTrue\n\n\nseed\nOptional[Union[int, np.random.Generator]])\nIf seed is an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a Generator instance, then the provided instance is used. Defaults to None.\nNone",
     "crumbs": [
       "Reference",
       "Base Designs",
@@ -496,7 +496,7 @@
     "href": "reference/base.LatinHypercube.html#returns",
     "title": "base.LatinHypercube",
     "section": "Returns",
-    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ArrayLike\nA Latin hypercube sample of \\(n\\) points generated in \\([0,1)^d\\). Each univariate marginal distribution is stratisfied, placing exactly one point in \\([j/n,(j+1)/n)\\) for \\(j=0,1,\\dots,n-1\\)\n\n\n\nExamples:\n\nimport pyLHD\npyLHD.LatinHypercube(size = (5,3),seed = 1)\n\narray([[0.70930042, 0.30930042, 0.10930042],\n       [0.90930042, 0.50930042, 0.90930042],\n       [0.10930042, 0.70930042, 0.30930042],\n       [0.50930042, 0.90930042, 0.70930042],\n       [0.30930042, 0.10930042, 0.50930042]])\n\n\n\npyLHD.LatinHypercube(size = (5,3), seed = 1, scramble = False)\n\narray([[0.7, 0.3, 0.1],\n       [0.9, 0.5, 0.9],\n       [0.1, 0.7, 0.3],\n       [0.5, 0.9, 0.7],\n       [0.3, 0.1, 0.5]])",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ArrayLike\nA Latin hypercube sample of \\(n\\) points generated in \\([0,1)^d\\)\n\n\n\nExamples:\n\nimport pyLHD\npyLHD.LatinHypercube(size = (5,3),seed = 1)\n\narray([[0.70930042, 0.30930042, 0.10930042],\n       [0.90930042, 0.50930042, 0.90930042],\n       [0.10930042, 0.70930042, 0.30930042],\n       [0.50930042, 0.90930042, 0.70930042],\n       [0.30930042, 0.10930042, 0.50930042]])\n\n\n\npyLHD.LatinHypercube(size = (5,3), seed = 1, scramble = False)\n\narray([[0.7, 0.3, 0.1],\n       [0.9, 0.5, 0.9],\n       [0.1, 0.7, 0.3],\n       [0.5, 0.9, 0.7],\n       [0.3, 0.1, 0.5]])",
     "crumbs": [
       "Reference",
       "Base Designs",
@@ -856,7 +856,7 @@
     "href": "reference/base.GoodLatticePoint.html#parameters",
     "title": "base.GoodLatticePoint",
     "section": "Parameters",
-    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where n and d are the number of rows and columns, respectively\nrequired\n\n\nh\nlist of ints\nA generator vector used to multiply each row of the design. Each element in h must be smaller than and coprime to n\nNone\n\n\nseed\ntyping.Optional[typing.Union[int, numpy.numpy.random.numpy.random.Generator]]\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of \\((n,d)\\), where n and d are the number of rows and columns, respectively\nrequired\n\n\nh\nlist of ints\nA generator vector used to multiply each row of the design. Each element in h must be smaller than and coprime to n\nNone\n\n\nseed\ntyping.Optional[typing.Union[int, numpy.numpy.random.numpy.random.Generator]]\nIf seedis an integer or None, a new numpy.random.Generator is created using np.random.default_rng(seed). If seed is already a `Generator instance, then the provided instance is used. Defaults to None.\nNone",
     "crumbs": [
       "Reference",
       "Base Designs",
@@ -868,7 +868,7 @@
     "href": "reference/base.GoodLatticePoint.html#returns",
     "title": "base.GoodLatticePoint",
     "section": "Returns",
-    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ndarray\nGenerated random (n x d) Good lattice point set, where each column is a random permutation of {0,1,…,n-1}\n\n\n\nExamples:\n\nimport pyLHD\npyLHD.GoodLatticePoint(size = (10,4))\n\narray([[1, 3, 7, 9],\n       [2, 6, 4, 8],\n       [3, 9, 1, 7],\n       [4, 2, 8, 6],\n       [5, 5, 5, 5],\n       [6, 8, 2, 4],\n       [7, 1, 9, 3],\n       [8, 4, 6, 2],\n       [9, 7, 3, 1],\n       [0, 0, 0, 0]])\n\n\n\npyLHD.GoodLatticePoint(size = (10,3),seed = 1)\n\narray([[3, 1, 9],\n       [6, 2, 8],\n       [9, 3, 7],\n       [2, 4, 6],\n       [5, 5, 5],\n       [8, 6, 4],\n       [1, 7, 3],\n       [4, 8, 2],\n       [7, 9, 1],\n       [0, 0, 0]])",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ndarray\nGenerated random \\((n x d)\\) Good lattice point set, where each column is a random permutation of \\(\\{0,1, \\dots ,n-1 \\}\\)\n\n\n\nExamples:\n\nimport pyLHD\npyLHD.GoodLatticePoint(size = (10,4))\n\narray([[1, 3, 7, 9],\n       [2, 6, 4, 8],\n       [3, 9, 1, 7],\n       [4, 2, 8, 6],\n       [5, 5, 5, 5],\n       [6, 8, 2, 4],\n       [7, 1, 9, 3],\n       [8, 4, 6, 2],\n       [9, 7, 3, 1],\n       [0, 0, 0, 0]])\n\n\n\npyLHD.GoodLatticePoint(size = (10,3),seed = 1)\n\narray([[3, 1, 9],\n       [6, 2, 8],\n       [9, 3, 7],\n       [2, 4, 6],\n       [5, 5, 5],\n       [8, 6, 4],\n       [1, 7, 3],\n       [4, 8, 2],\n       [7, 9, 1],\n       [0, 0, 0]])",
     "crumbs": [
       "Reference",
       "Base Designs",
@@ -1482,7 +1482,7 @@
     "href": "reference/helpers.level_permutation.html#returns",
     "title": "helpers.level_permutation",
     "section": "Returns",
-    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ndarray\nnpt.ArrayLike: A new array where each element is the result of (arr + b) % modulus\n\n\n\nExamples:\n\nimport pyLHD\nGLP = pyLHD.GoodLatticePoint(size = (10, pyLHD.euler_phi(10)))\nGLP\n\narray([[1, 3, 7, 9],\n       [2, 6, 4, 8],\n       [3, 9, 1, 7],\n       [4, 2, 8, 6],\n       [5, 5, 5, 5],\n       [6, 8, 2, 4],\n       [7, 1, 9, 3],\n       [8, 4, 6, 2],\n       [9, 7, 3, 1],\n       [0, 0, 0, 0]])\n\n\nApply a simple linear level permutation in the form of \\(D = D+b (mod \\,N)\\)\n\npyLHD.level_permutation(GLP,b = 2)\n\narray([[3, 5, 9, 1],\n       [4, 8, 6, 0],\n       [5, 1, 3, 9],\n       [6, 4, 0, 8],\n       [7, 7, 7, 7],\n       [8, 0, 4, 6],\n       [9, 3, 1, 5],\n       [0, 6, 8, 4],\n       [1, 9, 5, 3],\n       [2, 2, 2, 2]])\n\n\n\npyLHD.level_permutation(GLP, b = [1,4,3,2])\n\narray([[2, 7, 0, 1],\n       [3, 0, 7, 0],\n       [4, 3, 4, 9],\n       [5, 6, 1, 8],\n       [6, 9, 8, 7],\n       [7, 2, 5, 6],\n       [8, 5, 2, 5],\n       [9, 8, 9, 4],\n       [0, 1, 6, 3],\n       [1, 4, 3, 2]])",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ndarray\nnpt.ArrayLike: A new array where each element is the result of (arr + b) % modulus\n\n\n\nExamples:\n\nimport pyLHD\nGLP = pyLHD.GoodLatticePoint(size = (10, pyLHD.euler_phi(10)))\nGLP\n\narray([[1, 3, 7, 9],\n       [2, 6, 4, 8],\n       [3, 9, 1, 7],\n       [4, 2, 8, 6],\n       [5, 5, 5, 5],\n       [6, 8, 2, 4],\n       [7, 1, 9, 3],\n       [8, 4, 6, 2],\n       [9, 7, 3, 1],\n       [0, 0, 0, 0]])\n\n\nApply a simple linear level permutation in the form of \\(D = D+b (mod N)\\)\n\npyLHD.level_permutation(GLP,b = 2)\n\narray([[3, 5, 9, 1],\n       [4, 8, 6, 0],\n       [5, 1, 3, 9],\n       [6, 4, 0, 8],\n       [7, 7, 7, 7],\n       [8, 0, 4, 6],\n       [9, 3, 1, 5],\n       [0, 6, 8, 4],\n       [1, 9, 5, 3],\n       [2, 2, 2, 2]])\n\n\n\npyLHD.level_permutation(GLP, b = [1,4,3,2])\n\narray([[2, 7, 0, 1],\n       [3, 0, 7, 0],\n       [4, 3, 4, 9],\n       [5, 6, 1, 8],\n       [6, 9, 8, 7],\n       [7, 2, 5, 6],\n       [8, 5, 2, 5],\n       [9, 8, 9, 4],\n       [0, 1, 6, 3],\n       [1, 4, 3, 2]])",
     "crumbs": [
       "Reference",
       "Helpers",
@@ -1686,7 +1686,7 @@
     "href": "reference/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\n\n\n\n\nConstructions for Hadamard matrices\n\n\n\nhadamard.is_Hadamard\nDetermine if a matrix is a Hadamard matrix.\n\n\nhadamard.jacobsthal_matrix\nGenerate a Jacobsthal matrix\n\n\nhadamard.normalize_hadamard\nNormalize a Hadamard matrix\n\n\nhadamard.sylvester\nHadamard matrix based on Sylvester’s construction\n\n\nhadamard.paley\nPaley Construction\n\n\nhadamard.paley_design\nGenerate a Paley design\n\n\n\n\n\n\nAlgebraic Constructions of Maximim LHD\n\n\n\nmaximin.best_linear_permutation\nOptimal linear permutation value to achieve larger L1-distance for a LHD\n\n\nmaximin.EquidistantLHD\nGenerate an Equidistant Latin Hypercube\n\n\nmaximin.leave_one_out\nApply the Leave-one-out Procedure to Generate a Maxmin LHD\n\n\nmaximin.maximinLHD\nGenerate a maximin LHD based on the L1-distance\n\n\n\n\n\n\nAlgebraic Constructions for Optimized Projections of LHD\n\n\n\nprojections.best_linear_permutation\nOptimal linear permutation value to minimize the uniform projection criterion\n\n\nprojections.UniformProLHD\nGenerate a Uniform Projection Design\n\n\n\n\n\n\nAlgebraic Constructions of Orthogonal LHD\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling and Projection Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.LqDistance\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion\n\n\n\n\n\n\nMiscellaneous Utilities for Manipulating LHDs\n\n\n\nhelpers.alpha_allowable_perms\nGenerate alpha-allowable permutations\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.axis_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.generate_primes\nGernate the first n prime numbers\n\n\nhelpers.generate_prime_powers\nGenerate the first n prime powers\n\n\nhelpers.is_cyclic\nVerify an array is cylic\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_symmetric\nVerify is a matrix is symmetric\n\n\nhelpers.is_skew_symmetric\nVerify is a matrix is skew-symmetric\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.is_OABD\nVerify the given array is an \\(OABD_{\\alpha}(n,s^m)\\)\n\n\nhelpers.level_permutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.primes_range\nGenerate prime numbers from a specified range\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.verify_generator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.WilliamsTransform\nWilliams Transformation\n\n\nhelpers.zero_base\nNormalize the columns by subtracting the minimum element of each column",
+    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\nbase.UniformDesign\nGenerate a Uniform Design (U-type)\n\n\n\n\n\n\nConstructions for Hadamard matrices\n\n\n\nhadamard.is_Hadamard\nDetermine if a matrix is a Hadamard matrix.\n\n\nhadamard.jacobsthal_matrix\nGenerate a Jacobsthal matrix\n\n\nhadamard.normalize_hadamard\nNormalize a Hadamard matrix\n\n\nhadamard.sylvester\nHadamard matrix based on Sylvester’s construction\n\n\nhadamard.paley\nPaley Construction\n\n\nhadamard.paley_design\nGenerate a Paley design\n\n\n\n\n\n\nAlgebraic Constructions of Maximim LHD\n\n\n\nmaximin.best_linear_permutation\nOptimal linear permutation value to achieve larger L1-distance for a LHD\n\n\nmaximin.EquidistantLHD\nGenerate an Equidistant Latin Hypercube\n\n\nmaximin.leave_one_out\nApply the Leave-one-out Procedure to Generate a Maxmin LHD\n\n\nmaximin.maximinLHD\nGenerate a maximin LHD based on the L1-distance\n\n\n\n\n\n\nAlgebraic Constructions for Optimized Projections of LHD\n\n\n\nprojections.best_linear_permutation\nOptimal linear permutation value to minimize the uniform projection criterion\n\n\nprojections.UniformProLHD\nGenerate a Uniform Projection Design\n\n\n\n\n\n\nAlgebraic Constructions of Orthogonal LHD\n\n\n\northogonal.OLHD_Butler01\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Butler (2001)\n\n\northogonal.OLHD_Cioppa07\nOrthogonal Latin Hyercube Design. Based on the construction method of Cioppa and Lucas (2007)\n\n\northogonal.OLHD_Lin09\nOrthogonal Latin Hypercube Design. Based on the construction method of Lin et al. (2009)\n\n\northogonal.OLHD_Sun10\nOrthogonal Latin Hypercube Design (OLHD). Based on the construction method of Sun et al. (2010)\n\n\northogonal.OLHD_Ye98\nOrthogonal Latin Hyercube Design. Based on the construction method of Ye (1998)\n\n\northogonal.OA2LHD\nTransform an Orthogonal Array (OA) into an LHD\n\n\n\n\n\n\nSpace-filling and Projection Criterias for LHD\n\n\n\ncriteria.Criteria\nA class representing a collection of criteria functions.\n\n\ncriteria.AvgAbsCor\nCalculate the Average Absolute Correlation\n\n\ncriteria.coverage\nCompute the coverage measure for a design\n\n\ncriteria.discrepancy\nDiscrepancy of a given sample\n\n\ncriteria.LqDistance\n\n\n\ncriteria.MaxAbsCor\nCalculate the Maximum Absolute Correlation\n\n\ncriteria.MeshRatio\nCompute the meshratio criterion for a given design\n\n\ncriteria.MaxProCriterion\nCalculate the Maximum Projection Criterion\n\n\ncriteria.phi_p\nCalculate the phi_p Criterion\n\n\ncriteria.UniformProCriterion\nCalculate the Uniform Projection Criterion\n\n\n\n\n\n\nMiscellaneous Utilities for Manipulating LHDs\n\n\n\nhelpers.alpha_allowable_perms\nGenerate alpha-allowable permutations\n\n\nhelpers.are_coprime\nCheck if two integers are coprime\n\n\nhelpers.axis_combinations\nGenerates all unique combinations of columns from the given array, selecting ‘k’ columns at a time.\n\n\nhelpers.check_bounds\nCheck conditions for bounds input\n\n\nhelpers.distance_matrix\nDistance matrix based on specified distance measure\n\n\nhelpers.euler_phi\nEuler’s Totient function\n\n\nhelpers.generate_primes\nGernate the first n prime numbers\n\n\nhelpers.generate_prime_powers\nGenerate the first n prime powers\n\n\nhelpers.is_cyclic\nVerify an array is cylic\n\n\nhelpers.is_prime\nDetermine if a number is prime\n\n\nhelpers.is_symmetric\nVerify is a matrix is symmetric\n\n\nhelpers.is_skew_symmetric\nVerify is a matrix is skew-symmetric\n\n\nhelpers.is_LHD\nVerify Latinhypercube sampling conditions\n\n\nhelpers.is_balanced_design\nVerify a design is balanced\n\n\nhelpers.is_OABD\nVerify the given array is an \\(OABD_{\\alpha}(n,s^m)\\)\n\n\nhelpers.level_permutation\nApply level permutations to a Good lattice point (GLP) design\n\n\nhelpers.permute_columns\nRandomly permute columns in a numpy ndarray\n\n\nhelpers.permute_rows\nRandomly permute rows in a numpy ndarray\n\n\nhelpers.primes_range\nGenerate prime numbers from a specified range\n\n\nhelpers.replace_values\nReplace values in a numpy array based on a provided mapping dictionary\n\n\nhelpers.scale\nSample scaling from unit hypercube to different bounds\n\n\nhelpers.swap_elements\nSwap two random elements in a matrix\n\n\nhelpers.totatives\nGenerate all positive integers less than and coprime to N from [1,N)\n\n\nhelpers.verify_generator\nVerify generator used to construct good lattice points (GLP) design\n\n\nhelpers.WilliamsTransform\nWilliams Transformation\n\n\nhelpers.zero_base\nNormalize the columns by subtracting the minimum element of each column",
     "crumbs": [
       "Reference",
       "Function reference"
@@ -1697,7 +1697,7 @@
     "href": "reference/index.html#base-designs",
     "title": "Function reference",
     "section": "",
-    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design",
+    "text": "Generate Random LHD\n\n\n\nbase.LatinSquare\nGenerate a random (n x d) Latin square\n\n\nbase.LatinHypercube\nGenerate a random Latin Hypercube Design\n\n\nbase.GoodLatticePoint\nGood Lattice Point (GLP) Design\n\n\nbase.UniformDesign\nGenerate a Uniform Design (U-type)",
     "crumbs": [
       "Reference",
       "Function reference"
@@ -2355,6 +2355,54 @@
       "Reference",
       "Helpers",
       "helpers.is_OABD"
+    ]
+  },
+  {
+    "objectID": "reference/base.UniformDesign.html",
+    "href": "reference/base.UniformDesign.html",
+    "title": "base.UniformDesign",
+    "section": "",
+    "text": "base.UniformDesign(size, n_levels, n_iters=100, criteria='centered_L2')\nGenerate a Uniform Design (U-type)",
+    "crumbs": [
+      "Reference",
+      "Base Designs",
+      "base.UniformDesign"
+    ]
+  },
+  {
+    "objectID": "reference/base.UniformDesign.html#parameters",
+    "href": "reference/base.UniformDesign.html#parameters",
+    "title": "base.UniformDesign",
+    "section": "Parameters",
+    "text": "Parameters\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsize\ntuple of ints\nOutput shape of (n,d), where n and d are the number of rows and columns, respectively\nrequired\n\n\nn_levels\nint\nnumber of levels in each column for the uniform design\nrequired\n\n\nn_iters\nint\nMaximium iterations to optimize specified criteria. Defaults to 100.\n100\n\n\ncriteria\nstr\nType of discrepancy. Defaults to ‘centered_L2’. Options include: ‘L2’, ‘L2_star’,‘centered_L2’, ‘modified_L2’, ‘mixture_L2’, ‘symmetric_L2’, ‘wrap_around_L2’\n'centered_L2'",
+    "crumbs": [
+      "Reference",
+      "Base Designs",
+      "base.UniformDesign"
+    ]
+  },
+  {
+    "objectID": "reference/base.UniformDesign.html#raises",
+    "href": "reference/base.UniformDesign.html#raises",
+    "title": "base.UniformDesign",
+    "section": "Raises",
+    "text": "Raises\n\n\n\nType\nDescription\n\n\n\n\nValueError\nn should be a multiple of the n_levels",
+    "crumbs": [
+      "Reference",
+      "Base Designs",
+      "base.UniformDesign"
+    ]
+  },
+  {
+    "objectID": "reference/base.UniformDesign.html#returns",
+    "href": "reference/base.UniformDesign.html#returns",
+    "title": "base.UniformDesign",
+    "section": "Returns",
+    "text": "Returns\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnumpy.numpy.ndarray\nnp.ndarray: A U-type uniform design, \\(U(n,q^d)\\) where \\(n\\) is the number of rows, \\(q\\) are the numbe of levels, and \\(d\\) is the dimension of the uniform design.\n\n\n\nExamples:\n\nimport pyLHD\npyLHD.UniformDesign(size = (10,3), n_levels = 2)\n\narray([[0, 0, 0],\n       [1, 1, 1],\n       [1, 1, 1],\n       [1, 0, 1],\n       [1, 0, 0],\n       [0, 1, 0],\n       [1, 1, 0],\n       [0, 0, 0],\n       [0, 1, 1],\n       [0, 0, 1]])\n\n\n\npyLHD.UniformDesign(size = (10,3), n_levels = 5, criteria = \"mixture_L2\")  \n\narray([[1, 0, 1],\n       [0, 4, 3],\n       [3, 4, 0],\n       [0, 2, 4],\n       [3, 2, 1],\n       [2, 3, 3],\n       [1, 1, 2],\n       [4, 3, 2],\n       [4, 0, 4],\n       [2, 1, 0]])",
+    "crumbs": [
+      "Reference",
+      "Base Designs",
+      "base.UniformDesign"
     ]
   }
 ]

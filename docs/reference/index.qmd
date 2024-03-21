@@ -9,6 +9,7 @@ Generate Random LHD
 | [base.LatinSquare](base.LatinSquare.qmd#pyLHD.base.LatinSquare) | Generate a random (n x d) Latin square |
 | [base.LatinHypercube](base.LatinHypercube.qmd#pyLHD.base.LatinHypercube) | Generate a random Latin Hypercube Design |
 | [base.GoodLatticePoint](base.GoodLatticePoint.qmd#pyLHD.base.GoodLatticePoint) | Good Lattice Point (GLP) Design  |
+| [base.UniformDesign](base.UniformDesign.qmd#pyLHD.base.UniformDesign) | Generate a Uniform Design (U-type) |
 
 ## Hadamard Matrices
 
